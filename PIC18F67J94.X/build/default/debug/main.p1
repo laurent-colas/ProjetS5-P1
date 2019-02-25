@@ -1756,8 +1756,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 26: char pressed_pad;
 [v _pressed_pad `uc ~T0 @X0 1 e ]
 "27
-[; ;main.c: 27: const unsigned char str[17] = "Nico est français";
-[v _str `Cuc ~T0 @X0 -> 17 `i e ]
+[; ;main.c: 27: const unsigned char str[16] = "Nico est francais";
+[v _str `Cuc ~T0 @X0 -> 16 `i e ]
 [i _str
 :U ..
 -> 78 `c
@@ -1773,10 +1773,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 114 `c
 -> 97 `c
 -> 110 `c
--> -25 `c
+-> 99 `c
 -> 97 `c
 -> 105 `c
--> 115 `c
 ..
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
@@ -1790,8 +1789,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 31:     init_all();
 [e ( _init_all ..  ]
 "32
-[; ;main.c: 32:     putStringLCD(&str[0]);
-[e ( _putStringLCD (1 &U *U + &U _str * -> -> -> 0 `i `ui `ux -> -> # *U &U _str `ui `ux ]
+[; ;main.c: 32:     putStringLCD(&str[1]);
+[e ( _putStringLCD (1 &U *U + &U _str * -> -> -> 1 `i `ui `ux -> -> # *U &U _str `ui `ux ]
 "33
 [; ;main.c: 33:     while(1) {
 [e :U 1422 ]
