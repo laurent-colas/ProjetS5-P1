@@ -1,3 +1,4 @@
+% fonction pour normaliser le signal
 function [norm] = mynorm(x)
     absMax = mymax(myabs(x));
 
