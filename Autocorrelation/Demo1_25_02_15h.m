@@ -4,30 +4,59 @@ close all
 clearvars
 
 %% Enregistrement du son
+% 
+% recObj1 = audiorecorder;
+% 
+% disp('Start speaking.')
+% recordblocking(recObj1, 2);
+% disp('End of Recording.');
+% 
+% %play(recObj1);
+% 
+% x = getaudiodata(recObj1);
+% plot(x)
+%%
+t = 1:100;
 
-recObj = audiorecorder;
+x = sin(t);
+noise = randn(numel(x),1);
+noise = noise./max(abs(noise));
 
-disp('Start speaking.')
-recordblocking(recObj, 1);
-disp('End of Recording.');
+noise = noise.*max(x);
 
-play(recObj);
-
-y = getaudiodata(recObj);
-plot(y)
-
-
-%% Autocorrelation
-clc 
-close all
-clearvars
-
-% vecteur de test
-x = [1 0 -1 0];
-y = [1 0 -1 0 1 1 1 1 1 1];
-
-
-corr = correlation(x,y);
+% y = x + noise';
+y = t.^2;
+%%
 
 figure
-stem(corr)
+subplot(2,1,1)
+plot(x)
+subplot(2,1,2)
+plot(y)
+%% Autocorrelation
+% clc 
+% close all
+% clearvars
+
+% vecteur de test
+% x = [-1 0 1 1];
+
+% 
+% t = 1:100;
+% 
+% x = sin(t);
+% y = cos(t);
+
+[corr,lag] = correlation(x,x);
+
+figure
+plot(lag,corr)
+
+%%
+
+son = corr(1:(numel(corr)/2));
+
+figure
+plot(flip(son))
+%%
+sound(y,8000)

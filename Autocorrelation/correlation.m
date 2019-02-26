@@ -1,19 +1,24 @@
-function [correlation] = correlation(x,y)
+function [correlation,decalage] = correlation(x,y)
     
 % Ajustement de la longueur des signaux 
     nbx = numel(x);
     nby = numel(y);
-    x = [x zeros(1,nby-1)];
-    y = [y zeros(1,nbx-1)];
-
+    if nbx ~= nby
+        x = [x zeros(1,nby-1)];
+        y = [y zeros(1,nbx-1)];
+    end
+    nb = numel(x);
+    decalage = (-(nb-1)):(nb-1);
+    nDec = numel(decalage);
+    
 % Ajout de "0" avant et après pour pouvoir faire les oppérations
-    x = [zeros(1,length(x)) x zeros(1,length(x))];
-    correlation(1:length(y)*2-1,:) = 0;
+    y = [zeros(1,nb-1) y zeros(1,nb-1)]; 
+    nby = numel(y);
     
 % Boucle principale de l'algo  
-    for boucle_corr = 1:(length(y)*2-1)
-       y_corr = [zeros(1,boucle_corr) y zeros(1,length(y)*2-boucle_corr)];
-       correlation(boucle_corr) = sum(x .* y_corr);
+    for i = 0:nDec-1
+       buff = y((nDec-i):(nby-i));
+       correlation(i+1) = sum(x .* buff);
     end
     correlation = mynorm(correlation);
 end
