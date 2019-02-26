@@ -3,12 +3,12 @@ Microchip MPLAB XC8 Compiler V2.00 ()
 Linker command line:
 
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.00\pic\dat\en_msgs.txt \
-  -cs -h+dist/default/production\PIC18F67J94.X.production.sym \
-  --cmf=dist/default/production\PIC18F67J94.X.production.cmf -z -Q18F67J94 \
-  -oC:\Users\laure\AppData\Local\Temp\sakk.2 --defsym=__MPLAB_BUILD=1 \
-  -Mdist/default/production/PIC18F67J94.X.production.map -E1 -ver=XC8 \
-  --acfsm=1493 -ASTACK=060h-0df9h -pstack=STACK -ACODE=00h-01FFEFh \
-  -ACONST=00h-01FFEFh -ASMALLCONST=0E00h-0EFFhx497,01FF00h-01FFEFh \
+  -cs -h+dist/default/debug\PIC18F67J94.X.debug.sym \
+  --cmf=dist/default/debug\PIC18F67J94.X.debug.cmf -z -Q18F67J94 \
+  -oC:\Users\laure\AppData\Local\Temp\sg54.2 --defsym=__MPLAB_BUILD=1 \
+  -Mdist/default/debug/PIC18F67J94.X.debug.map -E1 -ver=XC8 --acfsm=1493 \
+  -ASTACK=060h-0df9h -pstack=STACK -ACODE=00h-01FFEFh -ACONST=00h-01FFEFh \
+  -ASMALLCONST=0E00h-0EFFhx497,01FF00h-01FFEFh \
   -AMEDIUMCONST=0E00h-0FFFFh,010E00h-01FFEFh -ACOMRAM=01h-05Fh \
   -AABS1=00h-0DF9h -ABIGRAM=01h-0DF9h \
   -ARAM=060h-0FFh,0100h-01FFhx12,0D00h-0DF9h -ABANK0=060h-0FFh \
@@ -26,8 +26,8 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\laure\AppData\Local\Temp\sakk.o \
-  dist/default/production\PIC18F67J94.X.production.o 
+  C:\Users\laure\AppData\Local\Temp\sg54.o \
+  dist/default/debug\PIC18F67J94.X.debug.o 
 
 Object code version is 3.11
 
@@ -39,10 +39,10 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\laure\AppData\Local\Temp\sakk.o
+C:\Users\laure\AppData\Local\Temp\sg54.o
                 init                                  0        0        4        0       0
                 config                            1FFF0    1FFF0       10    1FFF0       0
-dist/default/production\PIC18F67J94.X.production.o
+dist/default/debug\PIC18F67J94.X.debug.o
                 smallconst                          E00      E00       2A      700       0
                 text13                             15C6     15C6        E      715       0
                 text12                             158C     158C       1E      715       0
@@ -392,7 +392,7 @@ __end_of_putchLCD             text3         014A6
 __end_of_readBusyFlag         text11        0158C
 __end_of_read_pad             text1         012E0
 __end_of_spi_Send_Read        text12        015AA
-__end_of_str                  smallconst    00E12
+__end_of_str                  smallconst    00E11
 __initialization              cinit         01546
 __mediumconst                 mediumconst   00000
 __pbssCOMRAM                  bssCOMRAM     0000B
@@ -541,7 +541,7 @@ Total ram usage:        5 bytes
 		line 48 in file "LCD_SPI.c"
  Parameters:    Size  Location     Type
   input           2    4[COMRAM] PTR const unsigned char 
-		 -> putNumberLCD@stringAffichage(2), STR_2(2), STR_1(21), str(17), 
+		 -> putNumberLCD@stringAffichage(2), STR_2(2), STR_1(21), str(16), 
  Auto vars:     Size  Location     Type
   i               2    8[COMRAM] int 
  Return value:  Size  Location     Type
@@ -934,9 +934,9 @@ LCD_SPI.c estimated size: 634
 
 shared
 		__initialization		CODE           	1546	0000	31
-		_str           		SMALLCONST     	0E01	0000	18
+		_str           		SMALLCONST     	0E01	0000	17
 
-shared estimated size: 49
+shared estimated size: 48
 
 main.c
 		_init_all      		CODE           	15D4	0000	11

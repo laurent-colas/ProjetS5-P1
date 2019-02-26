@@ -301,7 +301,7 @@
 "26 C:\Users\laure\Documents\ProjetS5-P1\PIC18F67J94.X\main.c
 [v _pressed_pad pressed_pad `uc  1 e 1 0 ]
 "27
-[v _str str `C[17]uc  1 e 17 0 ]
+[v _str str `C[16]uc  1 e 16 0 ]
 "29
 [v _main main `(v  1 e 1 0 ]
 {

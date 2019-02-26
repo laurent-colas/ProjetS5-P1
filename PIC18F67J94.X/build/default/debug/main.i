@@ -19584,12 +19584,12 @@ char read_pad(void);
 int number = 3;
 int i;
 char pressed_pad;
-const unsigned char str[17] = "Nico est français";
+const unsigned char str[16] = "Nico est francais";
 
 void main(void) {
 
     init_all();
-    putStringLCD(&str[0]);
+    putStringLCD(&str[1]);
     while(1) {
         pressed_pad = read_pad();
         if (pressed_pad != 'z') {

@@ -31,7 +31,7 @@
 #ifndef LCD_SPI_H
 #define	LCD_SPI_H
 
-//#include <p18f67j94.h>
+#include "pic18f67j94.h"
 #include <xc.h>
  
  //function prototypes
