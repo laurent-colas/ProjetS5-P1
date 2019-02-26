@@ -1,0 +1,50 @@
+-----TI-REX started at Tue Feb 26 2019 11:32:23 GMT-0500 (Eastern Standard Time)
+Tue, 26 Feb 2019 16:32:24 GMT connect deprecated multipart: use parser (multiparty, busboy, formidable) npm module instead at node_modules\connect\lib\middleware\bodyParser.js:56:20
+Tue, 26 Feb 2019 16:32:24 GMT connect deprecated limit: Restrict request size at location of read at node_modules\connect\lib\middleware\multipart.js:86:15
+Tue, 26 Feb 2019 16:32:24 GMT connect deprecated methodOverride: use method-override npm module instead at app.js:555:21
+rex-content"
+]
+2019-02-26T16:32:24.498Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\lib\vars.js:165:12:Function.Vars.createDirs() [
+    "db dir: C:\\Users\\berth\\ti\\tirex-localserver-3.0.0\\.db"
+]
+2019-02-26T16:32:24.498Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\lib\vars.js:170:12:Function.Vars.createDirs() [
+    "db logs dir: C:\\Users\\berth\\ti\\tirex-localserver-3.0.0\\.db\\logs"
+]
+2019-02-26T16:32:24.498Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\lib\vars.js:175:12:Function.Vars.createDirs() [
+    "sitemap dir: C:\\Users\\berth\\ti\\tirex-localserver-3.0.0\\.db\\sitemap"
+]
+2019-02-26T16:32:24.498Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\lib\vars.js:180:12:Function.Vars.createDirs() [
+    "downloads dir: C:\\Users\\berth\\ti\\tirex-localserver-3.0.0\\.downloads"
+]
+2019-02-26T16:32:24.498Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\lib\vars.js:185:12:Function.Vars.createDirs() [
+    "user config dir: C:\\Users\\berth\\ti\\tirex-localserver-3.0.0"
+]
+2019-02-26T16:32:24.498Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\rexdb\lib\rexdb-split.js:49:12:RexDBSplit.use() [
+    "DB: use() called with[]"
+]
+2019-02-26T16:32:24.498Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\rexdb\lib\rexdb-split.js:83:16:() [
+    "DB: status {}"
+]
+2019-02-26T16:32:24.639Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\lib\localserver.js:50:12:logInfo() [
+    "localserver",
+    "Starting up local server ..."
+]
+2019-02-26T16:32:24.639Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\lib\localserver.js:50:12:logInfo() [
+    "localserver",
+    "CCS host: http://localhost:51999/"
+]
+2019-02-26T16:32:24.654Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\lib\localserver.js:50:12:logInfo() [
+    "localserver",
+    "Connecting to remote server host: https://dev.ti.com/tirex"
+]
+2019-02-26T16:32:24.701Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\app.js:2317:16:Server.<anonymous>() [
+    "Express server listening on port 52162"
+]
+2019-02-26T16:32:25.810Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\lib\localserver.js:50:12:logInfo() [
+    "localserver",
+    "Cannot connect to remote server host: https://dev.ti.com/tirex"
+]
+2019-02-26T16:32:25.810Z INFO DAEMON tirex C:\ti\ccsv7\tirex\ti-rex-core\lib\localserver.js:50:12:logInfo() [
+    "localserver",
+    "Reason: This version of Resource Explorer is no longer supported. Please see update instructions here: http://processors.wiki.ti.com/index.php/TIREX_Update"
+]

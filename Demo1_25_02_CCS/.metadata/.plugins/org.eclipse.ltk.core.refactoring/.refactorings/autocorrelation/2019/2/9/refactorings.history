@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;autocorrelation/Source/header/length&apos; to &apos;length.h&apos;" description="Rename resource &apos;length&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Source/header/length" name="length.h" stamp="1551209098533" updateReferences="true"/>
+</session>

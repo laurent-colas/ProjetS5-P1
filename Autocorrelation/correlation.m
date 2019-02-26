@@ -10,7 +10,6 @@ function [correlation,decalage] = correlation(x,y)
     nb = numel(x);
     decalage = (-(nb-1)):(nb-1);
     nDec = numel(decalage);
-    
 % Ajout de "0" avant et après pour pouvoir faire les oppérations
     x = [zeros(1,nb-1) x zeros(1,nb-1)]; 
     

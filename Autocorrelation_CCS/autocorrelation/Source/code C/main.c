@@ -17,16 +17,7 @@ unsigned int State;
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
-
-double correlation(s_ref,y)
-{
-
-    int nbx = sizeof(s_ref)/sizeof(s_ref[0]);
-    int nby = sizeof(y)/sizeof(y[0]);
-
-
-}
+#include "length.h"
 
 
 void main(void)
@@ -47,6 +38,9 @@ void main(void)
         s_ref[i] = sin(i*3.14/10);
 
     }
+
+    printf(int length(s_ref));
+
     State = ATTENTE;
 
     while(1)
