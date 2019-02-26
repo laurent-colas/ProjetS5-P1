@@ -3,10 +3,10 @@ function [correlation,decalage] = correlation(x,y)
 % Ajustement de la longueur des signaux 
     nbx = numel(x);
     nby = numel(y);
-%     if nbx ~= nby
-%         x = [x zeros(1,nby-1)];
-%         y = [y zeros(1,nbx-1)];
-%     end
+    if nbx ~= nby
+        x = [x zeros(1,nby-1)];
+        y = [y zeros(1,nbx-1)];
+    end
     nb = numel(x);
     decalage = (-(nb-1)):(nb-1);
     nDec = numel(decalage);
