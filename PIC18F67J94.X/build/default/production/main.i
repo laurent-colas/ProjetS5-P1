@@ -19525,6 +19525,50 @@ char *ctermid(char *);
 char *tempnam(const char *, const char *);
 # 12 "main.c" 2
 
+# 1 "./config_bits.h" 1
+# 35 "./config_bits.h"
+#pragma config STVREN = ON
+
+
+
+
+#pragma config BOREN = ON
+#pragma config BORV = 1
+#pragma config CP0 = OFF
+
+
+#pragma config FOSC = PRIPLL
+
+
+#pragma config IESO = OFF
+
+
+#pragma config PLLDIV = DIV2
+
+
+#pragma config POSCMD = MS
+#pragma config FSCM = CSDCMD
+
+
+
+
+#pragma config WPFP = WPFP255
+
+
+#pragma config WPDIS = WPDIS
+
+#pragma config WPCFG = WPCFGDIS
+
+
+
+#pragma config CINASEL = DEFAULT
+
+
+#pragma config IOL1WAY = OFF
+# 100 "./config_bits.h"
+#pragma config DSWDTOSC = LPRC
+# 13 "main.c" 2
+
 # 1 "./LCD_SPI.h" 1
 # 34 "./LCD_SPI.h"
 # 1 "./pic18f67j94.h" 1
@@ -19539,7 +19583,7 @@ void dly(void);
 unsigned char readBusyFlag(void);
 void putStringLCD(const unsigned char*);
 void putchLCD(unsigned char);
-void clearDisplay();
+void clearDisplay(void);
 void displayCtrl(char display, char cursor, char blink);
 void initialisation_PORT(void);
 void initialisation_LCD();
@@ -19547,57 +19591,66 @@ void moveCursor(int row, int col);
 char fliplr(char input);
 void putNumberLCD(int number);
 void clearRow(int row);
-# 13 "main.c" 2
+# 14 "main.c" 2
+
+# 1 "./HC-SR04.h" 1
+# 14 "./HC-SR04.h"
+void Trigger_Pulse_10us(void);
+void init_dist_sensor(void);
+void init_timer_1(void);
+void calc_distance_mm(void);
 
 
-# 1 "./config_bits.h" 1
 
 
-
-
-
-
-
-#pragma config FOSC = FRC
-
-#pragma config IESO = OFF
-
-#pragma config BORV = 3
-
-
-#pragma config WDTPS = 32768
-
-
-#pragma config STVREN = ON
-
-#pragma config XINST = OFF
+float Distance;
+int Distance_mm_int;
+int Time;
+float Total_distance[10];
 # 15 "main.c" 2
+
+# 1 "./num_pad.h" 1
+# 13 "./num_pad.h"
+void init_num_pad(void);
+char read_pad(void);
+# 16 "main.c" 2
+
 
 
 
 void init_all(void);
-void init_num_pad(void);
-char read_pad(void);
-
-
 
 int number = 3;
 int i;
 char pressed_pad;
-const unsigned char str[17] = "Nico est français";
+const unsigned char str[17] = "Nico est francais";
+float Total_distance[10];
+int Distance_mm_int;
+const unsigned char total_dist[10];
+
 
 void main(void) {
 
     init_all();
     putStringLCD(&str[0]);
     while(1) {
+
         pressed_pad = read_pad();
+        if (pressed_pad == '1') {
+
+            calc_distance_mm();
+
+        }
         if (pressed_pad != 'z') {
             putchLCD(pressed_pad);
             _delay(500);
         }
+        if (pressed_pad == 'C') {
+            clearDisplay();
+        }
+
         pressed_pad = 'z';
-# 57 "main.c"
+# 69 "main.c"
     }
 
 }
@@ -19605,146 +19658,5 @@ void main(void) {
 void init_all(void) {
     initialisation_LCD();
     init_num_pad();
-}
-
-void init_num_pad(void) {
-    TRISE = 0xF0;
-    PORTEbits.RE0 = 1;
-    PORTEbits.RE1 = 1;
-    PORTEbits.RE2 = 1;
-    PORTEbits.RE3 = 1;
-}
-
-char read_pad(void) {
-    char num_pad_val;
-    int pressed = 0;
-
-    LATEbits.LATE3 = 0;
-    if (!PORTEbits.RE7) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE7) {
-            num_pad_val = 'C';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE6) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE6) {
-            num_pad_val = 'D';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE5) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE5) {
-            num_pad_val = 'E';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE4) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE4) {
-            num_pad_val = 'F';
-            pressed = 1;
-        }
-    }
-    LATEbits.LATE3 = 1;
-
-    LATEbits.LATE2 = 0;
-    if (!PORTEbits.RE7) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE7) {
-            num_pad_val = 'B';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE6) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE6) {
-            num_pad_val = '9';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE5) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE5) {
-            num_pad_val = '6';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE4) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE4) {
-            num_pad_val = '3';
-            pressed = 1;
-        }
-    }
-    LATEbits.LATE2 = 1;
-
-    LATEbits.LATE1 = 0;
-    if (!PORTEbits.RE7) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE7) {
-            num_pad_val = '0';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE6) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE6) {
-            num_pad_val = '8';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE5) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE5) {
-            num_pad_val = '5';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE4) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE4) {
-            num_pad_val = '2';
-            pressed = 1;
-        }
-    }
-    LATEbits.LATE1 = 1;
-
-    LATEbits.LATE0 = 0;
-    if (!PORTEbits.RE7) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE7) {
-            num_pad_val = 'A';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE6) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE6) {
-            num_pad_val = '7';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE5) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE5) {
-            num_pad_val = '4';
-            pressed = 1;
-        }
-    }
-    if (!PORTEbits.RE4) {
-        _delay((unsigned long)((100)*(8000000/4000.0)));
-        if (!PORTEbits.RE4) {
-            num_pad_val = '1';
-            pressed = 1;
-        }
-    }
-    LATEbits.LATE0 = 1;
-
-    if (!pressed) {
-        num_pad_val = 'z';
-    }
-    return num_pad_val;
+    init_dist_sensor();
 }

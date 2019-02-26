@@ -41,7 +41,7 @@ void dly(void);
 unsigned char readBusyFlag(void);
 void putStringLCD(const unsigned char*);
 void putchLCD(unsigned char);
-void clearDisplay();
+void clearDisplay(void);
 void displayCtrl(char display, char cursor, char blink);
 void initialisation_PORT(void);
 void initialisation_LCD();

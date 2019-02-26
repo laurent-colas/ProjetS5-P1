@@ -7,6 +7,8 @@
       <itemPath>config_bits.h</itemPath>
       <itemPath>LCD_SPI.h</itemPath>
       <itemPath>pic18f67j94.h</itemPath>
+      <itemPath>HC-SR04.h</itemPath>
+      <itemPath>num_pad.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -18,6 +20,8 @@
       <itemPath>main.c</itemPath>
       <itemPath>fonction_periph.c</itemPath>
       <itemPath>LCD_SPI.c</itemPath>
+      <itemPath>HC-SR04.c</itemPath>
+      <itemPath>num_pad.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

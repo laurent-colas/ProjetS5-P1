@@ -1,36 +1,171 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"20 main.c
-[; ;main.c: 20: void init_all(void);
-[v _init_all `(v ~T0 @X0 0 ef ]
-"42 ./LCD_SPI.h
-[; ;./LCD_SPI.h: 42: void putStringLCD(const unsigned char*);
-[v _putStringLCD `(v ~T0 @X0 0 ef1`*Cuc ]
-"14 ./num_pad.h
-[; ;./num_pad.h: 14: char read_pad(void);
-[v _read_pad `(uc ~T0 @X0 0 ef ]
-"17 ./HC-SR04.h
-[; ;./HC-SR04.h: 17: void calc_distance_mm(void);
-[v _calc_distance_mm `(v ~T0 @X0 0 ef ]
-"43 ./LCD_SPI.h
-[; ;./LCD_SPI.h: 43: void putchLCD(unsigned char);
-[v _putchLCD `(v ~T0 @X0 0 ef1`uc ]
+"24995 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 24995:     struct {
+[s S1083 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1083 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
+"24994
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 24994: typedef union {
+[u S1082 `S1083 1 ]
+[n S1082 . . ]
+"25006
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 25006: extern volatile TRISDbits_t TRISDbits __attribute__((address(0xF95)));
+[v _TRISDbits `VS1082 ~T0 @X0 0 e@3989 ]
+"30734
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30734:     struct {
+[s S1390 :7 `uc 1 :1 `uc 1 ]
+[n S1390 . . NOT_RBPU ]
+"30738
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30738:     struct {
+[s S1391 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1391 . IOCIP INT3IP TMR0IP INTEDG3 INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+"30748
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30748:     struct {
+[s S1392 :1 `uc 1 :1 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
+[n S1392 . . INT3P T0IP . RBPU ]
+"30733
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30733: typedef union {
+[u S1389 `S1390 1 `S1391 1 `S1392 1 ]
+[n S1389 . . . . ]
+"30756
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30756: extern volatile INTCON2bits_t INTCON2bits __attribute__((address(0xFF1)));
+[v _INTCON2bits `VS1389 ~T0 @X0 0 e@4081 ]
+"21597
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 21597:     struct {
+[s S945 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S945 . WPUB0 WPUB1 WPUB2 WPUB3 WPUB4 WPUB5 WPUB6 WPUB7 ]
+"21596
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 21596: typedef union {
+[u S944 `S945 1 ]
+[n S944 . . ]
+"21608
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 21608: extern volatile WPUBbits_t WPUBbits __attribute__((address(0xF62)));
+[v _WPUBbits `VS944 ~T0 @X0 0 e@3938 ]
+"24871
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 24871:     struct {
+[s S1079 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1079 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
+"24870
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 24870: typedef union {
+[u S1078 `S1079 1 ]
+[n S1078 . . ]
+"24882
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 24882: extern volatile TRISBbits_t TRISBbits __attribute__((address(0xF93)));
+[v _TRISBbits `VS1078 ~T0 @X0 0 e@3987 ]
+"24419
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 24419:     struct {
+[s S1065 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1065 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"24429
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 24429:     struct {
+[s S1066 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1066 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
+"24418
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 24418: typedef union {
+[u S1064 `S1065 1 `S1066 1 ]
+[n S1064 . . . ]
+"24440
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 24440: extern volatile LATDbits_t LATDbits __attribute__((address(0xF8C)));
+[v _LATDbits `VS1064 ~T0 @X0 0 e@3980 ]
+"16 ./HC-SR04.h
+[; ;./HC-SR04.h: 16: void init_timer_1(void);
+[v _init_timer_1 `(v ~T0 @X0 0 ef ]
+"29465 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29465: extern volatile unsigned char T1CON __attribute__((address(0xFCD)));
+[v _T1CON `Vuc ~T0 @X0 0 e@4045 ]
+"29912
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29912: extern volatile unsigned char OSCCON __attribute__((address(0xFD3)));
+[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
+"29583
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29583: extern volatile unsigned short TMR1 __attribute__((address(0xFCE)));
+[v _TMR1 `Vus ~T0 @X0 0 e@4046 ]
+"29471
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29471:     struct {
+[s S1311 :2 `uc 1 :1 `uc 1 ]
+[n S1311 . . NOT_T1SYNC ]
+"29475
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29475:     struct {
+[s S1312 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :2 `uc 1 ]
+[n S1312 . TMR1ON RD16 nT1SYNC SOSCEN TCKPS TMR1CS ]
+"29483
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29483:     struct {
+[s S1313 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1313 . . T1CKPS0 T1CKPS1 TMR1CS0 TMR1CS1 ]
+"29490
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29490:     struct {
+[s S1314 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S1314 . . RD161 . SOSCEN1 . T1RD16 ]
+"29498
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29498:     struct {
+[s S1315 :3 `uc 1 :1 `uc 1 ]
+[n S1315 . . T1OSCEN ]
+"29470
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29470: typedef union {
+[u S1310 `S1311 1 `S1312 1 `S1313 1 `S1314 1 `S1315 1 ]
+[n S1310 . . . . . . ]
+"29503
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29503: extern volatile T1CONbits_t T1CONbits __attribute__((address(0xFCD)));
+[v _T1CONbits `VS1310 ~T0 @X0 0 e@4045 ]
+"38368
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 38368: extern volatile __bit T1CKPS0 __attribute__((address(0x7E6C)));
+[v _T1CKPS0 `Vb ~T0 @X0 0 e@32364 ]
+"38371
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 38371: extern volatile __bit T1CKPS1 __attribute__((address(0x7E6D)));
+[v _T1CKPS1 `Vb ~T0 @X0 0 e@32365 ]
+"29590
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29590: extern volatile unsigned char TMR1L __attribute__((address(0xFCE)));
+[v _TMR1L `Vuc ~T0 @X0 0 e@4046 ]
+"29610
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29610: extern volatile unsigned char TMR1H __attribute__((address(0xFCF)));
+[v _TMR1H `Vuc ~T0 @X0 0 e@4047 ]
+"23728
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 23728:     struct {
+[s S1042 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1042 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
+"23738
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 23738:     struct {
+[s S1043 :7 `uc 1 :1 `uc 1 ]
+[n S1043 . . SS2 ]
+"23727
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 23727: typedef union {
+[u S1041 `S1042 1 `S1043 1 ]
+[n S1041 . . . ]
+"23743
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 23743: extern volatile PORTDbits_t PORTDbits __attribute__((address(0xF83)));
+[v _PORTDbits `VS1041 ~T0 @X0 0 e@3971 ]
 [v F10896 `(v ~T0 @X0 1 tf1`ul ]
 "183 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18.h
 [v __delay `JF10896 ~T0 @X0 0 e ]
 [p i __delay ]
+"23571 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 23571:     struct {
+[s S1035 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1035 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"23581
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 23581:     struct {
+[s S1036 :3 `uc 1 :1 `uc 1 ]
+[n S1036 . . CCP2_PA2 ]
+"23570
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 23570: typedef union {
+[u S1034 `S1035 1 `S1036 1 ]
+[n S1034 . . . ]
+"23586
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 23586: extern volatile PORTBbits_t PORTBbits __attribute__((address(0xF81)));
+[v _PORTBbits `VS1034 ~T0 @X0 0 e@3969 ]
+"38689
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 38689: extern volatile __bit TMR1ON __attribute__((address(0x7E68)));
+[v _TMR1ON `Vb ~T0 @X0 0 e@32360 ]
 "44 ./LCD_SPI.h
 [; ;./LCD_SPI.h: 44: void clearDisplay(void);
 [v _clearDisplay `(v ~T0 @X0 0 ef ]
-"47
-[; ;./LCD_SPI.h: 47: void initialisation_LCD();
-[v _initialisation_LCD `(v ~T0 @X0 0 e? ]
-"13 ./num_pad.h
-[; ;./num_pad.h: 13: void init_num_pad(void);
-[v _init_num_pad `(v ~T0 @X0 0 ef ]
-"15 ./HC-SR04.h
-[; ;./HC-SR04.h: 15: void init_dist_sensor(void);
-[v _init_dist_sensor `(v ~T0 @X0 0 ef ]
+"48
+[; ;./LCD_SPI.h: 48: void moveCursor(int row, int col);
+[v _moveCursor `(v ~T0 @X0 0 ef2`i`i ]
+"42
+[; ;./LCD_SPI.h: 42: void putStringLCD(const unsigned char*);
+[v _putStringLCD `(v ~T0 @X0 0 ef1`*Cuc ]
+"50
+[; ;./LCD_SPI.h: 50: void putNumberLCD(int number);
+[v _putNumberLCD `(v ~T0 @X0 0 ef1`i ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 54: __asm("UEP0 equ 0DFFh");
 [; <" UEP0 equ 0DFFh ;# ">
@@ -1699,36 +1834,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "31247
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 31247: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"35 ./config_bits.h
-[p x STVREN = ON ]
-"40
-[p x BOREN = ON ]
-"41
-[p x BORV = 1 ]
-"42
-[p x CP0 = OFF ]
-"45
-[p x FOSC = PRIPLL ]
-"48
-[p x IESO = OFF ]
-"51
-[p x PLLDIV = DIV2 ]
-"54
-[p x POSCMD = MS ]
-"55
-[p x FSCM = CSDCMD ]
-"60
-[p x WPFP = WPFP255 ]
-"63
-[p x WPDIS = WPDIS ]
-"65
-[p x WPCFG = WPCFGDIS ]
-"69
-[p x CINASEL = DEFAULT ]
-"72
-[p x IOL1WAY = OFF ]
-"100
-[p x DSWDTOSC = LPRC ]
 "22 ./HC-SR04.h
 [; ;./HC-SR04.h: 22: float Distance;
 [v _Distance `f ~T0 @X0 1 e ]
@@ -1741,150 +1846,225 @@ Version 4.0 HI-TECH Software Intermediate Code
 "25
 [; ;./HC-SR04.h: 25: float Total_distance[10];
 [v _Total_distance `f ~T0 @X0 -> 10 `i e ]
-"22 main.c
-[; ;main.c: 22: int number = 3;
-[v _number `i ~T0 @X0 1 e ]
-[i _number
--> 3 `i
-]
+"12 HC-SR04.c
+[; ;HC-SR04.c: 12: void init_dist_sensor(void) {
+[v _init_dist_sensor `(v ~T0 @X0 1 ef ]
+{
+[e :U _init_dist_sensor ]
+[f ]
+"14
+[; ;HC-SR04.c: 14:     TRISDbits.TRISD0 = 0;
+[e = . . _TRISDbits 0 0 -> -> 0 `i `uc ]
+"16
+[; ;HC-SR04.c: 16:     INTCON2bits.RBPU = 0;
+[e = . . _INTCON2bits 2 4 -> -> 0 `i `uc ]
+"17
+[; ;HC-SR04.c: 17:     WPUBbits.WPUB1 = 1;
+[e = . . _WPUBbits 0 1 -> -> 1 `i `uc ]
+"18
+[; ;HC-SR04.c: 18:     TRISBbits.TRISB1 = 1;
+[e = . . _TRISBbits 0 1 -> -> 1 `i `uc ]
+"20
+[; ;HC-SR04.c: 20:     LATDbits.LATD0 = 0;
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+"22
+[; ;HC-SR04.c: 22:     init_timer_1();
+[e ( _init_timer_1 ..  ]
 "23
-[; ;main.c: 23: int i;
-[v _i `i ~T0 @X0 1 e ]
-"24
-[; ;main.c: 24: char pressed_pad;
-[v _pressed_pad `uc ~T0 @X0 1 e ]
+[; ;HC-SR04.c: 23: }
+[e :UE 1418 ]
+}
 "25
-[; ;main.c: 25: const unsigned char str[17] = "Nico est francais";
-[v _str `Cuc ~T0 @X0 -> 17 `i e ]
-[i _str
+[; ;HC-SR04.c: 25: void init_timer_1(void) {
+[v _init_timer_1 `(v ~T0 @X0 1 ef ]
+{
+[e :U _init_timer_1 ]
+[f ]
+"26
+[; ;HC-SR04.c: 26:     T1CON = 0x02;
+[e = _T1CON -> -> 2 `i `uc ]
+"28
+[; ;HC-SR04.c: 28:     OSCCON = 0x22;
+[e = _OSCCON -> -> 34 `i `uc ]
+"30
+[; ;HC-SR04.c: 30:     TMR1 = 0;
+[e = _TMR1 -> -> 0 `i `us ]
+"31
+[; ;HC-SR04.c: 31:     T1CONbits.TMR1CS = 0;
+[e = . . _T1CONbits 1 5 -> -> 0 `i `uc ]
+"33
+[; ;HC-SR04.c: 33:     T1CKPS0 = 0;
+[e = _T1CKPS0 -> -> 0 `i `b ]
+"34
+[; ;HC-SR04.c: 34:     T1CKPS1 = 0;
+[e = _T1CKPS1 -> -> 0 `i `b ]
+"36
+[; ;HC-SR04.c: 36:     TMR1L = 0;
+[e = _TMR1L -> -> 0 `i `uc ]
+"37
+[; ;HC-SR04.c: 37:     TMR1H = 0;
+[e = _TMR1H -> -> 0 `i `uc ]
+"38
+[; ;HC-SR04.c: 38: }
+[e :UE 1419 ]
+}
+"40
+[; ;HC-SR04.c: 40: void Trigger_Pulse_10us(void){
+[v _Trigger_Pulse_10us `(v ~T0 @X0 1 ef ]
+{
+[e :U _Trigger_Pulse_10us ]
+[f ]
+"42
+[; ;HC-SR04.c: 42:     PORTDbits.RD0 = 1;
+[e = . . _PORTDbits 0 0 -> -> 1 `i `uc ]
+"43
+[; ;HC-SR04.c: 43:     _delay((unsigned long)((10)*(8000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
+"45
+[; ;HC-SR04.c: 45:     PORTDbits.RD0 = 0;
+[e = . . _PORTDbits 0 0 -> -> 0 `i `uc ]
+"46
+[; ;HC-SR04.c: 46: }
+[e :UE 1420 ]
+}
+"48
+[; ;HC-SR04.c: 48: void calc_distance_mm(void) {
+[v _calc_distance_mm `(v ~T0 @X0 1 ef ]
+{
+[e :U _calc_distance_mm ]
+[f ]
+"49
+[; ;HC-SR04.c: 49:     int a;
+[v _a `i ~T0 @X0 1 a ]
+"50
+[; ;HC-SR04.c: 50:     const unsigned char dist[11] = "Distance = ";
+[v F10942 `Cuc ~T0 @X0 -> 11 `i s dist ]
+[i F10942
 :U ..
--> 78 `c
+-> 68 `c
 -> 105 `c
--> 99 `c
--> 111 `c
--> 32 `c
--> 101 `c
 -> 115 `c
 -> 116 `c
--> 32 `c
--> 102 `c
--> 114 `c
 -> 97 `c
 -> 110 `c
 -> 99 `c
--> 97 `c
--> 105 `c
--> 115 `c
+-> 101 `c
+-> 32 `c
+-> 61 `c
+-> 32 `c
 ..
 ]
-"26
-[; ;main.c: 26: float Total_distance[10];
-[v _Total_distance `f ~T0 @X0 -> 10 `i e ]
-"27
-[; ;main.c: 27: int Distance_mm_int;
-[v _Distance_mm_int `i ~T0 @X0 1 e ]
-"28
-[; ;main.c: 28: const unsigned char total_dist[10];
-[v _total_dist `Cuc ~T0 @X0 -> 10 `i e ]
-[i _total_dist
-:U ..
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
--> -> 0 `i `Cuc
-..
-]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"31
-[; ;main.c: 31: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
-{
-[e :U _main ]
-[f ]
-"33
-[; ;main.c: 33:     init_all();
-[e ( _init_all ..  ]
-"34
-[; ;main.c: 34:     putStringLCD(&str[0]);
-[e ( _putStringLCD (1 &U *U + &U _str * -> -> -> 0 `i `ui `ux -> -> # *U &U _str `ui `ux ]
-"35
-[; ;main.c: 35:     while(1) {
-[e :U 1422 ]
-{
-"37
-[; ;main.c: 37:         pressed_pad = read_pad();
-[e = _pressed_pad ( _read_pad ..  ]
-"38
-[; ;main.c: 38:         if (pressed_pad == '1') {
-[e $ ! == -> _pressed_pad `ui -> 49 `ui 1424  ]
-{
-"40
-[; ;main.c: 40:             calc_distance_mm();
-[e ( _calc_distance_mm ..  ]
-"42
-[; ;main.c: 42:         }
-}
-[e :U 1424 ]
-"43
-[; ;main.c: 43:         if (pressed_pad != 'z') {
-[e $ ! != -> _pressed_pad `ui -> 122 `ui 1425  ]
-{
-"44
-[; ;main.c: 44:             putchLCD(pressed_pad);
-[e ( _putchLCD (1 -> _pressed_pad `uc ]
-"45
-[; ;main.c: 45:             _delay(500);
-[e ( __delay (1 -> -> -> 500 `i `l `ul ]
-"46
-[; ;main.c: 46:         }
-}
-[e :U 1425 ]
-"47
-[; ;main.c: 47:         if (pressed_pad == 'C') {
-[e $ ! == -> _pressed_pad `ui -> 67 `ui 1426  ]
-{
-"48
-[; ;main.c: 48:             clearDisplay();
-[e ( _clearDisplay ..  ]
-"49
-[; ;main.c: 49:         }
-}
-[e :U 1426 ]
 "51
-[; ;main.c: 51:         pressed_pad = 'z';
-[e = _pressed_pad -> -> 122 `ui `uc ]
-"69
-[; ;main.c: 69:     }
-}
-[e :U 1421 ]
+[; ;HC-SR04.c: 51:     const unsigned char cm[3] = " cm";
+[v F10943 `Cuc ~T0 @X0 -> 3 `i s cm ]
+[i F10943
+:U ..
+-> 32 `c
+-> 99 `c
+-> 109 `c
+..
+]
+"52
+[; ;HC-SR04.c: 52:     const unsigned char OoR[12] ="Out of Range";
+[v F10944 `Cuc ~T0 @X0 -> 12 `i s OoR ]
+[i F10944
+:U ..
+-> 79 `c
+-> 117 `c
+-> 116 `c
+-> 32 `c
+-> 111 `c
+-> 102 `c
+-> 32 `c
+-> 82 `c
+-> 97 `c
+-> 110 `c
+-> 103 `c
+-> 101 `c
+..
+]
+"54
+[; ;HC-SR04.c: 54:     TMR1L = 0;
+[e = _TMR1L -> -> 0 `i `uc ]
+"55
+[; ;HC-SR04.c: 55:     TMR1H = 0;
+[e = _TMR1H -> -> 0 `i `uc ]
+"57
+[; ;HC-SR04.c: 57:     Trigger_Pulse_10us();
+[e ( _Trigger_Pulse_10us ..  ]
+"59
+[; ;HC-SR04.c: 59:     while(!PORTBbits.RB1);
 [e $U 1422  ]
 [e :U 1423 ]
-"71
-[; ;main.c: 71: }
-[e :UE 1420 ]
-}
-"73
-[; ;main.c: 73: void init_all(void) {
-[v _init_all `(v ~T0 @X0 1 ef ]
+[e :U 1422 ]
+[e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 1423  ]
+[e :U 1424 ]
+"60
+[; ;HC-SR04.c: 60:     TMR1ON = 1;
+[e = _TMR1ON -> -> 1 `i `b ]
+"61
+[; ;HC-SR04.c: 61:     while(PORTBbits.RB1);
+[e $U 1425  ]
+[e :U 1426 ]
+[e :U 1425 ]
+[e $ != -> . . _PORTBbits 0 1 `i -> 0 `i 1426  ]
+[e :U 1427 ]
+"62
+[; ;HC-SR04.c: 62:     TMR1ON = 0;
+[e = _TMR1ON -> -> 0 `i `b ]
+"64
+[; ;HC-SR04.c: 64:     a = (TMR1L | (TMR1H << 8));
+[e = _a | -> _TMR1L `i << -> _TMR1H `i -> 8 `i ]
+"65
+[; ;HC-SR04.c: 65:     Distance_mm_int = TMR1 / 58.82;
+[e = _Distance_mm_int -> / -> -> _TMR1 `ui `d .58.82 `i ]
+"67
+[; ;HC-SR04.c: 67:     a = a/58.82;
+[e = _a -> / -> _a `d .58.82 `i ]
+"68
+[; ;HC-SR04.c: 68:     a = a+1;
+[e = _a + _a -> 1 `i ]
+"69
+[; ;HC-SR04.c: 69:     if (a>=2 && a <=400) {
+[e $ ! && >= _a -> 2 `i <= _a -> 400 `i 1428  ]
 {
-[e :U _init_all ]
-[f ]
-"74
-[; ;main.c: 74:     initialisation_LCD();
-[e ( _initialisation_LCD ..  ]
-"75
-[; ;main.c: 75:     init_num_pad();
-[e ( _init_num_pad ..  ]
-"76
-[; ;main.c: 76:     init_dist_sensor();
-[e ( _init_dist_sensor ..  ]
-"77
-[; ;main.c: 77: }
-[e :UE 1427 ]
+"70
+[; ;HC-SR04.c: 70:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"71
+[; ;HC-SR04.c: 71:         moveCursor(1,1);
+[e ( _moveCursor (2 , -> 1 `i -> 1 `i ]
+"72
+[; ;HC-SR04.c: 72:         putStringLCD(&dist[0]);
+[e ( _putStringLCD (1 &U *U + &U F10942 * -> -> -> 0 `i `ui `ux -> -> # *U &U F10942 `ui `ux ]
+"73
+[; ;HC-SR04.c: 73:         putNumberLCD(Distance_mm_int);
+[e ( _putNumberLCD (1 _Distance_mm_int ]
+"88
+[; ;HC-SR04.c: 88:     }
+}
+[e $U 1429  ]
+"89
+[; ;HC-SR04.c: 89:     else {
+[e :U 1428 ]
+{
+"90
+[; ;HC-SR04.c: 90:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"91
+[; ;HC-SR04.c: 91:         moveCursor(1,1);
+[e ( _moveCursor (2 , -> 1 `i -> 1 `i ]
+"92
+[; ;HC-SR04.c: 92:         putStringLCD(&OoR[0]);
+[e ( _putStringLCD (1 &U *U + &U F10944 * -> -> -> 0 `i `ui `ux -> -> # *U &U F10944 `ui `ux ]
+"93
+[; ;HC-SR04.c: 93:     }
+}
+[e :U 1429 ]
+"94
+[; ;HC-SR04.c: 94:     _delay((unsigned long)((100)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"103
+[; ;HC-SR04.c: 103: }
+[e :UE 1421 ]
 }
