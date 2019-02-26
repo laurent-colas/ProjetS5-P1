@@ -3,21 +3,21 @@ function [correlation,decalage] = correlation(x,y)
 % Ajustement de la longueur des signaux 
     nbx = numel(x);
     nby = numel(y);
-    if nbx ~= nby
-        x = [x zeros(1,nby-1)];
-        y = [y zeros(1,nbx-1)];
-    end
+%     if nbx ~= nby
+%         x = [x zeros(1,nby-1)];
+%         y = [y zeros(1,nbx-1)];
+%     end
     nb = numel(x);
     decalage = (-(nb-1)):(nb-1);
     nDec = numel(decalage);
     
 % Ajout de "0" avant et après pour pouvoir faire les oppérations
-    y = [zeros(1,nb-1) y zeros(1,nb-1)]; 
-    nby = numel(y);
+    x = [zeros(1,nb-1) x zeros(1,nb-1)]; 
     
 % Boucle principale de l'algo  
+correlation = [zeros(1,nDec)];
     for i = 0:nDec-1
-       buff = y((nDec-i):(nby-i));
+       buff = [zeros(1,i) y zeros(1,((nDec-1)-i))]; 
        correlation(i+1) = sum(x .* buff);
     end
     correlation = mynorm(correlation);

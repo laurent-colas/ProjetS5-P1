@@ -28,18 +28,19 @@ noise = noise.*max(x);
 y = t.^2;
 %%
 
-figure
-subplot(2,1,1)
-plot(x)
-subplot(2,1,2)
-plot(y)
+% figure
+% subplot(2,1,1)
+% plot(x)
+% subplot(2,1,2)
+% plot(y)
 %% Autocorrelation
-% clc 
-% close all
-% clearvars
+clc 
+close all
+clearvars
 
-% vecteur de test
-% x = [-1 0 1 1];
+%vecteur de test
+x = [-1 0 1 1];
+y = [-1 0 1 1];
 
 % 
 % t = 1:100;
@@ -47,10 +48,10 @@ plot(y)
 % x = sin(t);
 % y = cos(t);
 
-[corr,lag] = correlation(x,x);
+[corr,lag] = correlation(x,y);
 
 figure
-plot(lag,corr)
+stem(lag,corr)
 
 %%
 
