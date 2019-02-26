@@ -15,12 +15,15 @@ unsigned int State;
 #define MASK_LED2 0x04
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
 
-double correlation(s_ref,x)
+double correlation(s_ref,y)
 {
 
+    int nbx = sizeof(s_ref)/sizeof(s_ref[0]);
+    int nby = sizeof(y)/sizeof(y[0]);
 
 
 }
@@ -44,7 +47,6 @@ void main(void)
         s_ref[i] = sin(i*3.14/10);
 
     }
-
     State = ATTENTE;
 
     while(1)
