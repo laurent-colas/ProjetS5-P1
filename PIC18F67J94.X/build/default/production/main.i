@@ -19526,47 +19526,25 @@ char *tempnam(const char *, const char *);
 # 12 "main.c" 2
 
 # 1 "./config_bits.h" 1
-# 35 "./config_bits.h"
-#pragma config STVREN = ON
-
-
-
-
-#pragma config BOREN = ON
-#pragma config BORV = 1
-#pragma config CP0 = OFF
-
-
-#pragma config FOSC = PRIPLL
-
+# 17 "./config_bits.h"
+#pragma config PLLDIV = 0
+#pragma config FOSC = FRC
 
 #pragma config IESO = OFF
 
-
-#pragma config PLLDIV = DIV2
-
-
-#pragma config POSCMD = MS
-#pragma config FSCM = CSDCMD
+#pragma config BORV = 3
 
 
+#pragma config WDTPS = 32768
 
 
-#pragma config WPFP = WPFP255
+#pragma config STVREN = ON
 
+#pragma config XINST = OFF
+# 40 "./config_bits.h"
+#pragma config BOREN = ON
 
-#pragma config WPDIS = WPDIS
-
-#pragma config WPCFG = WPCFGDIS
-
-
-
-#pragma config CINASEL = DEFAULT
-
-
-#pragma config IOL1WAY = OFF
-# 100 "./config_bits.h"
-#pragma config DSWDTOSC = LPRC
+#pragma config CP0 = OFF
 # 13 "main.c" 2
 
 # 1 "./LCD_SPI.h" 1
@@ -19632,25 +19610,23 @@ const unsigned char total_dist[10];
 void main(void) {
 
     init_all();
-    putStringLCD(&str[0]);
+
     while(1) {
 
         pressed_pad = read_pad();
         if (pressed_pad == '1') {
-
             calc_distance_mm();
-
         }
         if (pressed_pad != 'z') {
             putchLCD(pressed_pad);
-            _delay(500);
+            _delay(50);
         }
         if (pressed_pad == 'C') {
             clearDisplay();
         }
 
         pressed_pad = 'z';
-# 69 "main.c"
+# 67 "main.c"
     }
 
 }

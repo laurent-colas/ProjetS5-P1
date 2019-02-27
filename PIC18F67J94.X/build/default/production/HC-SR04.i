@@ -19358,12 +19358,12 @@ void init_dist_sensor(void) {
 }
 
 void init_timer_1(void) {
-    T1CON = 0x02;
 
-    OSCCON = 0x22;
 
+    OSCCON = 0x07;
     TMR1 = 0;
     T1CONbits.TMR1CS = 0;
+
 
     T1CKPS0 = 0;
     T1CKPS1 = 0;
@@ -19392,21 +19392,43 @@ void calc_distance_mm(void) {
     Trigger_Pulse_10us();
 
     while(!PORTBbits.RB1);
-    TMR1ON = 1;
+    T1CONbits.TMR1ON = 1;
+
     while(PORTBbits.RB1);
-    TMR1ON = 0;
+    T1CONbits.TMR1ON = 0;
+
 
     a = (TMR1L | (TMR1H << 8));
-    Distance_mm_int = TMR1 / 58.82;
 
-    a = a/58.82;
+    Distance_mm_int = (0.0272*a)/2;
+
+    a = a/(58.82);
     a = a+1;
+
+
+
     if (a>=2 && a <=400) {
         clearDisplay();
-        moveCursor(1,1);
+        moveCursor(0,1);
         putStringLCD(&dist[0]);
-        putNumberLCD(Distance_mm_int);
-# 88 "HC-SR04.c"
+
+
+        moveCursor(0,14);
+        putchLCD(a%10 + 48);
+
+
+        a = a/10;
+        moveCursor(0,13);
+        putchLCD(a%10 + 48);
+
+
+        a = a/10;
+        moveCursor(0,12);
+        putchLCD(a%10 + 48);
+
+
+        moveCursor(0,15);
+        putStringLCD(&cm[0]);
     }
     else {
         clearDisplay();
@@ -19414,5 +19436,5 @@ void calc_distance_mm(void) {
         putStringLCD(&OoR[0]);
     }
     _delay((unsigned long)((100)*(8000000/4000.0)));
-# 103 "HC-SR04.c"
+# 112 "HC-SR04.c"
 }
