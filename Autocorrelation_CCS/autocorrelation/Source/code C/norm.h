@@ -11,17 +11,17 @@
 #include "abs.h"
 
 void norm(double x[], int l) {
-
 	double temp[2*length-1];
-	int i = 0;
-	for (; i < 2 * length - 1; i++)
+	int i;
+	for (i = 0; i < 2 * length - 1; i++)
 	{
 		temp[i] = x[i];
 	}
-	absolute(temp, 2 * length - 1);
-	double AbsMax = max(temp, 2 * length - 1);
-	i = 0;
-	for (; i < l; i++)
+	absolute(temp, 2 * length - 1);				// redressement
+	double AbsMax = max(temp, 2 * length - 1);	// valeur max
+	
+// boucle principale qui normalise le signal
+	for (i = 0; i < l; i++)
 	{
 		x[i] = x[i] / AbsMax;
 	}

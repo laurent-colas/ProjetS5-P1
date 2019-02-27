@@ -18,6 +18,7 @@ void correlation(double x[], double y[],int l,double out[]) {
 	double tempx[(3 * length) - 2];
 	double tempy[(3 * length) - 2];
 
+// Ajout de "0" avant et après pour pouvoir faire les oppérations
 	int i = 0;
 	for (i; i < l-1; i++)
 	{
@@ -36,6 +37,7 @@ void correlation(double x[], double y[],int l,double out[]) {
 		tempx[i] = 0;
 	}
 
+//Boucle principale de l'algo  
 	i = 0;
 	int j = 0;
 	for (i; i < 2*l - 1; i++)
@@ -66,7 +68,6 @@ void correlation(double x[], double y[],int l,double out[]) {
 		}
 		
 	}
-
-	norm(out, 2 * l - 1);
+	norm(out, 2 * l - 1);		// normalisation
 }
 #endif  /*SOURCE_HEADER_CORRELATION_H_*/
