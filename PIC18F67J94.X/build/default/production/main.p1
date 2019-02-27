@@ -3,9 +3,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "20 main.c
 [; ;main.c: 20: void init_all(void);
 [v _init_all `(v ~T0 @X0 0 ef ]
-"42 ./LCD_SPI.h
-[; ;./LCD_SPI.h: 42: void putStringLCD(const unsigned char*);
-[v _putStringLCD `(v ~T0 @X0 0 ef1`*Cuc ]
 "14 ./num_pad.h
 [; ;./num_pad.h: 14: char read_pad(void);
 [v _read_pad `(uc ~T0 @X0 0 ef ]
@@ -1699,36 +1696,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 "31247
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 31247: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"35 ./config_bits.h
+"17 ./config_bits.h
+[p x PLLDIV = 0 ]
+"18
+[p x FOSC = FRC ]
+"20
+[p x IESO = OFF ]
+"22
+[p x BORV = 3 ]
+"25
+[p x WDTPS = 32768 ]
+"28
 [p x STVREN = ON ]
+"30
+[p x XINST = OFF ]
 "40
 [p x BOREN = ON ]
-"41
-[p x BORV = 1 ]
 "42
 [p x CP0 = OFF ]
-"45
-[p x FOSC = PRIPLL ]
-"48
-[p x IESO = OFF ]
-"51
-[p x PLLDIV = DIV2 ]
-"54
-[p x POSCMD = MS ]
-"55
-[p x FSCM = CSDCMD ]
-"60
-[p x WPFP = WPFP255 ]
-"63
-[p x WPDIS = WPDIS ]
-"65
-[p x WPCFG = WPCFGDIS ]
-"69
-[p x CINASEL = DEFAULT ]
-"72
-[p x IOL1WAY = OFF ]
-"100
-[p x DSWDTOSC = LPRC ]
 "22 ./HC-SR04.h
 [; ;./HC-SR04.h: 22: float Distance;
 [v _Distance `f ~T0 @X0 1 e ]
@@ -1810,9 +1795,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33
 [; ;main.c: 33:     init_all();
 [e ( _init_all ..  ]
-"34
-[; ;main.c: 34:     putStringLCD(&str[0]);
-[e ( _putStringLCD (1 &U *U + &U _str * -> -> -> 0 `i `ui `ux -> -> # *U &U _str `ui `ux ]
 "35
 [; ;main.c: 35:     while(1) {
 [e :U 1422 ]
@@ -1824,67 +1806,67 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 38:         if (pressed_pad == '1') {
 [e $ ! == -> _pressed_pad `ui -> 49 `ui 1424  ]
 {
-"40
-[; ;main.c: 40:             calc_distance_mm();
+"39
+[; ;main.c: 39:             calc_distance_mm();
 [e ( _calc_distance_mm ..  ]
-"42
-[; ;main.c: 42:         }
+"40
+[; ;main.c: 40:         }
 }
 [e :U 1424 ]
-"43
-[; ;main.c: 43:         if (pressed_pad != 'z') {
+"41
+[; ;main.c: 41:         if (pressed_pad != 'z') {
 [e $ ! != -> _pressed_pad `ui -> 122 `ui 1425  ]
 {
-"44
-[; ;main.c: 44:             putchLCD(pressed_pad);
+"42
+[; ;main.c: 42:             putchLCD(pressed_pad);
 [e ( _putchLCD (1 -> _pressed_pad `uc ]
-"45
-[; ;main.c: 45:             _delay(500);
-[e ( __delay (1 -> -> -> 500 `i `l `ul ]
-"46
-[; ;main.c: 46:         }
+"43
+[; ;main.c: 43:             _delay(50);
+[e ( __delay (1 -> -> -> 50 `i `l `ul ]
+"44
+[; ;main.c: 44:         }
 }
 [e :U 1425 ]
-"47
-[; ;main.c: 47:         if (pressed_pad == 'C') {
+"45
+[; ;main.c: 45:         if (pressed_pad == 'C') {
 [e $ ! == -> _pressed_pad `ui -> 67 `ui 1426  ]
 {
-"48
-[; ;main.c: 48:             clearDisplay();
+"46
+[; ;main.c: 46:             clearDisplay();
 [e ( _clearDisplay ..  ]
-"49
-[; ;main.c: 49:         }
+"47
+[; ;main.c: 47:         }
 }
 [e :U 1426 ]
-"51
-[; ;main.c: 51:         pressed_pad = 'z';
+"49
+[; ;main.c: 49:         pressed_pad = 'z';
 [e = _pressed_pad -> -> 122 `ui `uc ]
-"69
-[; ;main.c: 69:     }
+"67
+[; ;main.c: 67:     }
 }
 [e :U 1421 ]
 [e $U 1422  ]
 [e :U 1423 ]
-"71
-[; ;main.c: 71: }
+"69
+[; ;main.c: 69: }
 [e :UE 1420 ]
 }
-"73
-[; ;main.c: 73: void init_all(void) {
+"71
+[; ;main.c: 71: void init_all(void) {
 [v _init_all `(v ~T0 @X0 1 ef ]
 {
 [e :U _init_all ]
 [f ]
-"74
-[; ;main.c: 74:     initialisation_LCD();
+"72
+[; ;main.c: 72:     initialisation_LCD();
 [e ( _initialisation_LCD ..  ]
-"75
-[; ;main.c: 75:     init_num_pad();
+"73
+[; ;main.c: 73:     init_num_pad();
 [e ( _init_num_pad ..  ]
-"76
-[; ;main.c: 76:     init_dist_sensor();
+"74
+[; ;main.c: 74:     init_dist_sensor();
 [e ( _init_dist_sensor ..  ]
-"77
-[; ;main.c: 77: }
+"75
+[; ;main.c: 75: }
 [e :UE 1427 ]
 }

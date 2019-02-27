@@ -33,13 +33,13 @@
 //
 //// CONFIG1L
 //#pragma config STVREN = ON      // Stack Overflow/Underflow Reset (Enabled)
-////#pragma config XINST = ON       // Extended Instruction Set (Enabled)
+//#pragma config XINST = OFF       // Extended Instruction Set (Enabled)
 //
 //
 //// CONFIG1H
-//#pragma config BOREN = ON       // Brown-Out Reset Enable (Controlled with SBOREN bit, disabled in Deep Sleep)
+#pragma config BOREN = ON       // Brown-Out Reset Enable (Controlled with SBOREN bit, disabled in Deep Sleep)
 //#pragma config BORV = 1         // Brown-out Reset Voltage (1.8V)
-//#pragma config CP0 = OFF        // Code Protect (Program memory is not code-protected)
+#pragma config CP0 = OFF        // Code Protect (Program memory is not code-protected)
 //
 //// CONFIG2L
 //#pragma config FOSC = PRIPLL    // Oscillator (Fast RC Oscillator with Postscaler (FRCDIV))
