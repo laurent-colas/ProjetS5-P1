@@ -1,0 +1,25 @@
+/*
+ * main.c
+ */
+
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+
+int AutoCorrelation(int *tabSing, int l, int h);
+
+int main(void) {
+
+    int sing[4] = {1 -1 1 -1};
+    int l = sizeof(sing) / sizeof(sing[0]);
+    l = 4 ;
+
+    int longueur = l + (l - 1)*2;
+    int hauteur = (l * 2) - 1;
+
+
+    AutoCorrelation(sing, longueur, hauteur)
+
+    return 0;
+}

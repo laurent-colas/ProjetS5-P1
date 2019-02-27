@@ -1,0 +1,172 @@
+
+
+	.def _AutoCorrelation
+	.data
+	.text
+
+
+
+
+
+_AutoCorrelation
+	.asmfunc
+
+
+	MVKH 0x00000000, A1
+	MVKL 0x00000000, A1
+
+;	SUB B4, 1, B4 		; n - 1
+	MV B4, B0 ;  nb d echant
+	SUB B0, 1, B0 		; n - 1
+
+	MV A4, A7 ; echantillons
+
+
+BoucleZarriere:
+	STW A1, *B15--[2]
+	SUB B0, 1, B0
+	[B0] B BoucleZarriere
+	NOP 5
+
+	MV B4,B1
+	SUB B1,1,B1
+	MV B4,B0
+
+BoucleSig:
+	MV B1, A5
+	LDW *+A4[A5], A6
+	NOP 4
+	STW A6, *B15--[2]
+	SUB B1,1,B1
+	SUB B0,1,B0
+	[B0] B BoucleSig
+	NOP 5
+
+
+
+	MV B4,B0
+	SUB B0, 2, B0 		; n - 1
+
+BoucleAvant:
+
+	STW A1, *B15--[2]
+	SUB B0,1,B0
+	[B0] B BoucleAvant
+	NOP 5
+
+	STW A1, *-B15[2]
+	SUB B0,1,B0
+	MV B15, B6
+
+
+
+
+; Ajoute les zeros devant le signal 1
+;BoucleZavant:
+;	ADD A0,1,A0
+;	LDW *+A7[A0], A7
+;	MV A1, *+A7[A0]
+;	SUB B0, 1, B0
+;	[B0] B BoucleZavant
+;	NOP 5
+
+
+
+;	MV A4, A7 ; echantillons
+
+;	MV B4, B0 ; L
+;	SUB B0, 1, B0
+
+
+
+
+
+;; Ajoute les zeros derriere le signal 1
+;BoucleZarriere:
+;	ADD A0,1,A0
+;	LDW *+A7[A0], A7
+;	MV A1, A7
+;	SUB B0, 1, B0
+
+
+;	[B0] B BoucleZarriere
+;	NOP 5
+
+
+;	MV A4, A8 ; echantillons
+
+
+
+;	MV B4, B0
+;	SUB B0, 1, B0
+;	ADD B0, B0, B0
+
+;	SUB A0, A0, A0
+
+;; Ajoute les zeros derriere le signal 2
+;BoucleZDerriere:
+;	ADD A0,1,A0
+;	LDW *+A8[A0], A8
+;	MV A1, A8
+;	SUB B0, 1, B0
+
+;	[B0] B BoucleZDerriere
+;	NOP 5
+
+	ADD B4,1,B4
+
+; Longueur
+
+	MV B4, B0
+	SUB B0, 1, B0
+	ADD B0, B0, B0
+	ADD B0, B4, B0
+	MV B0 , B10
+
+; Hauteur
+	MV B4, B1
+	ADD B1, B1, B1
+	SUB B1, 1, B1
+
+
+
+	SUB B0, 1, B0 ;soustraire 1 du nombre
+
+	SUB A0, A0, A0
+	ADD A0, 1, A0
+
+Boucle2:
+	ADD A0,1,A0
+	LDW *+A7[A0], A2 ;Loader valeur du tableau dans A2
+	NOP 4
+
+	LDW *+A8[A0], A12 ;Loader valeur du tableau dans A2
+	NOP 4
+
+	MPY A2,A12,A14
+	ADD A14 ,A15 ,A15
+	SUB B0, 1, B0 ;soustraire 1 du nombre d'encryption
+
+	[B0] B Boucle2
+	NOP 5
+
+
+
+Boucle3:
+
+	MPY A0, A1, A0
+	ADD A0, 1, A0
+	SUB B1,1,B1
+
+	MV A1, A7
+	MV B10, B0; longueur
+
+	[B1] B Boucle3
+	NOP 5
+
+
+	MV A15, A4
+
+	B B3 ; INDISPENSABLE ; B3 contient l'adresse de retour
+    NOP 5
+	.endasmfunc

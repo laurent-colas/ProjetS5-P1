@@ -1,0 +1,567 @@
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+gmake[1]: 'AutoCorr.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+1 Assembly Error, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 182: [E0009] Base register and index register must be from same file
+		LDW *+B15[A6], A2 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+2 Assembly Errors, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0003] Illegal memaddr specification
+		LDW *B15[B6]++, A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0003] Illegal memaddr specification
+		LDW *A8[A6]++, A12 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+1 Assembly Error, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0004] Operand #1, B15, not legal: register or regpair expected
+		MV *B15[B6], A2 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+1 Assembly Error, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0009] Base register and index register must be from same file
+		LDW *++B15[A6], A12 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+2 Assembly Errors, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0004] Operand #2, A2, not legal: register expected
+		LDW *+B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0004] Operand #2, A12, not legal: register expected
+		LDW *+B15[B10], *A12 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+2 Assembly Errors, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0004] Operand #1, B15, not legal: register expected
+		STW *+B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0004] Operand #1, B15, not legal: register expected
+		STW *+B15[B10], *A12 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+2 Assembly Errors, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0004] Operand #1, B15, not legal: register expected
+		STW *B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0004] Operand #1, B15, not legal: register expected
+		STW *B15[B10], *A12 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+4 Assembly Errors, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0003] Unexpected trailing operand(s)
+		STW B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0005] Operand #2 missing: indirect expected
+		STW B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0003] Unexpected trailing operand(s)
+		STW B15[B10], *A12 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0005] Operand #2 missing: indirect expected
+		STW B15[B10], *A12 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+4 Assembly Errors, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0003] Unexpected trailing operand(s)
+		MV B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0005] Operand #2 missing: register expected
+		MV B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0003] Unexpected trailing operand(s)
+		MV B15[B10], *A12 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0005] Operand #2 missing: register expected
+		MV B15[B10], *A12 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+4 Assembly Errors, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0003] Unexpected trailing operand(s)
+		MV B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0005] Operand #2 missing: register expected
+		MV B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0003] Unexpected trailing operand(s)
+		MV B15[B10], A12 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0005] Operand #2 missing: register expected
+		MV B15[B10], A12 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+2 Assembly Errors, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0004] Operand #1, B15, not legal: register or regpair expected
+		MV *B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0004] Operand #1, B15, not legal: register or regpair expected
+		MV *B15[B10], A12 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+2 Assembly Errors, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0004] Operand #1, B15, not legal: register or regpair expected
+		MV *+B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 132: [E0004] Operand #1, B15, not legal: register or regpair expected
+		MV *B15[B10], A12 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+1 Assembly Error, No Assembly Warnings
+
+>> Compilation failure
+Source/ASM/subdir_rules.mk:9: recipe for target 'Source/ASM/AutoCorr.obj' failed
+"../Source/ASM/AutoCorr.asm", ERROR!   at line 129: [E0004] Operand #2, A2, not legal: register expected
+		LDW *+B15[B6], *A2 ;Loader valeur du tableau dans A2
+
+
+Errors in Source - Assembler Aborted
+gmake: *** [Source/ASM/AutoCorr.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project AutoCorr ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 8 all -O 
+'Building file: ../Source/ASM/AutoCorr.asm'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far --preproc_with_compile --preproc_dependency="Source/ASM/AutoCorr.d" --obj_directory="Source/ASM"  "../Source/ASM/AutoCorr.asm"
+'Finished building: ../Source/ASM/AutoCorr.asm'
+' '
+'Building target: AutoCorr.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=c6701 --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"AutoCorr.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --warn_sections --display_error_number --diag_wrap=off --xml_link_info="AutoCorr_linkInfo.xml" --rom_model -o "AutoCorr.out" "./Source/ASM/AutoCorr.obj" "./Source/C/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: AutoCorr.out'
+' '
+
+**** Build Finished ****
