@@ -1,4 +1,4 @@
-function [correlation,decalage] = correlation(x,y)
+function [correlation] = correlation(x,y)
     
 % Ajustement de la longueur des signaux 
     nbx = numel(x);

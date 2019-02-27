@@ -10,7 +10,7 @@
 
 int length(double x[]) {
 
-	int length = sizeof(x) / sizeof(x[1]);
+	int length = sizeof(x) / sizeof(x[0]);
 
 	return length;
 }
