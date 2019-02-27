@@ -37,13 +37,13 @@ y = t.^2;
 clc 
 close all
 clearvars
-t = 1:5;
+t = 1:10;
 %vecteur de test
 
 s_ref = sin(3.14.*t./10);
 
 [corr] = correlation(s_ref,s_ref);
-corr'
+corr = corr';
 
 figure
 stem(corr)

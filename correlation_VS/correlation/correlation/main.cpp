@@ -4,7 +4,7 @@
 
 #include "pch.h"
 #include <iostream>
-#define length 10
+constexpr auto length = 10;
 #include "max.h"
 #include "abs.h"
 #include "norm.h"
@@ -21,7 +21,7 @@ int main()
 		s_ref[i] = sin(i*3.14 / 10);
 	}
 	double out[2 * length - 1] = {0};
-	correlation(s_ref, s_ref,length,out);
+	correlation(s_ref, s_ref, length,out);
 	printf("Le resultat de la correlation est \n");
 	printf("[ %f", out[0]);
 

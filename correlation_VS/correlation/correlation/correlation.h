@@ -53,7 +53,7 @@ void correlation(double x[], double y[],int l,double out[]) {
 		}
 
 		offset = j;
-		for (j; j < l+1-i+ offset; j++)
+		for (j; j < l+1-i+offset; j++)
 		{
 			tempy[j] = 0;
 		}

@@ -19,7 +19,7 @@ correlation = [zeros(1,nDec)];
        buff = [zeros(1,i) y zeros(1,((nDec-1)-i))]; 
        correlation(i+1) = sum(x .* buff);
     end
-    correlation = mynorm(correlation);
+   correlation = mynorm(correlation);
 end
 
 % fonction pour trouver la valeur max
