@@ -12,11 +12,18 @@
 
 void norm(double x[], int l) {
 
-	absolute(x,l);
-	double AbsMax = max(x,l);
-	for (int i = 0; i < l; i++)
+	double temp[2*length-1];
+	int i = 0;
+	for (; i < 2 * length - 1; i++)
+	{
+		temp[i] = x[i];
+	}
+	absolute(temp, 2 * length - 1);
+	double AbsMax = max(temp, 2 * length - 1);
+	i = 0;
+	for (; i < l; i++)
 	{
 		x[i] = x[i] / AbsMax;
 	}
 }
-#endif  /*SOURCE_HEADER_LENGTH_H_ */
+#endif  /*SOURCE_HEADER_NORM_H_ */

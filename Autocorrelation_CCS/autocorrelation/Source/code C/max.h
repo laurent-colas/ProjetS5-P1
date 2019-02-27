@@ -11,7 +11,8 @@
 double max(double x[], int l) {
 	
 double tempMax = 0;
-	for (int i = 0; i < l; i++)
+int i ;
+	for (i= 0; i < l; i++)
 	{
 		if (x[i] > tempMax)
 		{

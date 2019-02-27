@@ -14,10 +14,16 @@ unsigned int State;
 #define MASK_LED1 0x02
 #define MASK_LED2 0x04
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "length.h"
+//#include <iostream>
+#define length 10
+#include "max.h"
+#include "abs.h"
+#include "norm.h"
+#include "correlation.h"
 
 
 void main(void)
@@ -28,7 +34,7 @@ void main(void)
     *(unsigned int*) CPLD_USER_REG &= MASK_LED2;
     //Initialisation du DSK
     //comm_intr();
-
+/*
     double t[10];
     int i;
     double s_ref[10];
@@ -38,11 +44,31 @@ void main(void)
         s_ref[i] = sin(i*3.14/10);
 
     }
-
-    printf(int length(s_ref));
-
+    int a;
+    a = length(s_ref);
+    printf("%d",a);
+*/
     State = ATTENTE;
 
+    double t[length];
+    int i;
+    double s_ref[length];
+    for (i = 0; i < length; i++)
+    {
+        s_ref[i] = sin(i*3.14 / 10);
+    }
+    double out[2 * length - 1] = {0};
+    correlation(s_ref, s_ref, length,out);
+    printf("Le resultat de la correlation est \n");
+    printf("[ %f", out[0]);
+
+    i = 1;
+    for (; i < 2 * length - 1; i++)
+    {
+        printf(", %f",out[i]);
+    }
+    printf("]");
+/*
     while(1)
     {
 
@@ -63,5 +89,5 @@ void main(void)
 
 
         }
-    }
+    }*/
 }
