@@ -20,4 +20,4 @@ double tempMax = 0;
 	}
 	return tempMax;
 }
-#endif  /*SOURCE_HEADER_LENGTH_H_ */
+#endif  /*SOURCE_HEADER_MAX_H_ */

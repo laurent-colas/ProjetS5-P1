@@ -19,4 +19,4 @@ void norm(double x[], int l) {
 		x[i] = x[i] / AbsMax;
 	}
 }
-#endif  /*SOURCE_HEADER_LENGTH_H_ */
+#endif  /*SOURCE_HEADER_NORM_H_ */
