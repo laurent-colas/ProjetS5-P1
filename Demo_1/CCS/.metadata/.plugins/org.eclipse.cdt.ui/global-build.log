@@ -1,0 +1,428 @@
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 29: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 35: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 43: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 45: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 55: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 62: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+gmake[1]: 'Correlation_Revue1.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+
+>> Compilation failure
+source/c/subdir_rules.mk:9: recipe for target 'source/c/main.obj' failed
+"..\source\c\correlation.h", line 36: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 42: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 52: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 57: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 62: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 69: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 71: error #31: expression must have integral type
+"..\source\c\correlation.h", line 71: error #31: expression must have integral type
+2 errors detected in the compilation of "../source/c/main.c".
+gmake: *** [source/c/main.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 37: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 43: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 51: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 53: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 58: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 63: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 70: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 37: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 43: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 51: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 53: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 58: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 63: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 70: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 37: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 43: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 51: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 53: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 58: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 63: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 70: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 37: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 43: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 51: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 53: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 58: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 63: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 70: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 37: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 43: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 51: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 53: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 58: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 63: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 70: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 37: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 43: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 51: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 53: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 58: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 63: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 70: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 36: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 41: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 48: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 55: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 60: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 67: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 36: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 41: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 48: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 55: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 60: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 67: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+
+>> Compilation failure
+source/c/subdir_rules.mk:9: recipe for target 'source/c/main.obj' failed
+"..\source\c\correlation.h", line 36: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 41: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 48: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 55: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 60: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 67: warning #176-D: expression has no effect
+"..\source\c\test.h", line 31: error #169: argument of type "void" is incompatible with parameter of type "double *"
+1 error detected in the compilation of "../source/c/main.c".
+gmake: *** [source/c/main.obj] Error 1
+gmake: Target 'all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 36: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 41: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 48: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 55: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 60: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 67: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+gmake[1]: 'Correlation_Revue1.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 36: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 41: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 48: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 55: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 60: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 67: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+gmake[1]: 'Correlation_Revue1.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 36: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 41: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 48: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 55: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 60: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 67: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 36: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 41: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 48: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 55: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 60: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 67: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 36: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 41: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 48: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 55: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 60: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 67: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project Correlation_Revue1 ****
+
+"C:\\ti\\ccsv7\\utils\\bin\\gmake" -k -j 4 all -O 
+'Building file: ../source/c/main.c'
+'Invoking: C6000 Compiler'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --include_path="C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --include_path="C:/ti/ccsv7/ccs_base/C6xCSL/include" --include_path="C:/ti/dsk6713/include" --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far --preproc_with_compile --preproc_dependency="source/c/main.d" --obj_directory="source/c"  "../source/c/main.c"
+"..\source\c\correlation.h", line 36: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 41: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 48: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 50: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 55: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 60: warning #176-D: expression has no effect
+"..\source\c\correlation.h", line 67: warning #176-D: expression has no effect
+'Finished building: ../source/c/main.c'
+' '
+'Building target: Correlation_Revue1.out'
+'Invoking: C6000 Linker'
+"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"Correlation_Revue1.map" --stack_size=0x1000 --heap_size=0x1000 -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib" -i"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Correlation_Revue1_linkInfo.xml" --rom_model -o "Correlation_Revue1.out" "./source/c/main.obj" "../C6713dsk.cmd"  -llibc.a -l"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/lib/rts6700.lib" -l"C:/ti/ccsv7/ccs_base/C6xCSL/lib_3x/csl6713.lib" -l"C:/ti/dsk6713/lib/dsk6713bsl.lib" 
+<Linking>
+'Finished building target: Correlation_Revue1.out'
+' '
+
+**** Build Finished ****
