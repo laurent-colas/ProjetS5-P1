@@ -11,7 +11,7 @@
 #include "max.h"
 #include "abs.h"
 #include "norm.h"
-double AutoCorrelation(double * tab1, int longueur, double * tab2);
+//double AutoCorrelation(double * tab1, int longueur, double * tab2);
 
 void correlation(double x[], double y[],int l,double out[]) {
 

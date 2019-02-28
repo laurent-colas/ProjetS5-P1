@@ -11,6 +11,8 @@
 #include "max.h"
 #include "abs.h"
 
+#define length 10
+
 
 int test1(double t[], double s_ref[], double b_ref[]);
 int test2(double t[], double s_ref[], double b_ref[]);
@@ -20,16 +22,20 @@ void init_vecteur(double s_ref[], double b_ref[]);
 
 //Autocorrélation
 int test1(double t[], double s_ref[], double b_ref[]) {
+    init_vecteur(s_ref, b_ref);
     printf("\n Test 1 \n");
-    int i;
+    int i = 0;
+    double seuil = 0;
 
     for (i = 0; i < length; i++)
         {
-            s_ref[i] = sin(i*3.14 / length);
+            s_ref[i] = sin(i*3.14 / 10);
+            b_ref[i] = sin(i*3.14 / 10);
         }
 
     double out[2 * length - 1] = {0};
-    correlation(s_ref, s_ref, length, out);
+
+    correlation(s_ref, b_ref, length, out);
 
 
     printf("Le resultat de la correlation normalise est \n");
@@ -43,8 +49,8 @@ int test1(double t[], double s_ref[], double b_ref[]) {
     printf("]");
 
     //absolute(out, 2 * length - 1);
-    double lll = 2 * length - 1;
-    double seuil = max(out, lll);
+    int lll = 2 * length - 1;
+    seuil = max(out, lll);
 
     printf("\n Le seuil est \n");
     printf(" %f", seuil);
