@@ -25,7 +25,6 @@ double t[length];
 int i;
 double s_ref[length];
 double b_ref[length];
-double bruit[length] = {0.574615596488226,0.306707124167708,0.840388193571074,0.778664293444020,1.09598138576346,0.761511448609709,0.964612427217724,0.822622710820469,0.851726358955816,-0.0597945991276392};
 
 int main(void) {
 
@@ -38,8 +37,6 @@ int main(void) {
     test2(t, s_ref, b_ref);
 
 //    test3(t, s_ref, b_ref);
-
-    test6(t, s_ref, b_ref);
 
 	
 	return 0;
