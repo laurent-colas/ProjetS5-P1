@@ -19541,6 +19541,10 @@ char *tempnam(const char *, const char *);
 #pragma config STVREN = ON
 
 #pragma config XINST = OFF
+# 40 "./config_bits.h"
+#pragma config BOREN = ON
+
+#pragma config CP0 = OFF
 # 13 "main.c" 2
 
 # 1 "./LCD_SPI.h" 1
@@ -19593,15 +19597,18 @@ char read_pad(void);
 
 
 void init_all(void);
+void menu1(void);
+
 
 int number = 3;
 int i;
 char pressed_pad;
 const unsigned char str[17] = "Nico est francais";
+const unsigned char str_read_dist[20] = "1- Pour prelever dist";
 float Total_distance[10];
 int Distance_mm_int;
 const unsigned char total_dist[10];
-
+int first_run = 1;
 
 void main(void) {
 
@@ -19610,20 +19617,45 @@ void main(void) {
     while(1) {
 
         pressed_pad = read_pad();
-        if (pressed_pad == '1') {
-            calc_distance_mm();
+
+        if (first_run == 1) {
+            menu1();
+            first_run = 0;
+        }
+
+
+        if (pressed_pad == 'B') {
+            clearDisplay();
+            putStringLCD(&str_read_dist[0]);
+            while(pressed_pad != 'C') {
+                pressed_pad = read_pad();
+                if (pressed_pad == '1') {
+                    calc_distance_mm();
+                    pressed_pad = 'z';
+                }
+
+            }
+        }
+        if (pressed_pad == 'A') {
+            clearDisplay();
+            while(pressed_pad != 'C') {
+                pressed_pad = read_pad();
+                if (pressed_pad != 'z') {
+                    putchLCD(pressed_pad);
+                    _delay((unsigned long)((100)*(8000000/4000.0)));
+                }
+
+            }
 
         }
-        if (pressed_pad != 'z') {
-            putchLCD(pressed_pad);
-            _delay(50);
-        }
         if (pressed_pad == 'C') {
-            clearDisplay();
+
+
+            first_run = 1;
         }
 
         pressed_pad = 'z';
-# 68 "main.c"
+# 96 "main.c"
     }
 
 }
@@ -19632,4 +19664,20 @@ void init_all(void) {
     initialisation_LCD();
     init_num_pad();
     init_dist_sensor();
+}
+
+void menu1(void) {
+    const unsigned char menu1[20] = "A- Verif touches";
+    const unsigned char menu2[] = "B- Verif capteur dist";
+    const unsigned char menu3[] = "C- Retourner au menu";
+
+    clearDisplay();
+
+    moveCursor(0,0);
+    putStringLCD(&menu1[0]);
+    moveCursor(1,0);
+    putStringLCD(&menu2[0]);
+    moveCursor(2,0);
+    putStringLCD(&menu3[0]);
+
 }

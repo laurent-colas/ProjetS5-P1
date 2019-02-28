@@ -6,6 +6,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "14 ./num_pad.h
 [; ;./num_pad.h: 14: char read_pad(void);
 [v _read_pad `(uc ~T0 @X0 0 ef ]
+"21 main.c
+[; ;main.c: 21: void menu1(void);
+[v _menu1 `(v ~T0 @X0 0 ef ]
 "17 ./HC-SR04.h
 [; ;./HC-SR04.h: 17: void calc_distance_mm(void);
 [v _calc_distance_mm `(v ~T0 @X0 0 ef ]
@@ -16,10 +19,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "183 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18.h
 [v __delay `JF10896 ~T0 @X0 0 e ]
 [p i __delay ]
-"44 ./LCD_SPI.h
-[; ;./LCD_SPI.h: 44: void clearDisplay(void);
-[v _clearDisplay `(v ~T0 @X0 0 ef ]
-"47
+"47 ./LCD_SPI.h
 [; ;./LCD_SPI.h: 47: void initialisation_LCD();
 [v _initialisation_LCD `(v ~T0 @X0 0 e? ]
 "13 ./num_pad.h
@@ -28,6 +28,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15 ./HC-SR04.h
 [; ;./HC-SR04.h: 15: void init_dist_sensor(void);
 [v _init_dist_sensor `(v ~T0 @X0 0 ef ]
+"44 ./LCD_SPI.h
+[; ;./LCD_SPI.h: 44: void clearDisplay(void);
+[v _clearDisplay `(v ~T0 @X0 0 ef ]
+"48
+[; ;./LCD_SPI.h: 48: void moveCursor(int row, int col);
+[v _moveCursor `(v ~T0 @X0 0 ef2`i`i ]
+"42
+[; ;./LCD_SPI.h: 42: void putStringLCD(const unsigned char*);
+[v _putStringLCD `(v ~T0 @X0 0 ef1`*Cuc ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 54: __asm("UEP0 equ 0DFFh");
 [; <" UEP0 equ 0DFFh ;# ">
@@ -1726,20 +1735,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "25
 [; ;./HC-SR04.h: 25: float Total_distance[10];
 [v _Total_distance `f ~T0 @X0 -> 10 `i e ]
-"22 main.c
-[; ;main.c: 22: int number = 3;
+"24 main.c
+[; ;main.c: 24: int number = 3;
 [v _number `i ~T0 @X0 1 e ]
 [i _number
 -> 3 `i
 ]
-"23
-[; ;main.c: 23: int i;
-[v _i `i ~T0 @X0 1 e ]
-"24
-[; ;main.c: 24: char pressed_pad;
-[v _pressed_pad `uc ~T0 @X0 1 e ]
 "25
-[; ;main.c: 25: const unsigned char str[17] = "Nico est francais";
+[; ;main.c: 25: int i;
+[v _i `i ~T0 @X0 1 e ]
+"26
+[; ;main.c: 26: char pressed_pad;
+[v _pressed_pad `uc ~T0 @X0 1 e ]
+"27
+[; ;main.c: 27: const unsigned char str[17] = "Nico est francais";
 [v _str `Cuc ~T0 @X0 -> 17 `i e ]
 [i _str
 :U ..
@@ -1762,14 +1771,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 115 `c
 ..
 ]
-"26
-[; ;main.c: 26: float Total_distance[10];
-[v _Total_distance `f ~T0 @X0 -> 10 `i e ]
-"27
-[; ;main.c: 27: int Distance_mm_int;
-[v _Distance_mm_int `i ~T0 @X0 1 e ]
 "28
-[; ;main.c: 28: const unsigned char total_dist[10];
+[; ;main.c: 28: float Total_distance[10];
+[v _Total_distance `f ~T0 @X0 -> 10 `i e ]
+"29
+[; ;main.c: 29: int Distance_mm_int;
+[v _Distance_mm_int `i ~T0 @X0 1 e ]
+"30
+[; ;main.c: 30: const unsigned char total_dist[10];
 [v _total_dist `Cuc ~T0 @X0 -> 10 `i e ]
 [i _total_dist
 :U ..
@@ -1785,88 +1794,287 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `Cuc
 ..
 ]
-[v $root$_main `(v ~T0 @X0 0 e ]
 "31
-[; ;main.c: 31: void main(void) {
+[; ;main.c: 31: int first_run = 1;
+[v _first_run `i ~T0 @X0 1 e ]
+[i _first_run
+-> 1 `i
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"33
+[; ;main.c: 33: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"33
-[; ;main.c: 33:     init_all();
-[e ( _init_all ..  ]
 "35
-[; ;main.c: 35:     while(1) {
+[; ;main.c: 35:     init_all();
+[e ( _init_all ..  ]
+"37
+[; ;main.c: 37:     while(1) {
 [e :U 1422 ]
 {
-"37
-[; ;main.c: 37:         pressed_pad = read_pad();
-[e = _pressed_pad ( _read_pad ..  ]
-"38
-[; ;main.c: 38:         if (pressed_pad == '1') {
-[e $ ! == -> _pressed_pad `ui -> 49 `ui 1424  ]
-{
 "39
-[; ;main.c: 39:             calc_distance_mm();
-[e ( _calc_distance_mm ..  ]
-"40
-[; ;main.c: 40:         }
-}
-[e :U 1424 ]
+[; ;main.c: 39:         pressed_pad = read_pad();
+[e = _pressed_pad ( _read_pad ..  ]
 "41
-[; ;main.c: 41:         if (pressed_pad != 'z') {
-[e $ ! != -> _pressed_pad `ui -> 122 `ui 1425  ]
+[; ;main.c: 41:         if (first_run == 1) {
+[e $ ! == _first_run -> 1 `i 1424  ]
 {
 "42
-[; ;main.c: 42:             putchLCD(pressed_pad);
-[e ( _putchLCD (1 -> _pressed_pad `uc ]
+[; ;main.c: 42:             menu1();
+[e ( _menu1 ..  ]
 "43
-[; ;main.c: 43:             _delay(50);
-[e ( __delay (1 -> -> -> 50 `i `l `ul ]
+[; ;main.c: 43:             first_run = 0;
+[e = _first_run -> 0 `i ]
 "44
 [; ;main.c: 44:         }
 }
-[e :U 1425 ]
-"45
-[; ;main.c: 45:         if (pressed_pad == 'C') {
-[e $ ! == -> _pressed_pad `ui -> 67 `ui 1426  ]
-{
-"46
-[; ;main.c: 46:             clearDisplay();
-[e ( _clearDisplay ..  ]
+[e :U 1424 ]
 "47
-[; ;main.c: 47:         }
+[; ;main.c: 47:         if (pressed_pad == 'B') {
+[e $ ! == -> _pressed_pad `ui -> 66 `ui 1425  ]
+{
+"48
+[; ;main.c: 48:             while(pressed_pad != 'C') {
+[e $U 1426  ]
+[e :U 1427 ]
+{
+"49
+[; ;main.c: 49:                 pressed_pad = read_pad();
+[e = _pressed_pad ( _read_pad ..  ]
+"50
+[; ;main.c: 50:                 if (pressed_pad == '1') {
+[e $ ! == -> _pressed_pad `ui -> 49 `ui 1429  ]
+{
+"51
+[; ;main.c: 51:                     calc_distance_mm();
+[e ( _calc_distance_mm ..  ]
+"52
+[; ;main.c: 52:                 }
+}
+[e $U 1430  ]
+"53
+[; ;main.c: 53:                 else {
+[e :U 1429 ]
+{
+"54
+[; ;main.c: 54:                     pressed_pad = 'z';
+[e = _pressed_pad -> -> 122 `ui `uc ]
+"55
+[; ;main.c: 55:                 }
+}
+[e :U 1430 ]
+"56
+[; ;main.c: 56:             }
 }
 [e :U 1426 ]
-"49
-[; ;main.c: 49:         pressed_pad = 'z';
+"48
+[; ;main.c: 48:             while(pressed_pad != 'C') {
+[e $ != -> _pressed_pad `ui -> 67 `ui 1427  ]
+[e :U 1428 ]
+"57
+[; ;main.c: 57:         }
+}
+[e :U 1425 ]
+"58
+[; ;main.c: 58:         if (pressed_pad == 'A') {
+[e $ ! == -> _pressed_pad `ui -> 65 `ui 1431  ]
+{
+"59
+[; ;main.c: 59:             while(pressed_pad != 'C') {
+[e $U 1432  ]
+[e :U 1433 ]
+{
+"60
+[; ;main.c: 60:                 pressed_pad = read_pad();
+[e = _pressed_pad ( _read_pad ..  ]
+"61
+[; ;main.c: 61:                 if (pressed_pad != 'z') {
+[e $ ! != -> _pressed_pad `ui -> 122 `ui 1435  ]
+{
+"62
+[; ;main.c: 62:                     putchLCD(pressed_pad);
+[e ( _putchLCD (1 -> _pressed_pad `uc ]
+"63
+[; ;main.c: 63:                     _delay((unsigned long)((100)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"64
+[; ;main.c: 64:                 }
+}
+[e :U 1435 ]
+"66
+[; ;main.c: 66:             }
+}
+[e :U 1432 ]
+"59
+[; ;main.c: 59:             while(pressed_pad != 'C') {
+[e $ != -> _pressed_pad `ui -> 67 `ui 1433  ]
+[e :U 1434 ]
+"68
+[; ;main.c: 68:         }
+}
+[e :U 1431 ]
+"69
+[; ;main.c: 69:         if (pressed_pad == 'C') {
+[e $ ! == -> _pressed_pad `ui -> 67 `ui 1436  ]
+{
+"72
+[; ;main.c: 72:             first_run = 1;
+[e = _first_run -> 1 `i ]
+"73
+[; ;main.c: 73:         }
+}
+[e :U 1436 ]
+"75
+[; ;main.c: 75:         pressed_pad = 'z';
 [e = _pressed_pad -> -> 122 `ui `uc ]
-"67
-[; ;main.c: 67:     }
+"93
+[; ;main.c: 93:     }
 }
 [e :U 1421 ]
 [e $U 1422  ]
 [e :U 1423 ]
-"69
-[; ;main.c: 69: }
+"95
+[; ;main.c: 95: }
 [e :UE 1420 ]
 }
-"71
-[; ;main.c: 71: void init_all(void) {
+"97
+[; ;main.c: 97: void init_all(void) {
 [v _init_all `(v ~T0 @X0 1 ef ]
 {
 [e :U _init_all ]
 [f ]
-"72
-[; ;main.c: 72:     initialisation_LCD();
+"98
+[; ;main.c: 98:     initialisation_LCD();
 [e ( _initialisation_LCD ..  ]
-"73
-[; ;main.c: 73:     init_num_pad();
+"99
+[; ;main.c: 99:     init_num_pad();
 [e ( _init_num_pad ..  ]
-"74
-[; ;main.c: 74:     init_dist_sensor();
+"100
+[; ;main.c: 100:     init_dist_sensor();
 [e ( _init_dist_sensor ..  ]
-"75
-[; ;main.c: 75: }
-[e :UE 1427 ]
+"101
+[; ;main.c: 101: }
+[e :UE 1437 ]
+}
+"103
+[; ;main.c: 103: void menu1(void) {
+[v _menu1 `(v ~T0 @X0 1 ef ]
+{
+[e :U _menu1 ]
+[f ]
+"104
+[; ;main.c: 104:     const unsigned char menu1[20] = "A - Verifier touches";
+[v F11298 `Cuc ~T0 @X0 -> 20 `i s menu1 ]
+[i F11298
+:U ..
+-> 65 `c
+-> 32 `c
+-> 45 `c
+-> 32 `c
+-> 86 `c
+-> 101 `c
+-> 114 `c
+-> 105 `c
+-> 102 `c
+-> 105 `c
+-> 101 `c
+-> 114 `c
+-> 32 `c
+-> 116 `c
+-> 111 `c
+-> 117 `c
+-> 99 `c
+-> 104 `c
+-> 101 `c
+-> 115 `c
+..
+]
+"105
+[; ;main.c: 105:     const unsigned char menu2[] = "B - Verifier capteur dist";
+[v F11299 `Cuc ~T0 @X0 -> 26 `i s menu2 ]
+[i F11299
+:U ..
+-> 66 `c
+-> 32 `c
+-> 45 `c
+-> 32 `c
+-> 86 `c
+-> 101 `c
+-> 114 `c
+-> 105 `c
+-> 102 `c
+-> 105 `c
+-> 101 `c
+-> 114 `c
+-> 32 `c
+-> 99 `c
+-> 97 `c
+-> 112 `c
+-> 116 `c
+-> 101 `c
+-> 117 `c
+-> 114 `c
+-> 32 `c
+-> 100 `c
+-> 105 `c
+-> 115 `c
+-> 116 `c
+-> 0 `c
+..
+]
+"106
+[; ;main.c: 106:     const unsigned char menu3[] = "C - Retourner au menu";
+[v F11300 `Cuc ~T0 @X0 -> 22 `i s menu3 ]
+[i F11300
+:U ..
+-> 67 `c
+-> 32 `c
+-> 45 `c
+-> 32 `c
+-> 82 `c
+-> 101 `c
+-> 116 `c
+-> 111 `c
+-> 117 `c
+-> 114 `c
+-> 110 `c
+-> 101 `c
+-> 114 `c
+-> 32 `c
+-> 97 `c
+-> 117 `c
+-> 32 `c
+-> 109 `c
+-> 101 `c
+-> 110 `c
+-> 117 `c
+-> 0 `c
+..
+]
+"108
+[; ;main.c: 108:     clearDisplay();
+[e ( _clearDisplay ..  ]
+"110
+[; ;main.c: 110:     moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"111
+[; ;main.c: 111:     putStringLCD(&menu1[0]);
+[e ( _putStringLCD (1 &U *U + &U F11298 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11298 `ui `ux ]
+"112
+[; ;main.c: 112:     moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"113
+[; ;main.c: 113:     putStringLCD(&menu2[0]);
+[e ( _putStringLCD (1 &U *U + &U F11299 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11299 `ui `ux ]
+"114
+[; ;main.c: 114:     moveCursor(2,0);
+[e ( _moveCursor (2 , -> 2 `i -> 0 `i ]
+"115
+[; ;main.c: 115:     putStringLCD(&menu2[0]);
+[e ( _putStringLCD (1 &U *U + &U F11299 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11299 `ui `ux ]
+"117
+[; ;main.c: 117: }
+[e :UE 1438 ]
 }

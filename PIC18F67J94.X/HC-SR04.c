@@ -67,7 +67,7 @@ void calc_distance_mm(void) {
     
     Distance_mm_int = (0.0272*a)/2; //TMR1 / 58.82;
             
-    a = a/(58.82);
+    a = a/(58.82*2);
     a = a+1;
 //    putStringLCD(&dist[0]);
 //    putNumberLCD(Distance_mm_int);

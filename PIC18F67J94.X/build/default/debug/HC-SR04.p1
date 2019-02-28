@@ -1877,58 +1877,58 @@ Version 4.0 HI-TECH Software Intermediate Code
 "28
 [; ;HC-SR04.c: 28:     OSCCON = 0x07;
 [e = _OSCCON -> -> 7 `i `uc ]
-"30
-[; ;HC-SR04.c: 30:     TMR1 = 0;
+"29
+[; ;HC-SR04.c: 29:     TMR1 = 0;
 [e = _TMR1 -> -> 0 `i `us ]
-"31
-[; ;HC-SR04.c: 31:     T1CONbits.TMR1CS = 0;
+"30
+[; ;HC-SR04.c: 30:     T1CONbits.TMR1CS = 0;
 [e = . . _T1CONbits 1 5 -> -> 0 `i `uc ]
-"34
-[; ;HC-SR04.c: 34:     T1CKPS0 = 0;
+"33
+[; ;HC-SR04.c: 33:     T1CKPS0 = 0;
 [e = _T1CKPS0 -> -> 0 `i `b ]
-"35
-[; ;HC-SR04.c: 35:     T1CKPS1 = 0;
+"34
+[; ;HC-SR04.c: 34:     T1CKPS1 = 0;
 [e = _T1CKPS1 -> -> 0 `i `b ]
-"37
-[; ;HC-SR04.c: 37:     TMR1L = 0;
+"36
+[; ;HC-SR04.c: 36:     TMR1L = 0;
 [e = _TMR1L -> -> 0 `i `uc ]
-"38
-[; ;HC-SR04.c: 38:     TMR1H = 0;
+"37
+[; ;HC-SR04.c: 37:     TMR1H = 0;
 [e = _TMR1H -> -> 0 `i `uc ]
-"39
-[; ;HC-SR04.c: 39: }
+"38
+[; ;HC-SR04.c: 38: }
 [e :UE 1419 ]
 }
-"41
-[; ;HC-SR04.c: 41: void Trigger_Pulse_10us(void){
+"40
+[; ;HC-SR04.c: 40: void Trigger_Pulse_10us(void){
 [v _Trigger_Pulse_10us `(v ~T0 @X0 1 ef ]
 {
 [e :U _Trigger_Pulse_10us ]
 [f ]
-"43
-[; ;HC-SR04.c: 43:     PORTDbits.RD0 = 1;
+"42
+[; ;HC-SR04.c: 42:     PORTDbits.RD0 = 1;
 [e = . . _PORTDbits 0 0 -> -> 1 `i `uc ]
-"44
-[; ;HC-SR04.c: 44:     _delay((unsigned long)((10)*(8000000/4000000.0)));
+"43
+[; ;HC-SR04.c: 43:     _delay((unsigned long)((10)*(8000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000000.0 `ul ]
-"46
-[; ;HC-SR04.c: 46:     PORTDbits.RD0 = 0;
+"45
+[; ;HC-SR04.c: 45:     PORTDbits.RD0 = 0;
 [e = . . _PORTDbits 0 0 -> -> 0 `i `uc ]
-"47
-[; ;HC-SR04.c: 47: }
+"46
+[; ;HC-SR04.c: 46: }
 [e :UE 1420 ]
 }
-"49
-[; ;HC-SR04.c: 49: void calc_distance_mm(void) {
+"48
+[; ;HC-SR04.c: 48: void calc_distance_mm(void) {
 [v _calc_distance_mm `(v ~T0 @X0 1 ef ]
 {
 [e :U _calc_distance_mm ]
 [f ]
-"50
-[; ;HC-SR04.c: 50:     int a;
+"49
+[; ;HC-SR04.c: 49:     int a;
 [v _a `i ~T0 @X0 1 a ]
-"51
-[; ;HC-SR04.c: 51:     const unsigned char dist[11] = "Distance = ";
+"50
+[; ;HC-SR04.c: 50:     const unsigned char dist[11] = "Distance = ";
 [v F10942 `Cuc ~T0 @X0 -> 11 `i s dist ]
 [i F10942
 :U ..
@@ -1945,8 +1945,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 32 `c
 ..
 ]
-"52
-[; ;HC-SR04.c: 52:     const unsigned char cm[3] = " cm";
+"51
+[; ;HC-SR04.c: 51:     const unsigned char cm[3] = " cm";
 [v F10943 `Cuc ~T0 @X0 -> 3 `i s cm ]
 [i F10943
 :U ..
@@ -1955,8 +1955,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 109 `c
 ..
 ]
-"53
-[; ;HC-SR04.c: 53:     const unsigned char OoR[12] ="Out of Range";
+"52
+[; ;HC-SR04.c: 52:     const unsigned char OoR[12] ="Out of Range";
 [v F10944 `Cuc ~T0 @X0 -> 12 `i s OoR ]
 [i F10944
 :U ..
@@ -1974,115 +1974,115 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 101 `c
 ..
 ]
-"55
-[; ;HC-SR04.c: 55:     TMR1L = 0;
+"54
+[; ;HC-SR04.c: 54:     TMR1L = 0;
 [e = _TMR1L -> -> 0 `i `uc ]
-"56
-[; ;HC-SR04.c: 56:     TMR1H = 0;
+"55
+[; ;HC-SR04.c: 55:     TMR1H = 0;
 [e = _TMR1H -> -> 0 `i `uc ]
-"58
-[; ;HC-SR04.c: 58:     Trigger_Pulse_10us();
+"57
+[; ;HC-SR04.c: 57:     Trigger_Pulse_10us();
 [e ( _Trigger_Pulse_10us ..  ]
-"60
-[; ;HC-SR04.c: 60:     while(!PORTBbits.RB1);
+"59
+[; ;HC-SR04.c: 59:     while(!PORTBbits.RB1);
 [e $U 1422  ]
 [e :U 1423 ]
 [e :U 1422 ]
 [e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 1423  ]
 [e :U 1424 ]
-"61
-[; ;HC-SR04.c: 61:     T1CONbits.TMR1ON = 1;
+"60
+[; ;HC-SR04.c: 60:     T1CONbits.TMR1ON = 1;
 [e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
-"63
-[; ;HC-SR04.c: 63:     while(PORTBbits.RB1);
+"62
+[; ;HC-SR04.c: 62:     while(PORTBbits.RB1);
 [e $U 1425  ]
 [e :U 1426 ]
 [e :U 1425 ]
 [e $ != -> . . _PORTBbits 0 1 `i -> 0 `i 1426  ]
 [e :U 1427 ]
-"64
-[; ;HC-SR04.c: 64:     T1CONbits.TMR1ON = 0;
+"63
+[; ;HC-SR04.c: 63:     T1CONbits.TMR1ON = 0;
 [e = . . _T1CONbits 1 0 -> -> 0 `i `uc ]
-"67
-[; ;HC-SR04.c: 67:     a = (TMR1L | (TMR1H << 8));
+"66
+[; ;HC-SR04.c: 66:     a = (TMR1L | (TMR1H << 8));
 [e = _a | -> _TMR1L `i << -> _TMR1H `i -> 8 `i ]
-"69
-[; ;HC-SR04.c: 69:     Distance_mm_int = (0.0272*a)/2;
+"68
+[; ;HC-SR04.c: 68:     Distance_mm_int = (0.0272*a)/2;
 [e = _Distance_mm_int -> / * .0.0272 -> _a `d -> -> 2 `i `d `i ]
+"70
+[; ;HC-SR04.c: 70:     a = a/(58.82*2);
+[e = _a -> / -> _a `d * .58.82 -> -> 2 `i `d `i ]
 "71
-[; ;HC-SR04.c: 71:     a = a/(58.82);
-[e = _a -> / -> _a `d .58.82 `i ]
-"72
-[; ;HC-SR04.c: 72:     a = a+1;
+[; ;HC-SR04.c: 71:     a = a+1;
 [e = _a + _a -> 1 `i ]
-"76
-[; ;HC-SR04.c: 76:     if (a>=2 && a <=400) {
+"75
+[; ;HC-SR04.c: 75:     if (a>=2 && a <=400) {
 [e $ ! && >= _a -> 2 `i <= _a -> 400 `i 1428  ]
 {
-"77
-[; ;HC-SR04.c: 77:         clearDisplay();
+"76
+[; ;HC-SR04.c: 76:         clearDisplay();
 [e ( _clearDisplay ..  ]
-"78
-[; ;HC-SR04.c: 78:         moveCursor(0,1);
+"77
+[; ;HC-SR04.c: 77:         moveCursor(0,1);
 [e ( _moveCursor (2 , -> 0 `i -> 1 `i ]
-"79
-[; ;HC-SR04.c: 79:         putStringLCD(&dist[0]);
+"78
+[; ;HC-SR04.c: 78:         putStringLCD(&dist[0]);
 [e ( _putStringLCD (1 &U *U + &U F10942 * -> -> -> 0 `i `ui `ux -> -> # *U &U F10942 `ui `ux ]
-"82
-[; ;HC-SR04.c: 82:         moveCursor(0,14);
+"81
+[; ;HC-SR04.c: 81:         moveCursor(0,14);
 [e ( _moveCursor (2 , -> 0 `i -> 14 `i ]
-"83
-[; ;HC-SR04.c: 83:         putchLCD(a%10 + 48);
+"82
+[; ;HC-SR04.c: 82:         putchLCD(a%10 + 48);
 [e ( _putchLCD (1 -> + % _a -> 10 `i -> 48 `i `uc ]
+"85
+[; ;HC-SR04.c: 85:         a = a/10;
+[e = _a / _a -> 10 `i ]
 "86
-[; ;HC-SR04.c: 86:         a = a/10;
-[e = _a / _a -> 10 `i ]
-"87
-[; ;HC-SR04.c: 87:         moveCursor(0,13);
+[; ;HC-SR04.c: 86:         moveCursor(0,13);
 [e ( _moveCursor (2 , -> 0 `i -> 13 `i ]
-"88
-[; ;HC-SR04.c: 88:         putchLCD(a%10 + 48);
+"87
+[; ;HC-SR04.c: 87:         putchLCD(a%10 + 48);
 [e ( _putchLCD (1 -> + % _a -> 10 `i -> 48 `i `uc ]
-"91
-[; ;HC-SR04.c: 91:         a = a/10;
+"90
+[; ;HC-SR04.c: 90:         a = a/10;
 [e = _a / _a -> 10 `i ]
-"92
-[; ;HC-SR04.c: 92:         moveCursor(0,12);
+"91
+[; ;HC-SR04.c: 91:         moveCursor(0,12);
 [e ( _moveCursor (2 , -> 0 `i -> 12 `i ]
-"93
-[; ;HC-SR04.c: 93:         putchLCD(a%10 + 48);
+"92
+[; ;HC-SR04.c: 92:         putchLCD(a%10 + 48);
 [e ( _putchLCD (1 -> + % _a -> 10 `i -> 48 `i `uc ]
-"96
-[; ;HC-SR04.c: 96:         moveCursor(0,15);
+"95
+[; ;HC-SR04.c: 95:         moveCursor(0,15);
 [e ( _moveCursor (2 , -> 0 `i -> 15 `i ]
-"97
-[; ;HC-SR04.c: 97:         putStringLCD(&cm[0]);
+"96
+[; ;HC-SR04.c: 96:         putStringLCD(&cm[0]);
 [e ( _putStringLCD (1 &U *U + &U F10943 * -> -> -> 0 `i `ui `ux -> -> # *U &U F10943 `ui `ux ]
-"98
-[; ;HC-SR04.c: 98:     }
+"97
+[; ;HC-SR04.c: 97:     }
 }
 [e $U 1429  ]
-"99
-[; ;HC-SR04.c: 99:     else {
+"98
+[; ;HC-SR04.c: 98:     else {
 [e :U 1428 ]
 {
-"100
-[; ;HC-SR04.c: 100:         clearDisplay();
+"99
+[; ;HC-SR04.c: 99:         clearDisplay();
 [e ( _clearDisplay ..  ]
-"101
-[; ;HC-SR04.c: 101:         moveCursor(1,1);
+"100
+[; ;HC-SR04.c: 100:         moveCursor(1,1);
 [e ( _moveCursor (2 , -> 1 `i -> 1 `i ]
-"102
-[; ;HC-SR04.c: 102:         putStringLCD(&OoR[0]);
+"101
+[; ;HC-SR04.c: 101:         putStringLCD(&OoR[0]);
 [e ( _putStringLCD (1 &U *U + &U F10944 * -> -> -> 0 `i `ui `ux -> -> # *U &U F10944 `ui `ux ]
-"103
-[; ;HC-SR04.c: 103:     }
+"102
+[; ;HC-SR04.c: 102:     }
 }
 [e :U 1429 ]
-"104
-[; ;HC-SR04.c: 104:     _delay((unsigned long)((100)*(8000000/4000.0)));
+"103
+[; ;HC-SR04.c: 103:     _delay((unsigned long)((100)*(8000000/4000.0)));
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"113
-[; ;HC-SR04.c: 113: }
+"112
+[; ;HC-SR04.c: 112: }
 [e :UE 1421 ]
 }

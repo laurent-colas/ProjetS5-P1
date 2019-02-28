@@ -19361,7 +19361,6 @@ void init_timer_1(void) {
 
 
     OSCCON = 0x07;
-
     TMR1 = 0;
     T1CONbits.TMR1CS = 0;
 
@@ -19403,7 +19402,7 @@ void calc_distance_mm(void) {
 
     Distance_mm_int = (0.0272*a)/2;
 
-    a = a/(58.82);
+    a = a/(58.82*2);
     a = a+1;
 
 
@@ -19437,5 +19436,5 @@ void calc_distance_mm(void) {
         putStringLCD(&OoR[0]);
     }
     _delay((unsigned long)((100)*(8000000/4000.0)));
-# 113 "HC-SR04.c"
+# 112 "HC-SR04.c"
 }
