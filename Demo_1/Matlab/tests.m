@@ -1,22 +1,25 @@
-%% test1: deux signaux orthogonaux sans décalage
+%% FICHIER DE TEST DÉMO 1
+% Les tests 1 à 5 sont effectués
+% conséquement fichier "Plan de test.xlsx"
+% dans la section "plan de test autocorrélation"
+
+
+%% test 5.1: deux signaux orthogonaux sans décalage
 clear all
 close all
 clc
 
+% Création du signal spécifique au test
 t = 1:100;
-
 s_ref = sin(3.14.*t./10);           % f
 orto_ref = sin((3.14/2).*t./10);    % f/2
 
+% Corrélation
 [corr] = correlation(s_ref,orto_ref,numel(s_ref));
 [autocorr] = correlation(s_ref,s_ref,numel(s_ref));
 
-% disp('Le resultat de la correlation est:')
-% disp(['[ ' num2str(corr) ' ]'])
-
-maximum = max(abs(corr));
-
-figure('NAME','test 1')
+% Affichage des signaux et résultats
+figure('NAME','test 5.1')
 subplot(4,1,1)
 plot(s_ref);
 title('Signal 1')
@@ -30,99 +33,36 @@ subplot(4,1,4)
 plot(corr)
 title('Résultat corrélation')
 
+% interprétation du résultat de la corrélation
+maximum = max(abs(corr));
+
 if maximum >= 0.8
     disp('======================')
-    disp('Test1:')
+    disp('Test 5.1:')
     disp('Détection réussie (allumer DEL 2)')
     disp('======================')
 end
 
 if maximum < 0.8
     disp('======================')
-    disp('Test1:')
+    disp('Test 5.1:')
     disp('Détection non réussie (allumer DEL 1)')
     disp('======================')
 end
-% %% test2 
-% clear all
-% %close all
-% %clc
-% 
-% recObj = audiorecorder;
-% disp('======================')
-% disp('Start signal 1.')
-% recordblocking(recObj, 1);
-% disp('Stop signal 1.')
-% disp('======================')
-% play(recObj);
-% 
-% s_ref = getaudiodata(recObj);
-% 
-% pause(2)
-% 
-% disp('======================')
-% disp('Start signal 2.')
-% recordblocking(recObj, 1);
-% disp('Stop signal 2.');
-% disp('======================')
-% 
-% s_bruit = getaudiodata(recObj);
-% 
-% figure
-% plot(s_bruit)
-% 
-% [corr] = correlation(s_bruit',s_ref',numel(s_bruit));
-% [autocorr] = correlation(s_ref',s_ref',numel(s_bruit));
-% 
-% maximum = max(abs(corr));
-% 
-% figure('NAME','test 2')
-% subplot(4,1,1)
-% plot(s_ref');
-% title('Signal 1')
-% subplot(4,1,2)
-% plot(s_bruit');
-% title('Signal 2')
-% subplot(4,1,3)
-% plot(autocorr)
-% title('Résultat auto-corrélation')
-% subplot(4,1,4)
-% plot(corr)
-% title('Résultat corrélation')
-% 
-% %clc
-% if maximum >= 0.8
-%     disp('======================')
-%     disp('Test2:')
-%     disp('Détection réussie (allumer DEL 2)')
-%     disp('======================')
-% end
-% 
-% if maximum < 0.8
-%     disp('======================')
-%     disp('Test2:')
-%     disp('Détection non réussie (allumer DEL 1)')
-%     disp('======================')
-% end
-%% test2: deux signaux de longueur différente
+%% test 5.2: deux signaux de longueur différente
 clear all
-%close all
-%clc
 
+% Création du signal spécifique au test
 t = 1:100;
 s_ref = sin(3.14.*t./10);
 petit_ref = s_ref;
-petit_ref(end-34:end)=0;%Retirer 10 derniers points et remplacer par des zéros
+petit_ref(end-34:end)=0; %Retirer 34 derniers points et remplacer par des zéros
  
-
+% Corrélation
 [corr] = correlation(s_ref,petit_ref,numel(s_ref));
 [autocorr] = correlation(s_ref,s_ref,numel(s_ref));
 
-% disp('Le resultat de la correlation est:')
-% disp(['[ ' num2str(corr) ' ]'])
-
-maximum = max(abs(corr));
-
+% Affichage des signaux et résultats
 figure('NAME','test 2')
 subplot(4,1,1)
 plot(s_ref);
@@ -137,38 +77,35 @@ subplot(4,1,4)
 plot(corr)
 title('Résultat corrélation')
 
-%clc
+% interprétation du résultat de la corrélation
+maximum = max(abs(corr));
+
 if maximum >= 0.8
     disp('======================')
-    disp('Test2:')
+    disp('Test 5.2:')
     disp('Détection réussie (allumer DEL 2)')
     disp('======================')
 end
 
 if maximum < 0.8
     disp('======================')
-    disp('Test2:')
+    disp('Test 5.2:')
     disp('Détection non réussie (allumer DEL 1)')
     disp('======================')
 end
 
-%% test3: deux signaux identiques
+%% test 5.3: deux signaux identiques
 clear all
-%close all
-%clc
 
+% Création du signal spécifique au test
 t = 1:100;
-
 s_ref = sin(3.14.*t./10);
 
+% Corrélation
 [corr] = correlation(s_ref,s_ref,numel(s_ref));
 
-% disp('Le resultat de la correlation est:')
-% disp(['[ ' num2str(corr) ' ]'])
-
-maximum = max(abs(corr));
-
-figure('NAME','test 3')
+% Affichage des signaux et résultats
+figure('NAME','test 5.3')
 subplot(2,1,1)
 plot(s_ref);
 title('Signal 1')
@@ -176,40 +113,37 @@ subplot(2,1,2)
 plot(corr)
 title('Résultat auto-corrélation')
 
-%clc
+% interprétation du résultat de la corrélation
+maximum = max(abs(corr));
+
 if maximum >= 0.8
     disp('======================')
-    disp('Test3:')
+    disp('Test 5.3:')
     disp('Détection réussie (allumer DEL 2)')
     disp('======================')
 end
 
 if maximum < 0.8
     disp('======================')
-    disp('Test3:')
+    disp('Test 5.3:')
     disp('Détection non réussie (allumer DEL 1)')
     disp('======================')
 end
 
-%% test 4 deux signaux identiques décalés
+%% test 5.4: deux signaux identiques décalés
 clear all
-%close all
-%clc
 
+% Création du signal spécifique au test
 t = 1:100;
-
 s_ref = sin(3.14.*t./10);
 s_ref_decal = sin(3.14.*t./10 -3.14/2);
 
+% Corrélation
 [corr] = correlation(s_ref,s_ref_decal,numel(s_ref));
 [autocorr] = correlation(s_ref,s_ref,numel(s_ref));
 
-% disp('Le resultat de la correlation est:')
-% disp(['[ ' num2str(corr) ' ]'])
-
-maximum = max(abs(corr));
-
-figure('NAME','test 4')
+% Affichage des signaux et résultats
+figure('NAME','test 5.4')
 subplot(4,1,1)
 plot(s_ref);
 title('Signal 1')
@@ -223,39 +157,36 @@ subplot(4,1,4)
 plot(corr)
 title('Résultat corrélation')
 
-%clc
+% interprétation du résultat de la corrélation
+maximum = max(abs(corr));
+
 if maximum >= 0.8
     disp('======================')
-    disp('Test4:')
+    disp('Test 5.4:')
     disp('Détection réussie (allumer DEL 2)')
     disp('======================')
 end
 
 if maximum < 0.8
     disp('======================')
-    disp('Test4:')
+    disp('Test 5.4:')
     disp('Détection non réussie (allumer DEL 1)')
     disp('======================')
 end
-%% test5
+%% test 5.5
 clear all
-%close all
-%clc
 
+% Création du signal spécifique au test
 t = 1:100;
-
 s_ref = sin(3.14.*t./10);
-s_bruit = awgn(s_ref,7);
+s_bruit = awgn(s_ref,7);    % signal s_ref bruité gaussiennement avec un facteur SNR de 7
 
+% Corrélation
 [corr] = correlation(s_ref,s_bruit,numel(s_ref));
 [autocorr] = correlation(s_ref,s_ref,numel(s_ref));
 
-% disp('Le resultat de la correlation est:')
-% disp(['[ ' num2str(corr) ' ]'])
-
-maximum = max((corr));
-
-figure('NAME','test 5')
+% Affichage des signaux et résultats
+figure('NAME','test 5.5')
 subplot(4,1,1)
 plot(s_ref);
 title('Signal 1')
@@ -270,17 +201,19 @@ subplot(4,1,4)
 plot(corr)
 title('Résultat corrélation')
 
-%clc
+% interprétation du résultat de la corrélation
+maximum = max((corr));
+
 if maximum >= 0.8
     disp('======================')
-    disp('Test5:')
+    disp('Test 5.5:')
     disp('Détection réussie (allumer DEL 2)')
     disp('======================')
 end
 
 if maximum < 0.8
     disp('======================')
-    disp('Test5:')
+    disp('Test 5.5:')
     disp('Détection non réussie (allumer DEL 1)')
     disp('======================')
 end
