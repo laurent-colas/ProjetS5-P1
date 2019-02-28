@@ -112,7 +112,7 @@ clear all
 t = 1:100;
 s_ref = sin(3.14.*t./10);
 petit_ref = s_ref;
-petit_ref(end-35:end)=0;%Retirer 10 derniers points et remplacer par des zéros
+petit_ref(end-34:end)=0;%Retirer 10 derniers points et remplacer par des zéros
  
 
 [corr] = correlation(s_ref,petit_ref,numel(s_ref));
@@ -132,7 +132,7 @@ plot(petit_ref);
 title('Signal 2')
 subplot(4,1,3)
 plot(autocorr)
-title('Résultat auto-corrélation')
+title('Résultat auto-corrélation (Signal 1)')
 subplot(4,1,4)
 plot(corr)
 title('Résultat corrélation')
@@ -218,7 +218,7 @@ plot(s_ref_decal);
 title('Signal 2')
 subplot(4,1,3)
 plot(autocorr)
-title('Résultat auto-corrélation')
+title('Résultat auto-corrélation (Signal 1)')
 subplot(4,1,4)
 plot(corr)
 title('Résultat corrélation')
@@ -265,7 +265,7 @@ ylim([-2,2]);
 title('Signal 2')
 subplot(4,1,3)
 plot(autocorr)
-title('Résultat auto-corrélation')
+title('Résultat auto-corrélation (Signal 1)')
 subplot(4,1,4)
 plot(corr)
 title('Résultat corrélation')
