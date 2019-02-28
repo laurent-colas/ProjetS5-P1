@@ -12,8 +12,8 @@
 void absolute(double * tab, int taille_tab)
 {
     int i;
-// boucle principale qui rend toute valeur négative, positive 
-    for (i = 0; i<taille_tab;i++)
+    //double moy_liste = moyenne(tab,length);
+    for ( i = 0; i<taille_tab;i++)
     {
         if (tab[i] < 0)
         {

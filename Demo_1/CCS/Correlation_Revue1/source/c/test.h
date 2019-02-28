@@ -12,18 +12,20 @@
 #include "abs.h"
 
 
-void test1(double t[], double s_ref[], double b_ref[]);
-void test2(double t[], double s_ref[], double b_ref[]);
-void test3(double t[], double s_ref[], double b_ref[]);
+int test1(double t[], double s_ref[], double b_ref[]);
+int test2(double t[], double s_ref[], double b_ref[]);
+int test3(double t[], double s_ref[], double b_ref[]);
+int test4(double t[], double s_ref[], double b_ref[]);
 void init_vecteur(double s_ref[], double b_ref[]);
 
-//test 5.4 selon le Excel de tests
-void test1(double t[], double s_ref[], double b_ref[]) {
+//Autocorrélation
+int test1(double t[], double s_ref[], double b_ref[]) {
     printf("\n Test 1 \n");
     int i;
 
-    for (i = 0; i < length; i++) {
-            s_ref[i] = sin(i*3.14 / 10);
+    for (i = 0; i < length; i++)
+        {
+            s_ref[i] = sin(i*3.14 / length);
         }
 
     double out[2 * length - 1] = {0};
@@ -33,9 +35,11 @@ void test1(double t[], double s_ref[], double b_ref[]) {
     printf("Le resultat de la correlation normalise est \n");
     printf("[ %f", out[0]);
 
-    for (i = 1; i < 2 * length - 1; i++) {
+    for (i = 1; i < 2 * length - 1; i++)
+    {
         printf(", %f",out[i]);
     }
+
     printf("]");
 
     //absolute(out, 2 * length - 1);
@@ -45,22 +49,35 @@ void test1(double t[], double s_ref[], double b_ref[]) {
     printf("\n Le seuil est \n");
     printf(" %f", seuil);
 
+    if (seuil>=0.8)
+    {
+        return (2);
+    }
+    else
+    {
+        return (1);
+    }
+
+
     init_vecteur(s_ref, b_ref);
 
 
 }
 
-//test 5.1 selon le Excel de tests
-void test2(double t[], double s_ref[], double b_ref[]) {
+//Corrélation entre sin et cos
+int test2(double t[], double s_ref[], double b_ref[])
+{
     printf("\n Test 2 \n");
     int i;
 
-    for (i = 0; i < length; i++) {
-            s_ref[i] = sin(i*3.14 / 10);
-        }
+    for (i = 0; i < length; i++)
+    {
+            s_ref[i] = sin(i*3.14 / length);
+    }
 
-    for (i = 0; i< length; i++) {
-        b_ref[i] = cos(i*3.14 / 10);
+    for (i = 0; i< length; i++)
+    {
+        b_ref[i] = cos(i*3.14 / length);
     }
 
     double out[2 * length - 1] = {0};
@@ -70,9 +87,11 @@ void test2(double t[], double s_ref[], double b_ref[]) {
     printf("[ %f", out[0]);
 
 
-    for (i = 1; i < 2 * length - 1; i++) {
+    for (i = 1; i < 2 * length - 1; i++)
+    {
         printf(", %f",out[i]);
     }
+
     printf("]");
 
 
@@ -82,23 +101,77 @@ void test2(double t[], double s_ref[], double b_ref[]) {
     printf("\n Le seuil est \n");
     printf(" %f", seuil);
 
+    if (seuil>=0.8)
+    {
+        return (2);
+    }
+    else
+    {
+        return (1);
+    }
+
+
     init_vecteur(s_ref, b_ref);
 
 
 }
-
-//test 5.3 selon le Excel de tests
-void test3(double t[], double s_ref[], double b_ref[]) {
+//Vecteurs tailles différentes
+int test3(double t[], double s_ref[], double b_ref[]) {
     printf("\n Test 3 \n");
     int i;
 
+    for (i = 0; i < length; i++)
+    {
+        s_ref[i] = sin(i*3.14 / length);
+    }
+
+    for (i = 0; i< length - 4; i++)
+    {
+        b_ref[i] = sin(i*3.14 / length);
+    }
+
+    double out[2 * length - 1] = {0};
+    correlation(s_ref, b_ref, length, out);
+
+    double seuil = max(out, 2 * length - 1);
+
+    printf("Le resultat de la correlation normalise est \n");
+    printf("[ %f", out[0]);
+
+
+    for (i = 1; i < 2 * length - 1; i++)
+    {
+        printf(", %f",out[i]);
+    }
+    printf("]");
+
+    printf("\n Le seuil est \n");
+    printf(" %f", seuil);
+
+    if (seuil>=0.8)
+    {
+        return (2);
+    }
+    else
+    {
+        return (1);
+    }
+
+    init_vecteur(s_ref, b_ref);
+}
+
+//Identiques mais décalés
+int test4(double t[], double s_ref[], double b_ref[]) {
+    printf("\n Test 4 \n");
+    int i;
+
     for (i = 0; i < length; i++) {
-            s_ref[i] = sin(i*3.14 / 10);
+            s_ref[i] = sin(i*3.14 / length);
         }
 
-    for (i = 0; i< length - 4; i++) {
-        b_ref[i] = sin(i*3.14 / 10);
-    }
+    for (i = 0; i < length; i++) {
+            b_ref[i] = sin((i-4)*3.14 / length);
+        }
 
     double out[2 * length - 1] = {0};
     correlation(s_ref, b_ref, length, out);
@@ -117,41 +190,20 @@ void test3(double t[], double s_ref[], double b_ref[]) {
     printf("\n Le seuil est \n");
     printf(" %f", seuil);
 
+
+    if (seuil>=0.8)
+    {
+        return (2);
+    }
+    else
+    {
+        return (1);
+    }
+
+
     init_vecteur(s_ref, b_ref);
 }
 
-//test 5.6 selon le Excel de tests
-void test6(double t[], double s_ref[], double b_ref[]) {
-    printf("\n Test 3 \n");
-    int i;
-
-    for (i = 0; i < length; i++) {
-            s_ref[i] = sin(i*3.14 / 10);
-        }
-
-    for (i = 0; i< length - 4; i++) {
-        b_ref[i] = sin(i*3.14 / 10);
-    }
-
-    double out[2 * length - 1] = {0};
-    correlation(s_ref, b_ref, length, out);
-
-    double seuil = max(out, 2 * length - 1);
-
-    printf("Le resultat de la correlation normalise est \n");
-    printf("[ %f", out[0]);
-
-
-    for (i = 1; i < 2 * length - 1; i++) {
-        printf(", %f",out[i]);
-    }
-    printf("]");
-
-    printf("\n Le seuil est \n");
-    printf(" %f", seuil);
-
-    init_vecteur(s_ref, b_ref);
-}
 
 void init_vecteur(double s_ref[], double b_ref[]) {
     int i;
@@ -160,8 +212,6 @@ void init_vecteur(double s_ref[], double b_ref[]) {
             b_ref[i] = 0;
         }
 }
-
-
 
 
 
