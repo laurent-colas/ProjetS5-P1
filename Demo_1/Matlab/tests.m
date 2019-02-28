@@ -35,7 +35,7 @@ y = getaudiodata(recObj);
 figure
 plot(y)
 
-pause(2);
+%%
 
 disp('Start noise.')
 recordblocking(recObj, 1);
@@ -45,13 +45,18 @@ bruit = getaudiodata(recObj);
 
 figure
 plot(bruit)
-
+%%
+[autocorr] = correlation(y',y',numel(y));
 [corr] = correlation(y',bruit',numel(y));
 
-maximum = max(abs(corr))
+maximumauto = max(autocorr)
+maximum = max(corr)
 
 figure
 stem(corr)
+
+figure
+stem(autocorr)
 %% test3: deux signaux de longueur différente
 clear all
 close all

@@ -8,7 +8,7 @@ clearvars
 t = 1:10;
 s_ref = sin(3.14.*t./10);
 
-s_ref2 = cos(3.14.*t./10);
+s_ref2 = sin(3.14.*t);
 
 figure 
 plot(s_ref)
@@ -27,7 +27,7 @@ plot(autocorr)
 
 figure
 plot(corr)
-
-disp("Le resultat de la correlation est:")
-disp(['[ ' num2str(autocorr) ' ]'])
+% 
+% disp("Le resultat de la correlation est:")
+% disp(['[ ' num2str(autocorr) ' ]'])
 
