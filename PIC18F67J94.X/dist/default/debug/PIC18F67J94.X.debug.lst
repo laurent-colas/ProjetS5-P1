@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V2.00 build -1524193055 
-                                                                                               Thu Feb 28 14:00:59 2019
+                                                                                               Thu Feb 28 14:37:18 2019
 
 Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 20180527130849
      1  0000                     
@@ -4836,25 +4836,25 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
   4742                           _str_read_dist:
   4743  000E5B                     	db	low(031h)
   4744  000E5B  31                 	db	low(02Dh)
-  4745  000E5C  2D                 	db	low(020h)
-  4746  000E5D  20                 	db	low(050h)
-  4747  000E5E  50                 	db	low(06Fh)
-  4748  000E5F  6F                 	db	low(075h)
-  4749  000E60  75                 	db	low(072h)
-  4750  000E61  72                 	db	low(020h)
-  4751  000E62  20                 	db	low(070h)
-  4752  000E63  70                 	db	low(072h)
-  4753  000E64  72                 	db	low(065h)
-  4754  000E65  65                 	db	low(06Ch)
-  4755  000E66  6C                 	db	low(065h)
-  4756  000E67  65                 	db	low(076h)
-  4757  000E68  76                 	db	low(065h)
-  4758  000E69  65                 	db	low(072h)
-  4759  000E6A  72                 	db	low(020h)
-  4760  000E6B  20                 	db	low(064h)
-  4761  000E6C  64                 	db	low(069h)
-  4762  000E6D  69                 	db	low(073h)
-  4763  000E6E  73                 	global __end_of_str_read_dist
+  4745  000E5C  2D                 	db	low(050h)
+  4746  000E5D  50                 	db	low(06Fh)
+  4747  000E5E  6F                 	db	low(075h)
+  4748  000E5F  75                 	db	low(072h)
+  4749  000E60  72                 	db	low(020h)
+  4750  000E61  20                 	db	low(070h)
+  4751  000E62  70                 	db	low(072h)
+  4752  000E63  72                 	db	low(065h)
+  4753  000E64  65                 	db	low(06Ch)
+  4754  000E65  6C                 	db	low(065h)
+  4755  000E66  65                 	db	low(076h)
+  4756  000E67  76                 	db	low(065h)
+  4757  000E68  65                 	db	low(072h)
+  4758  000E69  72                 	db	low(020h)
+  4759  000E6A  20                 	db	low(064h)
+  4760  000E6B  64                 	db	low(069h)
+  4761  000E6C  69                 	db	low(073h)
+  4762  000E6D  73                 	db	low(074h)
+  4763  000E6E  74                 	global __end_of_str_read_dist
   4764                           __end_of_str_read_dist:
   4765  000E6F                     	global	calc_distance_mm@OoR
   4766                           psect	smallconst
@@ -5010,7 +5010,7 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
   4916                           __CFG_PLLDIV$ equ 0x0
   4917  0000                     global __CFG_WDTPS$32768
   4918                           __CFG_WDTPS$32768 equ 0x0
-  4919  0000                     	file	"C:\Users\laure\AppData\Local\Temp\sgu8."
+  4919  0000                     	file	"C:\Users\laure\AppData\Local\Temp\s8b4."
   4920                           	line	#
   4921                           psect	cinit,class=CODE,delta=1,reloc=2
   4922                           global __pcinit
@@ -5063,7 +5063,7 @@ Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 201805271
   4969                           	global	_Distance
   4970                           _Distance:
   4971  000088                            ds      4
-  4972  000088                     	file	"C:\Users\laure\AppData\Local\Temp\sgu8."
+  4972  000088                     	file	"C:\Users\laure\AppData\Local\Temp\s8b4."
   4973                           	line	#
   4974                           psect	cinit
   4975                           ; Initialize objects allocated to COMRAM (4 bytes)
@@ -12785,7 +12785,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.00 build -1524193055 
-Symbol Table                                                                                   Thu Feb 28 14:00:59 2019
+Symbol Table                                                                                   Thu Feb 28 14:37:18 2019
 
                 ___fldiv@aexp 0040                  ___fldiv@bexp 003F                             _i 0053  
                   __CFG_BORV$ 000003                  ___fldiv@sign 0038                  ?_displayCtrl 0003  

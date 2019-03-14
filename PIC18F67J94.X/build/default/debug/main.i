@@ -19604,7 +19604,7 @@ int number = 3;
 int i;
 char pressed_pad;
 const unsigned char str[17] = "Nico est francais";
-const unsigned char str_read_dist[20] = "1- Pour prelever dist";
+const unsigned char str_read_dist[20] = "1-Pour prelever dist";
 float Total_distance[10];
 int Distance_mm_int;
 const unsigned char total_dist[10];

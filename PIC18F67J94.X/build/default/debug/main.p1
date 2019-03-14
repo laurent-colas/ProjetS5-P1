@@ -1772,13 +1772,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 "28
-[; ;main.c: 28: const unsigned char str_read_dist[20] = "1- Pour prelever dist";
+[; ;main.c: 28: const unsigned char str_read_dist[20] = "1-Pour prelever dist";
 [v _str_read_dist `Cuc ~T0 @X0 -> 20 `i e ]
 [i _str_read_dist
 :U ..
 -> 49 `c
 -> 45 `c
--> 32 `c
 -> 80 `c
 -> 111 `c
 -> 117 `c
@@ -1796,6 +1795,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 100 `c
 -> 105 `c
 -> 115 `c
+-> 116 `c
 ..
 ]
 "29

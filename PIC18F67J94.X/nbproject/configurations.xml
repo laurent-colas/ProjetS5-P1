@@ -9,6 +9,7 @@
       <itemPath>pic18f67j94.h</itemPath>
       <itemPath>HC-SR04.h</itemPath>
       <itemPath>num_pad.h</itemPath>
+      <itemPath>UART_MAX.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -22,6 +23,7 @@
       <itemPath>LCD_SPI.c</itemPath>
       <itemPath>HC-SR04.c</itemPath>
       <itemPath>num_pad.c</itemPath>
+      <itemPath>UART_MAX.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

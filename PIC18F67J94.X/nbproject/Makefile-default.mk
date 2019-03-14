@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c fonction_periph.c LCD_SPI.c HC-SR04.c num_pad.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c fonction_periph.c LCD_SPI.c HC-SR04.c num_pad.c UART_MAX.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/fonction_periph.p1 ${OBJECTDIR}/LCD_SPI.p1 ${OBJECTDIR}/HC-SR04.p1 ${OBJECTDIR}/num_pad.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/fonction_periph.p1.d ${OBJECTDIR}/LCD_SPI.p1.d ${OBJECTDIR}/HC-SR04.p1.d ${OBJECTDIR}/num_pad.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/fonction_periph.p1 ${OBJECTDIR}/LCD_SPI.p1 ${OBJECTDIR}/HC-SR04.p1 ${OBJECTDIR}/num_pad.p1 ${OBJECTDIR}/UART_MAX.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/fonction_periph.p1.d ${OBJECTDIR}/LCD_SPI.p1.d ${OBJECTDIR}/HC-SR04.p1.d ${OBJECTDIR}/num_pad.p1.d ${OBJECTDIR}/UART_MAX.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/fonction_periph.p1 ${OBJECTDIR}/LCD_SPI.p1 ${OBJECTDIR}/HC-SR04.p1 ${OBJECTDIR}/num_pad.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/fonction_periph.p1 ${OBJECTDIR}/LCD_SPI.p1 ${OBJECTDIR}/HC-SR04.p1 ${OBJECTDIR}/num_pad.p1 ${OBJECTDIR}/UART_MAX.p1
 
 # Source Files
-SOURCEFILES=main.c fonction_periph.c LCD_SPI.c HC-SR04.c num_pad.c
+SOURCEFILES=main.c fonction_periph.c LCD_SPI.c HC-SR04.c num_pad.c UART_MAX.c
 
 
 CFLAGS=
@@ -133,6 +133,14 @@ ${OBJECTDIR}/num_pad.p1: num_pad.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/num_pad.d ${OBJECTDIR}/num_pad.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/num_pad.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/UART_MAX.p1: UART_MAX.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/UART_MAX.p1.d 
+	@${RM} ${OBJECTDIR}/UART_MAX.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../../Program Files (x86)/Microchip/xc8/v2.00/include/plib" -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/UART_MAX.p1 UART_MAX.c 
+	@-${MV} ${OBJECTDIR}/UART_MAX.d ${OBJECTDIR}/UART_MAX.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/UART_MAX.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -173,6 +181,14 @@ ${OBJECTDIR}/num_pad.p1: num_pad.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../../Program Files (x86)/Microchip/xc8/v2.00/include/plib" -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/num_pad.p1 num_pad.c 
 	@-${MV} ${OBJECTDIR}/num_pad.d ${OBJECTDIR}/num_pad.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/num_pad.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/UART_MAX.p1: UART_MAX.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/UART_MAX.p1.d 
+	@${RM} ${OBJECTDIR}/UART_MAX.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"../../../../../Program Files (x86)/Microchip/xc8/v2.00/include/plib" -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/UART_MAX.p1 UART_MAX.c 
+	@-${MV} ${OBJECTDIR}/UART_MAX.d ${OBJECTDIR}/UART_MAX.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/UART_MAX.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

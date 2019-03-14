@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.00\pic\dat\en_msgs.txt \
   -cs -h+dist/default/debug\PIC18F67J94.X.debug.sym \
   --cmf=dist/default/debug\PIC18F67J94.X.debug.cmf -z -Q18F67J94 \
-  -oC:\Users\laure\AppData\Local\Temp\sgu8.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\laure\AppData\Local\Temp\s8b4.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/debug/PIC18F67J94.X.debug.map -E1 -ver=XC8 --acfsm=1493 \
   -ASTACK=08Ch-0df9h -pstack=STACK -ACODE=00h-01FFEFh -ACONST=00h-01FFEFh \
   -ASMALLCONST=0E00h-0EFFhx497,01FF00h-01FFEFh \
@@ -26,7 +26,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\laure\AppData\Local\Temp\sgu8.o \
+  C:\Users\laure\AppData\Local\Temp\s8b4.o \
   dist/default/debug\PIC18F67J94.X.debug.o 
 
 Object code version is 3.11
@@ -39,7 +39,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\laure\AppData\Local\Temp\sgu8.o
+C:\Users\laure\AppData\Local\Temp\s8b4.o
                 init                                  0        0        4        0       0
                 config                            1FFF0    1FFF0       10    1FFF0       0
 dist/default/debug\PIC18F67J94.X.debug.o

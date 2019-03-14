@@ -1,14 +1,20 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"20 main.c
-[; ;main.c: 20: void init_all(void);
+"19 main.c
+[; ;main.c: 19: void init_all(void);
 [v _init_all `(v ~T0 @X0 0 ef ]
 "14 ./num_pad.h
 [; ;./num_pad.h: 14: char read_pad(void);
 [v _read_pad `(uc ~T0 @X0 0 ef ]
-"21 main.c
-[; ;main.c: 21: void menu1(void);
+"20 main.c
+[; ;main.c: 20: void menu1(void);
 [v _menu1 `(v ~T0 @X0 0 ef ]
+"44 ./LCD_SPI.h
+[; ;./LCD_SPI.h: 44: void clearDisplay(void);
+[v _clearDisplay `(v ~T0 @X0 0 ef ]
+"42
+[; ;./LCD_SPI.h: 42: void putStringLCD(const unsigned char*);
+[v _putStringLCD `(v ~T0 @X0 0 ef1`*Cuc ]
 "17 ./HC-SR04.h
 [; ;./HC-SR04.h: 17: void calc_distance_mm(void);
 [v _calc_distance_mm `(v ~T0 @X0 0 ef ]
@@ -19,6 +25,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "183 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18.h
 [v __delay `JF10896 ~T0 @X0 0 e ]
 [p i __delay ]
+"17 ./UART_MAX.h
+[; ;./UART_MAX.h: 17: void init_UART(void);
+[v _init_UART `(v ~T0 @X0 0 ef ]
 "47 ./LCD_SPI.h
 [; ;./LCD_SPI.h: 47: void initialisation_LCD();
 [v _initialisation_LCD `(v ~T0 @X0 0 e? ]
@@ -28,15 +37,74 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15 ./HC-SR04.h
 [; ;./HC-SR04.h: 15: void init_dist_sensor(void);
 [v _init_dist_sensor `(v ~T0 @X0 0 ef ]
-"44 ./LCD_SPI.h
-[; ;./LCD_SPI.h: 44: void clearDisplay(void);
-[v _clearDisplay `(v ~T0 @X0 0 ef ]
-"48
+"48 ./LCD_SPI.h
 [; ;./LCD_SPI.h: 48: void moveCursor(int row, int col);
 [v _moveCursor `(v ~T0 @X0 0 ef2`i`i ]
-"42
-[; ;./LCD_SPI.h: 42: void putStringLCD(const unsigned char*);
-[v _putStringLCD `(v ~T0 @X0 0 ef1`*Cuc ]
+[t ~ __interrupt . k ]
+[t T2 __interrupt ]
+"35236 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 35236: extern volatile __bit RC1IF __attribute__((address(0x7CF5)));
+[v _RC1IF `Vb ~T0 @X0 0 e@31989 ]
+"27012
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 27012: extern volatile unsigned char RCREG1 __attribute__((address(0xFAE)));
+[v _RCREG1 `Vuc ~T0 @X0 0 e@4014 ]
+"22 main.c
+[; ;main.c: 22: char check(char input);
+[v _check `(uc ~T0 @X0 0 ef1`uc ]
+"26582 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26582:     struct {
+[s S1149 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1149 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"26592
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26592:     struct {
+[s S1150 :3 `uc 1 :1 `uc 1 ]
+[n S1150 . . ADEN ]
+"26596
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26596:     struct {
+[s S1151 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
+[n S1151 . RCD8 . RC8_9 ]
+"26601
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26601:     struct {
+[s S1152 :6 `uc 1 :1 `uc 1 ]
+[n S1152 . . RC9 ]
+"26605
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26605:     struct {
+[s S1153 :5 `uc 1 :1 `uc 1 ]
+[n S1153 . . SRENA ]
+"26581
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26581: typedef union {
+[u S1148 `S1149 1 `S1150 1 `S1151 1 `S1152 1 `S1153 1 ]
+[n S1148 . . . . . . ]
+"26610
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26610: extern volatile RCSTAbits_t RCSTAbits __attribute__((address(0xFAB)));
+[v _RCSTAbits `VS1148 ~T0 @X0 0 e@4011 ]
+"26485
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26485:     struct {
+[s S1143 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1143 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"26495
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26495:     struct {
+[s S1144 :3 `uc 1 :1 `uc 1 ]
+[n S1144 . . ADEN ]
+"26499
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26499:     struct {
+[s S1145 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
+[n S1145 . RCD8 . RC8_9 ]
+"26504
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26504:     struct {
+[s S1146 :6 `uc 1 :1 `uc 1 ]
+[n S1146 . . RC9 ]
+"26508
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26508:     struct {
+[s S1147 :5 `uc 1 :1 `uc 1 ]
+[n S1147 . . SRENA ]
+"26484
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26484: typedef union {
+[u S1142 `S1143 1 `S1144 1 `S1145 1 `S1146 1 `S1147 1 ]
+[n S1142 . . . . . . ]
+"26513
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26513: extern volatile RCSTA1bits_t RCSTA1bits __attribute__((address(0xFAB)));
+[v _RCSTA1bits `VS1142 ~T0 @X0 0 e@4011 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 54: __asm("UEP0 equ 0DFFh");
 [; <" UEP0 equ 0DFFh ;# ">
@@ -1735,20 +1803,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "25
 [; ;./HC-SR04.h: 25: float Total_distance[10];
 [v _Total_distance `f ~T0 @X0 -> 10 `i e ]
-"24 main.c
-[; ;main.c: 24: int number = 3;
+"25 main.c
+[; ;main.c: 25: int number = 3;
 [v _number `i ~T0 @X0 1 e ]
 [i _number
 -> 3 `i
 ]
-"25
-[; ;main.c: 25: int i;
-[v _i `i ~T0 @X0 1 e ]
 "26
-[; ;main.c: 26: char pressed_pad;
-[v _pressed_pad `uc ~T0 @X0 1 e ]
+[; ;main.c: 26: int i;
+[v _i `i ~T0 @X0 1 e ]
 "27
-[; ;main.c: 27: const unsigned char str[17] = "Nico est francais";
+[; ;main.c: 27: char pressed_pad;
+[v _pressed_pad `uc ~T0 @X0 1 e ]
+"28
+[; ;main.c: 28: const unsigned char str[17] = "Nico est francais";
 [v _str `Cuc ~T0 @X0 -> 17 `i e ]
 [i _str
 :U ..
@@ -1771,14 +1839,41 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 115 `c
 ..
 ]
-"28
-[; ;main.c: 28: float Total_distance[10];
-[v _Total_distance `f ~T0 @X0 -> 10 `i e ]
 "29
-[; ;main.c: 29: int Distance_mm_int;
-[v _Distance_mm_int `i ~T0 @X0 1 e ]
+[; ;main.c: 29: const unsigned char str_read_dist[20] = "1-Pour prelever dist";
+[v _str_read_dist `Cuc ~T0 @X0 -> 20 `i e ]
+[i _str_read_dist
+:U ..
+-> 49 `c
+-> 45 `c
+-> 80 `c
+-> 111 `c
+-> 117 `c
+-> 114 `c
+-> 32 `c
+-> 112 `c
+-> 114 `c
+-> 101 `c
+-> 108 `c
+-> 101 `c
+-> 118 `c
+-> 101 `c
+-> 114 `c
+-> 32 `c
+-> 100 `c
+-> 105 `c
+-> 115 `c
+-> 116 `c
+..
+]
 "30
-[; ;main.c: 30: const unsigned char total_dist[10];
+[; ;main.c: 30: float Total_distance[10];
+[v _Total_distance `f ~T0 @X0 -> 10 `i e ]
+"31
+[; ;main.c: 31: int Distance_mm_int;
+[v _Distance_mm_int `i ~T0 @X0 1 e ]
+"32
+[; ;main.c: 32: const unsigned char total_dist[10];
 [v _total_dist `Cuc ~T0 @X0 -> 10 `i e ]
 [i _total_dist
 :U ..
@@ -1794,183 +1889,192 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `Cuc
 ..
 ]
-"31
-[; ;main.c: 31: int first_run = 1;
+"33
+[; ;main.c: 33: int first_run = 1;
 [v _first_run `i ~T0 @X0 1 e ]
 [i _first_run
 -> 1 `i
 ]
+"36
+[; ;main.c: 36: char out;
+[v _out `uc ~T0 @X0 1 e ]
+"37
+[; ;main.c: 37: char sys_state;
+[v _sys_state `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"33
-[; ;main.c: 33: void main(void) {
+"39
+[; ;main.c: 39: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"35
-[; ;main.c: 35:     init_all();
-[e ( _init_all ..  ]
-"37
-[; ;main.c: 37:     while(1) {
-[e :U 1422 ]
-{
-"39
-[; ;main.c: 39:         pressed_pad = read_pad();
-[e = _pressed_pad ( _read_pad ..  ]
 "41
-[; ;main.c: 41:         if (first_run == 1) {
-[e $ ! == _first_run -> 1 `i 1424  ]
-{
-"42
-[; ;main.c: 42:             menu1();
-[e ( _menu1 ..  ]
+[; ;main.c: 41:     init_all();
+[e ( _init_all ..  ]
 "43
-[; ;main.c: 43:             first_run = 0;
-[e = _first_run -> 0 `i ]
-"44
-[; ;main.c: 44:         }
-}
-[e :U 1424 ]
-"47
-[; ;main.c: 47:         if (pressed_pad == 'B') {
-[e $ ! == -> _pressed_pad `ui -> 66 `ui 1425  ]
-{
-"48
-[; ;main.c: 48:             while(pressed_pad != 'C') {
-[e $U 1426  ]
-[e :U 1427 ]
-{
-"49
-[; ;main.c: 49:                 pressed_pad = read_pad();
-[e = _pressed_pad ( _read_pad ..  ]
-"50
-[; ;main.c: 50:                 if (pressed_pad == '1') {
-[e $ ! == -> _pressed_pad `ui -> 49 `ui 1429  ]
-{
-"51
-[; ;main.c: 51:                     calc_distance_mm();
-[e ( _calc_distance_mm ..  ]
-"52
-[; ;main.c: 52:                 }
-}
-[e $U 1430  ]
-"53
-[; ;main.c: 53:                 else {
-[e :U 1429 ]
-{
-"54
-[; ;main.c: 54:                     pressed_pad = 'z';
-[e = _pressed_pad -> -> 122 `ui `uc ]
-"55
-[; ;main.c: 55:                 }
-}
+[; ;main.c: 43:     while(1) {
 [e :U 1430 ]
-"56
-[; ;main.c: 56:             }
-}
-[e :U 1426 ]
-"48
-[; ;main.c: 48:             while(pressed_pad != 'C') {
-[e $ != -> _pressed_pad `ui -> 67 `ui 1427  ]
-[e :U 1428 ]
-"57
-[; ;main.c: 57:         }
-}
-[e :U 1425 ]
-"58
-[; ;main.c: 58:         if (pressed_pad == 'A') {
-[e $ ! == -> _pressed_pad `ui -> 65 `ui 1431  ]
 {
-"59
-[; ;main.c: 59:             while(pressed_pad != 'C') {
-[e $U 1432  ]
-[e :U 1433 ]
-{
-"60
-[; ;main.c: 60:                 pressed_pad = read_pad();
+"45
+[; ;main.c: 45:         pressed_pad = read_pad();
 [e = _pressed_pad ( _read_pad ..  ]
-"61
-[; ;main.c: 61:                 if (pressed_pad != 'z') {
-[e $ ! != -> _pressed_pad `ui -> 122 `ui 1435  ]
+"47
+[; ;main.c: 47:         if (first_run == 1) {
+[e $ ! == _first_run -> 1 `i 1432  ]
 {
-"62
-[; ;main.c: 62:                     putchLCD(pressed_pad);
-[e ( _putchLCD (1 -> _pressed_pad `uc ]
-"63
-[; ;main.c: 63:                     _delay((unsigned long)((100)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"64
-[; ;main.c: 64:                 }
-}
-[e :U 1435 ]
-"66
-[; ;main.c: 66:             }
+"48
+[; ;main.c: 48:             menu1();
+[e ( _menu1 ..  ]
+"49
+[; ;main.c: 49:             first_run = 0;
+[e = _first_run -> 0 `i ]
+"50
+[; ;main.c: 50:         }
 }
 [e :U 1432 ]
-"59
-[; ;main.c: 59:             while(pressed_pad != 'C') {
-[e $ != -> _pressed_pad `ui -> 67 `ui 1433  ]
-[e :U 1434 ]
-"68
-[; ;main.c: 68:         }
-}
-[e :U 1431 ]
-"69
-[; ;main.c: 69:         if (pressed_pad == 'C') {
-[e $ ! == -> _pressed_pad `ui -> 67 `ui 1436  ]
+"53
+[; ;main.c: 53:         if (pressed_pad == 'B') {
+[e $ ! == -> _pressed_pad `ui -> 66 `ui 1433  ]
 {
-"72
-[; ;main.c: 72:             first_run = 1;
-[e = _first_run -> 1 `i ]
-"73
-[; ;main.c: 73:         }
-}
-[e :U 1436 ]
-"75
-[; ;main.c: 75:         pressed_pad = 'z';
+"54
+[; ;main.c: 54:             clearDisplay();
+[e ( _clearDisplay ..  ]
+"55
+[; ;main.c: 55:             putStringLCD(&str_read_dist[0]);
+[e ( _putStringLCD (1 &U *U + &U _str_read_dist * -> -> -> 0 `i `ui `ux -> -> # *U &U _str_read_dist `ui `ux ]
+"56
+[; ;main.c: 56:             while(pressed_pad != 'C') {
+[e $U 1434  ]
+[e :U 1435 ]
+{
+"57
+[; ;main.c: 57:                 pressed_pad = read_pad();
+[e = _pressed_pad ( _read_pad ..  ]
+"58
+[; ;main.c: 58:                 if (pressed_pad == '1') {
+[e $ ! == -> _pressed_pad `ui -> 49 `ui 1437  ]
+{
+"59
+[; ;main.c: 59:                     calc_distance_mm();
+[e ( _calc_distance_mm ..  ]
+"60
+[; ;main.c: 60:                     pressed_pad = 'z';
 [e = _pressed_pad -> -> 122 `ui `uc ]
-"93
-[; ;main.c: 93:     }
+"61
+[; ;main.c: 61:                 }
 }
-[e :U 1421 ]
-[e $U 1422  ]
-[e :U 1423 ]
-"95
-[; ;main.c: 95: }
-[e :UE 1420 ]
+[e :U 1437 ]
+"63
+[; ;main.c: 63:             }
 }
-"97
-[; ;main.c: 97: void init_all(void) {
+[e :U 1434 ]
+"56
+[; ;main.c: 56:             while(pressed_pad != 'C') {
+[e $ != -> _pressed_pad `ui -> 67 `ui 1435  ]
+[e :U 1436 ]
+"64
+[; ;main.c: 64:         }
+}
+[e :U 1433 ]
+"65
+[; ;main.c: 65:         if (pressed_pad == 'A') {
+[e $ ! == -> _pressed_pad `ui -> 65 `ui 1438  ]
+{
+"66
+[; ;main.c: 66:             clearDisplay();
+[e ( _clearDisplay ..  ]
+"67
+[; ;main.c: 67:             while(pressed_pad != 'C') {
+[e $U 1439  ]
+[e :U 1440 ]
+{
+"68
+[; ;main.c: 68:                 pressed_pad = read_pad();
+[e = _pressed_pad ( _read_pad ..  ]
+"69
+[; ;main.c: 69:                 if (pressed_pad != 'z') {
+[e $ ! != -> _pressed_pad `ui -> 122 `ui 1442  ]
+{
+"70
+[; ;main.c: 70:                     putchLCD(pressed_pad);
+[e ( _putchLCD (1 -> _pressed_pad `uc ]
+"71
+[; ;main.c: 71:                     _delay((unsigned long)((100)*(8000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"72
+[; ;main.c: 72:                 }
+}
+[e :U 1442 ]
+"74
+[; ;main.c: 74:             }
+}
+[e :U 1439 ]
+"67
+[; ;main.c: 67:             while(pressed_pad != 'C') {
+[e $ != -> _pressed_pad `ui -> 67 `ui 1440  ]
+[e :U 1441 ]
+"76
+[; ;main.c: 76:         }
+}
+[e :U 1438 ]
+"77
+[; ;main.c: 77:         if (pressed_pad == 'C') {
+[e $ ! == -> _pressed_pad `ui -> 67 `ui 1443  ]
+{
+"80
+[; ;main.c: 80:             first_run = 1;
+[e = _first_run -> 1 `i ]
+"81
+[; ;main.c: 81:         }
+}
+[e :U 1443 ]
+"83
+[; ;main.c: 83:         pressed_pad = 'z';
+[e = _pressed_pad -> -> 122 `ui `uc ]
+"101
+[; ;main.c: 101:     }
+}
+[e :U 1429 ]
+[e $U 1430  ]
+[e :U 1431 ]
+"103
+[; ;main.c: 103: }
+[e :UE 1428 ]
+}
+"105
+[; ;main.c: 105: void init_all(void) {
 [v _init_all `(v ~T0 @X0 1 ef ]
 {
 [e :U _init_all ]
 [f ]
-"98
-[; ;main.c: 98:     initialisation_LCD();
+"106
+[; ;main.c: 106:     init_UART();
+[e ( _init_UART ..  ]
+"107
+[; ;main.c: 107:     initialisation_LCD();
 [e ( _initialisation_LCD ..  ]
-"99
-[; ;main.c: 99:     init_num_pad();
+"108
+[; ;main.c: 108:     init_num_pad();
 [e ( _init_num_pad ..  ]
-"100
-[; ;main.c: 100:     init_dist_sensor();
+"109
+[; ;main.c: 109:     init_dist_sensor();
 [e ( _init_dist_sensor ..  ]
-"101
-[; ;main.c: 101: }
-[e :UE 1437 ]
+"110
+[; ;main.c: 110: }
+[e :UE 1444 ]
 }
-"103
-[; ;main.c: 103: void menu1(void) {
+"112
+[; ;main.c: 112: void menu1(void) {
 [v _menu1 `(v ~T0 @X0 1 ef ]
 {
 [e :U _menu1 ]
 [f ]
-"104
-[; ;main.c: 104:     const unsigned char menu1[20] = "A - Verifier touches";
-[v F11298 `Cuc ~T0 @X0 -> 20 `i s menu1 ]
-[i F11298
+"113
+[; ;main.c: 113:     const unsigned char menu1[20] = "A- Verif touches";
+[v F11408 `Cuc ~T0 @X0 -> 20 `i s menu1 ]
+[i F11408
 :U ..
 -> 65 `c
--> 32 `c
 -> 45 `c
 -> 32 `c
 -> 86 `c
@@ -1978,9 +2082,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 114 `c
 -> 105 `c
 -> 102 `c
--> 105 `c
--> 101 `c
--> 114 `c
 -> 32 `c
 -> 116 `c
 -> 111 `c
@@ -1989,15 +2090,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 104 `c
 -> 101 `c
 -> 115 `c
+-> 0 `c
 ..
 ]
-"105
-[; ;main.c: 105:     const unsigned char menu2[] = "B - Verifier capteur dist";
-[v F11299 `Cuc ~T0 @X0 -> 26 `i s menu2 ]
-[i F11299
+"114
+[; ;main.c: 114:     const unsigned char menu2[] = "B- Verif capteur dist";
+[v F11409 `Cuc ~T0 @X0 -> 22 `i s menu2 ]
+[i F11409
 :U ..
 -> 66 `c
--> 32 `c
 -> 45 `c
 -> 32 `c
 -> 86 `c
@@ -2005,9 +2106,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 114 `c
 -> 105 `c
 -> 102 `c
--> 105 `c
--> 101 `c
--> 114 `c
 -> 32 `c
 -> 99 `c
 -> 97 `c
@@ -2024,13 +2122,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"106
-[; ;main.c: 106:     const unsigned char menu3[] = "C - Retourner au menu";
-[v F11300 `Cuc ~T0 @X0 -> 22 `i s menu3 ]
-[i F11300
+"115
+[; ;main.c: 115:     const unsigned char menu3[] = "C- Retourner au menu";
+[v F11410 `Cuc ~T0 @X0 -> 21 `i s menu3 ]
+[i F11410
 :U ..
 -> 67 `c
--> 32 `c
 -> 45 `c
 -> 32 `c
 -> 82 `c
@@ -2053,28 +2150,126 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `c
 ..
 ]
-"108
-[; ;main.c: 108:     clearDisplay();
-[e ( _clearDisplay ..  ]
-"110
-[; ;main.c: 110:     moveCursor(0,0);
-[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
-"111
-[; ;main.c: 111:     putStringLCD(&menu1[0]);
-[e ( _putStringLCD (1 &U *U + &U F11298 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11298 `ui `ux ]
-"112
-[; ;main.c: 112:     moveCursor(1,0);
-[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
-"113
-[; ;main.c: 113:     putStringLCD(&menu2[0]);
-[e ( _putStringLCD (1 &U *U + &U F11299 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11299 `ui `ux ]
-"114
-[; ;main.c: 114:     moveCursor(2,0);
-[e ( _moveCursor (2 , -> 2 `i -> 0 `i ]
-"115
-[; ;main.c: 115:     putStringLCD(&menu2[0]);
-[e ( _putStringLCD (1 &U *U + &U F11299 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11299 `ui `ux ]
 "117
-[; ;main.c: 117: }
-[e :UE 1438 ]
+[; ;main.c: 117:     clearDisplay();
+[e ( _clearDisplay ..  ]
+"119
+[; ;main.c: 119:     moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"120
+[; ;main.c: 120:     putStringLCD(&menu1[0]);
+[e ( _putStringLCD (1 &U *U + &U F11408 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11408 `ui `ux ]
+"121
+[; ;main.c: 121:     moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"122
+[; ;main.c: 122:     putStringLCD(&menu2[0]);
+[e ( _putStringLCD (1 &U *U + &U F11409 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11409 `ui `ux ]
+"123
+[; ;main.c: 123:     moveCursor(2,0);
+[e ( _moveCursor (2 , -> 2 `i -> 0 `i ]
+"124
+[; ;main.c: 124:     putStringLCD(&menu3[0]);
+[e ( _putStringLCD (1 &U *U + &U F11410 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11410 `ui `ux ]
+"126
+[; ;main.c: 126: }
+[e :UE 1445 ]
+}
+[v $root$_Serial_interrupt `(v ~T0 @X0 0 e ]
+"129
+[; ;main.c: 129: void __attribute__((picinterrupt(""))) Serial_interrupt() {
+[v _Serial_interrupt `(v ~T2 @X0 1 ef ]
+{
+[e :U _Serial_interrupt ]
+[f ]
+"130
+[; ;main.c: 130:     while(RC1IF == 0);
+[e $U 1447  ]
+[e :U 1448 ]
+[e :U 1447 ]
+[e $ == -> _RC1IF `i -> 0 `i 1448  ]
+[e :U 1449 ]
+"131
+[; ;main.c: 131:     out = RCREG1;
+[e = _out -> _RCREG1 `uc ]
+"132
+[; ;main.c: 132:     sys_state = check(out);
+[e = _sys_state ( _check (1 _out ]
+"133
+[; ;main.c: 133: }
+[e :UE 1446 ]
+}
+"135
+[; ;main.c: 135: char check(char input) {
+[v _check `(uc ~T0 @X0 1 ef1`uc ]
+{
+[e :U _check ]
+[v _input `uc ~T0 @X0 1 r1 ]
+[f ]
+"136
+[; ;main.c: 136:     if(RCSTAbits.FERR == 1 || RCSTAbits.OERR == 1){
+[e $ ! || == -> . . _RCSTAbits 0 2 `i -> 1 `i == -> . . _RCSTAbits 0 1 `i -> 1 `i 1451  ]
+{
+"137
+[; ;main.c: 137:         RCSTA1bits.CREN = 0;
+[e = . . _RCSTA1bits 0 4 -> -> 0 `i `uc ]
+"138
+[; ;main.c: 138:         return 0x65;
+[e ) -> -> 101 `i `uc ]
+[e $UE 1450  ]
+"139
+[; ;main.c: 139:     }
+}
+[e :U 1451 ]
+"140
+[; ;main.c: 140:     if (input == 0x64) {
+[e $ ! == -> _input `i -> 100 `i 1452  ]
+{
+"142
+[; ;main.c: 142:         return 0x64;
+[e ) -> -> 100 `i `uc ]
+[e $UE 1450  ]
+"143
+[; ;main.c: 143:     }
+}
+[e :U 1452 ]
+"144
+[; ;main.c: 144:     if (input == 0x63) {
+[e $ ! == -> _input `i -> 99 `i 1453  ]
+{
+"146
+[; ;main.c: 146:         return 0x63;
+[e ) -> -> 99 `i `uc ]
+[e $UE 1450  ]
+"147
+[; ;main.c: 147:     }
+}
+[e :U 1453 ]
+"148
+[; ;main.c: 148:     if (input == 0x66) {
+[e $ ! == -> _input `i -> 102 `i 1454  ]
+{
+"150
+[; ;main.c: 150:         return 0x66;
+[e ) -> -> 102 `i `uc ]
+[e $UE 1450  ]
+"151
+[; ;main.c: 151:     }
+}
+[e $U 1455  ]
+"152
+[; ;main.c: 152:     else{
+[e :U 1454 ]
+{
+"154
+[; ;main.c: 154:         return input;
+[e ) _input ]
+[e $UE 1450  ]
+"155
+[; ;main.c: 155:     }
+}
+[e :U 1455 ]
+"156
+[; ;main.c: 156: }
+[e :UE 1450 ]
 }
