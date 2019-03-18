@@ -10,6 +10,7 @@
       <itemPath>HC-SR04.h</itemPath>
       <itemPath>num_pad.h</itemPath>
       <itemPath>UART_MAX.h</itemPath>
+      <itemPath>temperature.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -24,6 +25,7 @@
       <itemPath>HC-SR04.c</itemPath>
       <itemPath>num_pad.c</itemPath>
       <itemPath>UART_MAX.c</itemPath>
+      <itemPath>temperature.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
