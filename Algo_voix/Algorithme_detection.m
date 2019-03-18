@@ -3,14 +3,30 @@ clc
 close all
 clearvars
 
-%% Enregistrement du son
+
+%% 1. Enregistrement de la voix initial
+recObj_ini = audiorecorder(16000,8,1);
+
+disp('Dite votre nom.')
+recordblocking(recObj_ini, 0.5);
+disp('Enregistrement terminé');
+x = getaudiodata(recObj_ini);
+fen_ini = hamming(length(x));
+x_fen = x .* fen_ini;
+
+% Calcul de la FFT et déterminer les fréquences conséquentes
+X = fft(x_fen);
+
+
+
+%% 2. Detection de présence
 
 recObj = audiorecorder(16000,8,1);
 no_audio = 1;
 
 while no_audio
     disp('Start speaking.')
-    recordblocking(recObj, 0.5);
+    recordblocking(recObj, 0.2);
     disp('End of Recording.');
 
     y = getaudiodata(recObj);
@@ -38,6 +54,22 @@ subplot(3,1,3)
 plot(enveloppe)
 title('envellope')
 
-%play(recObj);
-%plot(y)
+%% 3. Enregistrement du son
 
+recObj = audiorecorder(16000,8,1);
+disp('Start speaking 2.')
+recordblocking(recObj, 0.5);
+disp('End of Recording 2.');
+y = getaudiodata(recObj);
+
+w = hamming(length(y));
+y_fen = y.*w;
+
+Y = fft(y_fen);
+
+%% 4. Analyse fft et correlation du signal
+
+%[h] = correlation_fft(x_fen, y_fen);
+[h_circ] = circ_correlation_fft(x_fen, y_fen);
+
+plot(h_circ)
