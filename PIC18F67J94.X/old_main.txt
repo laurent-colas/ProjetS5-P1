@@ -30,3 +30,20 @@
         
         pressed_pad = 'z';    
     }
+
+
+void menu1(void) {
+    const unsigned char menu1[20] = "A- Verif touches";
+    const unsigned char menu2[] = "B- Verif capteur dist";
+    const unsigned char menu3[] = "C- Retourner au menu";
+    
+    clearDisplay();
+    
+    moveCursor(0,0);
+    putStringLCD(&menu1[0]);
+    moveCursor(1,0);
+    putStringLCD(&menu2[0]);
+    moveCursor(2,0);
+    putStringLCD(&menu3[0]);
+    
+}

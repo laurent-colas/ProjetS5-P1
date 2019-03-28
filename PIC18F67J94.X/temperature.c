@@ -73,7 +73,6 @@ void Delay(void) {
     for (i=0; i<10000; i++) ;
 }
 
-
 void chauffe_eau(int etat) {
     if (etat == 1) {
         PORTDbits.RD5 = 1;
@@ -81,4 +80,28 @@ void chauffe_eau(int etat) {
     else {
         PORTDbits.RD5 = 0;
     }
+}
+
+void gestion_temp_eau(int temperature) {
+    if (temperature < SeuilTempEau) {
+        chauffe_eau(1);
+    }
+    else {
+        chauffe_eau(0);
+    }
+}
+void init_interruption_temp(void) {
+    INTCONbits.TMR0IE = 1; //TMR0 Overflow Interrupt Enable bit
+    INTCON2bits.TMR0IP = 0;  //TMR0 Overflow Interrupt Priority bit
+    RCONbits.IPEN = 1; //Enables priority levels on interrupts
+    
+    T0CONbits.T08BIT = 1; // Timer0 8-Bit/16-Bit Control bit
+                          // 1 = Timer0 is configured as an 8-bit timer/counter
+    T0CONbits.T0CS = 0b01; // Timer0 Clock Source Select bit 01 = Internal clock (FOSC/4)
+    T0CONbits.PSA = 0; //Timer0 prescaler is not assigned; Timer0 clock input bypasses prescaler
+    T0CONbits.T0PS = 0b011; // 1:16 prescale value
+    
+    T0CONbits.TMR0ON = 1; //Timer0 On/Off Control bit
+    TMR0L = 12; // Timer0 preload value
+    
 }
