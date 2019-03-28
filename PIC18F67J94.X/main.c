@@ -14,11 +14,26 @@
 #include "HC-SR04.h"
 #include "num_pad.h"
 #include "UART_MAX.h"
+#include "temperature.h"
+
+#define SeuilEau        5
+#define SeuilTempEau    60
+#define ATTENTE         1   
+#define ACCEUIL         2
+#define IDENTIFICATION  3
+#define CONFIGURATION   4
+
+int ETAT = 1;
 
 void init_all(void);
+void get_ready_for_coffee(void);
+void avertissement(int NumAvertissement);
 void menu1(void);
 void __interrupt() Serial_interrupt(void); 
 char check(char input);
+
+int TempEau, TempLait;
+int DistanceEau, DistanceLait;
 
 
 int number = 3;
@@ -38,66 +53,27 @@ char sys_state;
 void main(void) {
     
     init_all();
-//    putStringLCD(&str[0]);
-    while(1) {
-        
-        pressed_pad = read_pad();
-        
-        if (first_run == 1) {
-            menu1();
-            first_run = 0;
-        }
-        
-        
-        if (pressed_pad == 'B') {
-            clearDisplay();
-            putStringLCD(&str_read_dist[0]);
-            while(pressed_pad != 'C') {
-                pressed_pad = read_pad();
-                if (pressed_pad == '1') {
-                    calc_distance_mm(); 
-                    pressed_pad = 'z';
-                }
-   
-            }
-        }
-        if (pressed_pad == 'A') {
-            clearDisplay();
-            while(pressed_pad != 'C') {
-                pressed_pad = read_pad();
-                if (pressed_pad != 'z') {
-                    putchLCD(pressed_pad);
-                    __delay_ms(100);
-                }
-                
-            }
-            
-        }
-        if (pressed_pad == 'C') {
-//            clearDisplay();
-//            menu1();
-            first_run = 1;
-        }
-        
-        pressed_pad = 'z';
-//        for (int k = 0; k<3; k++) {
-//            moveCursor(k, 0);
-//            for (i=0;i<4;i++) {
-//                putchLCD('a');
-//                putNumberLCD(number);
-//            }
-//        
-//        }
-//        for (int j = 0;j<100000;j++){}
-//        clearDisplay();
-        
-//    
-//        _delay(500); 
-//        putNumberLCD(number);
-//
-//        _delay(500); 
+    get_ready_for_coffee();
     
-    }
+    while(1) {
+        switch(ETAT) {
+            case ATTENTE:
+                
+                break;
+            
+            case ACCEUIL:
+                
+                break;
+            
+            case IDENTIFICATION:
+                
+                break;
+                
+            case CONFIGURATION:
+                
+                break;
+                     
+        }
 
 }
 
@@ -106,6 +82,56 @@ void init_all(void) {
     initialisation_LCD();
     init_num_pad();
     init_dist_sensor();
+}
+
+void get_ready_for_coffee(void) {
+    
+    DistanceEau = calc_distance_mm(1);
+    if (DistanceEau < SeuilEau) {
+        avertissement(1);
+        while (DistanceEau < SeuilEau) {
+            DistanceEau = calc_distance_mm(1);
+        }
+    }
+    TempEau = get_temp(1);
+    if (TempEau< SeuilTempEau) {
+        chauffe_eau(1);
+        avertissement(2);
+        while (TempEau< SeuilTempEau) {
+            TempEau = get_temp(1);
+            clearRow(1);
+            moveCursor(1,0)
+            putNumberLCD(TempEau);
+            moveCursor(1,4);
+            const unsigned char div[13] = " / 90 Celsius";
+            putStringLCD(&div[0]);
+        }   
+    }
+    avertissement(0);
+    ETAT = ATTENTE;
+}
+
+void avertissement(int NumAvertissement) {
+    if (NumAvertissement == 0) {
+        const unsigned char avert1[14] = "Machine Prete!";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&avert1[0]);
+    }
+    if (NumAvertissement == 1) {
+        const unsigned char avert1[10] = "Manque eau";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&avert1[0]);
+    }
+    if (NumAvertissement == 2) {
+        const unsigned char avert1[13] = "Prep temp eau";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&avert1[0]);
+        
+    }
+    
 }
 
 void menu1(void) {
@@ -126,13 +152,14 @@ void menu1(void) {
 
 
 void __interrupt() Serial_interrupt() {
+//    p.417
     while(RC1IF == 0);
     out = RCREG1;
     sys_state = check(out);
 }
 
 char check(char input) {
-    if(RCSTAbits.FERR == 1 || RCSTAbits.OERR == 1){
+    if(RCSTA1bits.FERR == 1 || RCSTA1bits.OERR == 1){
         RCSTA1bits.CREN = 0;
         return 0x65;
     }

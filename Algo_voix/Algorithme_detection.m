@@ -8,7 +8,7 @@ clearvars
 recObj_ini = audiorecorder(16000,8,1);
 
 disp('Dite votre nom.')
-recordblocking(recObj_ini, 0.5);
+recordblocking(recObj_ini, 1);
 disp('Enregistrement terminé');
 x = getaudiodata(recObj_ini);
 fen_ini = hamming(length(x));

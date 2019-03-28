@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/laure/Documents/ProjetS5-P1/PIC18F67J94.X/num_pad.c</file>
+            <file>file:/C:/Users/laure/Documents/ProjetS5-P1/PIC18F67J94.X/UART_MAX.c</file>
             <file>file:/C:/Users/laure/Documents/ProjetS5-P1/PIC18F67J94.X/main.c</file>
+            <file>file:/C:/Users/laure/Documents/ProjetS5-P1/PIC18F67J94.X/HC-SR04.h</file>
             <file>file:/C:/Users/laure/Documents/ProjetS5-P1/PIC18F67J94.X/temperature.h</file>
+            <file>file:/C:/Users/laure/Documents/ProjetS5-P1/PIC18F67J94.X/LCD_SPI.h</file>
+            <file>file:/C:/Users/laure/Documents/ProjetS5-P1/PIC18F67J94.X/HC-SR04.c</file>
             <file>file:/C:/Users/laure/Documents/ProjetS5-P1/PIC18F67J94.X/temperature.c</file>
+            <file>file:/C:/Users/laure/Documents/ProjetS5-P1/PIC18F67J94.X/LCD_SPI.c</file>
         </group>
     </open-files>
 </project-private>

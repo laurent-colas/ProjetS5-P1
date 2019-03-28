@@ -11,10 +11,16 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
+    
+#define RT0 10000   // ?
+#define B 3977      // K
+#define VCC 5    //Supply voltage
+#define R 10000  //R=10K?
+    
 void init_ADC(void);
-
-
+int get_temp(int channel);
+void Delay(void);
+void chauffe_eau(int etat);
 
 #ifdef	__cplusplus
 }
