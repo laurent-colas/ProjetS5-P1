@@ -30,7 +30,7 @@ void SetupClock(){
 void init_UART() {
     SetupClock(); 
     
-    SPBRGH = 12; // Baude rate value
+    SPBRGH = 0x33; //51; // Baude rate value p.411
     OSCCON2bits.IOLOCK = 0; //Register values can only be changed if IOLOCK = 0
 
     //RX pin set as input
@@ -52,6 +52,9 @@ void init_UART() {
      */
     BAUDCONbits.TXCKP = 1;
     BAUDCONbits.RXDTP = 1;
+    
+    
+//    p.415
     
     // TXSTAx: EUSARTx TRANSMIT STATUS AND CONTROL REGISTER
     TXSTAbits.TX9 = 0; //9-Bit Transmit Enable bit 
@@ -78,6 +81,8 @@ void init_UART() {
 }
 
 void send_data(char input) {
-    while(TXIF==0);
+//    p.415
+    while(TXSTA1bits.TRMT == 0);
+//    while(TXIF==0);
     TXREG1 = input; //out;
 }

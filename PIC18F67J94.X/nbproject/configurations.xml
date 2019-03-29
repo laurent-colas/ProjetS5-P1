@@ -26,6 +26,7 @@
       <itemPath>num_pad.c</itemPath>
       <itemPath>UART_MAX.c</itemPath>
       <itemPath>temperature.c</itemPath>
+      <itemPath>old_main.txt</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

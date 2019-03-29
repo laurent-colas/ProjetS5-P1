@@ -1,0 +1,49 @@
+        pressed_pad = read_pad();
+        if (first_run == 1) {
+            menu1();
+            first_run = 0;
+        }
+        if (pressed_pad == 'B') {
+            clearDisplay();
+            putStringLCD(&str_read_dist[0]);
+            while(pressed_pad != 'C') {
+                pressed_pad = read_pad();
+                if (pressed_pad == '1') {
+                    Distance_mm_int = calc_distance_mm(1); 
+                    pressed_pad = 'z';
+                }
+            }
+        }
+        if (pressed_pad == 'A') {
+            clearDisplay();
+            while(pressed_pad != 'C') {
+                pressed_pad = read_pad();
+                if (pressed_pad != 'z') {
+                    putchLCD(pressed_pad);
+                    __delay_ms(100);
+                }   
+            }
+        }
+        if (pressed_pad == 'C') {
+            first_run = 1;
+        }
+        
+        pressed_pad = 'z';    
+    }
+
+
+void menu1(void) {
+    const unsigned char menu1[20] = "A- Verif touches";
+    const unsigned char menu2[] = "B- Verif capteur dist";
+    const unsigned char menu3[] = "C- Retourner au menu";
+    
+    clearDisplay();
+    
+    moveCursor(0,0);
+    putStringLCD(&menu1[0]);
+    moveCursor(1,0);
+    putStringLCD(&menu2[0]);
+    moveCursor(2,0);
+    putStringLCD(&menu3[0]);
+    
+}

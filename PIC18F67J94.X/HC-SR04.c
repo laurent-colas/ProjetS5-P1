@@ -6,12 +6,12 @@
  */
 
 #include "HC-SR04.h"
-
 #include "pic18f67j94.h"
 
 void init_dist_sensor(void) {
 //    
     TRISDbits.TRISD0 = 0;
+    TRISDbits.TRISD1 = 0;
     
     INTCON2bits.RBPU = 0;
     WPUBbits.WPUB1 = 1; // Activate pull-up on B1
@@ -37,16 +37,26 @@ void init_timer_1(void) {
     TMR1H = 0;
 }
 
-void Trigger_Pulse_10us(void){
+void Trigger_Pulse_10us(int channel){
 //    Trigger_Pulse = 1;
-    PORTDbits.RD0 = 1;
-    __delay_us(10);
-    //Trigger_Pulse = 0;
-    PORTDbits.RD0 = 0;
+    if (channel == 1) {
+        PORTDbits.RD0 = 1;
+        __delay_us(10);
+        //Trigger_Pulse = 0;
+        PORTDbits.RD0 = 0;
+    }
+    else if (channel == 2) {
+        PORTDbits.RD1 = 1;
+        __delay_us(10);
+        //Trigger_Pulse = 0;
+        PORTDbits.RD1 = 0;
+    }
+    
 }
 
-void calc_distance_mm(void) {
+int calc_distance_mm(int channel) {
     int a;
+    int retour;
     const unsigned char dist[11] = "Distance = ";
     const unsigned char cm[3] = " cm";
     const unsigned char OoR[12] ="Out of Range";
@@ -54,7 +64,7 @@ void calc_distance_mm(void) {
     TMR1L = 0;
     TMR1H = 0;
     
-    Trigger_Pulse_10us();
+    Trigger_Pulse_10us(channel);
     
     while(!PORTBbits.RB1);
     T1CONbits.TMR1ON = 1;
@@ -73,34 +83,12 @@ void calc_distance_mm(void) {
 //    putNumberLCD(Distance_mm_int);
     
     if (a>=2 && a <=400) {
-        clearDisplay();
-        moveCursor(0,1);
-        putStringLCD(&dist[0]);
-//        putNumberLCD(Distance_mm_int);
-        
-        moveCursor(0,14);
-        putchLCD(a%10 + 48);
-//        putNumberLCD((Distance_mm_int/100)%10);
-        
-        a = a/10;
-        moveCursor(0,13);
-        putchLCD(a%10 + 48);
-//        putNumberLCD((Distance_mm_int/10)%10);
-        
-        a = a/10;
-        moveCursor(0,12);
-        putchLCD(a%10 + 48);
-//        putNumberLCD((Distance_mm_int/1)%10);
-        
-        moveCursor(0,15);
-        putStringLCD(&cm[0]);
+        retour = a; 
     }
     else {
-        clearDisplay();
-        moveCursor(1,1);
-        putStringLCD(&OoR[0]);
+        retour = 0;
     }
-    __delay_ms(100);
+//    __delay_ms(100);
     
 //    while(PORTBbits.RB1 == 1 && !PIR1bits.TMR1IF);
 //    Time = TMR1;
@@ -109,4 +97,5 @@ void calc_distance_mm(void) {
 //    Distance_mm_int = (int)(Distance * 10);
 //    
 //    return Distance_mm_int;
+    return retour;
 }

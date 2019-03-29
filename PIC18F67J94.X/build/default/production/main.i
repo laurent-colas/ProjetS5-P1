@@ -14,7 +14,6 @@
 
 
 
-
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -19297,10 +19296,10 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\xc.h" 2 3
-# 9 "main.c" 2
+# 8 "main.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdbool.h" 1 3
-# 10 "main.c" 2
+# 9 "main.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 1 3
 # 22 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 3
@@ -19385,7 +19384,7 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 131 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdint.h" 2 3
-# 11 "main.c" 2
+# 10 "main.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.00\\pic\\include\\c99\\stdio.h" 3
@@ -19523,7 +19522,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 12 "main.c" 2
+# 11 "main.c" 2
 
 # 1 "./config_bits.h" 1
 # 17 "./config_bits.h"
@@ -19545,7 +19544,7 @@ char *tempnam(const char *, const char *);
 #pragma config BOREN = ON
 
 #pragma config CP0 = OFF
-# 13 "main.c" 2
+# 12 "main.c" 2
 
 # 1 "./LCD_SPI.h" 1
 # 34 "./LCD_SPI.h"
@@ -19569,14 +19568,14 @@ void moveCursor(int row, int col);
 char fliplr(char input);
 void putNumberLCD(int number);
 void clearRow(int row);
-# 14 "main.c" 2
+# 13 "main.c" 2
 
 # 1 "./HC-SR04.h" 1
 # 14 "./HC-SR04.h"
-void Trigger_Pulse_10us(void);
+void Trigger_Pulse_10us(int channel);
 void init_dist_sensor(void);
 void init_timer_1(void);
-void calc_distance_mm(void);
+int calc_distance_mm(int channel);
 
 
 
@@ -19585,13 +19584,13 @@ float Distance;
 int Distance_mm_int;
 int Time;
 float Total_distance[10];
-# 15 "main.c" 2
+# 14 "main.c" 2
 
 # 1 "./num_pad.h" 1
 # 13 "./num_pad.h"
 void init_num_pad(void);
 char read_pad(void);
-# 16 "main.c" 2
+# 15 "main.c" 2
 
 # 1 "./UART_MAX.h" 1
 # 12 "./UART_MAX.h"
@@ -19709,13 +19708,29 @@ void baud4USART ( unsigned char baudconfig);
 void SetupClock(void);
 void init_UART(void);
 void send_data(char input);
+# 16 "main.c" 2
+
+# 1 "./temperature.h" 1
+# 20 "./temperature.h"
+void init_ADC(void);
+int get_temp(int channel);
+void Delay(void);
+void chauffe_eau(int etat);
 # 17 "main.c" 2
 
 
+
+
+
 void init_all(void);
+void get_ready_for_coffee(void);
+void avertissement(int NumAvertissement);
 void menu1(void);
 void __attribute__((picinterrupt(""))) Serial_interrupt(void);
 char check(char input);
+
+int TempEau, TempLait;
+int DistanceEau, DistanceLait;
 
 
 int number = 3;
@@ -19735,27 +19750,23 @@ char sys_state;
 void main(void) {
 
     init_all();
+    get_ready_for_coffee();
 
     while(1) {
-
         pressed_pad = read_pad();
-
         if (first_run == 1) {
             menu1();
             first_run = 0;
         }
-
-
         if (pressed_pad == 'B') {
             clearDisplay();
             putStringLCD(&str_read_dist[0]);
             while(pressed_pad != 'C') {
                 pressed_pad = read_pad();
                 if (pressed_pad == '1') {
-                    calc_distance_mm();
+                    Distance_mm_int = calc_distance_mm(1);
                     pressed_pad = 'z';
                 }
-
             }
         }
         if (pressed_pad == 'A') {
@@ -19766,18 +19777,13 @@ void main(void) {
                     putchLCD(pressed_pad);
                     _delay((unsigned long)((100)*(8000000/4000.0)));
                 }
-
             }
-
         }
         if (pressed_pad == 'C') {
-
-
             first_run = 1;
         }
 
         pressed_pad = 'z';
-# 101 "main.c"
     }
 
 }
@@ -19787,6 +19793,42 @@ void init_all(void) {
     initialisation_LCD();
     init_num_pad();
     init_dist_sensor();
+}
+
+void get_ready_for_coffee(void) {
+
+    DistanceEau = calc_distance_mm(1);
+    if (DistanceEau < 5) {
+        avertissement(1);
+        while (DistanceEau < 5) {
+            DistanceEau = calc_distance_mm(1);
+        }
+    }
+    TempEau = get_temp(1);
+    if (TempEau< 60) {
+        chauffe_eau(1);
+        avertissement(2);
+        putNumberLCD(TempEau);
+
+    }
+
+}
+
+void avertissement(int NumAvertissement) {
+    if (NumAvertissement == 1) {
+        const unsigned char avert1[10] = "Manque eau";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&avert1[0]);
+    }
+    if (NumAvertissement == 2) {
+        const unsigned char avert1[13] = "Prep temp eau";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&avert1[0]);
+
+    }
+
 }
 
 void menu1(void) {
@@ -19807,13 +19849,14 @@ void menu1(void) {
 
 
 void __attribute__((picinterrupt(""))) Serial_interrupt() {
+
     while(RC1IF == 0);
     out = RCREG1;
     sys_state = check(out);
 }
 
 char check(char input) {
-    if(RCSTAbits.FERR == 1 || RCSTAbits.OERR == 1){
+    if(RCSTA1bits.FERR == 1 || RCSTA1bits.OERR == 1){
         RCSTA1bits.CREN = 0;
         return 0x65;
     }
