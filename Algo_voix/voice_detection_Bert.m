@@ -6,7 +6,8 @@ fs = 8000;
 
 
 dt = 1/fs;
-w = hamming(numel(dt));
+w = hamming(fs*2);
+w = w';
 nbBits = 16;
 
 %% Configuration 

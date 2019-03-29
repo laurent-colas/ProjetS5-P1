@@ -11,6 +11,7 @@
       <itemPath>num_pad.h</itemPath>
       <itemPath>UART_MAX.h</itemPath>
       <itemPath>temperature.h</itemPath>
+      <itemPath>main.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -26,7 +27,6 @@
       <itemPath>num_pad.c</itemPath>
       <itemPath>UART_MAX.c</itemPath>
       <itemPath>temperature.c</itemPath>
-      <itemPath>old_main.txt</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
