@@ -6,7 +6,7 @@ fs = 8000;
 
 
 dt = 1/fs;
-w = hamming(fs*2);
+w = hamming(2*fs);
 w = w';
 nbBits = 16;
 
@@ -81,7 +81,7 @@ disp('End of Recording.');
 x2 = getaudiodata(recObj);
 x2 = x2./max(abs(x2));
 x2 = x2 - mean(x2);
-x2 = x2.*w;
+x2 = x2.*w';
 
 X2 = fft(x2);
 X2m = abs(X2);
@@ -116,7 +116,7 @@ hold on
 plot(corr2.magn)
 
 if score2 <= 20*seuil
-    disp("Détection")
+    disp("Détection YEAH ! ta dit ton nom !!! ")
 else
     disp("Pas le bon nom asti dcave")
 end
