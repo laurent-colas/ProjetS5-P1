@@ -1,4 +1,4 @@
 ﻿  functionHelperProjetS5.cpp
-c:\users\berth\onedrive\documents\git\projet s5\fonction help\fonction_projet_s5\fonction_projet_s5\functionhelperprojets5.cpp(33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\berth\onedrive\documents\git\projet s5\fonction help\fonction_projet_s5\fonction_projet_s5\functionhelperprojets5.cpp(37): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  fonction_projet_s5.vcxproj -> C:\Users\berth\OneDrive\Documents\Git\projet s5\fonction HELP\fonction_projet_s5\Debug\fonction_projet_s5.exe
+c:\users\laure\documents\projets5-p1\fonction help\fonction_projet_s5\fonction_projet_s5\functionhelperprojets5.cpp(43): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+c:\users\laure\documents\projets5-p1\fonction help\fonction_projet_s5\fonction_projet_s5\functionhelperprojets5.cpp(47): warning C4244: '=' : conversion de 'int' en 'float', perte possible de données
+  fonction_projet_s5.vcxproj -> C:\Users\laure\Documents\ProjetS5-P1\fonction HELP\fonction_projet_s5\Debug\fonction_projet_s5.exe

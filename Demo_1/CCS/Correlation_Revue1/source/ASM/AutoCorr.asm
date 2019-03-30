@@ -11,8 +11,21 @@
 _AutoCorrelation
 	.asmfunc
 
+		; Protection du CSR et de l'AMR sur la pile
+	STW A3, *B15--[2]
+	STW A2, *B15--[2]
+	STW A8, *B15--[2]
+	STW A10, *B15--[2]
+	STW A12, *B15--[2]
+	STW A13, *B15--[2]
+	
+	STW B12, *B15--[2]
+	STW B13, *B15--[2]
+	
+	MVC	AMR, A3
+	STW A3, *B15--[2]	;Push AMR sur la pile (sur ce DSP, le pointeur de pile doit toujour changer en multiples de 8 bytes)
 
-
+	
 	MV A4, A10 ; L
 	MV A5, A11 ; L
 	MV B4, B0 ; L
@@ -43,8 +56,30 @@ Boucle2:
 	[B0] B Boucle2
 	NOP 5
 
+	; Restauration de l'AMR et des registres de travail
 
+	LDW *++B15[2], A3		;Pop AMR de la pile (sur ce DSP, le pointeur de pile doit toujour changer en multiples de 8 bytes)
+	NOP 5
+	MVC A3, AMR
 
+	LDW *++B15[2], B13
+	NOP 5
+	LDW *++B15[2], B12
+	NOP 5
+	LDW *++B15[2], A13
+	NOP 5
+	LDW *++B15[2], A12
+	NOP 5
+	LDW *++B15[2], A10
+	NOP 5
+	LDW *++B15[2], A8
+	NOP 5
+	LDW *++B15[2], A2
+	NOP 5
+	LDW *++B15[2], A3
+	NOP 5
+	
+	
 	B B3 ; INDISPENSABLE ; B3 contient l'adresse de retour
     NOP 5
 	.endasmfunc

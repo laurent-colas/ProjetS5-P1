@@ -1,3 +1,10 @@
+%% Clean
+clear all 
+close all 
+clc
+
+%% test 1
+
 t = 0:1000-1;
 f = 500;
 fe = 8000;
@@ -20,8 +27,8 @@ w_hamm = 0.54 - 0.46.*cos(2.*pi.*(n./N));
 
 %% fenetre triangle
 
-L = 200;
-triag(L) = [];
+L = 100;
+%triag(L) = [];
 if mod(L,2) == 0
     for n=1:L/2
         triag(n) = (2*n-1)/L;

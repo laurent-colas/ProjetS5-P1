@@ -15,6 +15,7 @@
 #include "num_pad.h"
 #include "UART_MAX.h"
 #include "temperature.h"
+#include "main.h"
 
 
 

@@ -27,26 +27,27 @@ void fenetre_hamming(float w[], int length) {
 }
 
 void fenetre_triangle(float w[], int length) {
+	float temp;
 	if (length % 2 == 0) {
-		for (i = 0; i < length / 2; i++)
+		for (i = 1; i <= length / 2; i++)
 		{
-			w[i] = (((2 * i)) / (length));
+			w[i-1] = (((2 * i - 1)) / (float)(length));
 		}
-		for (i = length / 2; i < length; i++)
+		for (i = (length / 2) + 1; i <= length; i++)
 		{
-			w[i] = (2 - ((2 * i)) / (length));
+			w[i-1] = (2 - (((2 * i - 1)) / (float)(length)));
 		}
 	}
-	/*else {
-		for (i = 0; i <= length / 2; i++)
+	else {
+		for (i = 1; i <= length / 2; i++)
 		{
-			w[i] = ((2 * i) / (length + 1));
+			w[i-1] = ((2 * i) / (length + 1));
 		}
-		for (i = length / 2; i <= length; i++)
+		for (i = (length / 2)+1; i <= length; i++)
 		{
-			w[i] = (2 - ((2 * i) / (length + 1)));
+			w[i-1] = (2 - ((2 * i) / (length + 1)));
 		}
-	}*/
+	}
 
 }
 
