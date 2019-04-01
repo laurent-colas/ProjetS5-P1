@@ -31,7 +31,7 @@ for i = 1:3
     X(i,:).real = real(X(i,:).cmplx);
     X(i,:).img = imag(X(i,:).cmplx);
     X(i,:).magn = abs(X(i,:).cmplx);
-    X(i,:).phase = angle(X(i,:).cmplx); 
+    X(i,:).phase = angle(X(i,:).cmplx);
 end
 
 XREF.cmplx = (X(1,:).cmplx + X(2,:).cmplx + X(3,:).cmplx)./3;
@@ -116,9 +116,9 @@ hold on
 plot(corr2.magn)
 
 if score2 <= 20*seuil
-    disp("Détection YEAH ! ta dit ton nom !!! ")
+    disp('Détection YEAH ! ta dit ton nom !!! ');
 else
-    disp("Pas le bon nom asti dcave")
+    disp('Pas le bon nom asti dcave');
 end
 
 
