@@ -18,7 +18,7 @@
 
 
 
-#define PI 3.14159265359
+//const float PI = 3.14159265358979;
 #define N   160000
 
 struct TABLEAU_INIT {

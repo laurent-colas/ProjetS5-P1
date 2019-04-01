@@ -37,6 +37,9 @@ source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5
 source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/findErrAccordage.h
 source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/getNewCommand.h
 source/C/main_accordeur.obj: C:/ti/dsk6713/include/C6713Helper_UdeS.h
+source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/functionHelperProjetS5.h
+source/C/main_accordeur.obj: C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/math.h
+source/C/main_accordeur.obj: C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/stdio.h
 
 ../source/C/main_accordeur.c: 
 C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/stdio.h: 
@@ -75,3 +78,6 @@ C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/genCo
 C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/findErrAccordage.h: 
 C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/getNewCommand.h: 
 C:/ti/dsk6713/include/C6713Helper_UdeS.h: 
+C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/functionHelperProjetS5.h: 
+C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/math.h: 
+C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/stdio.h: 

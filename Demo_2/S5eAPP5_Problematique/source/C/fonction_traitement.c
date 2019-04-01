@@ -34,7 +34,7 @@ void phase_complex(float tableau_in_real[], float tableau_in_imag[], float table
 void fenetre_hamming(float w[], int length) {
     for (i = 0; i < length; i++)
     {
-        w[i] = (float) (0.54 - 0.46*cos(2 * PI* i / length));
+        w[i] = (float) (0.54 - 0.46*cos(2 * 3.14* i / length));
     }
 }
 

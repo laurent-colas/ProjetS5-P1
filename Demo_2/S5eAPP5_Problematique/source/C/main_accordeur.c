@@ -42,6 +42,7 @@
 #include "findErrAccordage.h"
 #include "getNewCommand.h"
 #include "C6713Helper_UdeS.h"
+#include "functionHelperProjetS5.h"
 
 
 // VARIABLES GLOBALES
@@ -80,16 +81,17 @@ void main()
 	initGenM2();
 	afficherMenu();		// Affichage du menu principal à l'écran
 	initAccordeur();	// Initialisations des variables et du hardware
-	struct TABLEAU_INIT Ech_1;
-	struct TABLEAU_INTI Ech_2;
-	struct TABLEAU_INTI Ech_3;
-
+	struct TABLEAU_INIT Ech[3];
+//
+//	struct TABLEAU_INTI Ech_2;
+//	struct TABLEAU_INTI Ech_3;
+	int i;
 	for (i = 0; i<N; i++) {
-	    Ech_1.signal_in[i] = 0;
-	    Ech_2.signal_in[i] = 0;
-	    Ech_3.signal_in[i] = 0;
+	    Ech[0].signal_in[i] = 0;
+	    Ech[1].signal_in[i] = 0;
+	    Ech[2].signal_in[i] = 0;
 	}
-	pre_traitement(Ech_1, Ech_2, Ech_3);
+	pre_traitement(Ech[0], Ech[1], Ech[2]);
 	while(1) {
 
 		// Si le tampon d'échantillons filtrés pour l'autocorrélation est plein
