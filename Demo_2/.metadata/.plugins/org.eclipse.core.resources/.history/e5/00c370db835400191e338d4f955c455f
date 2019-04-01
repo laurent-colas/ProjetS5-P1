@@ -1,0 +1,13 @@
+/*
+ * analyse_son.c
+ *
+ *  Created on: 1 avr. 2019
+ *      Author: Laurent Colas
+ */
+
+
+
+
+void analyse_son(float tableau_son_in[]) {
+
+}

@@ -19864,11 +19864,13 @@ double yn(int, double);
 # 10 "temperature.c" 2
 
 # 1 "./temperature.h" 1
-# 20 "./temperature.h"
+# 22 "./temperature.h"
 void init_ADC(void);
 int get_temp(int channel);
 void Delay(void);
 void chauffe_eau(int etat);
+void init_interruption_temp(void);
+void gestion_temp_eau(int temperature);
 # 11 "temperature.c" 2
 
 # 1 "./pic18f67j94.h" 1
@@ -19927,7 +19929,6 @@ void Delay(void) {
     for (i=0; i<10000; i++) ;
 }
 
-
 void chauffe_eau(int etat) {
     if (etat == 1) {
         PORTDbits.RD5 = 1;
@@ -19935,4 +19936,28 @@ void chauffe_eau(int etat) {
     else {
         PORTDbits.RD5 = 0;
     }
+}
+
+void gestion_temp_eau(int temperature) {
+    if (temperature < 60) {
+        chauffe_eau(1);
+    }
+    else {
+        chauffe_eau(0);
+    }
+}
+void init_interruption_temp(void) {
+    INTCONbits.TMR0IE = 1;
+    INTCON2bits.TMR0IP = 0;
+    RCONbits.IPEN = 1;
+
+    T0CONbits.T08BIT = 1;
+
+    T0CONbits.T0CS = 0b01;
+    T0CONbits.PSA = 0;
+    T0CONbits.T0PS = 0b011;
+
+    T0CONbits.TMR0ON = 1;
+    TMR0L = 12;
+
 }

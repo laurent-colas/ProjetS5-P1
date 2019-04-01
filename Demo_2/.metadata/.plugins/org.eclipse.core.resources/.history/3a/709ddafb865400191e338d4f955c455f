@@ -1,0 +1,43 @@
+/*
+ * functionHelperProjetS5.h
+ *
+ *  Created on: 1 avr. 2019
+ *      Author: laure
+ */
+
+#ifndef INCLUDES_FUNCTIONHELPERPROJETS5_H_
+#define INCLUDES_FUNCTIONHELPERPROJETS5_H_
+
+
+//#pragma once
+
+//#include <iostream.h>
+#include <math.h>
+#include <stdio.h>
+
+
+
+
+#define PI 3.14159265359
+#define N   160000
+
+typedef struct
+{
+    int noCorde;        /* Numéro de la corde à accorder
+                            corde #1 @ f=82.407 Hz
+                            corde #2 @ f=110.000 Hz
+                            corde #3 @ f=146.832 Hz
+                            corde #4 @ f=195.998 Hz
+                            corde #5 @ f=246.942 Hz
+                            corde #6 @ f=329.628 Hz */
+    int isPlay;         // 1 si l'utilisateur désire écouter la note
+} USELECTIONS;
+
+
+void magnitude_complex(float tableau_in_real[], float tableau_in_imag[], float tableau_out_magnitude[], int length);
+void phase_complex(float tableau_in_real[], float tableau_in_imag[], float tableau_out_phase[], int length);
+void fenetre_hamming(float w[], int length);
+void fenetre_triangle(float w[], int length);
+void FFT(float tableau_in[], float tableau_out_real[],float tableau_out_imag[]);
+
+#endif /* INCLUDES_FUNCTIONHELPERPROJETS5_H_ */

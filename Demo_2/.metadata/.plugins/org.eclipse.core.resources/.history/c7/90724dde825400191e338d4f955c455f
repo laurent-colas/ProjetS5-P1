@@ -1,0 +1,31 @@
+/*
+ * functionHelperProjetS5.h
+ *
+ *  Created on: 1 avr. 2019
+ *      Author: laure
+ */
+
+#ifndef INCLUDES_FUNCTIONHELPERPROJETS5_H_
+#define INCLUDES_FUNCTIONHELPERPROJETS5_H_
+
+
+//#pragma once
+
+#include <iostream.h>
+#include <math.h>
+#include <stdio.h>
+
+
+
+
+#define PI 3.14159265359
+
+
+
+void magnitude_complex(float tableau_in_real[], float tableau_in_imag[], float tableau_out_magnitude[], int length);
+void phase_complex(float tableau_in_real[], float tableau_in_imag[], float tableau_out_phase[], int length);
+void fenetre_hamming(float w[], int length);
+void fenetre_triangle(float w[], int length);
+
+
+#endif /* INCLUDES_FUNCTIONHELPERPROJETS5_H_ */

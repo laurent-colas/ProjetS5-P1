@@ -1,0 +1,17 @@
+/*
+ * analyse_son.c
+ *
+ *  Created on: 1 avr. 2019
+ *      Author: Laurent Colas
+ */
+#include "functionHelperProjetS5.h"
+
+
+
+void analyse_son(float tableau_son_in[]) {
+
+}
+
+void pre_traitement(float tableau_son_in[]) {
+    fenetre_triangle(float w[], int length);
+}

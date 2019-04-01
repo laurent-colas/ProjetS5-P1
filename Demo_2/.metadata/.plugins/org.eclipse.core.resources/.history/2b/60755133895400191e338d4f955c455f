@@ -1,0 +1,28 @@
+/*
+ * analyse_son.c
+ *
+ *  Created on: 1 avr. 2019
+ *      Author: Laurent Colas
+ */
+#include "functionHelperProjetS5.h"
+
+float fen_triang[8000];
+
+void analyse_son(float tableau_son_in[]) {
+
+}
+
+void pre_traitement(struct TABLEAU_INIT Ech_1, struct TABLEAU_INIT Ech_2, struct TABLEAU_INIT, ){
+//        float tableau_son_in1[], float tableau_son_in2[], float tableau_son_in3[]) {
+    int i = 0;
+//    float tableau_son_organiser[3] = {tableau_son_in1, tableau_son_in2, tableau_son_in3};
+    fenetre_triangle(fen_triang, 8000);
+
+    FFT(tableau_son_in1, Ech_1.real_tableau_in[], Ech_1.imag_tableau_in[]);
+    FFT(tableau_son_in2, Ech_2.real_tableau_in[], Ech_2.imag_tableau_in[]);
+    FFT(tableau_son_in3, Ech_3.real_tableau_in[], Ech_3.imag_tableau_in[]);
+
+    magnitude_complex(Ech_1.real_tableau_in[], Ech_1.imag_tableau_in[], Ech_1.mag_tableau_in[], N);
+
+
+}

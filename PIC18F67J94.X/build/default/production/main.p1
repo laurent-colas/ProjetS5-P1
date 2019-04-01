@@ -1,33 +1,23 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"22 main.c
-[; ;main.c: 22: void init_all(void);
+"33 ./main.h
+[; ;./main.h: 33: void init_all(void);
 [v _init_all `(v ~T0 @X0 0 ef ]
-"23
-[; ;main.c: 23: void get_ready_for_coffee(void);
+"34
+[; ;./main.h: 34: void get_ready_for_coffee(void);
 [v _get_ready_for_coffee `(v ~T0 @X0 0 ef ]
+"36
+[; ;./main.h: 36: void message_etat(int etat);
+[v _message_etat `(v ~T0 @X0 0 ef1`i ]
+"18 ./UART_MAX.h
+[; ;./UART_MAX.h: 18: void send_data(char input);
+[v _send_data `(v ~T0 @X0 0 ef1`uc ]
 "14 ./num_pad.h
 [; ;./num_pad.h: 14: char read_pad(void);
 [v _read_pad `(uc ~T0 @X0 0 ef ]
-"25 main.c
-[; ;main.c: 25: void menu1(void);
-[v _menu1 `(v ~T0 @X0 0 ef ]
-"44 ./LCD_SPI.h
-[; ;./LCD_SPI.h: 44: void clearDisplay(void);
-[v _clearDisplay `(v ~T0 @X0 0 ef ]
-"42
-[; ;./LCD_SPI.h: 42: void putStringLCD(const unsigned char*);
-[v _putStringLCD `(v ~T0 @X0 0 ef1`*Cuc ]
-"17 ./HC-SR04.h
-[; ;./HC-SR04.h: 17: int calc_distance_mm(int channel);
-[v _calc_distance_mm `(i ~T0 @X0 0 ef1`i ]
-"43 ./LCD_SPI.h
-[; ;./LCD_SPI.h: 43: void putchLCD(unsigned char);
-[v _putchLCD `(v ~T0 @X0 0 ef1`uc ]
-[v F10896 `(v ~T0 @X0 1 tf1`ul ]
-"183 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18.h
-[v __delay `JF10896 ~T0 @X0 0 e ]
-[p i __delay ]
+"35 ./main.h
+[; ;./main.h: 35: void avertissement(int NumAvertissement);
+[v _avertissement `(v ~T0 @X0 0 ef1`i ]
 "17 ./UART_MAX.h
 [; ;./UART_MAX.h: 17: void init_UART(void);
 [v _init_UART `(v ~T0 @X0 0 ef ]
@@ -40,32 +30,51 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15 ./HC-SR04.h
 [; ;./HC-SR04.h: 15: void init_dist_sensor(void);
 [v _init_dist_sensor `(v ~T0 @X0 0 ef ]
-"24 main.c
-[; ;main.c: 24: void avertissement(int NumAvertissement);
-[v _avertissement `(v ~T0 @X0 0 ef1`i ]
-"21 ./temperature.h
-[; ;./temperature.h: 21: int get_temp(int channel);
+"17
+[; ;./HC-SR04.h: 17: int calc_distance_mm(int channel);
+[v _calc_distance_mm `(i ~T0 @X0 0 ef1`i ]
+"23 ./temperature.h
+[; ;./temperature.h: 23: int get_temp(int channel);
 [v _get_temp `(i ~T0 @X0 0 ef1`i ]
-"23
-[; ;./temperature.h: 23: void chauffe_eau(int etat);
+"25
+[; ;./temperature.h: 25: void chauffe_eau(int etat);
 [v _chauffe_eau `(v ~T0 @X0 0 ef1`i ]
-"50 ./LCD_SPI.h
-[; ;./LCD_SPI.h: 50: void putNumberLCD(int number);
-[v _putNumberLCD `(v ~T0 @X0 0 ef1`i ]
+"51 ./LCD_SPI.h
+[; ;./LCD_SPI.h: 51: void clearRow(int row);
+[v _clearRow `(v ~T0 @X0 0 ef1`i ]
 "48
 [; ;./LCD_SPI.h: 48: void moveCursor(int row, int col);
 [v _moveCursor `(v ~T0 @X0 0 ef2`i`i ]
+"50
+[; ;./LCD_SPI.h: 50: void putNumberLCD(int number);
+[v _putNumberLCD `(v ~T0 @X0 0 ef1`i ]
+"42
+[; ;./LCD_SPI.h: 42: void putStringLCD(const unsigned char*);
+[v _putStringLCD `(v ~T0 @X0 0 ef1`*Cuc ]
+"26 ./temperature.h
+[; ;./temperature.h: 26: void init_interruption_temp(void);
+[v _init_interruption_temp `(v ~T0 @X0 0 ef ]
+"44 ./LCD_SPI.h
+[; ;./LCD_SPI.h: 44: void clearDisplay(void);
+[v _clearDisplay `(v ~T0 @X0 0 ef ]
 [t ~ __interrupt . k ]
-[t T2 __interrupt ]
+[t T3 __interrupt high_priority ]
 "35236 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 35236: extern volatile __bit RC1IF __attribute__((address(0x7CF5)));
 [v _RC1IF `Vb ~T0 @X0 0 e@31989 ]
 "27012
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 27012: extern volatile unsigned char RCREG1 __attribute__((address(0xFAE)));
 [v _RCREG1 `Vuc ~T0 @X0 0 e@4014 ]
-"27 main.c
-[; ;main.c: 27: char check(char input);
+"41 ./main.h
+[; ;./main.h: 41: char check(char input);
 [v _check `(uc ~T0 @X0 0 ef1`uc ]
+[t T4 __interrupt low_priority ]
+"38647 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 38647: extern volatile __bit TMR0IF __attribute__((address(0x7F92)));
+[v _TMR0IF `Vb ~T0 @X0 0 e@32658 ]
+"27 ./temperature.h
+[; ;./temperature.h: 27: void gestion_temp_eau(int temperature);
+[v _gestion_temp_eau `(v ~T0 @X0 0 ef1`i ]
 "26485 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26485:     struct {
 [s S1143 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -1791,28 +1800,58 @@ Version 4.0 HI-TECH Software Intermediate Code
 "25
 [; ;./HC-SR04.h: 25: float Total_distance[10];
 [v _Total_distance `f ~T0 @X0 -> 10 `i e ]
-"29 main.c
-[; ;main.c: 29: int TempEau, TempLait;
+"22 ./main.h
+[; ;./main.h: 22: char CHAR_ATTENTE = 'A';
+[v _CHAR_ATTENTE `uc ~T0 @X0 1 e ]
+[i _CHAR_ATTENTE
+-> -> 65 `ui `uc
+]
+"23
+[; ;./main.h: 23: char CHAR_IDENTI = 'I';
+[v _CHAR_IDENTI `uc ~T0 @X0 1 e ]
+[i _CHAR_IDENTI
+-> -> 73 `ui `uc
+]
+"24
+[; ;./main.h: 24: char CHAR_CONFIG = 'C';
+[v _CHAR_CONFIG `uc ~T0 @X0 1 e ]
+[i _CHAR_CONFIG
+-> -> 67 `ui `uc
+]
+"25
+[; ;./main.h: 25: char CHAR_ACCEUIL = 'E';
+[v _CHAR_ACCEUIL `uc ~T0 @X0 1 e ]
+[i _CHAR_ACCEUIL
+-> -> 69 `ui `uc
+]
+"28
+[; ;./main.h: 28: int ETAT = 1;
+[v _ETAT `i ~T0 @X0 1 e ]
+[i _ETAT
+-> 1 `i
+]
+"29
+[; ;./main.h: 29: int TempEau, TempLait;
 [v _TempEau `i ~T0 @X0 1 e ]
 [v _TempLait `i ~T0 @X0 1 e ]
 "30
-[; ;main.c: 30: int DistanceEau, DistanceLait;
+[; ;./main.h: 30: int DistanceEau, DistanceLait;
 [v _DistanceEau `i ~T0 @X0 1 e ]
 [v _DistanceLait `i ~T0 @X0 1 e ]
-"33
-[; ;main.c: 33: int number = 3;
+"22 main.c
+[; ;main.c: 22: int number = 3;
 [v _number `i ~T0 @X0 1 e ]
 [i _number
 -> 3 `i
 ]
-"34
-[; ;main.c: 34: int i;
+"23
+[; ;main.c: 23: int i;
 [v _i `i ~T0 @X0 1 e ]
-"35
-[; ;main.c: 35: char pressed_pad;
+"24
+[; ;main.c: 24: char pressed_pad;
 [v _pressed_pad `uc ~T0 @X0 1 e ]
-"36
-[; ;main.c: 36: const unsigned char str[17] = "Nico est francais";
+"27
+[; ;main.c: 27: const unsigned char str[17] = "Nico est francais";
 [v _str `Cuc ~T0 @X0 -> 17 `i e ]
 [i _str
 :U ..
@@ -1835,8 +1874,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 115 `c
 ..
 ]
-"37
-[; ;main.c: 37: const unsigned char str_read_dist[20] = "1-Pour prelever dist";
+"28
+[; ;main.c: 28: const unsigned char str_read_dist[20] = "1-Pour prelever dist";
 [v _str_read_dist `Cuc ~T0 @X0 -> 20 `i e ]
 [i _str_read_dist
 :U ..
@@ -1862,14 +1901,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 116 `c
 ..
 ]
-"38
-[; ;main.c: 38: float Total_distance[10];
+"29
+[; ;main.c: 29: float Total_distance[10];
 [v _Total_distance `f ~T0 @X0 -> 10 `i e ]
-"39
-[; ;main.c: 39: int Distance_mm_int;
+"30
+[; ;main.c: 30: int Distance_mm_int;
 [v _Distance_mm_int `i ~T0 @X0 1 e ]
-"40
-[; ;main.c: 40: const unsigned char total_dist[10];
+"31
+[; ;main.c: 31: const unsigned char total_dist[10];
 [v _total_dist `Cuc ~T0 @X0 -> 10 `i e ]
 [i _total_dist
 :U ..
@@ -1885,258 +1924,349 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `Cuc
 ..
 ]
-"41
-[; ;main.c: 41: int first_run = 1;
+"32
+[; ;main.c: 32: int first_run = 1;
 [v _first_run `i ~T0 @X0 1 e ]
 [i _first_run
 -> 1 `i
 ]
-"44
-[; ;main.c: 44: char out;
+"35
+[; ;main.c: 35: char out;
 [v _out `uc ~T0 @X0 1 e ]
-"45
-[; ;main.c: 45: char sys_state;
+"36
+[; ;main.c: 36: char sys_state;
 [v _sys_state `uc ~T0 @X0 1 e ]
+"37
+[; ;main.c: 37: char pad_value;
+[v _pad_value `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"47
-[; ;main.c: 47: void main(void) {
+"39
+[; ;main.c: 39: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"49
-[; ;main.c: 49:     init_all();
+"41
+[; ;main.c: 41:     init_all();
 [e ( _init_all ..  ]
-"50
-[; ;main.c: 50:     get_ready_for_coffee();
+"42
+[; ;main.c: 42:     get_ready_for_coffee();
 [e ( _get_ready_for_coffee ..  ]
-"52
-[; ;main.c: 52:     while(1) {
-[e :U 1430 ]
+"43
+[; ;main.c: 43:     ETAT = 1;
+[e = _ETAT -> 1 `i ]
+"45
+[; ;main.c: 45:     while(1) {
+[e :U 1431 ]
 {
-"53
-[; ;main.c: 53:         pressed_pad = read_pad();
-[e = _pressed_pad ( _read_pad ..  ]
-"54
-[; ;main.c: 54:         if (first_run == 1) {
-[e $ ! == _first_run -> 1 `i 1432  ]
-{
-"55
-[; ;main.c: 55:             menu1();
-[e ( _menu1 ..  ]
-"56
-[; ;main.c: 56:             first_run = 0;
-[e = _first_run -> 0 `i ]
-"57
-[; ;main.c: 57:         }
-}
-[e :U 1432 ]
-"58
-[; ;main.c: 58:         if (pressed_pad == 'B') {
-[e $ ! == -> _pressed_pad `ui -> 66 `ui 1433  ]
-{
-"59
-[; ;main.c: 59:             clearDisplay();
-[e ( _clearDisplay ..  ]
-"60
-[; ;main.c: 60:             putStringLCD(&str_read_dist[0]);
-[e ( _putStringLCD (1 &U *U + &U _str_read_dist * -> -> -> 0 `i `ui `ux -> -> # *U &U _str_read_dist `ui `ux ]
-"61
-[; ;main.c: 61:             while(pressed_pad != 'C') {
+"46
+[; ;main.c: 46:         switch(ETAT) {
 [e $U 1434  ]
+{
+"47
+[; ;main.c: 47:             case 1:
 [e :U 1435 ]
+"48
+[; ;main.c: 48:                 message_etat(1);
+[e ( _message_etat (1 -> 1 `i ]
+"49
+[; ;main.c: 49:                 send_data(CHAR_ATTENTE);
+[e ( _send_data (1 _CHAR_ATTENTE ]
+"50
+[; ;main.c: 50:                 while (sys_state != CHAR_ATTENTE) {}
+[e $U 1436  ]
+[e :U 1437 ]
+{
+}
+[e :U 1436 ]
+[e $ != -> _sys_state `i -> _CHAR_ATTENTE `i 1437  ]
+[e :U 1438 ]
+"51
+[; ;main.c: 51:                 ETAT = 2;
+[e = _ETAT -> 2 `i ]
+"52
+[; ;main.c: 52:                 break;
+[e $U 1433  ]
+"54
+[; ;main.c: 54:             case 2:
+[e :U 1439 ]
+"55
+[; ;main.c: 55:                 message_etat(2);
+[e ( _message_etat (1 -> 2 `i ]
+"56
+[; ;main.c: 56:                 pad_value = read_pad();
+[e = _pad_value ( _read_pad ..  ]
+"57
+[; ;main.c: 57:                 while (pad_value != '1' || pad_value !='2') {
+[e $U 1440  ]
+[e :U 1441 ]
+{
+"58
+[; ;main.c: 58:                     avertissement(3);
+[e ( _avertissement (1 -> 3 `i ]
+"59
+[; ;main.c: 59:                     pad_value = read_pad();
+[e = _pad_value ( _read_pad ..  ]
+"60
+[; ;main.c: 60:                 }
+}
+[e :U 1440 ]
+"57
+[; ;main.c: 57:                 while (pad_value != '1' || pad_value !='2') {
+[e $ || != -> _pad_value `ui -> 49 `ui != -> _pad_value `ui -> 50 `ui 1441  ]
+[e :U 1442 ]
+"61
+[; ;main.c: 61:                 if (pad_value == '1'){
+[e $ ! == -> _pad_value `ui -> 49 `ui 1443  ]
 {
 "62
-[; ;main.c: 62:                 pressed_pad = read_pad();
-[e = _pressed_pad ( _read_pad ..  ]
+[; ;main.c: 62:                     ETAT = 4;
+[e = _ETAT -> 4 `i ]
 "63
-[; ;main.c: 63:                 if (pressed_pad == '1') {
-[e $ ! == -> _pressed_pad `ui -> 49 `ui 1437  ]
-{
+[; ;main.c: 63:                 }
+}
+[e $U 1444  ]
 "64
-[; ;main.c: 64:                     Distance_mm_int = calc_distance_mm(1);
-[e = _Distance_mm_int ( _calc_distance_mm (1 -> 1 `i ]
+[; ;main.c: 64:                 else if (pad_value == '2') {
+[e :U 1443 ]
+[e $ ! == -> _pad_value `ui -> 50 `ui 1445  ]
+{
 "65
-[; ;main.c: 65:                     pressed_pad = 'z';
-[e = _pressed_pad -> -> 122 `ui `uc ]
+[; ;main.c: 65:                     ETAT = 3;
+[e = _ETAT -> 3 `i ]
 "66
 [; ;main.c: 66:                 }
 }
-[e :U 1437 ]
+[e :U 1445 ]
+[e :U 1444 ]
 "67
-[; ;main.c: 67:             }
-}
-[e :U 1434 ]
-"61
-[; ;main.c: 61:             while(pressed_pad != 'C') {
-[e $ != -> _pressed_pad `ui -> 67 `ui 1435  ]
-[e :U 1436 ]
-"68
-[; ;main.c: 68:         }
-}
-[e :U 1433 ]
+[; ;main.c: 67:                 break;
+[e $U 1433  ]
 "69
-[; ;main.c: 69:         if (pressed_pad == 'A') {
-[e $ ! == -> _pressed_pad `ui -> 65 `ui 1438  ]
-{
-"70
-[; ;main.c: 70:             clearDisplay();
-[e ( _clearDisplay ..  ]
+[; ;main.c: 69:             case 3:
+[e :U 1446 ]
 "71
-[; ;main.c: 71:             while(pressed_pad != 'C') {
-[e $U 1439  ]
-[e :U 1440 ]
-{
-"72
-[; ;main.c: 72:                 pressed_pad = read_pad();
-[e = _pressed_pad ( _read_pad ..  ]
+[; ;main.c: 71:                 break;
+[e $U 1433  ]
 "73
-[; ;main.c: 73:                 if (pressed_pad != 'z') {
-[e $ ! != -> _pressed_pad `ui -> 122 `ui 1442  ]
-{
-"74
-[; ;main.c: 74:                     putchLCD(pressed_pad);
-[e ( _putchLCD (1 -> _pressed_pad `uc ]
+[; ;main.c: 73:             case 4:
+[e :U 1447 ]
 "75
-[; ;main.c: 75:                     _delay((unsigned long)((100)*(8000000/4000.0)));
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"76
-[; ;main.c: 76:                 }
-}
-[e :U 1442 ]
+[; ;main.c: 75:                 break;
+[e $U 1433  ]
 "77
-[; ;main.c: 77:             }
+[; ;main.c: 77:         }
 }
-[e :U 1439 ]
-"71
-[; ;main.c: 71:             while(pressed_pad != 'C') {
-[e $ != -> _pressed_pad `ui -> 67 `ui 1440  ]
-[e :U 1441 ]
+[e $U 1433  ]
+[e :U 1434 ]
+[e [\ _ETAT , $ -> 1 `i 1435
+ , $ -> 2 `i 1439
+ , $ -> 3 `i 1446
+ , $ -> 4 `i 1447
+ 1433 ]
+[e :U 1433 ]
 "78
-[; ;main.c: 78:         }
+[; ;main.c: 78:     }
 }
-[e :U 1438 ]
+[e :U 1430 ]
+[e $U 1431  ]
+[e :U 1432 ]
 "79
-[; ;main.c: 79:         if (pressed_pad == 'C') {
-[e $ ! == -> _pressed_pad `ui -> 67 `ui 1443  ]
-{
-"80
-[; ;main.c: 80:             first_run = 1;
-[e = _first_run -> 1 `i ]
+[; ;main.c: 79: }
+[e :UE 1429 ]
+}
 "81
-[; ;main.c: 81:         }
-}
-[e :U 1443 ]
-"83
-[; ;main.c: 83:         pressed_pad = 'z';
-[e = _pressed_pad -> -> 122 `ui `uc ]
-"84
-[; ;main.c: 84:     }
-}
-[e :U 1429 ]
-[e $U 1430  ]
-[e :U 1431 ]
-"86
-[; ;main.c: 86: }
-[e :UE 1428 ]
-}
-"88
-[; ;main.c: 88: void init_all(void) {
+[; ;main.c: 81: void init_all(void) {
 [v _init_all `(v ~T0 @X0 1 ef ]
 {
 [e :U _init_all ]
 [f ]
-"89
-[; ;main.c: 89:     init_UART();
+"82
+[; ;main.c: 82:     init_UART();
 [e ( _init_UART ..  ]
-"90
-[; ;main.c: 90:     initialisation_LCD();
+"83
+[; ;main.c: 83:     initialisation_LCD();
 [e ( _initialisation_LCD ..  ]
-"91
-[; ;main.c: 91:     init_num_pad();
+"84
+[; ;main.c: 84:     init_num_pad();
 [e ( _init_num_pad ..  ]
-"92
-[; ;main.c: 92:     init_dist_sensor();
+"85
+[; ;main.c: 85:     init_dist_sensor();
 [e ( _init_dist_sensor ..  ]
-"93
-[; ;main.c: 93: }
-[e :UE 1444 ]
+"86
+[; ;main.c: 86: }
+[e :UE 1448 ]
 }
-"95
-[; ;main.c: 95: void get_ready_for_coffee(void) {
+"88
+[; ;main.c: 88: void get_ready_for_coffee(void) {
 [v _get_ready_for_coffee `(v ~T0 @X0 1 ef ]
 {
 [e :U _get_ready_for_coffee ]
 [f ]
-"97
-[; ;main.c: 97:     DistanceEau = calc_distance_mm(1);
+"90
+[; ;main.c: 90:     DistanceEau = calc_distance_mm(1);
 [e = _DistanceEau ( _calc_distance_mm (1 -> 1 `i ]
+"91
+[; ;main.c: 91:     if (DistanceEau < 5) {
+[e $ ! < _DistanceEau -> 5 `i 1450  ]
+{
+"92
+[; ;main.c: 92:         avertissement(1);
+[e ( _avertissement (1 -> 1 `i ]
+"93
+[; ;main.c: 93:         while (DistanceEau < 5) {
+[e $U 1451  ]
+[e :U 1452 ]
+{
+"94
+[; ;main.c: 94:             DistanceEau = calc_distance_mm(1);
+[e = _DistanceEau ( _calc_distance_mm (1 -> 1 `i ]
+"95
+[; ;main.c: 95:         }
+}
+[e :U 1451 ]
+"93
+[; ;main.c: 93:         while (DistanceEau < 5) {
+[e $ < _DistanceEau -> 5 `i 1452  ]
+[e :U 1453 ]
+"96
+[; ;main.c: 96:     }
+}
+[e :U 1450 ]
+"97
+[; ;main.c: 97:     TempEau = get_temp(1);
+[e = _TempEau ( _get_temp (1 -> 1 `i ]
 "98
-[; ;main.c: 98:     if (DistanceEau < 5) {
-[e $ ! < _DistanceEau -> 5 `i 1446  ]
+[; ;main.c: 98:     if (TempEau< 60) {
+[e $ ! < _TempEau -> 60 `i 1454  ]
 {
 "99
-[; ;main.c: 99:         avertissement(1);
-[e ( _avertissement (1 -> 1 `i ]
-"100
-[; ;main.c: 100:         while (DistanceEau < 5) {
-[e $U 1447  ]
-[e :U 1448 ]
-{
-"101
-[; ;main.c: 101:             DistanceEau = calc_distance_mm(1);
-[e = _DistanceEau ( _calc_distance_mm (1 -> 1 `i ]
-"102
-[; ;main.c: 102:         }
-}
-[e :U 1447 ]
-"100
-[; ;main.c: 100:         while (DistanceEau < 5) {
-[e $ < _DistanceEau -> 5 `i 1448  ]
-[e :U 1449 ]
-"103
-[; ;main.c: 103:     }
-}
-[e :U 1446 ]
-"104
-[; ;main.c: 104:     TempEau = get_temp(1);
-[e = _TempEau ( _get_temp (1 -> 1 `i ]
-"105
-[; ;main.c: 105:     if (TempEau< 60) {
-[e $ ! < _TempEau -> 60 `i 1450  ]
-{
-"106
-[; ;main.c: 106:         chauffe_eau(1);
+[; ;main.c: 99:         chauffe_eau(1);
 [e ( _chauffe_eau (1 -> 1 `i ]
-"107
-[; ;main.c: 107:         avertissement(2);
+"100
+[; ;main.c: 100:         avertissement(2);
 [e ( _avertissement (1 -> 2 `i ]
-"108
-[; ;main.c: 108:         putNumberLCD(TempEau);
+"101
+[; ;main.c: 101:         while (TempEau< 60) {
+[e $U 1455  ]
+[e :U 1456 ]
+{
+"102
+[; ;main.c: 102:             TempEau = get_temp(1);
+[e = _TempEau ( _get_temp (1 -> 1 `i ]
+"103
+[; ;main.c: 103:             clearRow(1);
+[e ( _clearRow (1 -> 1 `i ]
+"104
+[; ;main.c: 104:             moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"105
+[; ;main.c: 105:             putNumberLCD(TempEau);
 [e ( _putNumberLCD (1 _TempEau ]
+"106
+[; ;main.c: 106:             moveCursor(1,4);
+[e ( _moveCursor (2 , -> 1 `i -> 4 `i ]
+"107
+[; ;main.c: 107:             const unsigned char div[13] = " / 90 Celsius";
+[v F11440 `Cuc ~T0 @X0 -> 13 `i s div ]
+[i F11440
+:U ..
+-> 32 `c
+-> 47 `c
+-> 32 `c
+-> 57 `c
+-> 48 `c
+-> 32 `c
+-> 67 `c
+-> 101 `c
+-> 108 `c
+-> 115 `c
+-> 105 `c
+-> 117 `c
+-> 115 `c
+..
+]
+"108
+[; ;main.c: 108:             putStringLCD(&div[0]);
+[e ( _putStringLCD (1 &U *U + &U F11440 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11440 `ui `ux ]
+"109
+[; ;main.c: 109:         }
+}
+[e :U 1455 ]
+"101
+[; ;main.c: 101:         while (TempEau< 60) {
+[e $ < _TempEau -> 60 `i 1456  ]
+[e :U 1457 ]
 "110
 [; ;main.c: 110:     }
 }
-[e :U 1450 ]
+[e :U 1454 ]
+"111
+[; ;main.c: 111:     chauffe_eau(0);
+[e ( _chauffe_eau (1 -> 0 `i ]
 "112
-[; ;main.c: 112: }
-[e :UE 1445 ]
-}
+[; ;main.c: 112:     avertissement(0);
+[e ( _avertissement (1 -> 0 `i ]
 "114
-[; ;main.c: 114: void avertissement(int NumAvertissement) {
+[; ;main.c: 114:     init_interruption_temp();
+[e ( _init_interruption_temp ..  ]
+"115
+[; ;main.c: 115: }
+[e :UE 1449 ]
+}
+"117
+[; ;main.c: 117: void avertissement(int NumAvertissement) {
 [v _avertissement `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _avertissement ]
 [v _NumAvertissement `i ~T0 @X0 1 r1 ]
 [f ]
-"115
-[; ;main.c: 115:     if (NumAvertissement == 1) {
-[e $ ! == _NumAvertissement -> 1 `i 1452  ]
+"118
+[; ;main.c: 118:     if (NumAvertissement == 0) {
+[e $ ! == _NumAvertissement -> 0 `i 1459  ]
 {
-"116
-[; ;main.c: 116:         const unsigned char avert1[10] = "Manque eau";
-[v F11425 `Cuc ~T0 @X0 -> 10 `i s avert1 ]
-[i F11425
+"119
+[; ;main.c: 119:         const unsigned char avert0[14] = "Machine Prete!";
+[v F11443 `Cuc ~T0 @X0 -> 14 `i s avert0 ]
+[i F11443
+:U ..
+-> 77 `c
+-> 97 `c
+-> 99 `c
+-> 104 `c
+-> 105 `c
+-> 110 `c
+-> 101 `c
+-> 32 `c
+-> 80 `c
+-> 114 `c
+-> 101 `c
+-> 116 `c
+-> 101 `c
+-> 33 `c
+..
+]
+"120
+[; ;main.c: 120:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"121
+[; ;main.c: 121:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"122
+[; ;main.c: 122:         putStringLCD(&avert0[0]);
+[e ( _putStringLCD (1 &U *U + &U F11443 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11443 `ui `ux ]
+"123
+[; ;main.c: 123:     }
+}
+[e :U 1459 ]
+"124
+[; ;main.c: 124:     if (NumAvertissement == 1) {
+[e $ ! == _NumAvertissement -> 1 `i 1460  ]
+{
+"125
+[; ;main.c: 125:         const unsigned char avert1[10] = "Manque eau";
+[v F11444 `Cuc ~T0 @X0 -> 10 `i s avert1 ]
+[i F11444
 :U ..
 -> 77 `c
 -> 97 `c
@@ -2150,27 +2280,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 117 `c
 ..
 ]
-"117
-[; ;main.c: 117:         clearDisplay();
+"126
+[; ;main.c: 126:         clearDisplay();
 [e ( _clearDisplay ..  ]
-"118
-[; ;main.c: 118:         moveCursor(0,0);
+"127
+[; ;main.c: 127:         moveCursor(0,0);
 [e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
-"119
-[; ;main.c: 119:         putStringLCD(&avert1[0]);
-[e ( _putStringLCD (1 &U *U + &U F11425 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11425 `ui `ux ]
-"120
-[; ;main.c: 120:     }
+"128
+[; ;main.c: 128:         putStringLCD(&avert1[0]);
+[e ( _putStringLCD (1 &U *U + &U F11444 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11444 `ui `ux ]
+"129
+[; ;main.c: 129:     }
 }
-[e :U 1452 ]
-"121
-[; ;main.c: 121:     if (NumAvertissement == 2) {
-[e $ ! == _NumAvertissement -> 2 `i 1453  ]
+[e :U 1460 ]
+"130
+[; ;main.c: 130:     if (NumAvertissement == 2) {
+[e $ ! == _NumAvertissement -> 2 `i 1461  ]
 {
-"122
-[; ;main.c: 122:         const unsigned char avert1[13] = "Prep temp eau";
-[v F11426 `Cuc ~T0 @X0 -> 13 `i s avert1 ]
-[i F11426
+"131
+[; ;main.c: 131:         const unsigned char avert2[13] = "Prep temp eau";
+[v F11445 `Cuc ~T0 @X0 -> 13 `i s avert2 ]
+[i F11445
 :U ..
 -> 80 `c
 -> 114 `c
@@ -2187,230 +2317,427 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 117 `c
 ..
 ]
-"123
-[; ;main.c: 123:         clearDisplay();
-[e ( _clearDisplay ..  ]
-"124
-[; ;main.c: 124:         moveCursor(0,0);
-[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
-"125
-[; ;main.c: 125:         putStringLCD(&avert1[0]);
-[e ( _putStringLCD (1 &U *U + &U F11426 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11426 `ui `ux ]
-"127
-[; ;main.c: 127:     }
-}
-[e :U 1453 ]
-"129
-[; ;main.c: 129: }
-[e :UE 1451 ]
-}
-"131
-[; ;main.c: 131: void menu1(void) {
-[v _menu1 `(v ~T0 @X0 1 ef ]
-{
-[e :U _menu1 ]
-[f ]
 "132
-[; ;main.c: 132:     const unsigned char menu1[20] = "A- Verif touches";
-[v F11428 `Cuc ~T0 @X0 -> 20 `i s menu1 ]
-[i F11428
+[; ;main.c: 132:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"133
+[; ;main.c: 133:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"134
+[; ;main.c: 134:         putStringLCD(&avert2[0]);
+[e ( _putStringLCD (1 &U *U + &U F11445 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11445 `ui `ux ]
+"135
+[; ;main.c: 135:     }
+}
+[e :U 1461 ]
+"136
+[; ;main.c: 136:     if (NumAvertissement == 3) {
+[e $ ! == _NumAvertissement -> 3 `i 1462  ]
+{
+"137
+[; ;main.c: 137:         const unsigned char avert3[17] = "Touche non valide";
+[v F11446 `Cuc ~T0 @X0 -> 17 `i s avert3 ]
+[i F11446
 :U ..
--> 65 `c
--> 45 `c
--> 32 `c
--> 86 `c
--> 101 `c
--> 114 `c
--> 105 `c
--> 102 `c
--> 32 `c
--> 116 `c
+-> 84 `c
 -> 111 `c
 -> 117 `c
 -> 99 `c
 -> 104 `c
 -> 101 `c
--> 115 `c
--> 0 `c
+-> 32 `c
+-> 110 `c
+-> 111 `c
+-> 110 `c
+-> 32 `c
+-> 118 `c
+-> 97 `c
+-> 108 `c
+-> 105 `c
+-> 100 `c
+-> 101 `c
 ..
 ]
-"133
-[; ;main.c: 133:     const unsigned char menu2[] = "B- Verif capteur dist";
-[v F11429 `Cuc ~T0 @X0 -> 22 `i s menu2 ]
-[i F11429
+"139
+[; ;main.c: 139:         moveCursor(2,0);
+[e ( _moveCursor (2 , -> 2 `i -> 0 `i ]
+"140
+[; ;main.c: 140:         putStringLCD(&avert3[0]);
+[e ( _putStringLCD (1 &U *U + &U F11446 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11446 `ui `ux ]
+"141
+[; ;main.c: 141:     }
+}
+[e :U 1462 ]
+"142
+[; ;main.c: 142: }
+[e :UE 1458 ]
+}
+"144
+[; ;main.c: 144: void message_etat(int etat) {
+[v _message_etat `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _message_etat ]
+[v _etat `i ~T0 @X0 1 r1 ]
+[f ]
+"145
+[; ;main.c: 145:     if (etat == 1) {
+[e $ ! == _etat -> 1 `i 1464  ]
+{
+"146
+[; ;main.c: 146:         const unsigned char etat_attente[14] = "Machine Prete!";
+[v F11449 `Cuc ~T0 @X0 -> 14 `i s etat_attente ]
+[i F11449
 :U ..
--> 66 `c
--> 45 `c
--> 32 `c
--> 86 `c
--> 101 `c
--> 114 `c
--> 105 `c
--> 102 `c
--> 32 `c
--> 99 `c
+-> 77 `c
 -> 97 `c
--> 112 `c
+-> 99 `c
+-> 104 `c
+-> 105 `c
+-> 110 `c
+-> 101 `c
+-> 32 `c
+-> 80 `c
+-> 114 `c
+-> 101 `c
 -> 116 `c
 -> 101 `c
--> 117 `c
--> 114 `c
+-> 33 `c
+..
+]
+"147
+[; ;main.c: 147:         const unsigned char etat_attente1[21] = "Attente d'utilisateur";
+[v F11450 `Cuc ~T0 @X0 -> 21 `i s etat_attente1 ]
+[i F11450
+:U ..
+-> 65 `c
+-> 116 `c
+-> 116 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 101 `c
 -> 32 `c
 -> 100 `c
+-> 39 `c
+-> 117 `c
+-> 116 `c
+-> 105 `c
+-> 108 `c
+-> 105 `c
+-> 115 `c
+-> 97 `c
+-> 116 `c
+-> 101 `c
+-> 117 `c
+-> 114 `c
+..
+]
+"148
+[; ;main.c: 148:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"149
+[; ;main.c: 149:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"150
+[; ;main.c: 150:         putStringLCD(&etat_attente[0]);
+[e ( _putStringLCD (1 &U *U + &U F11449 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11449 `ui `ux ]
+"151
+[; ;main.c: 151:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"152
+[; ;main.c: 152:         putStringLCD(&etat_attente1[0]);
+[e ( _putStringLCD (1 &U *U + &U F11450 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11450 `ui `ux ]
+"153
+[; ;main.c: 153:     }
+}
+[e :U 1464 ]
+"154
+[; ;main.c: 154:     if (etat == 2) {
+[e $ ! == _etat -> 2 `i 1465  ]
+{
+"155
+[; ;main.c: 155:         const unsigned char etat_acceuil1[23] = "1- Nouvelle utilisateur";
+[v F11451 `Cuc ~T0 @X0 -> 23 `i s etat_acceuil1 ]
+[i F11451
+:U ..
+-> 49 `c
+-> 45 `c
+-> 32 `c
+-> 78 `c
+-> 111 `c
+-> 117 `c
+-> 118 `c
+-> 101 `c
+-> 108 `c
+-> 108 `c
+-> 101 `c
+-> 32 `c
+-> 117 `c
+-> 116 `c
+-> 105 `c
+-> 108 `c
+-> 105 `c
+-> 115 `c
+-> 97 `c
+-> 116 `c
+-> 101 `c
+-> 117 `c
+-> 114 `c
+..
+]
+"156
+[; ;main.c: 156:         const unsigned char etat_acceuil2[23] = "2- Utilisateur existant";
+[v F11452 `Cuc ~T0 @X0 -> 23 `i s etat_acceuil2 ]
+[i F11452
+:U ..
+-> 50 `c
+-> 45 `c
+-> 32 `c
+-> 85 `c
+-> 116 `c
+-> 105 `c
+-> 108 `c
+-> 105 `c
+-> 115 `c
+-> 97 `c
+-> 116 `c
+-> 101 `c
+-> 117 `c
+-> 114 `c
+-> 32 `c
+-> 101 `c
+-> 120 `c
 -> 105 `c
 -> 115 `c
 -> 116 `c
--> 0 `c
+-> 97 `c
+-> 110 `c
+-> 116 `c
 ..
 ]
-"134
-[; ;main.c: 134:     const unsigned char menu3[] = "C- Retourner au menu";
-[v F11430 `Cuc ~T0 @X0 -> 21 `i s menu3 ]
-[i F11430
+"157
+[; ;main.c: 157:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"158
+[; ;main.c: 158:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"159
+[; ;main.c: 159:         putStringLCD(&etat_acceuil1[0]);
+[e ( _putStringLCD (1 &U *U + &U F11451 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11451 `ui `ux ]
+"160
+[; ;main.c: 160:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"161
+[; ;main.c: 161:         putStringLCD(&etat_acceuil2[0]);
+[e ( _putStringLCD (1 &U *U + &U F11452 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11452 `ui `ux ]
+"162
+[; ;main.c: 162:     }
+}
+[e :U 1465 ]
+"163
+[; ;main.c: 163:     if (etat == 3) {
+[e $ ! == _etat -> 3 `i 1466  ]
+{
+"164
+[; ;main.c: 164:         const unsigned char etat_identification[13] = "Prep temp eau";
+[v F11453 `Cuc ~T0 @X0 -> 13 `i s etat_identification ]
+[i F11453
 :U ..
--> 67 `c
--> 45 `c
--> 32 `c
--> 82 `c
+-> 80 `c
+-> 114 `c
 -> 101 `c
+-> 112 `c
+-> 32 `c
 -> 116 `c
--> 111 `c
--> 117 `c
--> 114 `c
--> 110 `c
 -> 101 `c
--> 114 `c
+-> 109 `c
+-> 112 `c
 -> 32 `c
+-> 101 `c
 -> 97 `c
 -> 117 `c
--> 32 `c
--> 109 `c
--> 101 `c
--> 110 `c
--> 117 `c
--> 0 `c
 ..
 ]
-"136
-[; ;main.c: 136:     clearDisplay();
+"165
+[; ;main.c: 165:         clearDisplay();
 [e ( _clearDisplay ..  ]
-"138
-[; ;main.c: 138:     moveCursor(0,0);
+"166
+[; ;main.c: 166:         moveCursor(0,0);
 [e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
-"139
-[; ;main.c: 139:     putStringLCD(&menu1[0]);
-[e ( _putStringLCD (1 &U *U + &U F11428 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11428 `ui `ux ]
-"140
-[; ;main.c: 140:     moveCursor(1,0);
-[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
-"141
-[; ;main.c: 141:     putStringLCD(&menu2[0]);
-[e ( _putStringLCD (1 &U *U + &U F11429 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11429 `ui `ux ]
-"142
-[; ;main.c: 142:     moveCursor(2,0);
-[e ( _moveCursor (2 , -> 2 `i -> 0 `i ]
-"143
-[; ;main.c: 143:     putStringLCD(&menu3[0]);
-[e ( _putStringLCD (1 &U *U + &U F11430 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11430 `ui `ux ]
-"145
-[; ;main.c: 145: }
-[e :UE 1454 ]
+"167
+[; ;main.c: 167:         putStringLCD(&etat_identification[0]);
+[e ( _putStringLCD (1 &U *U + &U F11453 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11453 `ui `ux ]
+"168
+[; ;main.c: 168:     }
+}
+[e :U 1466 ]
+"169
+[; ;main.c: 169:     if (etat == 4) {
+[e $ ! == _etat -> 4 `i 1467  ]
+{
+"170
+[; ;main.c: 170:         const unsigned char etat_configuration[13] = "Prep temp eau";
+[v F11454 `Cuc ~T0 @X0 -> 13 `i s etat_configuration ]
+[i F11454
+:U ..
+-> 80 `c
+-> 114 `c
+-> 101 `c
+-> 112 `c
+-> 32 `c
+-> 116 `c
+-> 101 `c
+-> 109 `c
+-> 112 `c
+-> 32 `c
+-> 101 `c
+-> 97 `c
+-> 117 `c
+..
+]
+"171
+[; ;main.c: 171:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"172
+[; ;main.c: 172:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"173
+[; ;main.c: 173:         putStringLCD(&etat_configuration[0]);
+[e ( _putStringLCD (1 &U *U + &U F11454 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11454 `ui `ux ]
+"174
+[; ;main.c: 174:     }
+}
+[e :U 1467 ]
+"175
+[; ;main.c: 175: }
+[e :UE 1463 ]
 }
 [v $root$_Serial_interrupt `(v ~T0 @X0 0 e ]
-"148
-[; ;main.c: 148: void __attribute__((picinterrupt(""))) Serial_interrupt() {
-[v _Serial_interrupt `(v ~T2 @X0 1 ef ]
+"177
+[; ;main.c: 177: void __attribute__((picinterrupt("high_priority"))) Serial_interrupt() {
+[v _Serial_interrupt `(v ~T3 @X0 1 ef ]
 {
 [e :U _Serial_interrupt ]
 [f ]
-"150
-[; ;main.c: 150:     while(RC1IF == 0);
-[e $U 1456  ]
-[e :U 1457 ]
-[e :U 1456 ]
-[e $ == -> _RC1IF `i -> 0 `i 1457  ]
-[e :U 1458 ]
-"151
-[; ;main.c: 151:     out = RCREG1;
+"179
+[; ;main.c: 179:     while(RC1IF == 0);
+[e $U 1469  ]
+[e :U 1470 ]
+[e :U 1469 ]
+[e $ == -> _RC1IF `i -> 0 `i 1470  ]
+[e :U 1471 ]
+"180
+[; ;main.c: 180:     out = RCREG1;
 [e = _out -> _RCREG1 `uc ]
-"152
-[; ;main.c: 152:     sys_state = check(out);
+"181
+[; ;main.c: 181:     sys_state = check(out);
 [e = _sys_state ( _check (1 _out ]
-"153
-[; ;main.c: 153: }
-[e :UE 1455 ]
+"182
+[; ;main.c: 182: }
+[e :UE 1468 ]
 }
-"155
-[; ;main.c: 155: char check(char input) {
+[v $root$_Temp_interrupt `(v ~T0 @X0 0 e ]
+"184
+[; ;main.c: 184: void __attribute__((picinterrupt("low_priority"))) Temp_interrupt() {
+[v _Temp_interrupt `(v ~T4 @X0 1 ef ]
+{
+[e :U _Temp_interrupt ]
+[f ]
+"185
+[; ;main.c: 185:     int temperature;
+[v _temperature `i ~T0 @X0 1 a ]
+"186
+[; ;main.c: 186:     if (TMR0IF == 1) {
+[e $ ! == -> _TMR0IF `i -> 1 `i 1473  ]
+{
+"187
+[; ;main.c: 187:         temperature = get_temp(1);
+[e = _temperature ( _get_temp (1 -> 1 `i ]
+"188
+[; ;main.c: 188:         gestion_temp_eau(temperature);
+[e ( _gestion_temp_eau (1 _temperature ]
+"189
+[; ;main.c: 189:         TMR0IF = 0;
+[e = _TMR0IF -> -> 0 `i `b ]
+"190
+[; ;main.c: 190:     }
+}
+[e :U 1473 ]
+"191
+[; ;main.c: 191: }
+[e :UE 1472 ]
+}
+"195
+[; ;main.c: 195: char check(char input) {
 [v _check `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _check ]
 [v _input `uc ~T0 @X0 1 r1 ]
 [f ]
-"156
-[; ;main.c: 156:     if(RCSTA1bits.FERR == 1 || RCSTA1bits.OERR == 1){
-[e $ ! || == -> . . _RCSTA1bits 0 2 `i -> 1 `i == -> . . _RCSTA1bits 0 1 `i -> 1 `i 1460  ]
+"196
+[; ;main.c: 196:     if(RCSTA1bits.FERR == 1 || RCSTA1bits.OERR == 1){
+[e $ ! || == -> . . _RCSTA1bits 0 2 `i -> 1 `i == -> . . _RCSTA1bits 0 1 `i -> 1 `i 1475  ]
 {
-"157
-[; ;main.c: 157:         RCSTA1bits.CREN = 0;
+"197
+[; ;main.c: 197:         RCSTA1bits.CREN = 0;
 [e = . . _RCSTA1bits 0 4 -> -> 0 `i `uc ]
-"158
-[; ;main.c: 158:         return 0x65;
+"198
+[; ;main.c: 198:         return 0x65;
 [e ) -> -> 101 `i `uc ]
-[e $UE 1459  ]
-"159
-[; ;main.c: 159:     }
+[e $UE 1474  ]
+"199
+[; ;main.c: 199:     }
 }
-[e :U 1460 ]
-"160
-[; ;main.c: 160:     if (input == 0x64) {
-[e $ ! == -> _input `i -> 100 `i 1461  ]
+[e :U 1475 ]
+"201
+[; ;main.c: 201:     if (input == CHAR_ATTENTE) {
+[e $ ! == -> _input `i -> _CHAR_ATTENTE `i 1476  ]
 {
-"162
-[; ;main.c: 162:         return 0x64;
-[e ) -> -> 100 `i `uc ]
-[e $UE 1459  ]
-"163
-[; ;main.c: 163:     }
+"203
+[; ;main.c: 203:         return CHAR_ATTENTE;
+[e ) _CHAR_ATTENTE ]
+[e $UE 1474  ]
+"204
+[; ;main.c: 204:     }
 }
-[e :U 1461 ]
-"164
-[; ;main.c: 164:     if (input == 0x63) {
-[e $ ! == -> _input `i -> 99 `i 1462  ]
+[e :U 1476 ]
+"205
+[; ;main.c: 205:     if (input == 0x63) {
+[e $ ! == -> _input `i -> 99 `i 1477  ]
 {
-"166
-[; ;main.c: 166:         return 0x63;
+"207
+[; ;main.c: 207:         return 0x63;
 [e ) -> -> 99 `i `uc ]
-[e $UE 1459  ]
-"167
-[; ;main.c: 167:     }
+[e $UE 1474  ]
+"208
+[; ;main.c: 208:     }
 }
-[e :U 1462 ]
-"168
-[; ;main.c: 168:     if (input == 0x66) {
-[e $ ! == -> _input `i -> 102 `i 1463  ]
+[e :U 1477 ]
+"209
+[; ;main.c: 209:     if (input == 0x66) {
+[e $ ! == -> _input `i -> 102 `i 1478  ]
 {
-"170
-[; ;main.c: 170:         return 0x66;
+"211
+[; ;main.c: 211:         return 0x66;
 [e ) -> -> 102 `i `uc ]
-[e $UE 1459  ]
-"171
-[; ;main.c: 171:     }
+[e $UE 1474  ]
+"212
+[; ;main.c: 212:     }
 }
-[e $U 1464  ]
-"172
-[; ;main.c: 172:     else{
-[e :U 1463 ]
+[e $U 1479  ]
+"213
+[; ;main.c: 213:     else{
+[e :U 1478 ]
 {
-"174
-[; ;main.c: 174:         return input;
+"215
+[; ;main.c: 215:         return input;
 [e ) _input ]
-[e $UE 1459  ]
-"175
-[; ;main.c: 175:     }
+[e $UE 1474  ]
+"216
+[; ;main.c: 216:     }
 }
-[e :U 1464 ]
-"176
-[; ;main.c: 176: }
-[e :UE 1459 ]
+[e :U 1479 ]
+"217
+[; ;main.c: 217: }
+[e :UE 1474 ]
 }

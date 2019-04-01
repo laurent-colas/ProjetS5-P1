@@ -85,8 +85,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8178
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 8178: extern volatile ADCON3Hbits_t ADCON3Hbits __attribute__((address(0xE8B)));
 [v _ADCON3Hbits `VS381 ~T0 @X0 0 e@3723 ]
-"22 ./temperature.h
-[; ;./temperature.h: 22: void Delay(void);
+"24 ./temperature.h
+[; ;./temperature.h: 24: void Delay(void);
 [v _Delay `(v ~T0 @X0 0 ef ]
 "28268 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 28268: extern volatile unsigned short ADCBUF0 __attribute__((address(0xFC2)));
@@ -109,6 +109,101 @@ Version 4.0 HI-TECH Software Intermediate Code
 "23743
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 23743: extern volatile PORTDbits_t PORTDbits __attribute__((address(0xF83)));
 [v _PORTDbits `VS1041 ~T0 @X0 0 e@3971 ]
+"30827
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30827:     struct {
+[s S1394 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1394 . IOCIF INT0IF TMR0IF IOCIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"30837
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30837:     struct {
+[s S1395 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1395 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"30847
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30847:     struct {
+[s S1396 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1396 . . GIEL GIEH ]
+"30826
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30826: typedef union {
+[u S1393 `S1394 1 `S1395 1 `S1396 1 ]
+[n S1393 . . . . ]
+"30853
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30853: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
+[v _INTCONbits `VS1393 ~T0 @X0 0 e@4082 ]
+"30734
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30734:     struct {
+[s S1390 :7 `uc 1 :1 `uc 1 ]
+[n S1390 . . NOT_RBPU ]
+"30738
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30738:     struct {
+[s S1391 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1391 . IOCIP INT3IP TMR0IP INTEDG3 INTEDG2 INTEDG1 INTEDG0 nRBPU ]
+"30748
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30748:     struct {
+[s S1392 :1 `uc 1 :1 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
+[n S1392 . . INT3P T0IP . RBPU ]
+"30733
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30733: typedef union {
+[u S1389 `S1390 1 `S1391 1 `S1392 1 ]
+[n S1389 . . . . ]
+"30756
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30756: extern volatile INTCON2bits_t INTCON2bits __attribute__((address(0xFF1)));
+[v _INTCON2bits `VS1389 ~T0 @X0 0 e@4081 ]
+"29636
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29636:     struct {
+[s S1321 :1 `uc 1 ]
+[n S1321 . NOT_BOR ]
+"29639
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29639:     struct {
+[s S1322 :1 `uc 1 :1 `uc 1 ]
+[n S1322 . . NOT_POR ]
+"29643
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29643:     struct {
+[s S1323 :2 `uc 1 :1 `uc 1 ]
+[n S1323 . . NOT_PD ]
+"29647
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29647:     struct {
+[s S1324 :3 `uc 1 :1 `uc 1 ]
+[n S1324 . . NOT_TO ]
+"29651
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29651:     struct {
+[s S1325 :4 `uc 1 :1 `uc 1 ]
+[n S1325 . . NOT_RI ]
+"29655
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29655:     struct {
+[s S1326 :5 `uc 1 :1 `uc 1 ]
+[n S1326 . . NOT_CM ]
+"29659
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29659:     struct {
+[s S1327 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1327 . nBOR nPOR nPD nTO nRI nCM . IPEN ]
+"29669
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29669:     struct {
+[s S1328 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1328 . BOR POR PD TO RI CM ]
+"29635
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29635: typedef union {
+[u S1320 `S1321 1 `S1322 1 `S1323 1 `S1324 1 `S1325 1 `S1326 1 `S1327 1 `S1328 1 ]
+[n S1320 . . . . . . . . . ]
+"29678
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29678: extern volatile RCONbits_t RCONbits __attribute__((address(0xFD0)));
+[v _RCONbits `VS1320 ~T0 @X0 0 e@4048 ]
+"29998
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29998:     struct {
+[s S1339 :3 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1339 . T0PS PSA T0CS T08BIT TMR0ON ]
+"30005
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30005:     struct {
+[s S1340 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1340 . T0PS0 T0PS1 T0PS2 . T0CS0 T0CS1 ]
+"29997
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 29997: typedef union {
+[u S1338 `S1339 1 `S1340 1 ]
+[n S1338 . . . ]
+"30014
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30014: extern volatile T0CONbits_t T0CONbits __attribute__((address(0xFD5)));
+[v _T0CONbits `VS1338 ~T0 @X0 0 e@4053 ]
+"30076
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 30076: extern volatile unsigned char TMR0L __attribute__((address(0xFD6)));
+[v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
 "54 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 54: __asm("UEP0 equ 0DFFh");
 [; <" UEP0 equ 0DFFh ;# ">
@@ -1920,36 +2015,106 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;temperature.c: 74: }
 [e :UE 1424 ]
 }
-"77
-[; ;temperature.c: 77: void chauffe_eau(int etat) {
+"76
+[; ;temperature.c: 76: void chauffe_eau(int etat) {
 [v _chauffe_eau `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _chauffe_eau ]
 [v _etat `i ~T0 @X0 1 r1 ]
 [f ]
-"78
-[; ;temperature.c: 78:     if (etat == 1) {
+"77
+[; ;temperature.c: 77:     if (etat == 1) {
 [e $ ! == _etat -> 1 `i 1429  ]
 {
-"79
-[; ;temperature.c: 79:         PORTDbits.RD5 = 1;
+"78
+[; ;temperature.c: 78:         PORTDbits.RD5 = 1;
 [e = . . _PORTDbits 0 5 -> -> 1 `i `uc ]
-"80
-[; ;temperature.c: 80:     }
+"79
+[; ;temperature.c: 79:     }
 }
 [e $U 1430  ]
-"81
-[; ;temperature.c: 81:     else {
+"80
+[; ;temperature.c: 80:     else {
 [e :U 1429 ]
 {
-"82
-[; ;temperature.c: 82:         PORTDbits.RD5 = 0;
+"81
+[; ;temperature.c: 81:         PORTDbits.RD5 = 0;
 [e = . . _PORTDbits 0 5 -> -> 0 `i `uc ]
-"83
-[; ;temperature.c: 83:     }
+"82
+[; ;temperature.c: 82:     }
 }
 [e :U 1430 ]
-"84
-[; ;temperature.c: 84: }
+"83
+[; ;temperature.c: 83: }
 [e :UE 1428 ]
+}
+"85
+[; ;temperature.c: 85: void gestion_temp_eau(int temperature) {
+[v _gestion_temp_eau `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _gestion_temp_eau ]
+[v _temperature `i ~T0 @X0 1 r1 ]
+[f ]
+"86
+[; ;temperature.c: 86:     if (temperature < 60) {
+[e $ ! < _temperature -> 60 `i 1432  ]
+{
+"87
+[; ;temperature.c: 87:         chauffe_eau(1);
+[e ( _chauffe_eau (1 -> 1 `i ]
+"88
+[; ;temperature.c: 88:     }
+}
+[e $U 1433  ]
+"89
+[; ;temperature.c: 89:     else {
+[e :U 1432 ]
+{
+"90
+[; ;temperature.c: 90:         chauffe_eau(0);
+[e ( _chauffe_eau (1 -> 0 `i ]
+"91
+[; ;temperature.c: 91:     }
+}
+[e :U 1433 ]
+"92
+[; ;temperature.c: 92: }
+[e :UE 1431 ]
+}
+"93
+[; ;temperature.c: 93: void init_interruption_temp(void) {
+[v _init_interruption_temp `(v ~T0 @X0 1 ef ]
+{
+[e :U _init_interruption_temp ]
+[f ]
+"94
+[; ;temperature.c: 94:     INTCONbits.TMR0IE = 1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"95
+[; ;temperature.c: 95:     INTCON2bits.TMR0IP = 0;
+[e = . . _INTCON2bits 1 2 -> -> 0 `i `uc ]
+"96
+[; ;temperature.c: 96:     RCONbits.IPEN = 1;
+[e = . . _RCONbits 6 7 -> -> 1 `i `uc ]
+"98
+[; ;temperature.c: 98:     T0CONbits.T08BIT = 1;
+[e = . . _T0CONbits 0 3 -> -> 1 `i `uc ]
+"100
+[; ;temperature.c: 100:     T0CONbits.T0CS = 0b01;
+[e = . . _T0CONbits 0 2 -> -> 1 `i `uc ]
+"101
+[; ;temperature.c: 101:     T0CONbits.PSA = 0;
+[e = . . _T0CONbits 0 1 -> -> 0 `i `uc ]
+"102
+[; ;temperature.c: 102:     T0CONbits.T0PS = 0b011;
+[e = . . _T0CONbits 0 0 -> -> 3 `i `uc ]
+"104
+[; ;temperature.c: 104:     T0CONbits.TMR0ON = 1;
+[e = . . _T0CONbits 0 4 -> -> 1 `i `uc ]
+"105
+[; ;temperature.c: 105:     TMR0L = 12;
+[e = _TMR0L -> -> 12 `i `uc ]
+"107
+[; ;temperature.c: 107: }
+[e :UE 1434 ]
 }
