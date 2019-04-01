@@ -7,74 +7,38 @@ SHELL = cmd.exe
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../source/C/C6713Helper_UdeS.c \
-../source/C/IIR_2ndOrder_directII.c \
 ../source/C/analyse_son.c \
 ../source/C/bitrev_index.c \
-../source/C/filtrerCascadeIIR.c \
-../source/C/fonction_traitement.c \
-../source/C/genCos.c \
-../source/C/genCosM2.c \
-../source/C/getNewCommand.c \
 ../source/C/main_accordeur.c 
 
 C_DEPS += \
 ./source/C/C6713Helper_UdeS.d \
-./source/C/IIR_2ndOrder_directII.d \
 ./source/C/analyse_son.d \
 ./source/C/bitrev_index.d \
-./source/C/filtrerCascadeIIR.d \
-./source/C/fonction_traitement.d \
-./source/C/genCos.d \
-./source/C/genCosM2.d \
-./source/C/getNewCommand.d \
 ./source/C/main_accordeur.d 
 
 OBJS += \
 ./source/C/C6713Helper_UdeS.obj \
-./source/C/IIR_2ndOrder_directII.obj \
 ./source/C/analyse_son.obj \
 ./source/C/bitrev_index.obj \
-./source/C/filtrerCascadeIIR.obj \
-./source/C/fonction_traitement.obj \
-./source/C/genCos.obj \
-./source/C/genCosM2.obj \
-./source/C/getNewCommand.obj \
 ./source/C/main_accordeur.obj 
 
 OBJS__QUOTED += \
 "source\C\C6713Helper_UdeS.obj" \
-"source\C\IIR_2ndOrder_directII.obj" \
 "source\C\analyse_son.obj" \
 "source\C\bitrev_index.obj" \
-"source\C\filtrerCascadeIIR.obj" \
-"source\C\fonction_traitement.obj" \
-"source\C\genCos.obj" \
-"source\C\genCosM2.obj" \
-"source\C\getNewCommand.obj" \
 "source\C\main_accordeur.obj" 
 
 C_DEPS__QUOTED += \
 "source\C\C6713Helper_UdeS.d" \
-"source\C\IIR_2ndOrder_directII.d" \
 "source\C\analyse_son.d" \
 "source\C\bitrev_index.d" \
-"source\C\filtrerCascadeIIR.d" \
-"source\C\fonction_traitement.d" \
-"source\C\genCos.d" \
-"source\C\genCosM2.d" \
-"source\C\getNewCommand.d" \
 "source\C\main_accordeur.d" 
 
 C_SRCS__QUOTED += \
 "../source/C/C6713Helper_UdeS.c" \
-"../source/C/IIR_2ndOrder_directII.c" \
 "../source/C/analyse_son.c" \
 "../source/C/bitrev_index.c" \
-"../source/C/filtrerCascadeIIR.c" \
-"../source/C/fonction_traitement.c" \
-"../source/C/genCos.c" \
-"../source/C/genCosM2.c" \
-"../source/C/getNewCommand.c" \
 "../source/C/main_accordeur.c" 
 
 

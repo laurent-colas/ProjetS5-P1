@@ -5,7 +5,7 @@
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROGRAM.Spectrum Digital DSK-EVM-eZdsp onboard USB Emulator/TMS320C671X" value="${build_artifact:S5eAPP5_Problematique}"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_PROJECT.Spectrum Digital DSK-EVM-eZdsp onboard USB Emulator/TMS320C671X" value="S5eAPP5_Problematique"/>
 <stringAttribute key="com.ti.ccstudio.debug.debugModel.ATTR_TARGET_CONFIG" value="${target_config_active_default:S5eAPP5_Problematique}"/>
-<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Spectrum Digital DSK-EVM-eZdsp onboard USB Emulator/TMS320C671X" value="C:/Users\laure\Documents\Git APP\S5\APP6\S5eAPP5_Problematique\Debug\S5eAPP5_Problematique.out"/>
+<stringAttribute key="com.ti.ccstudio.debug.debugModel.MRU_PROGRAM.Spectrum Digital DSK-EVM-eZdsp onboard USB Emulator/TMS320C671X" value="C:/Users\laure\Documents\ProjetS5-P1\Demo_2\S5eAPP5_Problematique\Debug\S5eAPP5_Problematique.out"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/S5eAPP5_Problematique"/>
 </listAttribute>

@@ -11,17 +11,10 @@ GEN_CMDS__FLAG :=
 
 ORDERED_OBJS += \
 "./source/C/C6713Helper_UdeS.obj" \
-"./source/C/IIR_2ndOrder_directII.obj" \
 "./source/C/analyse_son.obj" \
 "./source/C/bitrev_index.obj" \
-"./source/C/filtrerCascadeIIR.obj" \
-"./source/C/fonction_traitement.obj" \
-"./source/C/genCos.obj" \
-"./source/C/genCosM2.obj" \
-"./source/C/getNewCommand.obj" \
 "./source/C/main_accordeur.obj" \
-"./source/asm/FIR_ASM.obj" \
-"./source/asm/IIR_2ndOrder_directII_ASM.obj" \
+"./source/asm/AutoCorr.obj" \
 "./source/asm/Vectors_intr.obj" \
 "../C6713dsk.cmd" \
 $(GEN_CMDS__FLAG) \
@@ -152,16 +145,16 @@ all: S5eAPP5_Problematique.out
 S5eAPP5_Problematique.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: C6000 Linker'
-	"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_wrap=off --display_error_number --diag_warning=225 --mem_model:data=far --mem_model:const=far -z -m"S5eAPP5_Problematique.map" --stack_size=0x8000 --heap_size=0x8000 --reread_libs --diag_wrap=off --display_error_number --warn_sections --diag_suppress=16002 --xml_link_info="S5eAPP5_Problematique_linkInfo.xml" --rom_model -o "S5eAPP5_Problematique.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv7/tools/compiler/c6000_7.4.20/bin/cl6x" -mv6700 --abi=coffabi -g --define=CHIP_6713 --diag_warning=225 --diag_wrap=off --display_error_number --mem_model:const=far --mem_model:data=far -z -m"S5eAPP5_Problematique.map" --stack_size=0x8000 --heap_size=0x8000 --reread_libs --diag_suppress=16002 --warn_sections --display_error_number --diag_wrap=off --xml_link_info="S5eAPP5_Problematique_linkInfo.xml" --rom_model -o "S5eAPP5_Problematique.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "source\C\C6713Helper_UdeS.obj" "source\C\IIR_2ndOrder_directII.obj" "source\C\analyse_son.obj" "source\C\bitrev_index.obj" "source\C\filtrerCascadeIIR.obj" "source\C\fonction_traitement.obj" "source\C\genCos.obj" "source\C\genCosM2.obj" "source\C\getNewCommand.obj" "source\C\main_accordeur.obj" "source\asm\FIR_ASM.obj" "source\asm\IIR_2ndOrder_directII_ASM.obj" "source\asm\Vectors_intr.obj" 
-	-$(RM) "source\C\C6713Helper_UdeS.d" "source\C\IIR_2ndOrder_directII.d" "source\C\analyse_son.d" "source\C\bitrev_index.d" "source\C\filtrerCascadeIIR.d" "source\C\fonction_traitement.d" "source\C\genCos.d" "source\C\genCosM2.d" "source\C\getNewCommand.d" "source\C\main_accordeur.d" 
-	-$(RM) "source\asm\FIR_ASM.d" "source\asm\IIR_2ndOrder_directII_ASM.d" "source\asm\Vectors_intr.d" 
+	-$(RM) "source\C\C6713Helper_UdeS.obj" "source\C\analyse_son.obj" "source\C\bitrev_index.obj" "source\C\main_accordeur.obj" "source\asm\AutoCorr.obj" "source\asm\Vectors_intr.obj" 
+	-$(RM) "source\C\C6713Helper_UdeS.d" "source\C\analyse_son.d" "source\C\bitrev_index.d" "source\C\main_accordeur.d" 
+	-$(RM) "source\asm\AutoCorr.d" "source\asm\Vectors_intr.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

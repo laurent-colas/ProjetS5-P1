@@ -14,7 +14,6 @@ source/C/main_accordeur.obj: C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/mat
 source/C/main_accordeur.obj: C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/unaccess.h
 source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/main_accordeur.h
 source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/CONSTANTES.h
-source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/deltaAngle_CordesGuit.h
 source/C/main_accordeur.obj: C:/ti/dsk6713/include/dsk6713_aic23.h
 source/C/main_accordeur.obj: C:/ti/ccsv7/ccs_base/C6xCSL/include/csl.h
 source/C/main_accordeur.obj: C:/ti/ccsv7/ccs_base/C6xCSL/include/csl_chip.h
@@ -32,10 +31,6 @@ source/C/main_accordeur.obj: C:/ti/ccsv7/ccs_base/C6xCSL/include/csl_mcbsp.h
 source/C/main_accordeur.obj: C:/ti/ccsv7/ccs_base/C6xCSL/include/csl_mcbsphal.h
 source/C/main_accordeur.obj: C:/ti/dsk6713/include/dsk6713_dip.h
 source/C/main_accordeur.obj: C:/ti/dsk6713/include/dsk6713_led.h
-source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/genCos.h
-source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/genCosM2.h
-source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/findErrAccordage.h
-source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/getNewCommand.h
 source/C/main_accordeur.obj: C:/ti/dsk6713/include/C6713Helper_UdeS.h
 source/C/main_accordeur.obj: C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/functionHelperProjetS5.h
 source/C/main_accordeur.obj: C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/math.h
@@ -55,7 +50,6 @@ C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/mathl.h:
 C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/unaccess.h: 
 C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/main_accordeur.h: 
 C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/CONSTANTES.h: 
-C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/deltaAngle_CordesGuit.h: 
 C:/ti/dsk6713/include/dsk6713_aic23.h: 
 C:/ti/ccsv7/ccs_base/C6xCSL/include/csl.h: 
 C:/ti/ccsv7/ccs_base/C6xCSL/include/csl_chip.h: 
@@ -73,10 +67,6 @@ C:/ti/ccsv7/ccs_base/C6xCSL/include/csl_mcbsp.h:
 C:/ti/ccsv7/ccs_base/C6xCSL/include/csl_mcbsphal.h: 
 C:/ti/dsk6713/include/dsk6713_dip.h: 
 C:/ti/dsk6713/include/dsk6713_led.h: 
-C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/genCos.h: 
-C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/genCosM2.h: 
-C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/findErrAccordage.h: 
-C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/getNewCommand.h: 
 C:/ti/dsk6713/include/C6713Helper_UdeS.h: 
 C:/Users/laure/Documents/ProjetS5-P1/Demo_2/S5eAPP5_Problematique/includes/functionHelperProjetS5.h: 
 C:/ti/ccsv7/tools/compiler/c6000_7.4.20/include/math.h: 
