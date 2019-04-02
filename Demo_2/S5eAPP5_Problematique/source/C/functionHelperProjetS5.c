@@ -9,20 +9,31 @@
 #include "DSPF_sp_icfftr2_dif.h"    //<--- SI JAMAIS ON EN A BESOIN SINON ON ENLÈVERA CETTE LIGNE!
 #include "twiddle_512.h"              //<--- LE "X" DANS LE NOM DOIT ÊTRE REMPLACÉ PAR LE NOMBRE DE TWIDDLES CONTENUS DANS LE FICHIER!
 #include <math.h>                   //<--- SI JAMAIS ON EN A BESOIN SINON ON ENLÈVERA CETTE LIGNE!
-#include "correlation.h"
+//#include "correlation.h"
 #include <bitrev_index.h>
+#include <stdlib.h>
+#include "max.h"
+#include "abs.h"
+#include "norm.h"
 
 int i = 0;
 
-float fen_triang[N/2];
-float fen_hamming[N];
+float fen_triang[N/2] = {0};
+float fen_hamming[N] = {0};
 
 #pragma DATA_ALIGN(X_Z,8);
 float X_Z[2*N];
 #pragma DATA_SECTION(X_Z,".EXT_RAM");
+
 #pragma DATA_ALIGN(index,8);
-short index[128];
+short index[16];
 #pragma DATA_SECTION(index,".EXT_RAM");
+
+
+double tempx[(3 * N/2) - 2];
+double tempy[(3 * N/2) - 2];
+#pragma DATA_SECTION(tempx,".EXT_RAM");
+#pragma DATA_SECTION(tempy,".EXT_RAM");
 
 
 void analyse_son(struct TABLEAU_IDENT *x2, struct TABLEAU_REF *Sig_Ref) {
@@ -77,8 +88,7 @@ void pre_traitement(struct TABLEAU_INIT Ech[2], struct TABLEAU_REF  *Sig_Ref){
     int i = 0;
     int j = 0;
     float max_temp, mean_temp;
-    short max_temp_short, mean_temp_short;
-    float xREF[N];
+    short max_temp_short;
 
     fenetre_hamming(fen_hamming, N);
     fenetre_triangle(fen_triang, N/2);
@@ -110,26 +120,7 @@ void pre_traitement(struct TABLEAU_INIT Ech[2], struct TABLEAU_REF  *Sig_Ref){
     }
 
     magnitude_complex(Sig_Ref->real_tableau_ref, Sig_Ref->imag_tableau_ref, Sig_Ref->mag_tableau_ref, N);
-//    phase_complex(Sig_Ref->real_tableau_ref, Sig_Ref->imag_tableau_ref, Sig_Ref->phase_tableau_ref, N);
-//
-//    IFFT(Sig_Ref->real_tableau_ref, Sig_Ref->imag_tableau_ref, xREF);
-////    IFFT(float tableau_in_real[],float tableau_in_imag[],float tableau_out[]);
-//    max_temp = maxi(xREF, N);
-//
-//    for (i= 0; i<N; i++) {
-//        xREF[i] = xREF[i] / max_temp;
-//    }
-//
-//    mean_temp = mean(xREF, N);
-//    for (i= 0; i<N; i++) {
-//        xREF[i] = xREF[i] - mean_temp;
-//    }
-//
-////    int Nb = N/2;
-////    float T = N*dt;
-////    float df = 1/T;
-//
-//
+
     for(i=0; i<2; i++) {
         max_temp = maxi_abs(Ech[i].mag_tableau_in, N/2);
         for (j = 0; j<N/2; j++) {
@@ -152,22 +143,25 @@ void pre_traitement(struct TABLEAU_INIT Ech[2], struct TABLEAU_REF  *Sig_Ref){
     for (j = 0; j<N/2; j++) {
        Sig_Ref->mag_tableau_ref[j] = Sig_Ref->mag_tableau_ref[j]/ max_temp;
     }
-//
-//
+
+
     correlation((double*) Sig_Ref->mag_tableau_ref, (double*) Sig_Ref->mag_tableau_ref, N/2, Sig_Ref->autoCorr);
-//
-//    float score[3];
-//    float diff_corr[N/2];
-//
-//    for (i = 0; i<3; i++) {
-//        correlation((double*)Sig_Ref->mag_tableau_ref, (double*) Ech[i].mag_tableau_in, N/2, Ech[i].autoCorr);
-//        for (j = 0; j<N/2; j++) {
-//            diff_corr[j] = Sig_Ref->autoCorr[j] - Ech[i].autoCorr[j];
-//        }
-//        mean_temp = mean(diff_corr, N/2);
-//        score[i] = pow(5, mean_temp*100);
-//    }
-//    Sig_Ref->seuil = (score[0] + score[1] + score[2])/3;
+
+    float score[3];
+    float diff_corr[N/2];
+
+    for (i = 0; i<2; i++) {
+        correlation((double*)Sig_Ref->mag_tableau_ref, (double*) Ech[i].mag_tableau_in, N/2, Ech[i].autoCorr);
+        for (j = 0; j<N/2; j++) {
+            diff_corr[j] = Sig_Ref->autoCorr[j] - Ech[i].autoCorr[j];
+            if (diff_corr[j] < 0) {
+                diff_corr[j] = diff_corr[j] * -1;
+            }
+        }
+        mean_temp = mean(diff_corr, N/2);
+        score[i] = pow(5, mean_temp*100);
+    }
+    Sig_Ref->seuil = (score[0] + score[1] + score[2])/3;
 }
 
 // pour obtenir le maximum
@@ -357,4 +351,84 @@ void IFFT(float tableau_in_real[],float tableau_in_imag[],float tableau_out[])
     {
         tableau_out[i] = X_Z[2*i];
     }
+}
+
+
+
+void correlation(double x[], double y[],int l,double out[]) {
+
+//    int i = 0;
+
+
+
+    //Déclaration du tableau pour le résultat assembleur
+//    double res_asm_corr [2*length -1];
+
+    //Déclaration des coefficients d'autocorrelation
+    double rxx0 = 0;
+    double ryy0 = 0;
+
+    //Calculs des coefficient d'autocorrélation des coefficients d'autocorrelation
+    for (i = 0; i < l; i++) {
+        rxx0 = rxx0 + x[i]*x[i];
+        ryy0 = ryy0 + y[i]*y[i];
+    }
+
+//Ajout de "0" avant et après pour pouvoir faire les opérations dans x
+    for (i; i < l-1; i++)
+    {
+        tempx[i] = 0;
+    }
+
+    int offset = i;
+    for (i; i < offset+l; i++)
+    {
+        tempx[i] = x[i- offset];
+    }
+
+    offset = i;
+    for (i; i < offset + l-1; i++)
+    {
+        tempx[i] = 0;
+    }
+
+//Boucle principale de l'algo
+    i = 0;
+    int j = 0;
+    for (i; i < 2*l - 1; i++)
+    {
+        j = 0;
+        for (j; j < i ; j++)
+        {
+            tempy[j] = 0;
+        }
+
+        int offset = j;
+        for (j; j < offset + l; j++)
+        {
+            tempy[j] = y[j- offset];
+        }
+
+        offset = j;
+        for (j; j < l+1-i+offset; j++)
+        {
+            tempy[j] = 0;
+        }
+
+        int k = 0;
+        out[i] = 0;
+
+        /*res_asm_corr [i] = AutoCorrelation(tempx, 3*length - 2, tempy); //Appel de la fonction assembleur
+        printf("[ %f", res_asm_corr [i]);
+         */
+
+        for (k;k < 2*l -1; k++)
+        {
+            out[i] = out[i] + tempx[k] * tempy[k]; //Calcul du coefficient de correlation
+        }
+        out[i] = out[i] / sqrt(rxx0 * ryy0); //Normalisation de la corrélation
+
+
+    }
+
 }

@@ -11,8 +11,9 @@
 #include <math.h>
 #include <stdio.h>
 
+
 //const float PI = 3.14159265358979;
-#define N   100  //16384
+#define N   256  //16384
 //#define Fs  8000;
 //const float dt = 0.000125;
 
@@ -26,7 +27,7 @@ struct TABLEAU_INIT {
 //    float cmplx_tableau_in[N];
     short signal_in[N];
     float signal_norm[N];
-//    double autoCorr[N/2];
+    double autoCorr[N/2];
 };
 
 struct TABLEAU_REF {
@@ -36,7 +37,7 @@ struct TABLEAU_REF {
     float imag_tableau_ref[N];
 //    float cmplx_tableau_ref[N];
     short signal_ref[N];
-//    double autoCorr[N/2];
+    double autoCorr[N/2];
     float seuil;
 };
 
@@ -49,6 +50,9 @@ struct TABLEAU_IDENT {
 //    double autoCorr[N/2];
     float seuil;
 };
+
+
+double AutoCorrelation(double * tab1, int longueur, double * tab2);
 
 void magnitude_complex(float tableau_in_real[], float tableau_in_imag[], float tableau_out_magnitude[], int l);
 void phase_complex(float tableau_in_real[], float tableau_in_imag[], float tableau_out_phase[], int l);
@@ -64,6 +68,7 @@ float val_absolut(float val);
 float maxi_abs(float tab[],int l);
 short maxi_abs_short(short tab[],int l);
 short mean_short(short tab[], int l);
+void correlation(double x[], double y[],int l,double out[]);
 
 
 #endif /* INCLUDES_FUNCTIONHELPERPROJETS5_H_ */

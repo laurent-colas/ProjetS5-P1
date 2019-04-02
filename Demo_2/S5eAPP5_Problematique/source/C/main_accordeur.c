@@ -41,6 +41,7 @@
 
 
 
+
 // VARIABLES GLOBALES
 //USELECTIONS Commandes;				// Commandes de l'utilisateur (voir main_accordeur.h)
 
@@ -70,13 +71,13 @@ Uint16 inputsource=DSK6713_AIC23_INPUT_LINE; // Selection de l'entrée LINE IN
 #define DROIT  1 // Définition du haut-parleur droit
 union {Uint32 uint; short channel[2];} AIC23_data; // Pour contenir les deux signaux
 
-//extern struct TABLEAU_INIT  Ech[3];
-//extern struct TABLEAU_REF  Sig_Ref;
-//extern struct TABLEAU_IDENT x2;
+
 struct TABLEAU_INIT Ech[2];
 struct TABLEAU_REF  Sig_Ref;
 #pragma DATA_SECTION(Sig_Ref, ".EXT_RAM")
 #pragma DATA_SECTION(Ech, ".EXT_RAM")
+
+
 void main()
 {
 //	initGenM2();
