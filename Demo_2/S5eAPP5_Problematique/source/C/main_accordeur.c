@@ -44,26 +44,22 @@
 // VARIABLES GLOBALES
 //USELECTIONS Commandes;				// Commandes de l'utilisateur (voir main_accordeur.h)
 
-
-
-
-
-const float F0_NOMINAL[NB_CORDES] = // Fréquences fondamentales de chacune des cordes
-     { 82.407,110.000,146.832,195.998,246.942,329.628 };
-float tamponEchFilt[L_TAMPON];			// Tampon d'échantillons
+//const float F0_NOMINAL[NB_CORDES] = // Fréquences fondamentales de chacune des cordes
+//     { 82.407,110.000,146.832,195.998,246.942,329.628 };
+//float tamponEchFilt[L_TAMPON];			// Tampon d'échantillons
 int noEchFilt=0;						// Numéro de l'échantillon courant
-float errAccordement;	
+//float errAccordement;
 
 // Variable globale pour la génération de signal
 const int fe = 8000;
 const float PI = 3.14159265358979;
-extern struct complx C_delta[NB_CORDES];
-extern int nb[NB_CORDES];			// Erreur sur l'accordement de l'instrument
+//extern struct complx C_delta[NB_CORDES];
+//extern int nb[NB_CORDES];			// Erreur sur l'accordement de l'instrument
 
-#define TAMPON_L  256
-#pragma DATA_ALIGN(tampon, TAMPON_L*2); // Requis pour l'adressage circulaire en assembleur
-short tampon[TAMPON_L]={0};         // Tampon d'échantillons
-short *pTampon=&tampon[TAMPON_L-1]; // Pointeur sur l'échantillon courant
+//#define TAMPON_L  256
+//#pragma DATA_ALIGN(tampon, TAMPON_L*2); // Requis pour l'adressage circulaire en assembleur
+//short tampon[TAMPON_L]={0};         // Tampon d'échantillons
+//short *pTampon=&tampon[TAMPON_L-1]; // Pointeur sur l'échantillon courant
 
 // VARIABLES GLOBALES POUR DSK
 Uint32 fs=DSK6713_AIC23_FREQ_8KHZ; 			 // Fréquence d'échantillonnage
@@ -74,23 +70,29 @@ Uint16 inputsource=DSK6713_AIC23_INPUT_LINE; // Selection de l'entrée LINE IN
 #define DROIT  1 // Définition du haut-parleur droit
 union {Uint32 uint; short channel[2];} AIC23_data; // Pour contenir les deux signaux
 
+//extern struct TABLEAU_INIT  Ech[3];
+//extern struct TABLEAU_REF  Sig_Ref;
+//extern struct TABLEAU_IDENT x2;
+struct TABLEAU_INIT Ech[2];
+struct TABLEAU_REF  Sig_Ref;
+#pragma DATA_SECTION(Sig_Ref, ".EXT_RAM")
+#pragma DATA_SECTION(Ech, ".EXT_RAM")
 void main()
 {
 //	initGenM2();
 //	afficherMenu();		// Affichage du menu principal à l'écran
 //	initAccordeur();	// Initialisations des variables et du hardware
-	struct TABLEAU_INIT Ech[3];
-	struct TABLEAU_REF  Sig_Ref;
-	struct TABLEAU_IDENT x2;
+
+//	struct TABLEAU_IDENT x2;
 
 	int i;
 	for (i = 0; i<N; i++) {
 	    Ech[0].signal_in[i] = i;
 	    Ech[1].signal_in[i] = i;
-	    Ech[2].signal_in[i] = i;
+//	    Ech[2].signal_in[i] = i;
 	}
 	pre_traitement(Ech, &Sig_Ref);
-	analyse_son(&x2, &Sig_Ref);
+//	analyse_son(&x2, &Sig_Ref);
 	while(1) {
 
 		// Si le tampon d'échantillons filtrés pour l'autocorrélation est plein
