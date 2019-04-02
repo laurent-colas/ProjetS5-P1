@@ -13,7 +13,7 @@
 #endif
 
 #ifndef L_TAMPON
-#define L_TAMPON 256  	// Longueur du tampon circulaire d'échantillons
+#define L_TAMPON 16384  	// Longueur du tampon circulaire d'échantillons
 #endif
 
 #ifndef FS
