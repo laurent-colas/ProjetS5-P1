@@ -72,7 +72,7 @@ union {Uint32 uint; short channel[2];} AIC23_data; // Pour contenir les deux sig
 
 
 struct TABLEAU_INIT Ech[2];
-struct TABLEAU_IDENT x2;
+struct TABLEAU_IDENT x2[1];
 
 #pragma DATA_SECTION(Ech, ".EXT_RAM")
 #pragma DATA_SECTION(x2, ".EXT_RAM")
@@ -85,7 +85,7 @@ void main()
 //	afficherMenu();		// Affichage du menu principal à l'écran
 	initAccordeur();	// Initialisations des variables et du hardware
 
-
+	short short_temp;
 //	int i = 0;
 //
 //	for (i = 0; i<N; i++) {
@@ -101,15 +101,17 @@ void main()
 	        int DIP0 = DSK6713_DIP_get(0);
 	        int DIP1 = DSK6713_DIP_get(1);
 	        int DIP2 = DSK6713_DIP_get(2);
+	        noDIP = 3;
 	        // Si on appuie sur la DIP0 (actif etat bas 4103)
 	        if (DIP0 == 0) {
 	            DSK6713_LED_on(0);
-	            noDIP = 0;
 	            comm_intr();
+	            noDIP = 0;
+
 	            while (noEchFilt!=L_TAMPON){
 	                attendre(0.1);
 	            }
-
+	            attendre(0.5);
 //	            pre_traitement(Ech);
 	            noEchFilt = 0;
 
@@ -118,29 +120,36 @@ void main()
 
 	        }
 	        if (DIP1 == 0) {
-	            noDIP = 1;
 	            DSK6713_LED_on(1);
                 comm_intr();
+                noDIP = 1;
                 while (noEchFilt!=L_TAMPON){
                     attendre(0.1);
                 }
+                attendre(0.5);
                 CODEC_stop();
                 DSK6713_LED_off(1);
                 pre_traitement(Ech);
                 noEchFilt = 0;
 	        }
 	        if  (DIP2 == 0) {
-	            noDIP = 2;
+	            DSK6713_LED_on(2);
 	            comm_intr();
+	            noDIP = 2;
+	            short_temp = (short) input_sample();
                 while (noEchFilt!=L_TAMPON){
                     attendre(0.1);
                 }
+
+                attendre(0.5);
 //                pre_traitement(Ech);
                 CODEC_stop();
+                DSK6713_LED_off(2);
                 analyse_son(x2);
                 noEchFilt = 0;
 
 	        }
+
 	    }
 
 
@@ -184,14 +193,13 @@ interrupt void c_int11()
 	echLineIn = (short) input_sample();
 
 	if (noEchFilt < L_TAMPON && noDIP == 0) {
-	    Ech[0].signal_in[noEchFilt++] = echLineIn;
+	    Ech[0].signal_in[noEchFilt++] = echLineIn; //noEchFilt;
     }
 	if (noEchFilt < L_TAMPON && noDIP == 1) {
-        Ech[1].signal_in[noEchFilt++] = echLineIn;
+        Ech[1].signal_in[noEchFilt++] = echLineIn; //noEchFilt; //echLineIn;
     }
-
 	if (noEchFilt < L_TAMPON && noDIP == 2) {
-        x2.signal_ref[noEchFilt++] = echLineIn;
+        x2[0].signal_ref[noEchFilt++] = echLineIn;
     }
 
 //  // Sortir les deux signaux sur "HP/OUT"

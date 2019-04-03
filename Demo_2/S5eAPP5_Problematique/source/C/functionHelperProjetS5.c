@@ -46,41 +46,42 @@ float score[3] = {0};
 #pragma DATA_SECTION(score, ".EXT_RAM");
 
 
-void analyse_son(struct TABLEAU_IDENT x2) {
-    float max_abs_temp, mean_temp;
+void analyse_son(struct TABLEAU_IDENT x2[]) {
+    float max_abs_temp;
+//    , mean_temp;
     short max_abs_temp_short;
 
     fenetre_hamming(fen_hamming, N);
-    max_abs_temp_short = maxi_abs_short(x2.signal_ref, N);
+    max_abs_temp_short = maxi_abs_short(x2[0].signal_ref, N);
 
     for (i = 0; i<N; i++) {
-        x2.signal_norm[i] = (float)x2.signal_ref[i] / (float)max_abs_temp;
-        x2.signal_norm[i] = x2.signal_norm[i] * fen_hamming[i];
+        x2[0].signal_norm[i] = (float)x2[0].signal_ref[i] / (float)max_abs_temp;
+        x2[0].signal_norm[i] = x2[0].signal_norm[i] * fen_hamming[i];
     }
 
-    FFT(x2.signal_norm, x2.real_tableau_ref, x2.imag_tableau_ref);
-    magnitude_complex(x2.real_tableau_ref, x2.imag_tableau_ref, x2.mag_tableau_ref, N);
+    FFT(x2[0].signal_norm, x2[0].real_tableau_ref, x2[0].imag_tableau_ref);
+    magnitude_complex(x2[0].real_tableau_ref, x2[0].imag_tableau_ref, x2[0].mag_tableau_ref, N);
 
-    max_abs_temp = maxi_abs(x2.mag_tableau_ref, N/2);
+    max_abs_temp = maxi_abs(x2[0].mag_tableau_ref, N/2);
     fenetre_triangle(fen_triang, N/2);
     for (i = 0; i< N/2; i++) {
-        x2.mag_tableau_ref[i] = x2.mag_tableau_ref[i] / max_abs_temp;
-        x2.mag_tableau_ref[i] = x2.mag_tableau_ref[i] * fen_triang[i];
+        x2[0].mag_tableau_ref[i] = x2[0].mag_tableau_ref[i] / max_abs_temp;
+        x2[0].mag_tableau_ref[i] = x2[0].mag_tableau_ref[i] * fen_triang[i];
     }
 
-    max_abs_temp = maxi_abs(x2.mag_tableau_ref, N/2);
+    max_abs_temp = maxi_abs(x2[0].mag_tableau_ref, N/2);
     for (i = 0; i< N/2; i++) {
-        x2.mag_tableau_ref[i] = x2.mag_tableau_ref[i] / max_abs_temp;
+        x2[0].mag_tableau_ref[i] = x2[0].mag_tableau_ref[i] / max_abs_temp;
     }
-    correlation(Sig_Ref.mag_tableau_ref,x2.mag_tableau_ref, N/2, x2.autoCorr);
+    correlation(Sig_Ref.mag_tableau_ref,x2[0].mag_tableau_ref, N/2, x2[0].autoCorr);
 
 
     for (i = 0; i<N; i++) {
-        diff_corr[i] = Sig_Ref.autoCorr[i] - x2.autoCorr[i];
+        diff_corr[i] = Sig_Ref.autoCorr[i] - x2[0].autoCorr[i];
         diff_corr[i] = val_absolut(diff_corr[i]);
     }
 
-    x2.seuil = pow(5,(mean(diff_corr, N/2)*100));
+    x2[0].seuil = pow(5,(mean(diff_corr, N/2)*100));
 
 }
 
@@ -130,17 +131,26 @@ void pre_traitement(struct TABLEAU_INIT Ech[2]){
 
     magnitude_complex(Sig_Ref.real_tableau_ref, Sig_Ref.imag_tableau_ref, Sig_Ref.mag_tableau_ref, N);
 
-    for(i=0; i<2; i++) {
-        max_temp = maxi_abs(Ech[i].mag_tableau_in, N/2);
+
+        max_temp = maxi_abs(Ech[0].mag_tableau_in, N/2);
         for (j = 0; j<N/2; j++) {
-            Ech[i].mag_tableau_in[j] = Ech[i].mag_tableau_in[j]/max_temp;
-            Ech[i].mag_tableau_in[j] = fen_triang[j] * Ech[i].mag_tableau_in[j];
+            Ech[0].mag_tableau_in[j] = Ech[0].mag_tableau_in[j]/max_temp;
+            Ech[0].mag_tableau_in[j] = fen_triang[j] * Ech[0].mag_tableau_in[j];
         }
-        max_temp = maxi_abs(Ech[i].mag_tableau_in, N/2);
+//        max_temp = maxi_abs(Ech[0].mag_tableau_in, N/2);
+//        for (j = 0; j<N/2; j++) {
+//            Ech[0].mag_tableau_in[j] = Ech[0].mag_tableau_in[j]/ max_temp;
+//        }
+
+        max_temp = maxi_abs(Ech[1].mag_tableau_in, N/2);
         for (j = 0; j<N/2; j++) {
-            Ech[i].mag_tableau_in[j] = Ech[i].mag_tableau_in[j]/ max_temp;
+            Ech[1].mag_tableau_in[j] = Ech[1].mag_tableau_in[j]/max_temp;
+            Ech[1].mag_tableau_in[j] = fen_triang[j] * Ech[1].mag_tableau_in[j];
         }
-    }
+//        max_temp = maxi_abs(Ech[1].mag_tableau_in, N/2);
+//        for (j = 0; j<N/2; j++) {
+//            Ech[1].mag_tableau_in[j] = Ech[1].mag_tableau_in[j]/ max_temp;
+//        }
 
     max_temp = maxi_abs(Sig_Ref.mag_tableau_ref, N/2);
     for (j = 0; j<N/2; j++) {
@@ -148,10 +158,10 @@ void pre_traitement(struct TABLEAU_INIT Ech[2]){
         Sig_Ref.mag_tableau_ref[j] = fen_triang[j] * Sig_Ref.mag_tableau_ref[j];
     }
 
-    max_temp = maxi_abs(Sig_Ref.mag_tableau_ref, N/2);
-    for (j = 0; j<N/2; j++) {
-       Sig_Ref.mag_tableau_ref[j] = Sig_Ref.mag_tableau_ref[j]/ max_temp;
-    }
+//    max_temp = maxi_abs(Sig_Ref.mag_tableau_ref, N/2);
+//    for (j = 0; j<N/2; j++) {
+//       Sig_Ref.mag_tableau_ref[j] = Sig_Ref.mag_tableau_ref[j]/ max_temp;
+//    }
 
     correlation(Sig_Ref.mag_tableau_ref,  Sig_Ref.mag_tableau_ref, N/2, Sig_Ref.autoCorr);
 
@@ -363,10 +373,7 @@ void IFFT(float tableau_in_real[],float tableau_in_imag[],float tableau_out[])
 void correlation(float x[], float y[],int l,float out[]) {
 
 //    int i = 0;
-
-
-
-    //Déclaration du tableau pour le résultat assembleur
+//    Déclaration du tableau pour le résultat assembleur
 //    double res_asm_corr [2*length -1];
 
     //Déclaration des coefficients d'autocorrelation
@@ -437,3 +444,33 @@ void correlation(float x[], float y[],int l,float out[]) {
     }
 
 }
+
+void correlationLouis(float signal1[], float signal2[],int l,float out[]) {
+
+    int iteration = 0;
+    int index = 0;
+    i = 0;
+//    int k = 0;
+
+    //Boucle principale de l'algo
+    for (iteration = 1; iteration <= (length*2-1) ; iteration++)
+    {
+       // out[iteration] = 0;
+        if (iteration <= length)
+        {
+            for (index = 0 ; index <= iteration ; index++)
+            {
+                out[iteration-1] = out[iteration-1] + signal1[iteration-index]*signal2[length-index];
+            }
+        }
+        if (iteration > length)
+        {
+            for (index = 0 ; index <= (length*2-iteration) ; index++)
+            {
+                out[iteration-1] = out[iteration-1] + signal1[length*2-iteration-index]*signal2[length-index];
+            }
+        }
+    }
+
+}
+

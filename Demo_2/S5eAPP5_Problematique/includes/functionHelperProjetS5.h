@@ -62,7 +62,7 @@ void fenetre_triangle(float w[], int l);
 void FFT(float tableau_in[], float tableau_out_real[],float tableau_out_imag[]);
 void IFFT(float tableau_in_real[],float tableau_in_imag[],float tableau_out[]);
 void pre_traitement(struct TABLEAU_INIT Ech[2]);
-void analyse_son(struct TABLEAU_IDENT x2);
+void analyse_son(struct TABLEAU_IDENT x2[1]);
 float maxi(float tab[],int l);
 float mean(float tab[], int l);
 float val_absolut(float val);
@@ -70,6 +70,7 @@ float maxi_abs(float tab[],int l);
 short maxi_abs_short(short tab[],int l);
 short mean_short(short tab[], int l);
 void correlation(float x[], float y[],int l,float out[]);
+void correlationLouis(float signal1[], float signal2[],int l,float out[]);
 
 
 #endif /* INCLUDES_FUNCTIONHELPERPROJETS5_H_ */
