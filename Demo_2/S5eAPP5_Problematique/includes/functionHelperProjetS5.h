@@ -13,14 +13,14 @@
 
 
 //const float PI = 3.14159265358979;
-#define N   256 //16384
+#define N   4096//256 //16384
 //#define Fs  8000;
 //const float dt = 0.000125;
 
 
 
 struct TABLEAU_INIT {
-    float mag_tableau_in[N];
+    float mag_tableau_in[N/2];
 //    float phase_tableau_in[N];
     float real_tableau_in[N];
     float imag_tableau_in[N];

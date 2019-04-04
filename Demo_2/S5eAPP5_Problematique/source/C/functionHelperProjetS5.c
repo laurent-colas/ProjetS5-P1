@@ -36,8 +36,7 @@ float tempy[(3 * N/2) - 2];
 #pragma DATA_SECTION(tempx,".EXT_RAM");
 #pragma DATA_SECTION(tempy,".EXT_RAM");
 
-struct TABLEAU_REF  Sig_Ref;
-#pragma DATA_SECTION(Sig_Ref, ".EXT_RAM");
+
 
 float diff_corr[N];
 #pragma DATA_SECTION(diff_corr, ".EXT_RAM");
@@ -45,6 +44,7 @@ float diff_corr[N];
 float score[3] = {0};
 #pragma DATA_SECTION(score, ".EXT_RAM");
 
+extern struct TABLEAU_REF Sig_Ref;
 
 void analyse_son(struct TABLEAU_IDENT x2[]) {
     float max_abs_temp;
@@ -113,10 +113,10 @@ void pre_traitement(struct TABLEAU_INIT Ech[2]){
 
 
     FFT(Ech[0].signal_norm, Ech[0].real_tableau_in, Ech[0].imag_tableau_in);
-    magnitude_complex(Ech[0].real_tableau_in, Ech[0].imag_tableau_in, Ech[0].mag_tableau_in, N);
+    magnitude_complex(Ech[0].real_tableau_in, Ech[0].imag_tableau_in, Ech[0].mag_tableau_in, N/2);
 
     FFT(Ech[1].signal_norm, Ech[1].real_tableau_in, Ech[1].imag_tableau_in);
-    magnitude_complex(Ech[1].real_tableau_in, Ech[1].imag_tableau_in, Ech[1].mag_tableau_in, N);
+    magnitude_complex(Ech[1].real_tableau_in, Ech[1].imag_tableau_in, Ech[1].mag_tableau_in, N/2);
 
 //    for (i = 0; i<2; i++) {
 //        FFT(Ech[i].signal_norm, Ech[i].real_tableau_in, Ech[i].imag_tableau_in);
@@ -133,7 +133,7 @@ void pre_traitement(struct TABLEAU_INIT Ech[2]){
 
 
         max_temp = maxi_abs(Ech[0].mag_tableau_in, N/2);
-        for (j = 0; j<N/2; j++) {
+        for (j = N/2; j<N; j++) {
             Ech[0].mag_tableau_in[j] = Ech[0].mag_tableau_in[j]/max_temp;
             Ech[0].mag_tableau_in[j] = fen_triang[j] * Ech[0].mag_tableau_in[j];
         }
@@ -143,7 +143,7 @@ void pre_traitement(struct TABLEAU_INIT Ech[2]){
 //        }
 
         max_temp = maxi_abs(Ech[1].mag_tableau_in, N/2);
-        for (j = 0; j<N/2; j++) {
+        for (j =0; j<N/2; j++) {
             Ech[1].mag_tableau_in[j] = Ech[1].mag_tableau_in[j]/max_temp;
             Ech[1].mag_tableau_in[j] = fen_triang[j] * Ech[1].mag_tableau_in[j];
         }
@@ -164,6 +164,7 @@ void pre_traitement(struct TABLEAU_INIT Ech[2]){
 //    }
 
     correlation(Sig_Ref.mag_tableau_ref,  Sig_Ref.mag_tableau_ref, N/2, Sig_Ref.autoCorr);
+    // optimiser pour autocorelation
 
     for (i = 0; i<2; i++) {
         correlation(Sig_Ref.mag_tableau_ref, Ech[i].mag_tableau_in, N/2, Ech[i].autoCorr);

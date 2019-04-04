@@ -77,14 +77,21 @@ struct TABLEAU_IDENT x2[1];
 #pragma DATA_SECTION(Ech, ".EXT_RAM")
 #pragma DATA_SECTION(x2, ".EXT_RAM")
 
+short tableau_in_temporaire[2*N];
+#pragma DATA_SECTION(tableau_in_temporaire, ".EXT_RAM")
+
 int noDIP = 0;
+int interruption_full = 0;
+
+struct TABLEAU_REF  Sig_Ref;
+#pragma DATA_SECTION(Sig_Ref, ".EXT_RAM");
 
 void main()
 {
 //	initGenM2();
 //	afficherMenu();		// Affichage du menu principal à l'écran
 	initAccordeur();	// Initialisations des variables et du hardware
-
+	int j;
 	short short_temp;
 //	int i = 0;
 //
@@ -111,11 +118,14 @@ void main()
 	            while (noEchFilt!=L_TAMPON){
 	                attendre(0.1);
 	            }
-	            attendre(0.5);
-//	            pre_traitement(Ech);
+	            attendre(0.2);
 	            noEchFilt = 0;
 
 	            CODEC_stop();
+//	            for (j=0; j<N; j++) {
+//	                Ech[0].signal_in[j] = tableau_in_temporaire[2*j];
+//	            }
+	            interruption_full = 0;
 	            DSK6713_LED_off(0);
 
 	        }
@@ -126,9 +136,13 @@ void main()
                 while (noEchFilt!=L_TAMPON){
                     attendre(0.1);
                 }
-                attendre(0.5);
+                attendre(0.3);
                 CODEC_stop();
+//                for (j=0; j<N; j++) {
+//                    Ech[1].signal_in[j] = tableau_in_temporaire[2*j];
+//                }
                 DSK6713_LED_off(1);
+                interruption_full = 0;
                 pre_traitement(Ech);
                 noEchFilt = 0;
 	        }
@@ -141,12 +155,23 @@ void main()
                     attendre(0.1);
                 }
 
-                attendre(0.5);
+                attendre(0.2);
 //                pre_traitement(Ech);
                 CODEC_stop();
+//                for (j=0; j<N; j++) {
+//                    x2[0].signal_ref[j] = tableau_in_temporaire[2*j];
+//                }
+                interruption_full = 0;
                 DSK6713_LED_off(2);
                 analyse_son(x2);
                 noEchFilt = 0;
+
+                if (x2[0].seuil <= 69*Sig_Ref.seuil) {
+                    printf("Reussite");
+                }
+                else {
+                    printf("Echec ");
+                }
 
 	        }
 
@@ -192,18 +217,24 @@ interrupt void c_int11()
 	// Capture de l'échantillon provenant de l'entrée "IN"
 	echLineIn = (short) input_sample();
 
-	if (noEchFilt < L_TAMPON && noDIP == 0) {
+	if (noEchFilt < L_TAMPON && noDIP == 0  && interruption_full % 2 == 0) {
+
+//	    tableau_in_temporaire[noEchFilt++] = echLineIn;
 	    Ech[0].signal_in[noEchFilt++] = echLineIn; //noEchFilt;
     }
-	if (noEchFilt < L_TAMPON && noDIP == 1) {
+	if (noEchFilt < L_TAMPON && noDIP == 1 && interruption_full % 2 == 0) {
+//	    tableau_in_temporaire[noEchFilt++] = echLineIn;
         Ech[1].signal_in[noEchFilt++] = echLineIn; //noEchFilt; //echLineIn;
     }
-	if (noEchFilt < L_TAMPON && noDIP == 2) {
+	if (noEchFilt < L_TAMPON && noDIP == 2 && interruption_full % 2 == 0) {
+//	    tableau_in_temporaire[noEchFilt++] = echLineIn;
         x2[0].signal_ref[noEchFilt++] = echLineIn;
     }
 
 //  // Sortir les deux signaux sur "HP/OUT"
     output_sample(AIC23_data.uint);
+
+    interruption_full  = interruption_full + 1;
 
 	return;
 }
