@@ -51,6 +51,7 @@
 
 const float F0_NOMINAL[NB_CORDES] = // Fréquences fondamentales de chacune des cordes
      { 82.407,110.000,146.832,195.998,246.942,329.628 };
+
 float tamponEchFilt[L_TAMPON];			// Tampon d'échantillons
 int noEchFilt=0;						// Numéro de l'échantillon courant
 float errAccordement;	
@@ -65,10 +66,12 @@ extern int nb[NB_CORDES];			// Erreur sur l'accordement de l'instrument
 #pragma DATA_ALIGN(tampon, TAMPON_L*2); // Requis pour l'adressage circulaire en assembleur
 short tampon[TAMPON_L]={0};         // Tampon d'échantillons
 short *pTampon=&tampon[TAMPON_L-1]; // Pointeur sur l'échantillon courant
+short *pTamponPH=&tampon[TAMPON_L-1];
+
 
 // VARIABLES GLOBALES POUR DSK
 Uint32 fs=DSK6713_AIC23_FREQ_8KHZ; 			 // Fréquence d'échantillonnage
-#define DSK6713_AIC23_INPUT_LINE 0x0011		 // Définition de l'entrée LINE IN
+#define DSK6713_AIC23_INPUT_LINE 0x0011	 // Définition de l'entrée LINE IN
 Uint16 inputsource=DSK6713_AIC23_INPUT_LINE; // Selection de l'entrée LINE IN
 
 #define GAUCHE 0 // Définition du haut-parleur gauche
@@ -100,13 +103,12 @@ void main()
 		// Si on appuie sur la DIP0 (actif etat bas 4103)
 		if (DIP0 == 0) {
 
-		    comm_intr(fs,inputsource);        /* Initialisation de la communication entre DSP et AIC23 codec
+		    comm_intr();        /* Initialisation de la communication entre DSP et AIC23 codec
 		                               et démarage des interruptions pour l'échantillonnage */
 
 		    while (noEchFilt!=L_TAMPON){
 
 		        attendre(0.1);
-
 
 		    }
 		    // Permettre au tampon de se remplir de nouveau
@@ -137,7 +139,8 @@ interrupt void c_int11()
 {
 	float echOut; 		 // Amplitude de l'échantillon générée pour l'écoute d'une note
 	short echLineIn;	 // Amplitude de l'échantillon provenant de l'entrée LINE IN
-//	short echLineInFilt; // Amplitude de l'échantillon filtré
+	short echLineInFilt; // Amplitude de l'échantillon filtré
+	short echLineInFiltPH; // Amplitude de l'échantillon filtré
 	//short pwm[10] = {0,0,0,0,0,0,0,0,25,25}; // Pulse width modulation
 	//int debugFiltres = 1;
 	//static int n = 0;
@@ -148,18 +151,20 @@ interrupt void c_int11()
 
 //	// VOTRE **SOLUTION** DE FILTRAGE FIR + IIR REMPLACE LA PROCHAINE LIGNE!!!
 //	echLineInFilt = echLineIn;
-////	pTampon = FIR_ASM(pTampon, echLineIn, coef, &echLineInFilt);
-////	echLineInFilt = filtrerCascadeIIR(Commandes.noCorde, echLineInFilt);
+	//pTamponPH = FIR_ASM(pTamponPH, echLineIn, coefPH, &echLineInFiltPH);
+	pTampon = FIR_ASM(pTampon, echLineIn, coefPBd, &echLineInFilt);
 
 
 //	// Si le tampon d'échantillons filtrés pour l'autocorrélation n'est pas plein,
 //	// y ajouter l'échantillon courant filtré
 	if (noEchFilt < L_TAMPON) {
 //		// Enregistrement de l'échantillon dans le tampon
-	tamponEchFilt[noEchFilt++] = (float) echLineIn;
+	tamponEchFilt[noEchFilt++] = (float) echLineInFilt;
+
 	}
 //
-
+	AIC23_data.channel[GAUCHE] = echLineIn;
+	AIC23_data.channel[DROIT] = echLineInFilt;
 //	// Sortir les deux signaux sur "HP/OUT"
 	output_sample(AIC23_data.uint);
 
