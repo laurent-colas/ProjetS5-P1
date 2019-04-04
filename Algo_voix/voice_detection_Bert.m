@@ -1,20 +1,22 @@
 clear all 
 close all 
-clc
-
-fs = 8000;
 
 
+fs = 4000;
+
+t = 1.5;
 dt = 1/fs;
-w = hamming(2*fs);
+w = hamming(t*fs);
 w = w';
 nbBits = 16;
 
+%cd('C:\Users\berth\OneDrive\Documents\Git\projet s5\Demo_2')
 %% Configuration 
+
 for i = 1:3
     recObj = audiorecorder(fs,nbBits,1);
     disp(['Start speaking. ' num2str(i)])
-    recordblocking(recObj, 2);
+    recordblocking(recObj, t);
     disp('End of Recording.');
     x(i,:) = getaudiodata(recObj);
     x(i,:) = x(i,:)./max(abs(x(i,:)));
@@ -22,7 +24,9 @@ for i = 1:3
     x(i,:) = x(i,:).*w;
     disp('===============');
 end
+
 %% Pré Traitement
+tic;
 TW = triang(numel(x(1,:))/2);
 TW = TW';
 
@@ -70,13 +74,14 @@ for i = 1:3
 end
 
 seuil = (score(1)+score(2)+score(3))/3
+toc;
 %% Identification 
 
 close all 
-clc
+tic;
 recObj = audiorecorder(fs,nbBits,1);
 disp('Start speaking.')
-recordblocking(recObj, 2);
+recordblocking(recObj, t);
 disp('End of Recording.');
 x2 = getaudiodata(recObj);
 x2 = x2./max(abs(x2));
@@ -94,12 +99,10 @@ X2m = X2m./max(abs(X2m));
 X2m = X2m';
 X2p = X2p';
 
-player = audioplayer(x2,fs);
-play(player)
-
 corr2.magn = correlation(XREF.magn,X2m,numel(XREF.magn));
-
 score2 = 5^(mean(abs(autoCorr-corr2.magn))*100)
+
+toc;
 
 figure(1) 
 plot(autoCorr)
@@ -110,12 +113,15 @@ plot(corr(i).magn)
 hold on 
 end
 
+player = audioplayer(x2,fs);
+play(player)
+
 figure(2) 
 plot(autoCorr)
 hold on 
 plot(corr2.magn)
 
-if score2 <= 20*seuil
+if score2 <= 69*seuil
     disp('Détection YEAH ! ta dit ton nom !!! ');
 else
     disp('Pas le bon nom asti dcave');
