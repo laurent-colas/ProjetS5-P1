@@ -146,7 +146,7 @@
      __delay_ms(33); //wait 100 ms for the LCD to power itself on properly
  }
 
-void initialisation_LCD()
+void initialisation_LCD(void)
 {
     initialisation_PORT();
     initialisation_SPI();
