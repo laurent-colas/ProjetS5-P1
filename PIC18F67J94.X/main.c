@@ -12,7 +12,6 @@
 #include <stdlib.h>
 #include "config_bits.h"
 
-
 #include "main.h"
 
 
@@ -35,6 +34,7 @@ struct Utilisateur utilisateur[MAX_USERS];
 int increment_utilisateur = 0;
 int id_user_identifier = 0;
 int timeout = 0;
+const unsigned char div_temp[15] = " sur 90 Celsius";
 
 void main(void) {
     
@@ -47,8 +47,8 @@ void main(void) {
         switch(ETAT) {
             case ATTENTE:
                 message_etat(ATTENTE);
-                send_data(CHAR_ATTENTE);
-                while (sys_state != CHAR_ATTENTE || timeout != TIMEOUT) {
+//                send_data(CHAR_ATTENTE);
+                while (((sys_state != CHAR_ATTENTE) && (timeout <= TIMEOUT))) {
                     timeout = timeout + 1;
                 }
                 timeout = 0;
@@ -58,16 +58,16 @@ void main(void) {
             case ACCEUIL:
                 message_etat(ACCEUIL);
                 pad_value = read_pad();
-                while (pad_value != '1' || pad_value !='2') {
+                while ((pad_value != '1' && pad_value !='2')) {
                     avertissement(3);
                     pad_value = read_pad();
                 }
                 if (pad_value == '1'){
-                    
                     send_data(CHAR_CONFIG);
-                    while (sys_state != CHAR_CONFIR1_CONFIG || timeout != TIMEOUT) {
+                    while (((sys_state != CHAR_ATTENTE) && (timeout <= TIMEOUT))) {
                         timeout = timeout + 1;
                     }
+                    timeout = 0;
                     ETAT = CONFIGURATION;
                     
                 }
@@ -78,10 +78,12 @@ void main(void) {
             
             case IDENTIFICATION:
                 identify_user();
+                ETAT = PREP_CAFE;
                 break;
                 
             case CONFIGURATION:
                 create_new_user();
+                ETAT = ACCEUIL;
                 break;
             
             case PREP_CAFE:
@@ -94,7 +96,7 @@ void main(void) {
 
 void init_all(void) {
     init_UART();
-    init_ADC();
+//    init_ADC();
     initialisation_LCD();
     init_num_pad();
     init_dist_sensor();
@@ -113,7 +115,7 @@ void get_ready_for_coffee(void) {
     }
 //    TempEau = get_temp(1);
     TempEau = 70;
-    if (TempEau< SeuilTempEau) {
+    if (TempEau < SeuilTempEau) {
         chauffe_eau(1);
         avertissement(2);
         while (TempEau< SeuilTempEau) {
@@ -122,8 +124,8 @@ void get_ready_for_coffee(void) {
             moveCursor(1,0);
             putNumberLCD(TempEau);
             moveCursor(1,4);
-            const unsigned char div[13] = " / 90 Celsius";
-            putStringLCD(&div[0]);
+            
+            putStringLCD(&div_temp[0]);
         }   
     }
     chauffe_eau(0);
@@ -141,7 +143,8 @@ void set_default_coffee(void) {
 
 void __interrupt(high_priority) Serial_interrupt() {
 //    p.417
-    while(RC1IF == 0);
+    
+//    while(RC1IF == 0);
     out = RCREG1;
     sys_state = check(out);
 }
@@ -196,7 +199,7 @@ void create_new_user(void) {
     
     increment_utilisateur = increment_utilisateur + 1;
     
-    ETAT = ACCEUIL;
+    
 
 }
 
@@ -233,7 +236,7 @@ void identify_user(void) {
     }
     id_user_identifier = position_user_struct;
 
-    ETAT = PREP_CAFE;
+    
     
 }
 

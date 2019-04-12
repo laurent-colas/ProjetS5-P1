@@ -24,7 +24,7 @@ extern "C" {
 #define PREP_CAFE       5    
     
 #define MAX_USERS       10
-#define TIMEOUT         1000
+#define TIMEOUT         3
     
 #include "LCD_SPI.h"
 #include "HC-SR04.h"

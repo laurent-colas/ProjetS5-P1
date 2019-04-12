@@ -44,7 +44,7 @@ void putchLCD(unsigned char);
 void clearDisplay(void);
 void displayCtrl(char display, char cursor, char blink);
 void initialisation_PORT(void);
-void initialisation_LCD();
+void initialisation_LCD(void);
 void moveCursor(int row, int col);
 char fliplr(char input);
 void putNumberLCD(int number);
