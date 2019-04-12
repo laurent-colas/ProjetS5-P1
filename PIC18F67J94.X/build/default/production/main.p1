@@ -1,13 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"51 ./main.h
+[; ;./main.h: 51: struct Utilisateur {
+[s S1428 `uc 1 `i 1 `i 1 `i 1 ]
+[n S1428 Utilisateur id qqt_eau qqt_lait qqt_sucre ]
 [p mainexit ]
-"33 ./main.h
-[; ;./main.h: 33: void init_all(void);
-[v _init_all `(v ~T0 @X0 0 ef ]
 "34
-[; ;./main.h: 34: void get_ready_for_coffee(void);
+[; ;./main.h: 34: void init_all(void);
+[v _init_all `(v ~T0 @X0 0 ef ]
+"35
+[; ;./main.h: 35: void get_ready_for_coffee(void);
 [v _get_ready_for_coffee `(v ~T0 @X0 0 ef ]
-"36
-[; ;./main.h: 36: void message_etat(int etat);
+"37
+[; ;./main.h: 37: void message_etat(int etat);
 [v _message_etat `(v ~T0 @X0 0 ef1`i ]
 "18 ./UART_MAX.h
 [; ;./UART_MAX.h: 18: void send_data(char input);
@@ -15,9 +19,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "14 ./num_pad.h
 [; ;./num_pad.h: 14: char read_pad(void);
 [v _read_pad `(uc ~T0 @X0 0 ef ]
-"35 ./main.h
-[; ;./main.h: 35: void avertissement(int NumAvertissement);
+"36 ./main.h
+[; ;./main.h: 36: void avertissement(int NumAvertissement);
 [v _avertissement `(v ~T0 @X0 0 ef1`i ]
+"15 ./config_user.h
+[; ;./config_user.h: 15: void create_new_user(void);
+[v _create_new_user `(v ~T0 @X0 0 ef ]
 "17 ./UART_MAX.h
 [; ;./UART_MAX.h: 17: void init_UART(void);
 [v _init_UART `(v ~T0 @X0 0 ef ]
@@ -65,8 +72,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27012
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 27012: extern volatile unsigned char RCREG1 __attribute__((address(0xFAE)));
 [v _RCREG1 `Vuc ~T0 @X0 0 e@4014 ]
-"41 ./main.h
-[; ;./main.h: 41: char check(char input);
+"49 ./main.h
+[; ;./main.h: 49: char check(char input);
 [v _check `(uc ~T0 @X0 0 ef1`uc ]
 [t T4 __interrupt low_priority ]
 "38647 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
@@ -75,6 +82,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "27 ./temperature.h
 [; ;./temperature.h: 27: void gestion_temp_eau(int temperature);
 [v _gestion_temp_eau `(v ~T0 @X0 0 ef1`i ]
+"16 ./config_user.h
+[; ;./config_user.h: 16: void question_configuration(int etape);
+[v _question_configuration `(v ~T0 @X0 0 ef1`i ]
+"46 ./main.h
+[; ;./main.h: 46: int digit_to_int(char d);
+[v _digit_to_int `(i ~T0 @X0 0 ef1`uc ]
+"36 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\stdlib.h
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\c99\stdlib.h: 36: long strtol (const char *restrict, char **restrict, int);
+[v _strtol `(l ~T0 @X0 0 ef3`*Cuc`**uc`i ]
 "26485 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic18f67j94.h: 26485:     struct {
 [s S1143 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -1819,39 +1835,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 67 `ui `uc
 ]
 "25
-[; ;./main.h: 25: char CHAR_ACCEUIL = 'E';
+[; ;./main.h: 25: char CHAR_CONFIR1_CONFIG = 'G';
+[v _CHAR_CONFIR1_CONFIG `uc ~T0 @X0 1 e ]
+[i _CHAR_CONFIR1_CONFIG
+-> -> 71 `ui `uc
+]
+"26
+[; ;./main.h: 26: char CHAR_ACCEUIL = 'E';
 [v _CHAR_ACCEUIL `uc ~T0 @X0 1 e ]
 [i _CHAR_ACCEUIL
 -> -> 69 `ui `uc
 ]
-"28
-[; ;./main.h: 28: int ETAT = 1;
+"29
+[; ;./main.h: 29: int ETAT = 1;
 [v _ETAT `i ~T0 @X0 1 e ]
 [i _ETAT
 -> 1 `i
 ]
-"29
-[; ;./main.h: 29: int TempEau, TempLait;
+"30
+[; ;./main.h: 30: int TempEau, TempLait;
 [v _TempEau `i ~T0 @X0 1 e ]
 [v _TempLait `i ~T0 @X0 1 e ]
-"30
-[; ;./main.h: 30: int DistanceEau, DistanceLait;
+"31
+[; ;./main.h: 31: int DistanceEau, DistanceLait;
 [v _DistanceEau `i ~T0 @X0 1 e ]
 [v _DistanceLait `i ~T0 @X0 1 e ]
-"22 main.c
-[; ;main.c: 22: int number = 3;
+"24 main.c
+[; ;main.c: 24: int number = 3;
 [v _number `i ~T0 @X0 1 e ]
 [i _number
 -> 3 `i
 ]
-"23
-[; ;main.c: 23: int i;
+"25
+[; ;main.c: 25: int i;
 [v _i `i ~T0 @X0 1 e ]
-"24
-[; ;main.c: 24: char pressed_pad;
+"26
+[; ;main.c: 26: char pressed_pad;
 [v _pressed_pad `uc ~T0 @X0 1 e ]
-"27
-[; ;main.c: 27: const unsigned char str[17] = "Nico est francais";
+"29
+[; ;main.c: 29: const unsigned char str[17] = "Nico est francais";
 [v _str `Cuc ~T0 @X0 -> 17 `i e ]
 [i _str
 :U ..
@@ -1874,8 +1896,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 115 `c
 ..
 ]
-"28
-[; ;main.c: 28: const unsigned char str_read_dist[20] = "1-Pour prelever dist";
+"30
+[; ;main.c: 30: const unsigned char str_read_dist[20] = "1-Pour prelever dist";
 [v _str_read_dist `Cuc ~T0 @X0 -> 20 `i e ]
 [i _str_read_dist
 :U ..
@@ -1901,14 +1923,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 116 `c
 ..
 ]
-"29
-[; ;main.c: 29: float Total_distance[10];
-[v _Total_distance `f ~T0 @X0 -> 10 `i e ]
-"30
-[; ;main.c: 30: int Distance_mm_int;
-[v _Distance_mm_int `i ~T0 @X0 1 e ]
 "31
-[; ;main.c: 31: const unsigned char total_dist[10];
+[; ;main.c: 31: float Total_distance[10];
+[v _Total_distance `f ~T0 @X0 -> 10 `i e ]
+"32
+[; ;main.c: 32: int Distance_mm_int;
+[v _Distance_mm_int `i ~T0 @X0 1 e ]
+"33
+[; ;main.c: 33: const unsigned char total_dist[10];
 [v _total_dist `Cuc ~T0 @X0 -> 10 `i e ]
 [i _total_dist
 :U ..
@@ -1924,56 +1946,65 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `Cuc
 ..
 ]
-"32
-[; ;main.c: 32: int first_run = 1;
+"34
+[; ;main.c: 34: int first_run = 1;
 [v _first_run `i ~T0 @X0 1 e ]
 [i _first_run
 -> 1 `i
 ]
-"35
-[; ;main.c: 35: char out;
-[v _out `uc ~T0 @X0 1 e ]
-"36
-[; ;main.c: 36: char sys_state;
-[v _sys_state `uc ~T0 @X0 1 e ]
 "37
-[; ;main.c: 37: char pad_value;
-[v _pad_value `uc ~T0 @X0 1 e ]
-[v $root$_main `(v ~T0 @X0 0 e ]
+[; ;main.c: 37: char out;
+[v _out `uc ~T0 @X0 1 e ]
+"38
+[; ;main.c: 38: char sys_state;
+[v _sys_state `uc ~T0 @X0 1 e ]
 "39
-[; ;main.c: 39: void main(void) {
+[; ;main.c: 39: char pad_value;
+[v _pad_value `uc ~T0 @X0 1 e ]
+"42
+[; ;main.c: 42: struct Utilisateur utilisateur[10];
+[v _utilisateur `S1428 ~T0 @X0 -> 10 `i e ]
+"43
+[; ;main.c: 43: int increment_utilisateur = 0;
+[v _increment_utilisateur `i ~T0 @X0 1 e ]
+[i _increment_utilisateur
+-> 0 `i
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"45
+[; ;main.c: 45: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"41
-[; ;main.c: 41:     init_all();
+"47
+[; ;main.c: 47:     init_all();
 [e ( _init_all ..  ]
-"42
-[; ;main.c: 42:     get_ready_for_coffee();
+"48
+[; ;main.c: 48:     get_ready_for_coffee();
 [e ( _get_ready_for_coffee ..  ]
-"43
-[; ;main.c: 43:     ETAT = 1;
+"49
+[; ;main.c: 49:     ETAT = 1;
 [e = _ETAT -> 1 `i ]
-"45
-[; ;main.c: 45:     while(1) {
+"51
+[; ;main.c: 51:     while(1) {
 [e :U 1431 ]
 {
-"46
-[; ;main.c: 46:         switch(ETAT) {
+"52
+[; ;main.c: 52:         switch(ETAT) {
 [e $U 1434  ]
 {
-"47
-[; ;main.c: 47:             case 1:
+"53
+[; ;main.c: 53:             case 1:
 [e :U 1435 ]
-"48
-[; ;main.c: 48:                 message_etat(1);
+"54
+[; ;main.c: 54:                 message_etat(1);
 [e ( _message_etat (1 -> 1 `i ]
-"49
-[; ;main.c: 49:                 send_data(CHAR_ATTENTE);
+"55
+[; ;main.c: 55:                 send_data(CHAR_ATTENTE);
 [e ( _send_data (1 _CHAR_ATTENTE ]
-"50
-[; ;main.c: 50:                 while (sys_state != CHAR_ATTENTE) {}
+"56
+[; ;main.c: 56:                 while (sys_state != CHAR_ATTENTE) {}
 [e $U 1436  ]
 [e :U 1437 ]
 {
@@ -1981,195 +2012,213 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 1436 ]
 [e $ != -> _sys_state `i -> _CHAR_ATTENTE `i 1437  ]
 [e :U 1438 ]
-"51
-[; ;main.c: 51:                 ETAT = 2;
-[e = _ETAT -> 2 `i ]
-"52
-[; ;main.c: 52:                 break;
-[e $U 1433  ]
-"54
-[; ;main.c: 54:             case 2:
-[e :U 1439 ]
-"55
-[; ;main.c: 55:                 message_etat(2);
-[e ( _message_etat (1 -> 2 `i ]
-"56
-[; ;main.c: 56:                 pad_value = read_pad();
-[e = _pad_value ( _read_pad ..  ]
 "57
-[; ;main.c: 57:                 while (pad_value != '1' || pad_value !='2') {
+[; ;main.c: 57:                 ETAT = 2;
+[e = _ETAT -> 2 `i ]
+"58
+[; ;main.c: 58:                 break;
+[e $U 1433  ]
+"60
+[; ;main.c: 60:             case 2:
+[e :U 1439 ]
+"61
+[; ;main.c: 61:                 message_etat(2);
+[e ( _message_etat (1 -> 2 `i ]
+"62
+[; ;main.c: 62:                 pad_value = read_pad();
+[e = _pad_value ( _read_pad ..  ]
+"63
+[; ;main.c: 63:                 while (pad_value != '1' || pad_value !='2') {
 [e $U 1440  ]
 [e :U 1441 ]
 {
-"58
-[; ;main.c: 58:                     avertissement(3);
-[e ( _avertissement (1 -> 3 `i ]
-"59
-[; ;main.c: 59:                     pad_value = read_pad();
-[e = _pad_value ( _read_pad ..  ]
-"60
-[; ;main.c: 60:                 }
-}
-[e :U 1440 ]
-"57
-[; ;main.c: 57:                 while (pad_value != '1' || pad_value !='2') {
-[e $ || != -> _pad_value `ui -> 49 `ui != -> _pad_value `ui -> 50 `ui 1441  ]
-[e :U 1442 ]
-"61
-[; ;main.c: 61:                 if (pad_value == '1'){
-[e $ ! == -> _pad_value `ui -> 49 `ui 1443  ]
-{
-"62
-[; ;main.c: 62:                     ETAT = 4;
-[e = _ETAT -> 4 `i ]
-"63
-[; ;main.c: 63:                 }
-}
-[e $U 1444  ]
 "64
-[; ;main.c: 64:                 else if (pad_value == '2') {
-[e :U 1443 ]
-[e $ ! == -> _pad_value `ui -> 50 `ui 1445  ]
-{
+[; ;main.c: 64:                     avertissement(3);
+[e ( _avertissement (1 -> 3 `i ]
 "65
-[; ;main.c: 65:                     ETAT = 3;
-[e = _ETAT -> 3 `i ]
+[; ;main.c: 65:                     pad_value = read_pad();
+[e = _pad_value ( _read_pad ..  ]
 "66
 [; ;main.c: 66:                 }
 }
-[e :U 1445 ]
-[e :U 1444 ]
+[e :U 1440 ]
+"63
+[; ;main.c: 63:                 while (pad_value != '1' || pad_value !='2') {
+[e $ || != -> _pad_value `ui -> 49 `ui != -> _pad_value `ui -> 50 `ui 1441  ]
+[e :U 1442 ]
 "67
-[; ;main.c: 67:                 break;
-[e $U 1433  ]
+[; ;main.c: 67:                 if (pad_value == '1'){
+[e $ ! == -> _pad_value `ui -> 49 `ui 1443  ]
+{
+"68
+[; ;main.c: 68:                     send_data(CHAR_CONFIG);
+[e ( _send_data (1 _CHAR_CONFIG ]
 "69
-[; ;main.c: 69:             case 3:
+[; ;main.c: 69:                     while (sys_state != CHAR_CONFIR1_CONFIG) {}
+[e $U 1444  ]
+[e :U 1445 ]
+{
+}
+[e :U 1444 ]
+[e $ != -> _sys_state `i -> _CHAR_CONFIR1_CONFIG `i 1445  ]
 [e :U 1446 ]
+"70
+[; ;main.c: 70:                     ETAT = 4;
+[e = _ETAT -> 4 `i ]
 "71
-[; ;main.c: 71:                 break;
-[e $U 1433  ]
+[; ;main.c: 71:                     increment_utilisateur = increment_utilisateur + 1;
+[e = _increment_utilisateur + _increment_utilisateur -> 1 `i ]
+"72
+[; ;main.c: 72:                 }
+}
+[e $U 1447  ]
 "73
-[; ;main.c: 73:             case 4:
-[e :U 1447 ]
+[; ;main.c: 73:                 else if (pad_value == '2') {
+[e :U 1443 ]
+[e $ ! == -> _pad_value `ui -> 50 `ui 1448  ]
+{
+"74
+[; ;main.c: 74:                     ETAT = 3;
+[e = _ETAT -> 3 `i ]
 "75
-[; ;main.c: 75:                 break;
+[; ;main.c: 75:                 }
+}
+[e :U 1448 ]
+[e :U 1447 ]
+"76
+[; ;main.c: 76:                 break;
 [e $U 1433  ]
-"77
-[; ;main.c: 77:         }
+"78
+[; ;main.c: 78:             case 3:
+[e :U 1449 ]
+"80
+[; ;main.c: 80:                 break;
+[e $U 1433  ]
+"82
+[; ;main.c: 82:             case 4:
+[e :U 1450 ]
+"83
+[; ;main.c: 83:                 create_new_user();
+[e ( _create_new_user ..  ]
+"84
+[; ;main.c: 84:                 break;
+[e $U 1433  ]
+"86
+[; ;main.c: 86:         }
 }
 [e $U 1433  ]
 [e :U 1434 ]
 [e [\ _ETAT , $ -> 1 `i 1435
  , $ -> 2 `i 1439
- , $ -> 3 `i 1446
- , $ -> 4 `i 1447
+ , $ -> 3 `i 1449
+ , $ -> 4 `i 1450
  1433 ]
 [e :U 1433 ]
-"78
-[; ;main.c: 78:     }
+"87
+[; ;main.c: 87:     }
 }
 [e :U 1430 ]
 [e $U 1431  ]
 [e :U 1432 ]
-"79
-[; ;main.c: 79: }
+"88
+[; ;main.c: 88: }
 [e :UE 1429 ]
 }
-"81
-[; ;main.c: 81: void init_all(void) {
+"90
+[; ;main.c: 90: void init_all(void) {
 [v _init_all `(v ~T0 @X0 1 ef ]
 {
 [e :U _init_all ]
 [f ]
-"82
-[; ;main.c: 82:     init_UART();
+"91
+[; ;main.c: 91:     init_UART();
 [e ( _init_UART ..  ]
-"83
-[; ;main.c: 83:     initialisation_LCD();
+"92
+[; ;main.c: 92:     initialisation_LCD();
 [e ( _initialisation_LCD ..  ]
-"84
-[; ;main.c: 84:     init_num_pad();
+"93
+[; ;main.c: 93:     init_num_pad();
 [e ( _init_num_pad ..  ]
-"85
-[; ;main.c: 85:     init_dist_sensor();
+"94
+[; ;main.c: 94:     init_dist_sensor();
 [e ( _init_dist_sensor ..  ]
-"86
-[; ;main.c: 86: }
-[e :UE 1448 ]
+"95
+[; ;main.c: 95: }
+[e :UE 1451 ]
 }
-"88
-[; ;main.c: 88: void get_ready_for_coffee(void) {
+"97
+[; ;main.c: 97: void get_ready_for_coffee(void) {
 [v _get_ready_for_coffee `(v ~T0 @X0 1 ef ]
 {
 [e :U _get_ready_for_coffee ]
 [f ]
-"90
-[; ;main.c: 90:     DistanceEau = calc_distance_mm(1);
-[e = _DistanceEau ( _calc_distance_mm (1 -> 1 `i ]
-"91
-[; ;main.c: 91:     if (DistanceEau < 5) {
-[e $ ! < _DistanceEau -> 5 `i 1450  ]
-{
-"92
-[; ;main.c: 92:         avertissement(1);
-[e ( _avertissement (1 -> 1 `i ]
-"93
-[; ;main.c: 93:         while (DistanceEau < 5) {
-[e $U 1451  ]
-[e :U 1452 ]
-{
-"94
-[; ;main.c: 94:             DistanceEau = calc_distance_mm(1);
-[e = _DistanceEau ( _calc_distance_mm (1 -> 1 `i ]
-"95
-[; ;main.c: 95:         }
-}
-[e :U 1451 ]
-"93
-[; ;main.c: 93:         while (DistanceEau < 5) {
-[e $ < _DistanceEau -> 5 `i 1452  ]
-[e :U 1453 ]
-"96
-[; ;main.c: 96:     }
-}
-[e :U 1450 ]
-"97
-[; ;main.c: 97:     TempEau = get_temp(1);
-[e = _TempEau ( _get_temp (1 -> 1 `i ]
-"98
-[; ;main.c: 98:     if (TempEau< 60) {
-[e $ ! < _TempEau -> 60 `i 1454  ]
-{
 "99
-[; ;main.c: 99:         chauffe_eau(1);
-[e ( _chauffe_eau (1 -> 1 `i ]
+[; ;main.c: 99:     DistanceEau = calc_distance_mm(1);
+[e = _DistanceEau ( _calc_distance_mm (1 -> 1 `i ]
 "100
-[; ;main.c: 100:         avertissement(2);
-[e ( _avertissement (1 -> 2 `i ]
-"101
-[; ;main.c: 101:         while (TempEau< 60) {
-[e $U 1455  ]
-[e :U 1456 ]
+[; ;main.c: 100:     if (DistanceEau < 5) {
+[e $ ! < _DistanceEau -> 5 `i 1453  ]
 {
+"101
+[; ;main.c: 101:         avertissement(1);
+[e ( _avertissement (1 -> 1 `i ]
 "102
-[; ;main.c: 102:             TempEau = get_temp(1);
-[e = _TempEau ( _get_temp (1 -> 1 `i ]
+[; ;main.c: 102:         while (DistanceEau < 5) {
+[e $U 1454  ]
+[e :U 1455 ]
+{
 "103
-[; ;main.c: 103:             clearRow(1);
-[e ( _clearRow (1 -> 1 `i ]
+[; ;main.c: 103:             DistanceEau = calc_distance_mm(1);
+[e = _DistanceEau ( _calc_distance_mm (1 -> 1 `i ]
 "104
-[; ;main.c: 104:             moveCursor(1,0);
-[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+[; ;main.c: 104:         }
+}
+[e :U 1454 ]
+"102
+[; ;main.c: 102:         while (DistanceEau < 5) {
+[e $ < _DistanceEau -> 5 `i 1455  ]
+[e :U 1456 ]
 "105
-[; ;main.c: 105:             putNumberLCD(TempEau);
-[e ( _putNumberLCD (1 _TempEau ]
+[; ;main.c: 105:     }
+}
+[e :U 1453 ]
 "106
-[; ;main.c: 106:             moveCursor(1,4);
-[e ( _moveCursor (2 , -> 1 `i -> 4 `i ]
+[; ;main.c: 106:     TempEau = get_temp(1);
+[e = _TempEau ( _get_temp (1 -> 1 `i ]
 "107
-[; ;main.c: 107:             const unsigned char div[13] = " / 90 Celsius";
-[v F11440 `Cuc ~T0 @X0 -> 13 `i s div ]
-[i F11440
+[; ;main.c: 107:     if (TempEau< 60) {
+[e $ ! < _TempEau -> 60 `i 1457  ]
+{
+"108
+[; ;main.c: 108:         chauffe_eau(1);
+[e ( _chauffe_eau (1 -> 1 `i ]
+"109
+[; ;main.c: 109:         avertissement(2);
+[e ( _avertissement (1 -> 2 `i ]
+"110
+[; ;main.c: 110:         while (TempEau< 60) {
+[e $U 1458  ]
+[e :U 1459 ]
+{
+"111
+[; ;main.c: 111:             TempEau = get_temp(1);
+[e = _TempEau ( _get_temp (1 -> 1 `i ]
+"112
+[; ;main.c: 112:             clearRow(1);
+[e ( _clearRow (1 -> 1 `i ]
+"113
+[; ;main.c: 113:             moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"114
+[; ;main.c: 114:             putNumberLCD(TempEau);
+[e ( _putNumberLCD (1 _TempEau ]
+"115
+[; ;main.c: 115:             moveCursor(1,4);
+[e ( _moveCursor (2 , -> 1 `i -> 4 `i ]
+"116
+[; ;main.c: 116:             const unsigned char div[13] = " / 90 Celsius";
+[v F11454 `Cuc ~T0 @X0 -> 13 `i s div ]
+[i F11454
 :U ..
 -> 32 `c
 -> 47 `c
@@ -2186,49 +2235,49 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 115 `c
 ..
 ]
-"108
-[; ;main.c: 108:             putStringLCD(&div[0]);
-[e ( _putStringLCD (1 &U *U + &U F11440 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11440 `ui `ux ]
-"109
-[; ;main.c: 109:         }
-}
-[e :U 1455 ]
-"101
-[; ;main.c: 101:         while (TempEau< 60) {
-[e $ < _TempEau -> 60 `i 1456  ]
-[e :U 1457 ]
-"110
-[; ;main.c: 110:     }
-}
-[e :U 1454 ]
-"111
-[; ;main.c: 111:     chauffe_eau(0);
-[e ( _chauffe_eau (1 -> 0 `i ]
-"112
-[; ;main.c: 112:     avertissement(0);
-[e ( _avertissement (1 -> 0 `i ]
-"114
-[; ;main.c: 114:     init_interruption_temp();
-[e ( _init_interruption_temp ..  ]
-"115
-[; ;main.c: 115: }
-[e :UE 1449 ]
-}
 "117
-[; ;main.c: 117: void avertissement(int NumAvertissement) {
+[; ;main.c: 117:             putStringLCD(&div[0]);
+[e ( _putStringLCD (1 &U *U + &U F11454 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11454 `ui `ux ]
+"118
+[; ;main.c: 118:         }
+}
+[e :U 1458 ]
+"110
+[; ;main.c: 110:         while (TempEau< 60) {
+[e $ < _TempEau -> 60 `i 1459  ]
+[e :U 1460 ]
+"119
+[; ;main.c: 119:     }
+}
+[e :U 1457 ]
+"120
+[; ;main.c: 120:     chauffe_eau(0);
+[e ( _chauffe_eau (1 -> 0 `i ]
+"121
+[; ;main.c: 121:     avertissement(0);
+[e ( _avertissement (1 -> 0 `i ]
+"123
+[; ;main.c: 123:     init_interruption_temp();
+[e ( _init_interruption_temp ..  ]
+"124
+[; ;main.c: 124: }
+[e :UE 1452 ]
+}
+"126
+[; ;main.c: 126: void avertissement(int NumAvertissement) {
 [v _avertissement `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _avertissement ]
 [v _NumAvertissement `i ~T0 @X0 1 r1 ]
 [f ]
-"118
-[; ;main.c: 118:     if (NumAvertissement == 0) {
-[e $ ! == _NumAvertissement -> 0 `i 1459  ]
+"127
+[; ;main.c: 127:     if (NumAvertissement == 0) {
+[e $ ! == _NumAvertissement -> 0 `i 1462  ]
 {
-"119
-[; ;main.c: 119:         const unsigned char avert0[14] = "Machine Prete!";
-[v F11443 `Cuc ~T0 @X0 -> 14 `i s avert0 ]
-[i F11443
+"128
+[; ;main.c: 128:         const unsigned char avert0[14] = "Machine Prete!";
+[v F11457 `Cuc ~T0 @X0 -> 14 `i s avert0 ]
+[i F11457
 :U ..
 -> 77 `c
 -> 97 `c
@@ -2246,27 +2295,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 33 `c
 ..
 ]
-"120
-[; ;main.c: 120:         clearDisplay();
+"129
+[; ;main.c: 129:         clearDisplay();
 [e ( _clearDisplay ..  ]
-"121
-[; ;main.c: 121:         moveCursor(0,0);
+"130
+[; ;main.c: 130:         moveCursor(0,0);
 [e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
-"122
-[; ;main.c: 122:         putStringLCD(&avert0[0]);
-[e ( _putStringLCD (1 &U *U + &U F11443 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11443 `ui `ux ]
-"123
-[; ;main.c: 123:     }
+"131
+[; ;main.c: 131:         putStringLCD(&avert0[0]);
+[e ( _putStringLCD (1 &U *U + &U F11457 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11457 `ui `ux ]
+"132
+[; ;main.c: 132:     }
 }
-[e :U 1459 ]
-"124
-[; ;main.c: 124:     if (NumAvertissement == 1) {
-[e $ ! == _NumAvertissement -> 1 `i 1460  ]
+[e :U 1462 ]
+"133
+[; ;main.c: 133:     if (NumAvertissement == 1) {
+[e $ ! == _NumAvertissement -> 1 `i 1463  ]
 {
-"125
-[; ;main.c: 125:         const unsigned char avert1[10] = "Manque eau";
-[v F11444 `Cuc ~T0 @X0 -> 10 `i s avert1 ]
-[i F11444
+"134
+[; ;main.c: 134:         const unsigned char avert1[10] = "Manque eau";
+[v F11458 `Cuc ~T0 @X0 -> 10 `i s avert1 ]
+[i F11458
 :U ..
 -> 77 `c
 -> 97 `c
@@ -2280,27 +2329,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 117 `c
 ..
 ]
-"126
-[; ;main.c: 126:         clearDisplay();
+"135
+[; ;main.c: 135:         clearDisplay();
 [e ( _clearDisplay ..  ]
-"127
-[; ;main.c: 127:         moveCursor(0,0);
+"136
+[; ;main.c: 136:         moveCursor(0,0);
 [e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
-"128
-[; ;main.c: 128:         putStringLCD(&avert1[0]);
-[e ( _putStringLCD (1 &U *U + &U F11444 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11444 `ui `ux ]
-"129
-[; ;main.c: 129:     }
+"137
+[; ;main.c: 137:         putStringLCD(&avert1[0]);
+[e ( _putStringLCD (1 &U *U + &U F11458 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11458 `ui `ux ]
+"138
+[; ;main.c: 138:     }
 }
-[e :U 1460 ]
-"130
-[; ;main.c: 130:     if (NumAvertissement == 2) {
-[e $ ! == _NumAvertissement -> 2 `i 1461  ]
+[e :U 1463 ]
+"139
+[; ;main.c: 139:     if (NumAvertissement == 2) {
+[e $ ! == _NumAvertissement -> 2 `i 1464  ]
 {
-"131
-[; ;main.c: 131:         const unsigned char avert2[13] = "Prep temp eau";
-[v F11445 `Cuc ~T0 @X0 -> 13 `i s avert2 ]
-[i F11445
+"140
+[; ;main.c: 140:         const unsigned char avert2[13] = "Prep temp eau";
+[v F11459 `Cuc ~T0 @X0 -> 13 `i s avert2 ]
+[i F11459
 :U ..
 -> 80 `c
 -> 114 `c
@@ -2317,27 +2366,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 117 `c
 ..
 ]
-"132
-[; ;main.c: 132:         clearDisplay();
+"141
+[; ;main.c: 141:         clearDisplay();
 [e ( _clearDisplay ..  ]
-"133
-[; ;main.c: 133:         moveCursor(0,0);
+"142
+[; ;main.c: 142:         moveCursor(0,0);
 [e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
-"134
-[; ;main.c: 134:         putStringLCD(&avert2[0]);
-[e ( _putStringLCD (1 &U *U + &U F11445 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11445 `ui `ux ]
-"135
-[; ;main.c: 135:     }
+"143
+[; ;main.c: 143:         putStringLCD(&avert2[0]);
+[e ( _putStringLCD (1 &U *U + &U F11459 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11459 `ui `ux ]
+"144
+[; ;main.c: 144:     }
 }
-[e :U 1461 ]
-"136
-[; ;main.c: 136:     if (NumAvertissement == 3) {
-[e $ ! == _NumAvertissement -> 3 `i 1462  ]
+[e :U 1464 ]
+"145
+[; ;main.c: 145:     if (NumAvertissement == 3) {
+[e $ ! == _NumAvertissement -> 3 `i 1465  ]
 {
-"137
-[; ;main.c: 137:         const unsigned char avert3[17] = "Touche non valide";
-[v F11446 `Cuc ~T0 @X0 -> 17 `i s avert3 ]
-[i F11446
+"146
+[; ;main.c: 146:         const unsigned char avert3[17] = "Touche non valide";
+[v F11460 `Cuc ~T0 @X0 -> 17 `i s avert3 ]
+[i F11460
 :U ..
 -> 84 `c
 -> 111 `c
@@ -2358,35 +2407,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 101 `c
 ..
 ]
-"139
-[; ;main.c: 139:         moveCursor(2,0);
+"148
+[; ;main.c: 148:         moveCursor(2,0);
 [e ( _moveCursor (2 , -> 2 `i -> 0 `i ]
-"140
-[; ;main.c: 140:         putStringLCD(&avert3[0]);
-[e ( _putStringLCD (1 &U *U + &U F11446 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11446 `ui `ux ]
-"141
-[; ;main.c: 141:     }
+"149
+[; ;main.c: 149:         putStringLCD(&avert3[0]);
+[e ( _putStringLCD (1 &U *U + &U F11460 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11460 `ui `ux ]
+"150
+[; ;main.c: 150:     }
 }
-[e :U 1462 ]
-"142
-[; ;main.c: 142: }
-[e :UE 1458 ]
+[e :U 1465 ]
+"151
+[; ;main.c: 151: }
+[e :UE 1461 ]
 }
-"144
-[; ;main.c: 144: void message_etat(int etat) {
+"153
+[; ;main.c: 153: void message_etat(int etat) {
 [v _message_etat `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _message_etat ]
 [v _etat `i ~T0 @X0 1 r1 ]
 [f ]
-"145
-[; ;main.c: 145:     if (etat == 1) {
-[e $ ! == _etat -> 1 `i 1464  ]
+"154
+[; ;main.c: 154:     if (etat == 1) {
+[e $ ! == _etat -> 1 `i 1467  ]
 {
-"146
-[; ;main.c: 146:         const unsigned char etat_attente[14] = "Machine Prete!";
-[v F11449 `Cuc ~T0 @X0 -> 14 `i s etat_attente ]
-[i F11449
+"155
+[; ;main.c: 155:         const unsigned char etat_attente[14] = "Machine Prete!";
+[v F11463 `Cuc ~T0 @X0 -> 14 `i s etat_attente ]
+[i F11463
 :U ..
 -> 77 `c
 -> 97 `c
@@ -2404,10 +2453,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 33 `c
 ..
 ]
-"147
-[; ;main.c: 147:         const unsigned char etat_attente1[21] = "Attente d'utilisateur";
-[v F11450 `Cuc ~T0 @X0 -> 21 `i s etat_attente1 ]
-[i F11450
+"156
+[; ;main.c: 156:         const unsigned char etat_attente1[21] = "Attente d'utilisateur";
+[v F11464 `Cuc ~T0 @X0 -> 21 `i s etat_attente1 ]
+[i F11464
 :U ..
 -> 65 `c
 -> 116 `c
@@ -2432,33 +2481,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 114 `c
 ..
 ]
-"148
-[; ;main.c: 148:         clearDisplay();
+"157
+[; ;main.c: 157:         clearDisplay();
 [e ( _clearDisplay ..  ]
-"149
-[; ;main.c: 149:         moveCursor(0,0);
+"158
+[; ;main.c: 158:         moveCursor(0,0);
 [e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
-"150
-[; ;main.c: 150:         putStringLCD(&etat_attente[0]);
-[e ( _putStringLCD (1 &U *U + &U F11449 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11449 `ui `ux ]
-"151
-[; ;main.c: 151:         moveCursor(1,0);
+"159
+[; ;main.c: 159:         putStringLCD(&etat_attente[0]);
+[e ( _putStringLCD (1 &U *U + &U F11463 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11463 `ui `ux ]
+"160
+[; ;main.c: 160:         moveCursor(1,0);
 [e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
-"152
-[; ;main.c: 152:         putStringLCD(&etat_attente1[0]);
-[e ( _putStringLCD (1 &U *U + &U F11450 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11450 `ui `ux ]
-"153
-[; ;main.c: 153:     }
+"161
+[; ;main.c: 161:         putStringLCD(&etat_attente1[0]);
+[e ( _putStringLCD (1 &U *U + &U F11464 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11464 `ui `ux ]
+"162
+[; ;main.c: 162:     }
 }
-[e :U 1464 ]
-"154
-[; ;main.c: 154:     if (etat == 2) {
-[e $ ! == _etat -> 2 `i 1465  ]
+[e :U 1467 ]
+"163
+[; ;main.c: 163:     if (etat == 2) {
+[e $ ! == _etat -> 2 `i 1468  ]
 {
-"155
-[; ;main.c: 155:         const unsigned char etat_acceuil1[23] = "1- Nouvelle utilisateur";
-[v F11451 `Cuc ~T0 @X0 -> 23 `i s etat_acceuil1 ]
-[i F11451
+"164
+[; ;main.c: 164:         const unsigned char etat_acceuil1[23] = "1- Nouvelle utilisateur";
+[v F11465 `Cuc ~T0 @X0 -> 23 `i s etat_acceuil1 ]
+[i F11465
 :U ..
 -> 49 `c
 -> 45 `c
@@ -2485,10 +2534,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 114 `c
 ..
 ]
-"156
-[; ;main.c: 156:         const unsigned char etat_acceuil2[23] = "2- Utilisateur existant";
-[v F11452 `Cuc ~T0 @X0 -> 23 `i s etat_acceuil2 ]
-[i F11452
+"165
+[; ;main.c: 165:         const unsigned char etat_acceuil2[23] = "2- Utilisateur existant";
+[v F11466 `Cuc ~T0 @X0 -> 23 `i s etat_acceuil2 ]
+[i F11466
 :U ..
 -> 50 `c
 -> 45 `c
@@ -2515,70 +2564,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 116 `c
 ..
 ]
-"157
-[; ;main.c: 157:         clearDisplay();
-[e ( _clearDisplay ..  ]
-"158
-[; ;main.c: 158:         moveCursor(0,0);
-[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
-"159
-[; ;main.c: 159:         putStringLCD(&etat_acceuil1[0]);
-[e ( _putStringLCD (1 &U *U + &U F11451 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11451 `ui `ux ]
-"160
-[; ;main.c: 160:         moveCursor(1,0);
-[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
-"161
-[; ;main.c: 161:         putStringLCD(&etat_acceuil2[0]);
-[e ( _putStringLCD (1 &U *U + &U F11452 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11452 `ui `ux ]
-"162
-[; ;main.c: 162:     }
-}
-[e :U 1465 ]
-"163
-[; ;main.c: 163:     if (etat == 3) {
-[e $ ! == _etat -> 3 `i 1466  ]
-{
-"164
-[; ;main.c: 164:         const unsigned char etat_identification[13] = "Prep temp eau";
-[v F11453 `Cuc ~T0 @X0 -> 13 `i s etat_identification ]
-[i F11453
-:U ..
--> 80 `c
--> 114 `c
--> 101 `c
--> 112 `c
--> 32 `c
--> 116 `c
--> 101 `c
--> 109 `c
--> 112 `c
--> 32 `c
--> 101 `c
--> 97 `c
--> 117 `c
-..
-]
-"165
-[; ;main.c: 165:         clearDisplay();
-[e ( _clearDisplay ..  ]
 "166
-[; ;main.c: 166:         moveCursor(0,0);
-[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+[; ;main.c: 166:         clearDisplay();
+[e ( _clearDisplay ..  ]
 "167
-[; ;main.c: 167:         putStringLCD(&etat_identification[0]);
-[e ( _putStringLCD (1 &U *U + &U F11453 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11453 `ui `ux ]
+[; ;main.c: 167:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
 "168
-[; ;main.c: 168:     }
-}
-[e :U 1466 ]
+[; ;main.c: 168:         putStringLCD(&etat_acceuil1[0]);
+[e ( _putStringLCD (1 &U *U + &U F11465 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11465 `ui `ux ]
 "169
-[; ;main.c: 169:     if (etat == 4) {
-[e $ ! == _etat -> 4 `i 1467  ]
-{
+[; ;main.c: 169:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
 "170
-[; ;main.c: 170:         const unsigned char etat_configuration[13] = "Prep temp eau";
-[v F11454 `Cuc ~T0 @X0 -> 13 `i s etat_configuration ]
-[i F11454
+[; ;main.c: 170:         putStringLCD(&etat_acceuil2[0]);
+[e ( _putStringLCD (1 &U *U + &U F11466 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11466 `ui `ux ]
+"171
+[; ;main.c: 171:     }
+}
+[e :U 1468 ]
+"172
+[; ;main.c: 172:     if (etat == 3) {
+[e $ ! == _etat -> 3 `i 1469  ]
+{
+"173
+[; ;main.c: 173:         const unsigned char etat_identification[13] = "Prep temp eau";
+[v F11467 `Cuc ~T0 @X0 -> 13 `i s etat_identification ]
+[i F11467
 :U ..
 -> 80 `c
 -> 114 `c
@@ -2595,149 +2607,594 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 117 `c
 ..
 ]
-"171
-[; ;main.c: 171:         clearDisplay();
-[e ( _clearDisplay ..  ]
-"172
-[; ;main.c: 172:         moveCursor(0,0);
-[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
-"173
-[; ;main.c: 173:         putStringLCD(&etat_configuration[0]);
-[e ( _putStringLCD (1 &U *U + &U F11454 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11454 `ui `ux ]
 "174
-[; ;main.c: 174:     }
-}
-[e :U 1467 ]
+[; ;main.c: 174:         clearDisplay();
+[e ( _clearDisplay ..  ]
 "175
-[; ;main.c: 175: }
-[e :UE 1463 ]
+[; ;main.c: 175:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"176
+[; ;main.c: 176:         putStringLCD(&etat_identification[0]);
+[e ( _putStringLCD (1 &U *U + &U F11467 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11467 `ui `ux ]
+"177
+[; ;main.c: 177:     }
+}
+[e :U 1469 ]
+"178
+[; ;main.c: 178:     if (etat == 4) {
+[e $ ! == _etat -> 4 `i 1470  ]
+{
+"179
+[; ;main.c: 179:         const unsigned char etat_configuration[13] = "Prep temp eau";
+[v F11468 `Cuc ~T0 @X0 -> 13 `i s etat_configuration ]
+[i F11468
+:U ..
+-> 80 `c
+-> 114 `c
+-> 101 `c
+-> 112 `c
+-> 32 `c
+-> 116 `c
+-> 101 `c
+-> 109 `c
+-> 112 `c
+-> 32 `c
+-> 101 `c
+-> 97 `c
+-> 117 `c
+..
+]
+"180
+[; ;main.c: 180:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"181
+[; ;main.c: 181:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"182
+[; ;main.c: 182:         putStringLCD(&etat_configuration[0]);
+[e ( _putStringLCD (1 &U *U + &U F11468 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11468 `ui `ux ]
+"183
+[; ;main.c: 183:     }
+}
+[e :U 1470 ]
+"184
+[; ;main.c: 184: }
+[e :UE 1466 ]
 }
 [v $root$_Serial_interrupt `(v ~T0 @X0 0 e ]
-"177
-[; ;main.c: 177: void __attribute__((picinterrupt("high_priority"))) Serial_interrupt() {
+"186
+[; ;main.c: 186: void __attribute__((picinterrupt("high_priority"))) Serial_interrupt() {
 [v _Serial_interrupt `(v ~T3 @X0 1 ef ]
 {
 [e :U _Serial_interrupt ]
 [f ]
-"179
-[; ;main.c: 179:     while(RC1IF == 0);
-[e $U 1469  ]
-[e :U 1470 ]
-[e :U 1469 ]
-[e $ == -> _RC1IF `i -> 0 `i 1470  ]
-[e :U 1471 ]
-"180
-[; ;main.c: 180:     out = RCREG1;
+"188
+[; ;main.c: 188:     while(RC1IF == 0);
+[e $U 1472  ]
+[e :U 1473 ]
+[e :U 1472 ]
+[e $ == -> _RC1IF `i -> 0 `i 1473  ]
+[e :U 1474 ]
+"189
+[; ;main.c: 189:     out = RCREG1;
 [e = _out -> _RCREG1 `uc ]
-"181
-[; ;main.c: 181:     sys_state = check(out);
+"190
+[; ;main.c: 190:     sys_state = check(out);
 [e = _sys_state ( _check (1 _out ]
-"182
-[; ;main.c: 182: }
-[e :UE 1468 ]
+"191
+[; ;main.c: 191: }
+[e :UE 1471 ]
 }
 [v $root$_Temp_interrupt `(v ~T0 @X0 0 e ]
-"184
-[; ;main.c: 184: void __attribute__((picinterrupt("low_priority"))) Temp_interrupt() {
+"193
+[; ;main.c: 193: void __attribute__((picinterrupt("low_priority"))) Temp_interrupt() {
 [v _Temp_interrupt `(v ~T4 @X0 1 ef ]
 {
 [e :U _Temp_interrupt ]
 [f ]
-"185
-[; ;main.c: 185:     int temperature;
+"194
+[; ;main.c: 194:     int temperature;
 [v _temperature `i ~T0 @X0 1 a ]
-"186
-[; ;main.c: 186:     if (TMR0IF == 1) {
-[e $ ! == -> _TMR0IF `i -> 1 `i 1473  ]
-{
-"187
-[; ;main.c: 187:         temperature = get_temp(1);
-[e = _temperature ( _get_temp (1 -> 1 `i ]
-"188
-[; ;main.c: 188:         gestion_temp_eau(temperature);
-[e ( _gestion_temp_eau (1 _temperature ]
-"189
-[; ;main.c: 189:         TMR0IF = 0;
-[e = _TMR0IF -> -> 0 `i `b ]
-"190
-[; ;main.c: 190:     }
-}
-[e :U 1473 ]
-"191
-[; ;main.c: 191: }
-[e :UE 1472 ]
-}
 "195
-[; ;main.c: 195: char check(char input) {
+[; ;main.c: 195:     if (TMR0IF == 1) {
+[e $ ! == -> _TMR0IF `i -> 1 `i 1476  ]
+{
+"196
+[; ;main.c: 196:         temperature = get_temp(1);
+[e = _temperature ( _get_temp (1 -> 1 `i ]
+"197
+[; ;main.c: 197:         gestion_temp_eau(temperature);
+[e ( _gestion_temp_eau (1 _temperature ]
+"198
+[; ;main.c: 198:         TMR0IF = 0;
+[e = _TMR0IF -> -> 0 `i `b ]
+"199
+[; ;main.c: 199:     }
+}
+[e :U 1476 ]
+"200
+[; ;main.c: 200: }
+[e :UE 1475 ]
+}
+"204
+[; ;main.c: 204: void read_validate_pad(char choices[], int length) {
+[v _read_validate_pad `(v ~T0 @X0 1 ef2`*uc`i ]
+{
+[e :U _read_validate_pad ]
+[v _choices `*uc ~T0 @X0 1 r1 ]
+[v _length `i ~T0 @X0 1 r2 ]
+[f ]
+"205
+[; ;main.c: 205:     int i;
+[v _i `i ~T0 @X0 1 a ]
+"206
+[; ;main.c: 206:     int validation = 0;
+[v _validation `i ~T0 @X0 1 a ]
+[e = _validation -> 0 `i ]
+"207
+[; ;main.c: 207:     while (validation != 1) {
+[e $U 1478  ]
+[e :U 1479 ]
+{
+"208
+[; ;main.c: 208:         pad_value = read_pad();
+[e = _pad_value ( _read_pad ..  ]
+"209
+[; ;main.c: 209:         for (i = 0; i<length; i++) {
+{
+[e = _i -> 0 `i ]
+[e $U 1484  ]
+[e :U 1481 ]
+{
+"210
+[; ;main.c: 210:             if (pad_value == choices[i]) {
+[e $ ! == -> _pad_value `i -> *U + _choices * -> _i `x -> -> # *U _choices `i `x `i 1485  ]
+{
+"211
+[; ;main.c: 211:                 validation = 1;
+[e = _validation -> 1 `i ]
+"212
+[; ;main.c: 212:             }
+}
+[e :U 1485 ]
+"213
+[; ;main.c: 213:         }
+}
+[e ++ _i -> 1 `i ]
+[e :U 1484 ]
+[e $ < _i _length 1481  ]
+[e :U 1482 ]
+}
+"214
+[; ;main.c: 214:         if (validation == 0) {
+[e $ ! == _validation -> 0 `i 1486  ]
+{
+"215
+[; ;main.c: 215:             avertissement(3);
+[e ( _avertissement (1 -> 3 `i ]
+"216
+[; ;main.c: 216:         }
+}
+[e :U 1486 ]
+"217
+[; ;main.c: 217:     }
+}
+[e :U 1478 ]
+"207
+[; ;main.c: 207:     while (validation != 1) {
+[e $ != _validation -> 1 `i 1479  ]
+[e :U 1480 ]
+"218
+[; ;main.c: 218: }
+[e :UE 1477 ]
+}
+"221
+[; ;main.c: 221: void create_new_user(void) {
+[v _create_new_user `(v ~T0 @X0 1 ef ]
+{
+[e :U _create_new_user ]
+[f ]
+"223
+[; ;main.c: 223:     question_configuration(1);
+[e ( _question_configuration (1 -> 1 `i ]
+[v F11478 `uc ~T0 @X0 -> 3 `i s ]
+[i F11478
+:U ..
+"224
+[; ;main.c: 224:     char choices_new_user_eau[3] = {'1', '2', '3'};
+-> -> 49 `ui `uc
+-> -> 50 `ui `uc
+-> -> 51 `ui `uc
+..
+]
+[v _choices_new_user_eau `uc ~T0 @X0 -> 3 `i a ]
+[e = _choices_new_user_eau F11478 ]
+"225
+[; ;main.c: 225:     read_validate_pad(choices_new_user_eau, 3);
+[e ( _read_validate_pad (2 , &U _choices_new_user_eau -> 3 `i ]
+"226
+[; ;main.c: 226:     utilisateur[increment_utilisateur].qqt_eau = digit_to_int(pad_value);
+[e = . *U + &U _utilisateur * -> -> _increment_utilisateur `ui `ux -> -> # *U &U _utilisateur `ui `ux 1 ( _digit_to_int (1 _pad_value ]
+"228
+[; ;main.c: 228:     question_configuration(2);
+[e ( _question_configuration (1 -> 2 `i ]
+[v F11480 `uc ~T0 @X0 -> 9 `i s ]
+[i F11480
+:U ..
+"229
+[; ;main.c: 229:     char choices_new_user_lait[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+-> -> 49 `ui `uc
+-> -> 50 `ui `uc
+-> -> 51 `ui `uc
+-> -> 52 `ui `uc
+-> -> 53 `ui `uc
+-> -> 54 `ui `uc
+-> -> 55 `ui `uc
+-> -> 56 `ui `uc
+-> -> 57 `ui `uc
+..
+]
+[v _choices_new_user_lait `uc ~T0 @X0 -> 9 `i a ]
+[e = _choices_new_user_lait F11480 ]
+"230
+[; ;main.c: 230:     read_validate_pad(choices_new_user_lait, 9);
+[e ( _read_validate_pad (2 , &U _choices_new_user_lait -> 9 `i ]
+"231
+[; ;main.c: 231:     utilisateur[increment_utilisateur].qqt_lait = digit_to_int(pad_value);
+[e = . *U + &U _utilisateur * -> -> _increment_utilisateur `ui `ux -> -> # *U &U _utilisateur `ui `ux 2 ( _digit_to_int (1 _pad_value ]
+"233
+[; ;main.c: 233:     question_configuration(3);
+[e ( _question_configuration (1 -> 3 `i ]
+[v F11482 `uc ~T0 @X0 -> 9 `i s ]
+[i F11482
+:U ..
+"234
+[; ;main.c: 234:     char choices_new_user_sucre[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+-> -> 49 `ui `uc
+-> -> 50 `ui `uc
+-> -> 51 `ui `uc
+-> -> 52 `ui `uc
+-> -> 53 `ui `uc
+-> -> 54 `ui `uc
+-> -> 55 `ui `uc
+-> -> 56 `ui `uc
+-> -> 57 `ui `uc
+..
+]
+[v _choices_new_user_sucre `uc ~T0 @X0 -> 9 `i a ]
+[e = _choices_new_user_sucre F11482 ]
+"235
+[; ;main.c: 235:     read_validate_pad(choices_new_user_sucre, 9);
+[e ( _read_validate_pad (2 , &U _choices_new_user_sucre -> 9 `i ]
+"236
+[; ;main.c: 236:     utilisateur[increment_utilisateur].qqt_sucre = digit_to_int(pad_value);
+[e = . *U + &U _utilisateur * -> -> _increment_utilisateur `ui `ux -> -> # *U &U _utilisateur `ui `ux 3 ( _digit_to_int (1 _pad_value ]
+"238
+[; ;main.c: 238:     ETAT = 2;
+[e = _ETAT -> 2 `i ]
+"240
+[; ;main.c: 240: }
+[e :UE 1487 ]
+}
+"242
+[; ;main.c: 242: void question_configuration(int etape) {
+[v _question_configuration `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _question_configuration ]
+[v _etape `i ~T0 @X0 1 r1 ]
+[f ]
+"243
+[; ;main.c: 243:     if (etape == 1) {
+[e $ ! == _etape -> 1 `i 1489  ]
+{
+"244
+[; ;main.c: 244:         const unsigned char q_eau[19] = "Grosseur de tasse ?";
+[v F11486 `Cuc ~T0 @X0 -> 19 `i s q_eau ]
+[i F11486
+:U ..
+-> 71 `c
+-> 114 `c
+-> 111 `c
+-> 115 `c
+-> 115 `c
+-> 101 `c
+-> 117 `c
+-> 114 `c
+-> 32 `c
+-> 100 `c
+-> 101 `c
+-> 32 `c
+-> 116 `c
+-> 97 `c
+-> 115 `c
+-> 115 `c
+-> 101 `c
+-> 32 `c
+-> 63 `c
+..
+]
+"245
+[; ;main.c: 245:         const unsigned char q_eau_choix[19] = "S = 1, M = 2, L = 3";
+[v F11487 `Cuc ~T0 @X0 -> 19 `i s q_eau_choix ]
+[i F11487
+:U ..
+-> 83 `c
+-> 32 `c
+-> 61 `c
+-> 32 `c
+-> 49 `c
+-> 44 `c
+-> 32 `c
+-> 77 `c
+-> 32 `c
+-> 61 `c
+-> 32 `c
+-> 50 `c
+-> 44 `c
+-> 32 `c
+-> 76 `c
+-> 32 `c
+-> 61 `c
+-> 32 `c
+-> 51 `c
+..
+]
+"246
+[; ;main.c: 246:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"247
+[; ;main.c: 247:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"248
+[; ;main.c: 248:         putStringLCD(&q_eau[0]);
+[e ( _putStringLCD (1 &U *U + &U F11486 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11486 `ui `ux ]
+"249
+[; ;main.c: 249:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"250
+[; ;main.c: 250:         putStringLCD(&q_eau_choix[0]);
+[e ( _putStringLCD (1 &U *U + &U F11487 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11487 `ui `ux ]
+"251
+[; ;main.c: 251:     }
+}
+[e :U 1489 ]
+"252
+[; ;main.c: 252:     if (etape == 2) {
+[e $ ! == _etape -> 2 `i 1490  ]
+{
+"253
+[; ;main.c: 253:         const unsigned char q_lait[16] = "Qqt pot de lait?";
+[v F11488 `Cuc ~T0 @X0 -> 16 `i s q_lait ]
+[i F11488
+:U ..
+-> 81 `c
+-> 113 `c
+-> 116 `c
+-> 32 `c
+-> 112 `c
+-> 111 `c
+-> 116 `c
+-> 32 `c
+-> 100 `c
+-> 101 `c
+-> 32 `c
+-> 108 `c
+-> 97 `c
+-> 105 `c
+-> 116 `c
+-> 63 `c
+..
+]
+"254
+[; ;main.c: 254:         const unsigned char q_lait_choix[10] = "0 a 9 pot";
+[v F11489 `Cuc ~T0 @X0 -> 10 `i s q_lait_choix ]
+[i F11489
+:U ..
+-> 48 `c
+-> 32 `c
+-> 97 `c
+-> 32 `c
+-> 57 `c
+-> 32 `c
+-> 112 `c
+-> 111 `c
+-> 116 `c
+-> 0 `c
+..
+]
+"255
+[; ;main.c: 255:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"256
+[; ;main.c: 256:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"257
+[; ;main.c: 257:         putStringLCD(&q_lait[0]);
+[e ( _putStringLCD (1 &U *U + &U F11488 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11488 `ui `ux ]
+"258
+[; ;main.c: 258:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"259
+[; ;main.c: 259:         putStringLCD(&q_lait_choix[0]);
+[e ( _putStringLCD (1 &U *U + &U F11489 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11489 `ui `ux ]
+"260
+[; ;main.c: 260:     }
+}
+[e :U 1490 ]
+"261
+[; ;main.c: 261:     if (etape == 3) {
+[e $ ! == _etape -> 3 `i 1491  ]
+{
+"262
+[; ;main.c: 262:         const unsigned char q_sucre[17] = "Qqt sac de sucre?";
+[v F11490 `Cuc ~T0 @X0 -> 17 `i s q_sucre ]
+[i F11490
+:U ..
+-> 81 `c
+-> 113 `c
+-> 116 `c
+-> 32 `c
+-> 115 `c
+-> 97 `c
+-> 99 `c
+-> 32 `c
+-> 100 `c
+-> 101 `c
+-> 32 `c
+-> 115 `c
+-> 117 `c
+-> 99 `c
+-> 114 `c
+-> 101 `c
+-> 63 `c
+..
+]
+"263
+[; ;main.c: 263:         const unsigned char q_sucre_choix[9] = "0 a 9 sac";
+[v F11491 `Cuc ~T0 @X0 -> 9 `i s q_sucre_choix ]
+[i F11491
+:U ..
+-> 48 `c
+-> 32 `c
+-> 97 `c
+-> 32 `c
+-> 57 `c
+-> 32 `c
+-> 115 `c
+-> 97 `c
+-> 99 `c
+..
+]
+"264
+[; ;main.c: 264:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"265
+[; ;main.c: 265:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"266
+[; ;main.c: 266:         putStringLCD(&q_sucre[0]);
+[e ( _putStringLCD (1 &U *U + &U F11490 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11490 `ui `ux ]
+"267
+[; ;main.c: 267:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"268
+[; ;main.c: 268:         putStringLCD(&q_sucre_choix[0]);
+[e ( _putStringLCD (1 &U *U + &U F11491 * -> -> -> 0 `i `ui `ux -> -> # *U &U F11491 `ui `ux ]
+"269
+[; ;main.c: 269:     }
+}
+[e :U 1491 ]
+"270
+[; ;main.c: 270: }
+[e :UE 1488 ]
+}
+"273
+[; ;main.c: 273: int digit_to_int(char d) {
+[v _digit_to_int `(i ~T0 @X0 1 ef1`uc ]
+{
+[e :U _digit_to_int ]
+[v _d `uc ~T0 @X0 1 r1 ]
+[f ]
+"274
+[; ;main.c: 274:     char str[2];
+[v _str `uc ~T0 @X0 -> 2 `i a ]
+"276
+[; ;main.c: 276:     str[0] = d;
+[e = *U + &U _str * -> -> -> 0 `i `ui `ux -> -> # *U &U _str `ui `ux _d ]
+"277
+[; ;main.c: 277:     str[1] = '\0';
+[e = *U + &U _str * -> -> -> 1 `i `ui `ux -> -> # *U &U _str `ui `ux -> -> 0 `ui `uc ]
+"278
+[; ;main.c: 278:     return (int) strtol(str, ((void*)0), 10);
+[e ) -> ( _strtol (3 , , -> &U _str `*Cuc -> -> -> 0 `i `*v `**uc -> 10 `i `i ]
+[e $UE 1492  ]
+"279
+[; ;main.c: 279: }
+[e :UE 1492 ]
+}
+"282
+[; ;main.c: 282: char check(char input) {
 [v _check `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _check ]
 [v _input `uc ~T0 @X0 1 r1 ]
 [f ]
-"196
-[; ;main.c: 196:     if(RCSTA1bits.FERR == 1 || RCSTA1bits.OERR == 1){
-[e $ ! || == -> . . _RCSTA1bits 0 2 `i -> 1 `i == -> . . _RCSTA1bits 0 1 `i -> 1 `i 1475  ]
+"283
+[; ;main.c: 283:     if(RCSTA1bits.FERR == 1 || RCSTA1bits.OERR == 1){
+[e $ ! || == -> . . _RCSTA1bits 0 2 `i -> 1 `i == -> . . _RCSTA1bits 0 1 `i -> 1 `i 1494  ]
 {
-"197
-[; ;main.c: 197:         RCSTA1bits.CREN = 0;
+"284
+[; ;main.c: 284:         RCSTA1bits.CREN = 0;
 [e = . . _RCSTA1bits 0 4 -> -> 0 `i `uc ]
-"198
-[; ;main.c: 198:         return 0x65;
+"285
+[; ;main.c: 285:         return 0x65;
 [e ) -> -> 101 `i `uc ]
-[e $UE 1474  ]
-"199
-[; ;main.c: 199:     }
+[e $UE 1493  ]
+"286
+[; ;main.c: 286:     }
 }
-[e :U 1475 ]
-"201
-[; ;main.c: 201:     if (input == CHAR_ATTENTE) {
-[e $ ! == -> _input `i -> _CHAR_ATTENTE `i 1476  ]
+[e :U 1494 ]
+"288
+[; ;main.c: 288:     if (input == CHAR_ATTENTE) {
+[e $ ! == -> _input `i -> _CHAR_ATTENTE `i 1495  ]
 {
-"203
-[; ;main.c: 203:         return CHAR_ATTENTE;
+"289
+[; ;main.c: 289:         return CHAR_ATTENTE;
 [e ) _CHAR_ATTENTE ]
-[e $UE 1474  ]
-"204
-[; ;main.c: 204:     }
+[e $UE 1493  ]
+"290
+[; ;main.c: 290:     }
 }
-[e :U 1476 ]
-"205
-[; ;main.c: 205:     if (input == 0x63) {
-[e $ ! == -> _input `i -> 99 `i 1477  ]
+[e :U 1495 ]
+"291
+[; ;main.c: 291:     if (input == CHAR_IDENTI) {
+[e $ ! == -> _input `i -> _CHAR_IDENTI `i 1496  ]
 {
-"207
-[; ;main.c: 207:         return 0x63;
-[e ) -> -> 99 `i `uc ]
-[e $UE 1474  ]
-"208
-[; ;main.c: 208:     }
+"292
+[; ;main.c: 292:         return CHAR_IDENTI;
+[e ) _CHAR_IDENTI ]
+[e $UE 1493  ]
+"293
+[; ;main.c: 293:     }
 }
-[e :U 1477 ]
-"209
-[; ;main.c: 209:     if (input == 0x66) {
-[e $ ! == -> _input `i -> 102 `i 1478  ]
+[e :U 1496 ]
+"294
+[; ;main.c: 294:     if (input == CHAR_CONFIG) {
+[e $ ! == -> _input `i -> _CHAR_CONFIG `i 1497  ]
 {
-"211
-[; ;main.c: 211:         return 0x66;
-[e ) -> -> 102 `i `uc ]
-[e $UE 1474  ]
-"212
-[; ;main.c: 212:     }
+"295
+[; ;main.c: 295:         return CHAR_CONFIG;
+[e ) _CHAR_CONFIG ]
+[e $UE 1493  ]
+"296
+[; ;main.c: 296:     }
 }
-[e $U 1479  ]
-"213
-[; ;main.c: 213:     else{
-[e :U 1478 ]
+[e :U 1497 ]
+"297
+[; ;main.c: 297:     if (input == CHAR_CONFIR1_CONFIG) {
+[e $ ! == -> _input `i -> _CHAR_CONFIR1_CONFIG `i 1498  ]
 {
-"215
-[; ;main.c: 215:         return input;
+"298
+[; ;main.c: 298:         return CHAR_CONFIR1_CONFIG;
+[e ) _CHAR_CONFIR1_CONFIG ]
+[e $UE 1493  ]
+"299
+[; ;main.c: 299:     }
+}
+[e $U 1499  ]
+"300
+[; ;main.c: 300:     else{
+[e :U 1498 ]
+{
+"301
+[; ;main.c: 301:         return input;
 [e ) _input ]
-[e $UE 1474  ]
-"216
-[; ;main.c: 216:     }
+[e $UE 1493  ]
+"302
+[; ;main.c: 302:     }
 }
-[e :U 1479 ]
-"217
-[; ;main.c: 217: }
-[e :UE 1474 ]
+[e :U 1499 ]
+"303
+[; ;main.c: 303: }
+[e :UE 1493 ]
 }

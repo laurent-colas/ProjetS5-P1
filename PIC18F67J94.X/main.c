@@ -9,6 +9,7 @@
 #include <stdbool.h> /* For true/false definition */
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "config_bits.h"
 #include "LCD_SPI.h"
 #include "HC-SR04.h"
@@ -16,6 +17,7 @@
 #include "UART_MAX.h"
 #include "temperature.h"
 #include "main.h"
+#include "config_user.h"
 
 
 
@@ -35,6 +37,10 @@ int first_run = 1;
 char out;
 char sys_state;
 char pad_value;
+
+
+struct Utilisateur utilisateur[10];
+int increment_utilisateur = 0;
 
 void main(void) {
     
@@ -59,7 +65,10 @@ void main(void) {
                     pad_value = read_pad();
                 }
                 if (pad_value == '1'){
+                    send_data(CHAR_CONFIG);
+                    while (sys_state != CHAR_CONFIR1_CONFIG) {}
                     ETAT = CONFIGURATION;
+                    increment_utilisateur = increment_utilisateur + 1;
                 }
                 else if (pad_value == '2') {
                     ETAT = IDENTIFICATION;
@@ -71,7 +80,7 @@ void main(void) {
                 break;
                 
             case CONFIGURATION:
-                
+                create_new_user();
                 break;
                      
         }
@@ -192,6 +201,84 @@ void __interrupt(low_priority) Temp_interrupt() {
 
 
 
+void read_validate_pad(char choices[], int length) {
+    int i;
+    int validation = 0;
+    while (validation != 1) {
+        pad_value = read_pad();
+        for (i = 0; i<length; i++) {
+            if (pad_value == choices[i]) {
+                validation = 1;
+            }
+        }
+        if (validation == 0) {
+            avertissement(3);
+        }
+    }
+}
+
+
+void create_new_user(void) {
+    
+    question_configuration(1);
+    char choices_new_user_eau[3] = {'1', '2', '3'};
+    read_validate_pad(choices_new_user_eau, 3);
+    utilisateur[increment_utilisateur].qqt_eau = digit_to_int(pad_value);
+    
+    question_configuration(2);
+    char choices_new_user_lait[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    read_validate_pad(choices_new_user_lait, 9);
+    utilisateur[increment_utilisateur].qqt_lait = digit_to_int(pad_value);
+    
+    question_configuration(3);
+    char choices_new_user_sucre[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    read_validate_pad(choices_new_user_sucre, 9);
+    utilisateur[increment_utilisateur].qqt_sucre = digit_to_int(pad_value);
+    
+    ETAT = ACCEUIL;
+
+}
+
+void question_configuration(int etape) {
+    if (etape == 1) {
+        const unsigned char q_eau[19] = "Grosseur de tasse ?";
+        const unsigned char q_eau_choix[19] = "S = 1, M = 2, L = 3";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&q_eau[0]);
+        moveCursor(1,0);
+        putStringLCD(&q_eau_choix[0]);
+    }
+    if (etape == 2) {
+        const unsigned char q_lait[16] = "Qqt pot de lait?";
+        const unsigned char q_lait_choix[10] = "0 a 9 pot";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&q_lait[0]);
+        moveCursor(1,0);
+        putStringLCD(&q_lait_choix[0]);
+    }
+    if (etape == 3) {
+        const unsigned char q_sucre[17] = "Qqt sac de sucre?";
+        const unsigned char q_sucre_choix[9] = "0 a 9 sac";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&q_sucre[0]);
+        moveCursor(1,0);
+        putStringLCD(&q_sucre_choix[0]);
+    }
+}
+
+
+int digit_to_int(char d) {
+    char str[2];
+
+    str[0] = d;
+    str[1] = '\0';
+    return (int) strtol(str, NULL, 10);
+}
+
+
 char check(char input) {
     if(RCSTA1bits.FERR == 1 || RCSTA1bits.OERR == 1){
         RCSTA1bits.CREN = 0;
@@ -199,19 +286,18 @@ char check(char input) {
     }
     // reception Attente detecter
     if (input == CHAR_ATTENTE) {
-        // A
         return CHAR_ATTENTE;
     }
-    if (input == 0x63) {
-        // C
-        return 0x63;
+    if (input == CHAR_IDENTI) {
+        return CHAR_IDENTI;
     }
-    if (input == 0x66) {
-        // F
-        return 0x66;
+    if (input == CHAR_CONFIG) {
+        return CHAR_CONFIG;
+    }
+    if (input == CHAR_CONFIR1_CONFIG) {
+        return CHAR_CONFIR1_CONFIG;
     }
     else{
-         // U
         return input;
     }
 }

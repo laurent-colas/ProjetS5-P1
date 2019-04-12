@@ -22,6 +22,7 @@ extern "C" {
 char CHAR_ATTENTE = 'A';
 char CHAR_IDENTI = 'I';
 char CHAR_CONFIG = 'C';
+char CHAR_CONFIR1_CONFIG = 'G';
 char CHAR_ACCEUIL = 'E';
 
 
@@ -37,6 +38,13 @@ void message_etat(int etat);
 void menu1(void);
 void __interrupt(high_priority) Serial_interrupt(void); 
 void __interrupt(low_priority) Temp_interrupt(void);
+
+
+void create_new_user(void);
+void question_configuration(int etape);
+void read_validate_pad(char choices[], int length);
+int digit_to_int(char d);
+
 //void init_interruption_temp(void);
 char check(char input);
 
