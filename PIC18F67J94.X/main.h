@@ -12,6 +12,8 @@
 extern "C" {
 #endif
     
+
+    
     
 #define SeuilEau        5
 #define SeuilTempEau    60
@@ -19,9 +21,24 @@ extern "C" {
 #define ACCEUIL         2
 #define IDENTIFICATION  3
 #define CONFIGURATION   4
+#define PREP_CAFE       5    
+    
+#define MAX_USERS       10
+#define TIMEOUT         3
+    
+#include "LCD_SPI.h"
+#include "HC-SR04.h"
+#include "num_pad.h"
+#include "UART_MAX.h"
+#include "temperature.h"
+#include "config_user.h"
+#include "message.h"
+#include "fonction_periph.h"
+
 char CHAR_ATTENTE = 'A';
 char CHAR_IDENTI = 'I';
 char CHAR_CONFIG = 'C';
+char CHAR_CONFIR1_CONFIG = 'G';
 char CHAR_ACCEUIL = 'E';
 
 
@@ -32,11 +49,20 @@ int DistanceEau, DistanceLait;
 
 void init_all(void);
 void get_ready_for_coffee(void);
-void avertissement(int NumAvertissement);
-void message_etat(int etat);
-void menu1(void);
+void set_default_coffee(void);
+
 void __interrupt(high_priority) Serial_interrupt(void); 
 void __interrupt(low_priority) Temp_interrupt(void);
+
+
+void create_new_user(void);
+void read_validate_pad(char choices[], int length);
+
+void identify_user(void);
+int verify_id(char id);
+void make_coffee(void);
+int digit_to_int(char d);
+
 //void init_interruption_temp(void);
 char check(char input);
 

@@ -19524,6 +19524,7 @@ char *ctermid(char *);
 char *tempnam(const char *, const char *);
 # 11 "main.c" 2
 
+
 # 1 "./config_bits.h" 1
 # 17 "./config_bits.h"
 #pragma config PLLDIV = 0
@@ -19544,7 +19545,7 @@ char *tempnam(const char *, const char *);
 #pragma config BOREN = ON
 
 #pragma config CP0 = OFF
-# 12 "main.c" 2
+# 13 "main.c" 2
 
 # 1 "./LCD_SPI.h" 1
 # 34 "./LCD_SPI.h"
@@ -19568,7 +19569,7 @@ void moveCursor(int row, int col);
 char fliplr(char input);
 void putNumberLCD(int number);
 void clearRow(int row);
-# 13 "main.c" 2
+# 14 "main.c" 2
 
 # 1 "./HC-SR04.h" 1
 # 14 "./HC-SR04.h"
@@ -19584,13 +19585,13 @@ float Distance;
 int Distance_mm_int;
 int Time;
 float Total_distance[10];
-# 14 "main.c" 2
+# 15 "main.c" 2
 
 # 1 "./num_pad.h" 1
 # 13 "./num_pad.h"
 void init_num_pad(void);
 char read_pad(void);
-# 15 "main.c" 2
+# 16 "main.c" 2
 
 # 1 "./UART_MAX.h" 1
 # 12 "./UART_MAX.h"
@@ -19708,7 +19709,7 @@ void baud4USART ( unsigned char baudconfig);
 void SetupClock(void);
 void init_UART(void);
 void send_data(char input);
-# 16 "main.c" 2
+# 17 "main.c" 2
 
 # 1 "./temperature.h" 1
 # 22 "./temperature.h"
@@ -19718,13 +19719,14 @@ void Delay(void);
 void chauffe_eau(int etat);
 void init_interruption_temp(void);
 void gestion_temp_eau(int temperature);
-# 17 "main.c" 2
+# 18 "main.c" 2
 
 # 1 "./main.h" 1
 # 22 "./main.h"
 char CHAR_ATTENTE = 'A';
 char CHAR_IDENTI = 'I';
 char CHAR_CONFIG = 'C';
+char CHAR_CONFIR1_CONFIG = 'G';
 char CHAR_ACCEUIL = 'E';
 
 
@@ -19741,6 +19743,13 @@ void menu1(void);
 void __attribute__((picinterrupt("high_priority"))) Serial_interrupt(void);
 void __attribute__((picinterrupt("low_priority"))) Temp_interrupt(void);
 
+
+void create_new_user(void);
+void question_configuration(int etape);
+void read_validate_pad(char choices[], int length);
+int digit_to_int(char d);
+
+
 char check(char input);
 
 struct Utilisateur {
@@ -19749,7 +19758,13 @@ struct Utilisateur {
     int qqt_lait;
     int qqt_sucre;
 };
-# 18 "main.c" 2
+# 19 "main.c" 2
+
+# 1 "./config_user.h" 1
+# 15 "./config_user.h"
+void create_new_user(void);
+void question_configuration(int etape);
+# 20 "main.c" 2
 
 
 
@@ -19770,6 +19785,10 @@ int first_run = 1;
 char out;
 char sys_state;
 char pad_value;
+
+
+struct Utilisateur utilisateur[10];
+int increment_utilisateur = 0;
 
 void main(void) {
 
@@ -19794,7 +19813,10 @@ void main(void) {
                     pad_value = read_pad();
                 }
                 if (pad_value == '1'){
+                    send_data(CHAR_CONFIG);
+                    while (sys_state != CHAR_CONFIR1_CONFIG) {}
                     ETAT = 4;
+                    increment_utilisateur = increment_utilisateur + 1;
                 }
                 else if (pad_value == '2') {
                     ETAT = 3;
@@ -19806,7 +19828,7 @@ void main(void) {
                 break;
 
             case 4:
-
+                create_new_user();
                 break;
 
         }
@@ -19927,6 +19949,84 @@ void __attribute__((picinterrupt("low_priority"))) Temp_interrupt() {
 
 
 
+void read_validate_pad(char choices[], int length) {
+    int i;
+    int validation = 0;
+    while (validation != 1) {
+        pad_value = read_pad();
+        for (i = 0; i<length; i++) {
+            if (pad_value == choices[i]) {
+                validation = 1;
+            }
+        }
+        if (validation == 0) {
+            avertissement(3);
+        }
+    }
+}
+
+
+void create_new_user(void) {
+
+    question_configuration(1);
+    char choices_new_user_eau[3] = {'1', '2', '3'};
+    read_validate_pad(choices_new_user_eau, 3);
+    utilisateur[increment_utilisateur].qqt_eau = digit_to_int(pad_value);
+
+    question_configuration(2);
+    char choices_new_user_lait[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    read_validate_pad(choices_new_user_lait, 9);
+    utilisateur[increment_utilisateur].qqt_lait = digit_to_int(pad_value);
+
+    question_configuration(3);
+    char choices_new_user_sucre[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    read_validate_pad(choices_new_user_sucre, 9);
+    utilisateur[increment_utilisateur].qqt_sucre = digit_to_int(pad_value);
+
+    ETAT = 2;
+
+}
+
+void question_configuration(int etape) {
+    if (etape == 1) {
+        const unsigned char q_eau[19] = "Grosseur de tasse ?";
+        const unsigned char q_eau_choix[19] = "S = 1, M = 2, L = 3";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&q_eau[0]);
+        moveCursor(1,0);
+        putStringLCD(&q_eau_choix[0]);
+    }
+    if (etape == 2) {
+        const unsigned char q_lait[16] = "Qqt pot de lait?";
+        const unsigned char q_lait_choix[10] = "0 a 9 pot";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&q_lait[0]);
+        moveCursor(1,0);
+        putStringLCD(&q_lait_choix[0]);
+    }
+    if (etape == 3) {
+        const unsigned char q_sucre[17] = "Qqt sac de sucre?";
+        const unsigned char q_sucre_choix[9] = "0 a 9 sac";
+        clearDisplay();
+        moveCursor(0,0);
+        putStringLCD(&q_sucre[0]);
+        moveCursor(1,0);
+        putStringLCD(&q_sucre_choix[0]);
+    }
+}
+
+
+int digit_to_int(char d) {
+    char str[2];
+
+    str[0] = d;
+    str[1] = '\0';
+    return (int) strtol(str, ((void*)0), 10);
+}
+
+
 char check(char input) {
     if(RCSTA1bits.FERR == 1 || RCSTA1bits.OERR == 1){
         RCSTA1bits.CREN = 0;
@@ -19934,19 +20034,18 @@ char check(char input) {
     }
 
     if (input == CHAR_ATTENTE) {
-
         return CHAR_ATTENTE;
     }
-    if (input == 0x63) {
-
-        return 0x63;
+    if (input == CHAR_IDENTI) {
+        return CHAR_IDENTI;
     }
-    if (input == 0x66) {
-
-        return 0x66;
+    if (input == CHAR_CONFIG) {
+        return CHAR_CONFIG;
+    }
+    if (input == CHAR_CONFIR1_CONFIG) {
+        return CHAR_CONFIR1_CONFIG;
     }
     else{
-
         return input;
     }
 }

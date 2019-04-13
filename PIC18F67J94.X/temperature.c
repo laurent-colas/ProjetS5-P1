@@ -9,7 +9,7 @@
 #include <xc.h>
 #include <math.h>
 #include "temperature.h"
-#include "pic18f67j94.h"
+//#include "pic18f67j94.h"
 
 float RT, VR, ln, TX, T0, VRT;
 
@@ -24,11 +24,11 @@ void init_ADC(void) {
     ADCON1Hbits.FORM = 0x00; //Absolute decimal result, unsigned, right-justified
     ADCON1Hbits.ADON = 1; //A/D Converter module is operating
     
-    ADCON1Lbits.SSRC = 0b0101;  //TMR1
+//    ADCON1Lbits.SSRC = 0b0101;  //TMR1
     ADCON1Lbits.ASAM = 0; //Sampling begins when SAMP bit is manually set
     ADCON1Lbits.SAMP = 1; //A/D Sample-and-Hold amplifiers are sampling
     
-    ADCON2Lbits.SMPI = 0x05; //Interrupt/address increment at the completion of conversion for each 5th sample
+//    ADCON2Lbits.SMPI = 0x05; //Interrupt/address increment at the completion of conversion for each 5th sample
     
     ADCON3Hbits.ADRC = 0;  //Clock derived from system clock
     // p.438

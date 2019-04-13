@@ -9,23 +9,16 @@
 #include <stdbool.h> /* For true/false definition */
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "config_bits.h"
-#include "LCD_SPI.h"
-#include "HC-SR04.h"
-#include "num_pad.h"
-#include "UART_MAX.h"
-#include "temperature.h"
-#include "main.h"
 
+#include "main.h"
 
 
 int number = 3;
 int i;
 char pressed_pad;
 
-
-const unsigned char str[17] = "Nico est francais";
-const unsigned char str_read_dist[20] = "1-Pour prelever dist";
 float Total_distance[10];
 int Distance_mm_int;
 const unsigned char total_dist[10];
@@ -36,9 +29,17 @@ char out;
 char sys_state;
 char pad_value;
 
+
+struct Utilisateur utilisateur[MAX_USERS];
+int increment_utilisateur = 0;
+int id_user_identifier = 0;
+int timeout = 0;
+const unsigned char div_temp[15] = " sur 90 Celsius";
+
 void main(void) {
     
     init_all();
+    set_default_coffee();
     get_ready_for_coffee();
     ETAT = ATTENTE;
     
@@ -46,20 +47,29 @@ void main(void) {
         switch(ETAT) {
             case ATTENTE:
                 message_etat(ATTENTE);
-                send_data(CHAR_ATTENTE);
-                while (sys_state != CHAR_ATTENTE) {}
+//                send_data(CHAR_ATTENTE);
+                while (((sys_state != CHAR_ATTENTE) && (timeout <= TIMEOUT))) {
+                    timeout = timeout + 1;
+                }
+                timeout = 0;
                 ETAT = ACCEUIL;
                 break;
                 
             case ACCEUIL:
                 message_etat(ACCEUIL);
                 pad_value = read_pad();
-                while (pad_value != '1' || pad_value !='2') {
+                while ((pad_value != '1' && pad_value !='2')) {
                     avertissement(3);
                     pad_value = read_pad();
                 }
                 if (pad_value == '1'){
+                    send_data(CHAR_CONFIG);
+                    while (((sys_state != CHAR_ATTENTE) && (timeout <= TIMEOUT))) {
+                        timeout = timeout + 1;
+                    }
+                    timeout = 0;
                     ETAT = CONFIGURATION;
+                    
                 }
                 else if (pad_value == '2') {
                     ETAT = IDENTIFICATION;
@@ -67,35 +77,45 @@ void main(void) {
                 break;
             
             case IDENTIFICATION:
-                
+                identify_user();
+                ETAT = PREP_CAFE;
                 break;
                 
             case CONFIGURATION:
-                
+                create_new_user();
+                ETAT = ACCEUIL;
                 break;
-                     
+            
+            case PREP_CAFE:
+                make_coffee();
+                ETAT = ACCEUIL;
+                break;
         }
     }
 }
 
 void init_all(void) {
     init_UART();
+//    init_ADC();
     initialisation_LCD();
     init_num_pad();
     init_dist_sensor();
+    init_periph();
 }
 
 void get_ready_for_coffee(void) {
     
-    DistanceEau = calc_distance_mm(1);
+//    DistanceEau = calc_distance_mm(1);
+    DistanceEau = 6;
     if (DistanceEau < SeuilEau) {
         avertissement(1);
         while (DistanceEau < SeuilEau) {
             DistanceEau = calc_distance_mm(1);
         }
     }
-    TempEau = get_temp(1);
-    if (TempEau< SeuilTempEau) {
+//    TempEau = get_temp(1);
+    TempEau = 70;
+    if (TempEau < SeuilTempEau) {
         chauffe_eau(1);
         avertissement(2);
         while (TempEau< SeuilTempEau) {
@@ -104,78 +124,26 @@ void get_ready_for_coffee(void) {
             moveCursor(1,0);
             putNumberLCD(TempEau);
             moveCursor(1,4);
-            const unsigned char div[13] = " / 90 Celsius";
-            putStringLCD(&div[0]);
+            
+            putStringLCD(&div_temp[0]);
         }   
     }
     chauffe_eau(0);
     avertissement(0);
     
-    init_interruption_temp();
+//    init_interruption_temp();
 }
 
-void avertissement(int NumAvertissement) {
-    if (NumAvertissement == 0) {
-        const unsigned char avert0[14] = "Machine Prete!";
-        clearDisplay();
-        moveCursor(0,0);
-        putStringLCD(&avert0[0]);
-    }
-    if (NumAvertissement == 1) {
-        const unsigned char avert1[10] = "Manque eau";
-        clearDisplay();
-        moveCursor(0,0);
-        putStringLCD(&avert1[0]);
-    }
-    if (NumAvertissement == 2) {
-        const unsigned char avert2[13] = "Prep temp eau";
-        clearDisplay();
-        moveCursor(0,0);
-        putStringLCD(&avert2[0]);
-    }
-    if (NumAvertissement == 3) {
-        const unsigned char avert3[17] = "Touche non valide";
-        //clearDisplay();
-        moveCursor(2,0);
-        putStringLCD(&avert3[0]);
-    }
-}
-
-void message_etat(int etat) {
-    if (etat == ATTENTE) {
-        const unsigned char etat_attente[14] = "Machine Prete!";
-        const unsigned char etat_attente1[21] = "Attente d'utilisateur";
-        clearDisplay();
-        moveCursor(0,0);
-        putStringLCD(&etat_attente[0]);
-        moveCursor(1,0);
-        putStringLCD(&etat_attente1[0]);
-    }
-    if (etat == ACCEUIL) {
-        const unsigned char etat_acceuil1[23] = "1- Nouvelle utilisateur";
-        const unsigned char etat_acceuil2[23] = "2- Utilisateur existant";
-        clearDisplay();
-        moveCursor(0,0);
-        putStringLCD(&etat_acceuil1[0]);
-        moveCursor(1,0);
-        putStringLCD(&etat_acceuil2[0]);
-    }
-    if (etat == IDENTIFICATION) {
-        const unsigned char etat_identification[13] = "Prep temp eau";
-        clearDisplay();
-        moveCursor(0,0);
-        putStringLCD(&etat_identification[0]);
-    }
-    if (etat == CONFIGURATION) {
-        const unsigned char etat_configuration[13] = "Prep temp eau";
-        clearDisplay();
-        moveCursor(0,0);
-        putStringLCD(&etat_configuration[0]);
-    }
+void set_default_coffee(void) {
+    utilisateur[increment_utilisateur].qqt_eau = 2;
+    utilisateur[increment_utilisateur].qqt_lait = 0;
+    utilisateur[increment_utilisateur].qqt_sucre = 0;
+    utilisateur[increment_utilisateur].id = '0';
 }
 
 void __interrupt(high_priority) Serial_interrupt() {
 //    p.417
+    
     while(RC1IF == 0);
     out = RCREG1;
     sys_state = check(out);
@@ -192,6 +160,165 @@ void __interrupt(low_priority) Temp_interrupt() {
 
 
 
+void read_validate_pad(char choices[], int length) {
+    int i;
+    int validation = 0;
+    while (validation != 1) {
+        pad_value = read_pad();
+        for (i = 0; i<length; i++) {
+            if (pad_value == choices[i]) {
+                validation = 1;
+            }
+        }
+        if (validation == 0) {
+            avertissement(3);
+        }
+    }
+}
+
+
+void create_new_user(void) {
+    
+    question_configuration(1);
+    char choices_new_user_eau[3] = {'1', '2', '3'};
+    read_validate_pad(choices_new_user_eau, 3);
+    utilisateur[increment_utilisateur].qqt_eau = digit_to_int(pad_value);
+    
+    question_configuration(2);
+    char choices_new_user_lait[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    read_validate_pad(choices_new_user_lait, 9);
+    utilisateur[increment_utilisateur].qqt_lait = digit_to_int(pad_value);
+    
+    question_configuration(3);
+    char choices_new_user_sucre[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    read_validate_pad(choices_new_user_sucre, 9);
+    utilisateur[increment_utilisateur].qqt_sucre = digit_to_int(pad_value);
+    
+//    utilisateur[increment_utilisateur].id = sys_state;
+    utilisateur[increment_utilisateur].id = '1';
+    
+    increment_utilisateur = increment_utilisateur + 1;
+    
+    
+
+}
+
+void identify_user(void) {
+    char previous_sys_state;
+    int position_user_struct = -1;
+    int detection_strikes = 3;
+    char choices_identification[2] = {'1', '0'};
+    
+    while (position_user_struct == -1 || detection_strikes != 0) {
+        message_etat(IDENTIFICATION);
+        read_validate_pad(choices_identification, 2);
+
+        if (pad_value == '1') {
+            previous_sys_state = sys_state;
+            send_data(CHAR_IDENTI);
+        
+            avertissement(4);
+            while (sys_state != previous_sys_state || timeout != TIMEOUT) {
+                timeout = timeout + 1;
+            }
+//            position_user_struct = verify_id(sys_state);
+            position_user_struct = verify_id('1');
+        
+            if (position_user_struct == -1) {
+                avertissement(5);
+                detection_strikes = detection_strikes - 1;
+            }
+        }
+        else {
+            position_user_struct = 0;
+        }
+
+    }
+    id_user_identifier = position_user_struct;
+
+    
+    
+}
+
+int verify_id(char id) {
+    int i;
+    int verified_id = -1;
+    for (i = 0; i<MAX_USERS; i++) {
+        if (id == utilisateur[i].id) {
+            verified_id = i;
+        } 
+    } 
+    return verified_id;
+}
+
+void make_coffee(void) {
+    avertissement(6);
+    send_water(utilisateur[id_user_identifier].qqt_eau);
+    avertissement(7);
+    send_milk(utilisateur[id_user_identifier].qqt_lait);
+    avertissement(8);
+    send_sugar(utilisateur[id_user_identifier].qqt_sucre);
+}
+
+int digit_to_int(char d) {
+    int entier;
+
+    switch(d){
+        case '0':
+            entier = 0;
+            break;
+        case '1':
+            entier = 1;
+            break;
+        case '2':
+            entier = 2;
+            break;
+        case '3':
+            entier = 3;
+            break;
+        case '4':
+            entier = 4;
+            break;
+        case '5':
+            entier = 5;
+            break;
+        case '6':
+            entier = 6;
+            break;
+        case '7':
+            entier = 7;
+            break;
+        case '8':
+            entier = 8;
+            break;
+        case '9':
+            entier = 9;
+            break;
+        case 'A':
+            entier = 10;
+            break;
+        case 'B':
+            entier = 11;
+            break;
+        case 'C':
+            entier = 12;
+            break;
+        case 'D':
+            entier = 13;
+            break;
+        case 'E':
+            entier = 14;
+            break;
+        case 'F':
+            entier = 15;
+            break;
+    }
+            
+    return entier;
+}
+
+
+
 char check(char input) {
     if(RCSTA1bits.FERR == 1 || RCSTA1bits.OERR == 1){
         RCSTA1bits.CREN = 0;
@@ -199,19 +326,18 @@ char check(char input) {
     }
     // reception Attente detecter
     if (input == CHAR_ATTENTE) {
-        // A
         return CHAR_ATTENTE;
     }
-    if (input == 0x63) {
-        // C
-        return 0x63;
+    if (input == CHAR_IDENTI) {
+        return CHAR_IDENTI;
     }
-    if (input == 0x66) {
-        // F
-        return 0x66;
+    if (input == CHAR_CONFIG) {
+        return CHAR_CONFIG;
+    }
+    if (input == CHAR_CONFIR1_CONFIG) {
+        return CHAR_CONFIR1_CONFIG;
     }
     else{
-         // U
         return input;
     }
 }

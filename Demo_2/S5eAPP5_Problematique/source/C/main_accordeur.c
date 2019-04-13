@@ -41,7 +41,6 @@
 
 
 
-
 // VARIABLES GLOBALES
 //USELECTIONS Commandes;				// Commandes de l'utilisateur (voir main_accordeur.h)
 
@@ -57,15 +56,16 @@ const float PI = 3.14159265358979;
 //extern struct complx C_delta[NB_CORDES];
 //extern int nb[NB_CORDES];			// Erreur sur l'accordement de l'instrument
 
-//#define TAMPON_L  256
-//#pragma DATA_ALIGN(tampon, TAMPON_L*2); // Requis pour l'adressage circulaire en assembleur
-//short tampon[TAMPON_L]={0};         // Tampon d'échantillons
-//short *pTampon=&tampon[TAMPON_L-1]; // Pointeur sur l'échantillon courant
+#define TAMPON_L  256
+#pragma DATA_ALIGN(tampon, TAMPON_L*2); // Requis pour l'adressage circulaire en assembleur
+short tampon[TAMPON_L]={0};         // Tampon d'échantillons
+short *pTampon=&tampon[TAMPON_L-1]; // Pointeur sur l'échantillon courant
 
 // VARIABLES GLOBALES POUR DSK
 Uint32 fs=DSK6713_AIC23_FREQ_8KHZ; 			 // Fréquence d'échantillonnage
 #define DSK6713_AIC23_INPUT_LINE 0x0011		 // Définition de l'entrée LINE IN
-Uint16 inputsource=DSK6713_AIC23_INPUT_LINE; // Selection de l'entrée LINE IN
+#define DSK6713_AIC23_INPUT_MIC  0x0015
+Uint16 inputsource=DSK6713_AIC23_INPUT_MIC; // Selection de l'entrée LINE IN
 
 #define GAUCHE 0 // Définition du haut-parleur gauche
 #define DROIT  1 // Définition du haut-parleur droit
@@ -73,41 +73,156 @@ union {Uint32 uint; short channel[2];} AIC23_data; // Pour contenir les deux sig
 
 
 struct TABLEAU_INIT Ech[2];
-struct TABLEAU_REF  Sig_Ref;
-#pragma DATA_SECTION(Sig_Ref, ".EXT_RAM")
-#pragma DATA_SECTION(Ech, ".EXT_RAM")
+struct TABLEAU_IDENT x2[1];
 
+#pragma DATA_SECTION(Ech, ".EXT_RAM")
+#pragma DATA_SECTION(x2, ".EXT_RAM")
+
+short tableau_in_temporaire[2*N];
+#pragma DATA_SECTION(tableau_in_temporaire, ".EXT_RAM")
+
+int noDIP = 0;
+int interruption_full = 0;
+
+struct TABLEAU_REF  Sig_Ref;
+#pragma DATA_SECTION(Sig_Ref, ".EXT_RAM");
 
 void main()
 {
 //	initGenM2();
 //	afficherMenu();		// Affichage du menu principal à l'écran
-//	initAccordeur();	// Initialisations des variables et du hardware
+	initAccordeur();	// Initialisations des variables et du hardware
+//	int j;
+	int debug = 0;
+	short short_temp;
+//	int i = 0;
+//
+//	for (i = 0; i<N; i++) {
+//	    Ech[0].signal_in[i] = i;
+//	    Ech[1].signal_in[i] = i+i;
+////	    Ech[2].signal_in[i] = i;
+//	}
+//	pre_traitement(Ech);
+//	analyse_son(x2);
 
-//	struct TABLEAU_IDENT x2;
-
-	int i;
-	for (i = 0; i<N; i++) {
-	    Ech[0].signal_in[i] = i;
-	    Ech[1].signal_in[i] = i;
-//	    Ech[2].signal_in[i] = i;
-	}
-	pre_traitement(Ech, &Sig_Ref);
-//	analyse_son(&x2, &Sig_Ref);
 	while(1) {
 
-		// Si le tampon d'échantillons filtrés pour l'autocorrélation est plein
-		if (noEchFilt == L_TAMPON) {
-			// Calcul de l'erreur d'accordage
-//			errAccordement = findErrAccordage(tamponEchFilt, F0_NOMINAL[Commandes.noCorde-1]);
+	        int DIP0 = DSK6713_DIP_get(0);
+	        int DIP1 = DSK6713_DIP_get(1);
+	        int DIP2 = DSK6713_DIP_get(2);
+	        noDIP = 3;
+	        // Si on appuie sur la DIP0 (actif etat bas 4103)
+	        if (DIP0 == 0) {
+	            DSK6713_LED_on(0);
+	            comm_intr();
+//	            comm_intr();
+	            noDIP = 0;
 
-			// Attendre quelques instants pour permettre au tampon de bien se remplir
-			attendre(0.1); // NOTE : Nécessaire pour le bon fonctionnement des interruptions
+	            while (noEchFilt!=L_TAMPON){
+	                attendre(0.1);
+	            }
+	            attendre(0.2);
+	            noEchFilt = 0;
 
-			// Permettre au tampon de se remplir de nouveau
-			noEchFilt = 0;
-		}
-	}
+	            CODEC_stop();
+//	            for (j=0; j<N; j++) {
+//	                Ech[0].signal_in[j] = tableau_in_temporaire[2*j];
+//	            }
+	            interruption_full = 0;
+	            DSK6713_LED_off(0);
+
+	        }
+	        if (DIP1 == 0) {
+	            DSK6713_LED_on(1);
+	            comm_intr();
+//                comm_intr();
+                noDIP = 1;
+                while (noEchFilt!=L_TAMPON){
+                    attendre(0.1);
+                }
+                attendre(0.3);
+                CODEC_stop();
+
+                DSK6713_LED_off(1);
+                interruption_full = 0;
+                pre_traitement(Ech);
+                noEchFilt = 0;
+	        }
+	        if  (DIP2 == 0) {
+	            DSK6713_LED_on(2);
+	            comm_intr();
+//	            comm_intr();
+	            noDIP = 2;
+	            short_temp = (short) input_sample();
+                while (noEchFilt!=L_TAMPON){
+                    attendre(0.1);
+                }
+
+                attendre(0.2);
+                CODEC_stop();
+
+                interruption_full = 0;
+                DSK6713_LED_off(2);
+
+                analyse_son(x2);
+                noEchFilt = 0;
+
+                if (x2[0].seuil <= 18*Sig_Ref.seuil) {
+                    DSK6713_LED_on(0);
+                    DSK6713_LED_on(1);
+                    DSK6713_LED_on(2);
+                    DSK6713_LED_on(3);
+                    attendre(2);
+                    DSK6713_LED_off(0);
+                    DSK6713_LED_off(1);
+                    DSK6713_LED_off(2);
+                    DSK6713_LED_off(3);
+
+                    printf("Reussite");
+                }
+                else {
+                    DSK6713_LED_on(0);
+                    attendre(0.2);
+                    DSK6713_LED_on(1);
+                    attendre(0.2);
+                    DSK6713_LED_on(2);
+                    attendre(0.2);
+                    DSK6713_LED_on(3);
+                    attendre(2);
+                    DSK6713_LED_off(0);
+                    attendre(0.2);
+                    DSK6713_LED_off(1);
+                    attendre(0.2);
+                    DSK6713_LED_off(2);
+                    attendre(0.2);
+                    DSK6713_LED_off(3);
+                    printf("Echec ");
+                }
+
+	        }
+	        if (debug == 1) {
+	            comm_intr();
+	            debug = 0;
+	        }
+
+
+	    }
+
+
+//	while(1) {
+//
+//		// Si le tampon d'échantillons filtrés pour l'autocorrélation est plein
+//		if (noEchFilt == L_TAMPON) {
+//			// Calcul de l'erreur d'accordage
+////			errAccordement = findErrAccordage(tamponEchFilt, F0_NOMINAL[Commandes.noCorde-1]);
+//
+//			// Attendre quelques instants pour permettre au tampon de bien se remplir
+//			attendre(0.1); // NOTE : Nécessaire pour le bon fonctionnement des interruptions
+//
+//			// Permettre au tampon de se remplir de nouveau
+//			noEchFilt = 0;
+//		}
+//	}
 }
 
 // Attente en sec. (approximatif)
@@ -127,64 +242,36 @@ void attendre(float seconds)
 ********************************************************************************************/
 interrupt void c_int11() 
 {
-	float echOut; 		 // Amplitude de l'échantillon générée pour l'écoute d'une note
+//	float echOut; 		 // Amplitude de l'échantillon générée pour l'écoute d'une note
 	short echLineIn;	 // Amplitude de l'échantillon provenant de l'entrée LINE IN
-	short echLineInFilt; // Amplitude de l'échantillon filtré
-	short pwm[10] = {0,0,0,0,0,0,0,0,25,25}; // Pulse width modulation
-	int debugFiltres = 1;
-	static int n = 0;
+	short echLineInFilt;
 
 	// Capture de l'échantillon provenant de l'entrée "IN"
+//	temp_in = input_sample();
 	echLineIn = (short) input_sample();
 
-//	//
-//	// VOTRE **SOLUTION** DE FILTRAGE FIR + IIR REMPLACE LA PROCHAINE LIGNE!!!
-//	echLineInFilt = echLineIn;
-////	pTampon = FIR_ASM(pTampon, echLineIn, coef, &echLineInFilt);
-////	echLineInFilt = filtrerCascadeIIR(Commandes.noCorde, echLineInFilt);
-//	//
-//	//
-//
-//	// Si le tampon d'échantillons filtrés pour l'autocorrélation n'est pas plein,
-//	// y ajouter l'échantillon courant filtré
-//	if (noEchFilt < L_TAMPON) {
-//		// Enregistrement de l'échantillon dans le tampon
-//		tamponEchFilt[noEchFilt++] = (float) echLineInFilt;
-//	}
-//
-//	// Si une écoute est demandée, sortir l'amplitude sur le canal droit
-//	if (Commandes.isPlay) {
-//		// Générer l'échantillon audio pour écouter la tonalité de la corde
-//		//echOut = genFrqCos(Commandes.noCorde, Commandes.isPlay);
-//
-//		// VOTRE **SOLUTION**, À VOUS DE CODER CETTE FONCTION
-//		echOut = genFrq_methode2(Commandes.noCorde, Commandes.isPlay);
-//
-//		// Assigner l'échantillon au canal droit de la sortie HEADPHONE
-//		AIC23_data.channel[DROIT] =  (short)(1000*echOut);
-//	}
-//	// Autrement, sortir l'échantillon d'entrée non-filtrée sur le canal droit
-//	// pour fins de débuggage de vos filtres
-//	else
-//		AIC23_data.channel[DROIT] = echLineIn;
-//
-//	// Assigner l'erreur d'accordement au canal gauche de la sortie HEADPHONE
-//	// NOTE : Branchez le canal gauche à un oscilloscope pour observer l'erreur
-//	if (debugFiltres == 0)
-//		AIC23_data.channel[GAUCHE] = (short)errAccordement*pwm[n++%10];
-//	// Autrement, sortir l'échantillon filtré sur le canal gauche,
-//	// pour fins de débuggage de vos filtres
-//	else
-//		AIC23_data.channel[GAUCHE] = echLineInFilt;
-//
-//	// Sortir les deux signaux sur "HP/OUT"
-//	output_sample(AIC23_data.uint);
+	pTampon = FIR_ASM(pTampon, echLineIn, coefPBd, &echLineInFilt);
 
-	// Capturer des commandes usager provenant des DIP switchs
-//	getCommandes(&Commandes);
+	if (noEchFilt < L_TAMPON && noDIP == 0  && interruption_full % 2 == 0) {
+//	    tableau_in_temporaire[noEchFilt++] = echLineIn;
+	    Ech[0].signal_in[noEchFilt++] = echLineInFilt; //noEchFilt;
+    }
+	if (noEchFilt < L_TAMPON && noDIP == 1 && interruption_full % 2 == 0) {
+//	    tableau_in_temporaire[noEchFilt++] = echLineIn;
+        Ech[1].signal_in[noEchFilt++] = echLineInFilt; //noEchFilt; //echLineIn;
+    }
+	if (noEchFilt < L_TAMPON && noDIP == 2 && interruption_full % 2 == 0) {
+//	    tableau_in_temporaire[noEchFilt++] = echLineIn;
+        x2[0].signal_ref[noEchFilt++] = echLineInFilt;
+    }
 
-	// Afficher les commandes entrées par l'utilisateur sur les LEDs
-//	ajusterLED(Commandes.noCorde);
+	AIC23_data.channel[GAUCHE] = echLineIn;
+    AIC23_data.channel[DROIT] = echLineInFilt;
+//  // Sortir les deux signaux sur "HP/OUT"
+    output_sample(AIC23_data.uint);
+//    output_sample(temp_in);
+
+    interruption_full  = interruption_full + 1;
 
 	return;
 }
@@ -207,8 +294,8 @@ void initAccordeur()
 	DSK6713_DIP_init();	// Initialisation de la communication du DSP avec les 4 DIP swichs 
 	DSK6713_LED_init();	// Initialisation des 4 LEDS (éteindre)
 
-	comm_intr();		/* Initialisation de la communication entre DSP et AIC23 codec
-						   et démarage des interruptions pour l'échantillonnage */
+//	comm_intr();		/* Initialisation de la communication entre DSP et AIC23 codec
+//						   et démarage des interruptions pour l'échantillonnage */
 
 	return;			
 }

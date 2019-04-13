@@ -1,0 +1,100 @@
+/*
+ * FFT.h
+ *
+ *  Created on: 30 Mars 2019
+ *      Author: Louis
+ */
+
+#ifndef SOURCE_C_FFT_H_
+#define SOURCE_C_FFT_H_
+
+#include "DSPF_sp_cfftr2_dit.h"
+#include "DSPF_sp_icfftr2_dif.h"    //<--- SI JAMAIS ON EN A BESOIN SINON ON ENLÈVERA CETTE LIGNE!
+#include "twiddle_512.h"              //<--- LE "X" DANS LE NOM DOIT ÊTRE REMPLACÉ PAR LE NOMBRE DE TWIDDLES CONTENUS DANS LE FICHIER!
+#include <math.h>                   //<--- SI JAMAIS ON EN A BESOIN SINON ON ENLÈVERA CETTE LIGNE!
+
+//  INFO DONNÉE PAR LAURENT COLAS ET BERTHIÉ GOUIN :
+/*
+ * LE PROTOTYPE ---> void FFT(float tableau_in[N], float tableau_out_real[N/2],float tableau_out_imag[N/2])
+ * OBJECTIF -------> Couper la partie de gauche, garder la première moitié.
+ *
+ * RÉFÉRENCES -----> void faireAutocorr_fft(float bloc[], float resultat[]) <---- PROVENANT DE L'APP6
+ */
+
+void FFT(float tableau_in[N], float tableau_out_real[N/2],float tableau_out_imag[N/2] )
+{
+    /***************************************************************************************
+    //STEP 1 :  RÉCEPTION DES DONNÉES BRUTES RÉELLES :
+    ***************************************************************************************/
+    //          NB.: LES TAILLES ET TABLEAUX SUIVANTS DOIVENT ÊTRES DÉCLARÉS EN TANT QUE VARIABLES GLOBALES!!!!!
+    //               (ON LES VOIENT ICI QUE POUR MONTRER COMMENT TROUVER LEURS VALEURS ET/OU POUR FINS DE TESTS SI NÉCESSAIRE)
+
+    int TAILLE_BRUTE = 16000;    //<--- À DÉTERMINER SELON LE NOMBRE D'ÉCHANTILLONS AQUISITIONNÉS
+    int TAILLE_TableFFT = 4*TAILLE_BRUTE;
+    float TableFFT[TAILLE_TableFFT];
+
+    int TAILLE_FFT = 2*TAILLE_BRUTE;
+    int TAILLE_INDEX = ;                    //sqrt(2*TAILLE_BRUTE)
+    short index[TAILLE_INDEX];
+
+    int n;
+    /***************************************************************************************
+    //STEP 2 :  RÉCEPTION DES DONNÉES BRUTES RÉELLES :
+    //          (MISE DES RÉELS DANS LES CASES PAIRES, IMAGINAIRES (ZÉROS) DANS LES IMPAIRES
+    //           ET PADDING DE ZÉROS À PARTIR DE LA MOITIÉ DU TABLEAU JUSQU'À LA FIN)
+    ***************************************************************************************/
+    //          NB.: LE TABLEAU DOIT ÊTRE 4 X LA LONGUEUR DU TABLEAU DE DONNÉES BRUTES
+    //          EXEMPLE TIRÉ DE L'APP6 :
+    //                                      TAILLE_BRUTE = 256;
+    //                                      TAILLE_TableFFT = 4 * 256 = 1024;
+    //                                      TAILLE_FFT = 2 * 256 = 512;
+    //                                      TAILLE_TWIDDLES = 2 * 256 = 512
+
+
+
+    for(n = 0; n < TAILLE_BRUTE; n++){
+        TableFFT[n*2] = tableau_in[n];
+        TableFFT[n*2 + 1] = 0;
+        TableFFT[n*2 + TAILLE_FFT] = 0;
+        TableFFT[n*2 + 1 + TAILLE_FFT] = 0;
+    }
+    /***************************************************************************************
+    //STEP 3 :  CALCUL DE LA FFT AVEC LA FONCTION "RADIX" CHOISIE (INPUT = ÉCHANTILLONS ORDONNÉS, OUTPUT = ÉCHANTILLONS MÉLANGÉS)
+    ***************************************************************************************/
+    //          NB.: LES TWIDDLES "w" SONT GÉNÉRÉS PAR L'UTILITAIRE DE "Texas Instrument" AVEC LA COMMANDE UTILISANT "L'invite de commande"
+    //               (\ti\ccsv7\ccs_base\c6700\dsplib\bin\tw_r2fft.exe 512 > twiddle_X.h) ***NE PAS OUBLIER D'ENLEVER LE MOT "const" DANS LE FICHIER GÉNÉRÉ***
+
+        DSPF_sp_cfftr2_dit(TableFFT, w, TAILLE_FFT);
+
+    /***************************************************************************************
+    //STEP 4 :  GÉNÉRER LES VALEURS D'INDEX EN UTILISANT LA FONCTION "bitrev_index(short index[], int nx)"
+    ***************************************************************************************/
+    //          NB-1.: "nx" VAUT LE NOMBRE D'ÉCHANTILLONS BRUTES RÉELS ... (voir SPRU657c).
+    //          NB-2.: "index[]" DOIT ÊTRE DE TAILLE sqrt(2*nx) ET DONC UNE PUISSANCE DE 2.
+    //          NB-3.: JE CROIS QU'IL SERAIS PRÉFÉRABLE DE CALCULER LES INDEX AU DÉBUT DU MAIN ET DE METTRE LE TABLEAU D'INDEX COMME GLOBAL.
+    //                 (ÉVITER DE RE-GÉNÉRER LES INDEX À CHAQUE APPEL DE LA FONCTION FFT)
+
+        bitrev_index(index, TAILLE_BRUTE);
+
+    /***************************************************************************************
+    //STEP 5 :  REMETTRE LES ÉCHANTILLONS DANS L'ORDRE VIA LA FONCTION "DSPF_sp_bitrev_cplx((double *) TableFFT, index, nx)"
+    ***************************************************************************************/
+
+        DSPF_sp_bitrev_cplx((double *) TableFFT, index, TAILLE_BRUTE);
+
+    /***************************************************************************************
+    //STEP 6 :  RÉCUPÉRATION DES VALEURS RÉELLES ET IMAGINAIRES DE LA FFT DANS DES TABLEAUX RESPECTIFS.
+    ***************************************************************************************/
+    //          NB.: ON NE RÉCUPÈRE QUE LA 2e MOITIÉ DES VALEURS OBTENUES AVEC LA FFT.
+    //               (DONC ON DÉMARRE LA "boucle for" À LA MOITIÉ ET JUSQU'À LA FIN DU TABLEAU RÉ-ORDONNÉ DE LA FFT)
+        for(n = TAILLE_FFT; n < TAILLE_TableFFT; n++){
+            tableau_out_real[n] = TableFFT[n*2];
+            tableau_out_imag[n] = TableFFT[n*2 + 1];
+        }
+
+
+}
+
+#endif /* SOURCE_C_FFT_H_ */
+
+

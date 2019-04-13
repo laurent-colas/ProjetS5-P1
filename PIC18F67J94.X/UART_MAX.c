@@ -30,7 +30,7 @@ void SetupClock(){
 void init_UART() {
     SetupClock(); 
     
-    SPBRGH = 0x33; //51; // Baude rate value p.411
+    SPBRGH = 0x0C; //12; // Baude rate value p.411 BR=9600baud/s
     OSCCON2bits.IOLOCK = 0; //Register values can only be changed if IOLOCK = 0
 
     //RX pin set as input
@@ -72,6 +72,8 @@ void init_UART() {
 //    RCSTA = 0x90;
     // p 170
     RCONbits.IPEN = 1; //Interrupt Priority Enable Register bit
+    IPR1bits.RC1IP = 1; //Receive en High Priority
+
     
     INTCONbits.GIE = 1; //Global Interrupt Enable bit
     INTCONbits.PEIE = 1; //Peripheral Interrupt Enable bit
