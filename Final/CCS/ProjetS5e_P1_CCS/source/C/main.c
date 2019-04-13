@@ -74,6 +74,7 @@ struct TABLEAU_INIT Ech[2];
 struct TABLEAU_IDENT x2[1];
 struct TABLEAU_ID identite[10];
 
+
 #pragma DATA_SECTION(Ech, ".EXT_RAM")
 #pragma DATA_SECTION(x2, ".EXT_RAM")
 
@@ -88,9 +89,19 @@ struct TABLEAU_REF  Sig_Ref;
 
 int incrementUser = 0;
 
+
+// Variable pour userID
+float betterScore = 0;
+float betterScoreTemp = 0;
+int nbUser = 0;
+int user = 0;
+char ID;
+
+
 void main()
 {
 
+    initUSER(); // Les scor de tous les usagers sont mis à 0. l'élément score est utilisé pour savoir si l'ID existe ou pas (si != 0 == existe)
 	initDSK();	// Initialisations des variables et du hardware
 
 	int debug = 0;
@@ -110,45 +121,40 @@ void main()
 
 	        case CHAR_CONFIG:
 	            MCBSP_ecrire(CHAR_CONFIG);
-
-	            DSK6713_LED_on(1);
-                comm_intr();
-                noDIP = 1;
-                while (noEchFilt!=L_TAMPON){
-                    attendre(0.1);
-                }
-                attendre(0.3);
-                CODEC_stop();
-
-                DSK6713_LED_off(1);
+	            enregistrement(0);
                 interruption_full = 0;
-                pre_traitement(Ech);
-                noEchFilt = 0;
-                incrementUser++;
-                identite[incrementUser].id = tabId[incrementUser];
-                //identite[incrementUser].pointeurAutoCorr = pointeurAutoCorrelation;
-               // identite[incrementUser].score = score;
 
                 MCBSP_ecrire(CHAR_CONFIR1_CONFIG);
+                enregistrement(1);
+                interruption_full = 0;
+
+                pre_traitement(Ech);
+                noEchFilt = 0;
+
+                incrementUser = 0;
+                while(identite[incrementUser].score != 0){
+                    incrementUser++;
+                }
+
+                identite[incrementUser].id = tabId[incrementUser];
+                identite[incrementUser].score = Sig_Ref.seuil;
+                identite[incrementUser].pointeurAutoCorr = *Sig_Ref.autoCorr;
+
 
 	        case CHAR_IDENTI:
 	            MCBSP_ecrire(CHAR_IDENTI);
-	            DSK6713_LED_on(2);
-                comm_intr();
-                noDIP = 2;
-                short_temp = (short) input_sample();
-                while (noEchFilt!=L_TAMPON){
-                    attendre(0.1);
+
+	            enregistrement(2);
+                interruption_full = 0;
+
+                incrementUser = 0;
+                while(identite[incrementUser].score != 0){
+                    incrementUser++;
                 }
 
-                attendre(0.2);
-                CODEC_stop();
+                user = userID(incrementUser);
 
-                interruption_full = 0;
-                DSK6713_LED_off(2);
-
-                analyse_son(x2);
-                noEchFilt = 0;
+               // noEchFilt = 0;
 
                 //Si on passe un seuil alors c'est une réussite, la voix enregistrée est la même que celle qui parle
                 if (x2[0].seuil <= 18*Sig_Ref.seuil) {
@@ -162,7 +168,7 @@ void main()
                     DSK6713_LED_off(2);
                     DSK6713_LED_off(3);
 
-                    MCBSP_ecrire(identite[incrementUser].id);
+                    MCBSP_ecrire(identite[user].id);
 
                     printf("Reussite");
                 }
@@ -191,7 +197,6 @@ void main()
 
 
 	        }
-
 
 
 /* Code version DIP
@@ -301,7 +306,6 @@ void attendre(float seconds)
 	while (cnt++<fin) {}
 }
 
-
 interrupt void c_int11() 
 {
 	short echLineIn;	 // Amplitude de l'échantillon provenant de l'entrée LINE IN
@@ -336,6 +340,11 @@ interrupt void c_int11()
 	return;
 }
 
+void initUSER(){
+    for(incrementUser = 0; incrementUser < 10; incrementUser++){
+        identite[incrementUser].score = 0;
+    }
+}
 
 void initDSK()
 {
@@ -345,4 +354,30 @@ void initDSK()
 	DSK6713_LED_init();	// Initialisation des 4 LEDS (éteindre)
 
 	return;			
+}
+
+void enregistrement(int LED){
+    DSK6713_LED_on(LED);
+                   comm_intr();
+                   noDIP = LED;
+                   while (noEchFilt!=L_TAMPON){
+                       attendre(0.1);
+                   }
+                   attendre(0.3);
+                   CODEC_stop();
+
+                   DSK6713_LED_off(LED);
+}
+
+int userID(int nbUser){
+    incrementUser = 0;
+    for(incrementUser = 0; incrementUser < nbUser; incrementUser++){
+        analyse_son(x2);
+        betterScoreTemp = x2[0].seuil;
+            if(betterScoreTemp > betterScore){
+                betterScore = betterScoreTemp;
+                user = incrementUser;
+            }
+    }
+    return user;
 }

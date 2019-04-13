@@ -48,7 +48,6 @@ extern struct TABLEAU_REF Sig_Ref;
 
 void analyse_son(struct TABLEAU_IDENT x2[1]) {
     float max_abs_temp;
-//    , mean_temp;
     short max_abs_temp_short;
 
     fenetre_hamming(fen_hamming, N);
@@ -61,8 +60,6 @@ void analyse_son(struct TABLEAU_IDENT x2[1]) {
         x2[0].signal_norm[i] = x2[0].signal_norm[i] * fen_hamming[i];
     }
     max_abs_temp = maxi_abs(x2[0].signal_norm, N);
-
-
 
     FFT(x2[0].signal_norm, x2[0].real_tableau_ref, x2[0].imag_tableau_ref);
     magnitude_complex(x2[0].real_tableau_ref, x2[0].imag_tableau_ref, x2[0].mag_tableau_ref, N/2);

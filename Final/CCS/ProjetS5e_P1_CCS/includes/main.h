@@ -21,6 +21,9 @@ void attendre(float seconds);
 interrupt void c_int11();
 void initDSK();
 short * FIR_ASM (short *cPtr, short ech, const short h[], short *y);
+void enregistrement(int LED);
+void initUSER();
+int userID(int nbUser);
 
 #endif /* MAIN_ACCORDEUR_H_ */
 
