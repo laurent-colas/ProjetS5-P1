@@ -38,7 +38,7 @@ float tempy[(3 * N/2) - 2];
 
 
 
-float diff_corr[N];
+float diff_corr[N-1];
 #pragma DATA_SECTION(diff_corr, ".EXT_RAM");
 
 float score[3] = {0};
@@ -46,42 +46,47 @@ float score[3] = {0};
 
 extern struct TABLEAU_REF Sig_Ref;
 
-void analyse_son(struct TABLEAU_IDENT x2[]) {
+void analyse_son(struct TABLEAU_IDENT x2[1]) {
     float max_abs_temp;
 //    , mean_temp;
     short max_abs_temp_short;
 
     fenetre_hamming(fen_hamming, N);
+    fenetre_triangle(fen_triang, N/2);
+
     max_abs_temp_short = maxi_abs_short(x2[0].signal_ref, N);
 
     for (i = 0; i<N; i++) {
-        x2[0].signal_norm[i] = (float)x2[0].signal_ref[i] / (float)max_abs_temp;
+        x2[0].signal_norm[i] = (float)x2[0].signal_ref[i] / (float)max_abs_temp_short;
         x2[0].signal_norm[i] = x2[0].signal_norm[i] * fen_hamming[i];
     }
+    max_abs_temp = maxi_abs(x2[0].signal_norm, N);
+
+
 
     FFT(x2[0].signal_norm, x2[0].real_tableau_ref, x2[0].imag_tableau_ref);
-    magnitude_complex(x2[0].real_tableau_ref, x2[0].imag_tableau_ref, x2[0].mag_tableau_ref, N);
+    magnitude_complex(x2[0].real_tableau_ref, x2[0].imag_tableau_ref, x2[0].mag_tableau_ref, N/2);
 
     max_abs_temp = maxi_abs(x2[0].mag_tableau_ref, N/2);
-    fenetre_triangle(fen_triang, N/2);
     for (i = 0; i< N/2; i++) {
         x2[0].mag_tableau_ref[i] = x2[0].mag_tableau_ref[i] / max_abs_temp;
         x2[0].mag_tableau_ref[i] = x2[0].mag_tableau_ref[i] * fen_triang[i];
     }
-
     max_abs_temp = maxi_abs(x2[0].mag_tableau_ref, N/2);
     for (i = 0; i< N/2; i++) {
         x2[0].mag_tableau_ref[i] = x2[0].mag_tableau_ref[i] / max_abs_temp;
     }
+
+
     correlation(Sig_Ref.mag_tableau_ref,x2[0].mag_tableau_ref, N/2, x2[0].autoCorr);
 
 
-    for (i = 0; i<N; i++) {
+    for (i = 0; i<N-1; i++) {
         diff_corr[i] = Sig_Ref.autoCorr[i] - x2[0].autoCorr[i];
         diff_corr[i] = val_absolut(diff_corr[i]);
     }
 
-    x2[0].seuil = pow(5,(mean(diff_corr, N/2)*100));
+    x2[0].seuil = pow(5,(mean(diff_corr, N-1)*100));
 
 }
 
@@ -115,6 +120,8 @@ void pre_traitement(struct TABLEAU_INIT Ech[2]){
     FFT(Ech[0].signal_norm, Ech[0].real_tableau_in, Ech[0].imag_tableau_in);
     magnitude_complex(Ech[0].real_tableau_in, Ech[0].imag_tableau_in, Ech[0].mag_tableau_in, N/2);
 
+    max_temp_short = max_temp_short;
+
     FFT(Ech[1].signal_norm, Ech[1].real_tableau_in, Ech[1].imag_tableau_in);
     magnitude_complex(Ech[1].real_tableau_in, Ech[1].imag_tableau_in, Ech[1].mag_tableau_in, N/2);
 
@@ -129,28 +136,28 @@ void pre_traitement(struct TABLEAU_INIT Ech[2]){
         Sig_Ref.imag_tableau_ref[i] = (Ech[0].imag_tableau_in[i] + Ech[1].imag_tableau_in[i]) /2;
     }
 
-    magnitude_complex(Sig_Ref.real_tableau_ref, Sig_Ref.imag_tableau_ref, Sig_Ref.mag_tableau_ref, N);
+    magnitude_complex(Sig_Ref.real_tableau_ref, Sig_Ref.imag_tableau_ref, Sig_Ref.mag_tableau_ref, N/2);
 
 
         max_temp = maxi_abs(Ech[0].mag_tableau_in, N/2);
-        for (j = N/2; j<N; j++) {
+        for (j = 0; j<N/2; j++) {
             Ech[0].mag_tableau_in[j] = Ech[0].mag_tableau_in[j]/max_temp;
             Ech[0].mag_tableau_in[j] = fen_triang[j] * Ech[0].mag_tableau_in[j];
         }
-//        max_temp = maxi_abs(Ech[0].mag_tableau_in, N/2);
-//        for (j = 0; j<N/2; j++) {
-//            Ech[0].mag_tableau_in[j] = Ech[0].mag_tableau_in[j]/ max_temp;
-//        }
+        max_temp = maxi_abs(Ech[0].mag_tableau_in, N/2);
+        for (j = 0; j<N/2; j++) {
+            Ech[0].mag_tableau_in[j] = Ech[0].mag_tableau_in[j]/ max_temp;
+        }
 
         max_temp = maxi_abs(Ech[1].mag_tableau_in, N/2);
         for (j =0; j<N/2; j++) {
             Ech[1].mag_tableau_in[j] = Ech[1].mag_tableau_in[j]/max_temp;
             Ech[1].mag_tableau_in[j] = fen_triang[j] * Ech[1].mag_tableau_in[j];
         }
-//        max_temp = maxi_abs(Ech[1].mag_tableau_in, N/2);
-//        for (j = 0; j<N/2; j++) {
-//            Ech[1].mag_tableau_in[j] = Ech[1].mag_tableau_in[j]/ max_temp;
-//        }
+        max_temp = maxi_abs(Ech[1].mag_tableau_in, N/2);
+        for (j = 0; j<N/2; j++) {
+            Ech[1].mag_tableau_in[j] = Ech[1].mag_tableau_in[j]/ max_temp;
+        }
 
     max_temp = maxi_abs(Sig_Ref.mag_tableau_ref, N/2);
     for (j = 0; j<N/2; j++) {
@@ -158,25 +165,38 @@ void pre_traitement(struct TABLEAU_INIT Ech[2]){
         Sig_Ref.mag_tableau_ref[j] = fen_triang[j] * Sig_Ref.mag_tableau_ref[j];
     }
 
-//    max_temp = maxi_abs(Sig_Ref.mag_tableau_ref, N/2);
-//    for (j = 0; j<N/2; j++) {
-//       Sig_Ref.mag_tableau_ref[j] = Sig_Ref.mag_tableau_ref[j]/ max_temp;
-//    }
+    max_temp = maxi_abs(Sig_Ref.mag_tableau_ref, N/2);
+    for (j = 0; j<N/2; j++) {
+       Sig_Ref.mag_tableau_ref[j] = Sig_Ref.mag_tableau_ref[j]/ max_temp;
+    }
 
     correlation(Sig_Ref.mag_tableau_ref,  Sig_Ref.mag_tableau_ref, N/2, Sig_Ref.autoCorr);
     // optimiser pour autocorelation
 
-    for (i = 0; i<2; i++) {
-        correlation(Sig_Ref.mag_tableau_ref, Ech[i].mag_tableau_in, N/2, Ech[i].autoCorr);
-        for (j = 0; j<N; j++) {
-            diff_corr[j] = Sig_Ref.autoCorr[j] - Ech[i].autoCorr[j];
-            if (diff_corr[j] < 0) {
-                diff_corr[j] = diff_corr[j] * -1;
-            }
+
+    correlation(Sig_Ref.mag_tableau_ref, Ech[0].mag_tableau_in, N/2, Ech[0].autoCorr);
+    for (j = 0; j<N-1; j++) {
+        diff_corr[j] = Sig_Ref.autoCorr[j] - Ech[0].autoCorr[j];
+        if (diff_corr[j] < 0) {
+            diff_corr[j] = diff_corr[j] * -1;
         }
-        mean_temp = mean(diff_corr, N);
-        score[i] = pow(5, mean_temp*100);
     }
+    mean_temp = mean(diff_corr, N-1);
+    score[0] = pow(5, mean_temp*100);
+
+    correlation(Sig_Ref.mag_tableau_ref, Ech[1].mag_tableau_in, N/2, Ech[1].autoCorr);
+    for (j = 0; j<N-1; j++) {
+        diff_corr[j] = Sig_Ref.autoCorr[j] - Ech[1].autoCorr[j];
+        if (diff_corr[j] < 0) {
+            diff_corr[j] = diff_corr[j] * -1;
+        }
+    }
+    mean_temp = mean(diff_corr, N-1);
+    score[1] = pow(5, mean_temp*100);
+
+//    for (i = 0; i<2; i++) {
+//
+//    }
     Sig_Ref.seuil = (score[0] + score[1])/2;
 }
 
@@ -250,7 +270,7 @@ short mean_short(short tab[], int l) {
 float val_absolut(float val) {
 
     if (val < 0) {
-        val = - val;
+        val = val * -1;
     }
     return val;
 }

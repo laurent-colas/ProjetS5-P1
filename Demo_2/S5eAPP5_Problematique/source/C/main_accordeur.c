@@ -56,15 +56,16 @@ const float PI = 3.14159265358979;
 //extern struct complx C_delta[NB_CORDES];
 //extern int nb[NB_CORDES];			// Erreur sur l'accordement de l'instrument
 
-//#define TAMPON_L  256
-//#pragma DATA_ALIGN(tampon, TAMPON_L*2); // Requis pour l'adressage circulaire en assembleur
-//short tampon[TAMPON_L]={0};         // Tampon d'échantillons
-//short *pTampon=&tampon[TAMPON_L-1]; // Pointeur sur l'échantillon courant
+#define TAMPON_L  256
+#pragma DATA_ALIGN(tampon, TAMPON_L*2); // Requis pour l'adressage circulaire en assembleur
+short tampon[TAMPON_L]={0};         // Tampon d'échantillons
+short *pTampon=&tampon[TAMPON_L-1]; // Pointeur sur l'échantillon courant
 
 // VARIABLES GLOBALES POUR DSK
 Uint32 fs=DSK6713_AIC23_FREQ_8KHZ; 			 // Fréquence d'échantillonnage
 #define DSK6713_AIC23_INPUT_LINE 0x0011		 // Définition de l'entrée LINE IN
-Uint16 inputsource=DSK6713_AIC23_INPUT_LINE; // Selection de l'entrée LINE IN
+#define DSK6713_AIC23_INPUT_MIC  0x0015
+Uint16 inputsource=DSK6713_AIC23_INPUT_MIC; // Selection de l'entrée LINE IN
 
 #define GAUCHE 0 // Définition du haut-parleur gauche
 #define DROIT  1 // Définition du haut-parleur droit
@@ -91,7 +92,8 @@ void main()
 //	initGenM2();
 //	afficherMenu();		// Affichage du menu principal à l'écran
 	initAccordeur();	// Initialisations des variables et du hardware
-	int j;
+//	int j;
+	int debug = 0;
 	short short_temp;
 //	int i = 0;
 //
@@ -113,6 +115,7 @@ void main()
 	        if (DIP0 == 0) {
 	            DSK6713_LED_on(0);
 	            comm_intr();
+//	            comm_intr();
 	            noDIP = 0;
 
 	            while (noEchFilt!=L_TAMPON){
@@ -131,16 +134,15 @@ void main()
 	        }
 	        if (DIP1 == 0) {
 	            DSK6713_LED_on(1);
-                comm_intr();
+	            comm_intr();
+//                comm_intr();
                 noDIP = 1;
                 while (noEchFilt!=L_TAMPON){
                     attendre(0.1);
                 }
                 attendre(0.3);
                 CODEC_stop();
-//                for (j=0; j<N; j++) {
-//                    Ech[1].signal_in[j] = tableau_in_temporaire[2*j];
-//                }
+
                 DSK6713_LED_off(1);
                 interruption_full = 0;
                 pre_traitement(Ech);
@@ -149,6 +151,7 @@ void main()
 	        if  (DIP2 == 0) {
 	            DSK6713_LED_on(2);
 	            comm_intr();
+//	            comm_intr();
 	            noDIP = 2;
 	            short_temp = (short) input_sample();
                 while (noEchFilt!=L_TAMPON){
@@ -156,24 +159,52 @@ void main()
                 }
 
                 attendre(0.2);
-//                pre_traitement(Ech);
                 CODEC_stop();
-//                for (j=0; j<N; j++) {
-//                    x2[0].signal_ref[j] = tableau_in_temporaire[2*j];
-//                }
+
                 interruption_full = 0;
                 DSK6713_LED_off(2);
+
                 analyse_son(x2);
                 noEchFilt = 0;
 
-                if (x2[0].seuil <= 69*Sig_Ref.seuil) {
+                if (x2[0].seuil <= 18*Sig_Ref.seuil) {
+                    DSK6713_LED_on(0);
+                    DSK6713_LED_on(1);
+                    DSK6713_LED_on(2);
+                    DSK6713_LED_on(3);
+                    attendre(2);
+                    DSK6713_LED_off(0);
+                    DSK6713_LED_off(1);
+                    DSK6713_LED_off(2);
+                    DSK6713_LED_off(3);
+
                     printf("Reussite");
                 }
                 else {
+                    DSK6713_LED_on(0);
+                    attendre(0.2);
+                    DSK6713_LED_on(1);
+                    attendre(0.2);
+                    DSK6713_LED_on(2);
+                    attendre(0.2);
+                    DSK6713_LED_on(3);
+                    attendre(2);
+                    DSK6713_LED_off(0);
+                    attendre(0.2);
+                    DSK6713_LED_off(1);
+                    attendre(0.2);
+                    DSK6713_LED_off(2);
+                    attendre(0.2);
+                    DSK6713_LED_off(3);
                     printf("Echec ");
                 }
 
 	        }
+	        if (debug == 1) {
+	            comm_intr();
+	            debug = 0;
+	        }
+
 
 	    }
 
@@ -213,26 +244,32 @@ interrupt void c_int11()
 {
 //	float echOut; 		 // Amplitude de l'échantillon générée pour l'écoute d'une note
 	short echLineIn;	 // Amplitude de l'échantillon provenant de l'entrée LINE IN
+	short echLineInFilt;
 
 	// Capture de l'échantillon provenant de l'entrée "IN"
+//	temp_in = input_sample();
 	echLineIn = (short) input_sample();
 
-	if (noEchFilt < L_TAMPON && noDIP == 0  && interruption_full % 2 == 0) {
+	pTampon = FIR_ASM(pTampon, echLineIn, coefPBd, &echLineInFilt);
 
+	if (noEchFilt < L_TAMPON && noDIP == 0  && interruption_full % 2 == 0) {
 //	    tableau_in_temporaire[noEchFilt++] = echLineIn;
-	    Ech[0].signal_in[noEchFilt++] = echLineIn; //noEchFilt;
+	    Ech[0].signal_in[noEchFilt++] = echLineInFilt; //noEchFilt;
     }
 	if (noEchFilt < L_TAMPON && noDIP == 1 && interruption_full % 2 == 0) {
 //	    tableau_in_temporaire[noEchFilt++] = echLineIn;
-        Ech[1].signal_in[noEchFilt++] = echLineIn; //noEchFilt; //echLineIn;
+        Ech[1].signal_in[noEchFilt++] = echLineInFilt; //noEchFilt; //echLineIn;
     }
 	if (noEchFilt < L_TAMPON && noDIP == 2 && interruption_full % 2 == 0) {
 //	    tableau_in_temporaire[noEchFilt++] = echLineIn;
-        x2[0].signal_ref[noEchFilt++] = echLineIn;
+        x2[0].signal_ref[noEchFilt++] = echLineInFilt;
     }
 
+	AIC23_data.channel[GAUCHE] = echLineIn;
+    AIC23_data.channel[DROIT] = echLineInFilt;
 //  // Sortir les deux signaux sur "HP/OUT"
     output_sample(AIC23_data.uint);
+//    output_sample(temp_in);
 
     interruption_full  = interruption_full + 1;
 

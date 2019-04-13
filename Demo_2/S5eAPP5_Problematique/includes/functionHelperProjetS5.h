@@ -27,28 +27,28 @@ struct TABLEAU_INIT {
 //    float cmplx_tableau_in[N];
     short signal_in[N];
     float signal_norm[N];
-    float autoCorr[N];
+    float autoCorr[N-1];
 };
 
 struct TABLEAU_REF {
-    float mag_tableau_ref[N];
+    float mag_tableau_ref[N/2];
 //    float phase_tableau_ref[N];
     float real_tableau_ref[N];
     float imag_tableau_ref[N];
 //    float cmplx_tableau_ref[N];
     short signal_ref[N];
-    float autoCorr[N];
+    float autoCorr[N-1];
     float seuil;
 };
 
 struct TABLEAU_IDENT {
-    float mag_tableau_ref[N];
+    float mag_tableau_ref[N/2];
     float signal_norm[N];
 //    float phase_tableau_ref[N];
     float real_tableau_ref[N];
     float imag_tableau_ref[N];
     short signal_ref[N];
-    float autoCorr[N];
+    float autoCorr[N-1];
     float seuil;
 };
 

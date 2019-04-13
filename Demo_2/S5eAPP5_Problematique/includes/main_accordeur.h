@@ -32,7 +32,7 @@ void initAccordeur();
 //float genFrq_methode2(int , int);
 //int min(int a, int b);
 //int max(int a, int b);
-//short * FIR_ASM (short *cPtr, short ech, const short h[], short *y);
+short * FIR_ASM (short *cPtr, short ech, const short h[], short *y);
 
 #endif /* MAIN_ACCORDEUR_H_ */
 
