@@ -144,7 +144,7 @@ void set_default_coffee(void) {
 void __interrupt(high_priority) Serial_interrupt() {
 //    p.417
     
-//    while(RC1IF == 0);
+    while(RC1IF == 0);
     out = RCREG1;
     sys_state = check(out);
 }
