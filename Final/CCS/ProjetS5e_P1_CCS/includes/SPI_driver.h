@@ -1,63 +1,75 @@
 /********************************************************
-**  Session 5 - APP5 - Téléphonie par DSP
-**  Fichier principal Telephone.c
-**  Auteurs :   Louis-Félix Beaudry
-**              Jordan Laroche
-**              Pierre-Yan Gingtras
-**              Julien Lapointe
-**
-**  Date : 12 mars 2019
+**  Session 5 - APP6 - Téléphonie par DSP
+**  Fichier SPI_driver.h
+**  Auteurs : < vos noms >
+**  Date : < derniere modification >
 ********************************************************/
 
-//***************************************************************************
 #pragma once
 #ifndef _SPI_MODULE_
 #define _SPI_MODULE_
-//***************************************************************************
 
-//***************************************************************************
-//  Include headers
+/***************************************************************************
+	Include headers :
+***************************************************************************/
+
 
 // standard libraries 
 #include <stdio.h>   // get standard I/O functions (as printf)
 #include <stddef.h>  // get null and size_t definition
 #include <stdbool.h> // get boolean, true and false definition
 
-// autres libraries
-#include <csl.h>
-#include <csl_irq.h>
-#include <csl_gpio.h>
-#include <csl_mcbsphal.h>
+/***************************************************************************
+	Set EXTERN macro :
+***************************************************************************/
 
-#include <dsk6713.h>
-#include <dsk6713_led.h>
-#include <dsk6713_dip.h>
-#include <C6713Helper_UdeS.h>
-#include <csl_mcbsp.h>
-#include "DSK6713_AIC23.h"
-//***************************************************************************
-
-//***************************************************************************
-//	Set EXTERN macro
 #ifdef SPI_DRIVER_MODULE_IMPORT
 	#define EXTERN  
 #else 
 	#define EXTERN extern
 #endif
-//***************************************************************************
 
-//***************************************************************************
-//	Function prototype
-EXTERN void SPI_init(void);
-EXTERN interrupt void c_int4(void);
-void MCBSP_ecrire(unsigned int MCBSP_sortie);
-unsigned int MCBSP_lire(void);
-//***************************************************************************
+/***************************************************************************
+	Constants declaration :
+***************************************************************************/
 
-//***************************************************************************
+//#define something something_else
+
+#define SPI_WRITE_CONFIG 0xE440
+#define SPI_READ_CONFIG 0x0000
+#define SPI_WRITE_DATA 0x8200
+#define SPI_READ_DATA 0x00FF
+
+/***************************************************************************
+	Types declaration here :
+***************************************************************************/
+
+// typedef, struct, enum, union, etc.
+
+/***************************************************************************
+	Global variables declaration :
+***************************************************************************/
+
+// look at example for EXTERN pattern
+
+
+
+/***************************************************************************		
+	Function prototype :
+***************************************************************************/
+
+// Function description here ...
+void SPI_init(void);
+
+// ajoutez vos prototype de fonction ici
+
+void SPI_Write(unsigned int data);
+unsigned int SPI_Read(void);
+
 #undef SPI_DRIVER_MODULE_IMPORT
+
 #undef EXTERN
+
 #endif // end of #ifndef _SPI_MODULE_
-//***************************************************************************
 
 // end of SPI_driver.h

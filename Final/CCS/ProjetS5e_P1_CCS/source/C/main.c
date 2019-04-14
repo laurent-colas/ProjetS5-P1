@@ -42,13 +42,16 @@
 #include "functionHelperProjetS5.h"
 #include "SPI_driver.h"
 
-
-
+static GPIO_Handle lehandle;
+void init_ext_intr();
+extern far void vectors();   // Vecteurs d'interruption
 
 
 // VARIABLES GLOBALES
 
 int noEchFilt=0;						// Numéro de l'échantillon courant
+int reception_SPI = 0;
+int rec = 0;
 
 // Variable globale pour la génération de signal
 const int fe = 8000;
@@ -74,7 +77,6 @@ struct TABLEAU_INIT Ech[2];
 struct TABLEAU_IDENT x2[1];
 struct TABLEAU_ID identite[10];
 
-
 #pragma DATA_SECTION(Ech, ".EXT_RAM")
 #pragma DATA_SECTION(x2, ".EXT_RAM")
 
@@ -89,6 +91,9 @@ struct TABLEAU_REF  Sig_Ref;
 
 int incrementUser = 0;
 
+short short_temp;
+
+int debug = 1;
 
 // Variable pour userID
 float betterScore = 0;
@@ -97,15 +102,11 @@ int nbUser = 0;
 int user = 0;
 char ID;
 
-
 void main()
 {
 
-    initUSER(); // Les scor de tous les usagers sont mis à 0. l'élément score est utilisé pour savoir si l'ID existe ou pas (si != 0 == existe)
 	initDSK();	// Initialisations des variables et du hardware
-
-	int debug = 0;
-	short short_temp;
+	initUSER(); // Les scor de tous les usagers sont mis à 0. l'élément score est utilisé pour savoir si l'ID existe ou pas (si != 0 == existe)
 
 	while(1) {
 
@@ -115,182 +116,117 @@ void main()
 	        noDIP = 3;
 	        // Si on appuie sur la DIP0, enregistrement simple
 
-	        char Etat = MCBSP_lire();
-
+	        char Etat;
+	        if (debug == 0){
+	            Etat = (char) SPI_Read();
 	        switch (Etat){
 
-	        case CHAR_CONFIG:
-	            MCBSP_ecrire(CHAR_CONFIG);
-	            enregistrement(0);
-                interruption_full = 0;
+                case CHAR_CONFIG:
+                    SPI_Write((unsigned int) CHAR_CONFIG);
+/*
+                    DSK6713_LED_on(1);
+                    comm_intr();
+                    noDIP = 1;
+                    while (noEchFilt!=L_TAMPON){
+                        attendre(0.1);
+                    }
+                    attendre(0.3);
+                    CODEC_stop();
 
-                MCBSP_ecrire(CHAR_CONFIR1_CONFIG);
-                enregistrement(1);
-                interruption_full = 0;
-
-                pre_traitement(Ech);
-                noEchFilt = 0;
-
-                incrementUser = 0;
-                while(identite[incrementUser].score != 0){
+                    DSK6713_LED_off(1);
+                    interruption_full = 0;
+                    pre_traitement(Ech);
+                    noEchFilt = 0;
                     incrementUser++;
-                }
+                    identite[incrementUser].id = tabId[incrementUser];
+                    //identite[incrementUser].pointeurAutoCorr = pointeurAutoCorrelation;
+                   // identite[incrementUser].score = score;
+                    */
+                    enregistrement(0);
+                    interruption_full = 0;
 
-                identite[incrementUser].id = tabId[incrementUser];
-                identite[incrementUser].score = Sig_Ref.seuil;
-                identite[incrementUser].pointeurAutoCorr = *Sig_Ref.autoCorr;
 
+                    enregistrement(1);
+                    interruption_full = 0;
 
-	        case CHAR_IDENTI:
-	            MCBSP_ecrire(CHAR_IDENTI);
+                    pre_traitement(Ech);
+                    noEchFilt = 0;
 
-	            enregistrement(2);
-                interruption_full = 0;
+                    incrementUser = 0;
+                    while(identite[incrementUser].score != 0){
+                        incrementUser++;
+                    }
 
-                incrementUser = 0;
-                while(identite[incrementUser].score != 0){
-                    incrementUser++;
-                }
+                    SPI_Write((unsigned int) CHAR_CONFIR1_CONFIG);
 
-                user = userID(incrementUser);
+                    identite[incrementUser].id = tabId[incrementUser];
+                    identite[incrementUser].score = Sig_Ref.seuil;
+                    identite[incrementUser].pointeurAutoCorr = *Sig_Ref.autoCorr;
 
-               // noEchFilt = 0;
+                    break;
+                case CHAR_IDENTI:
+                    SPI_Write((unsigned int) CHAR_IDENTI);
+                    /* DSK6713_LED_on(2);
+                    comm_intr();
+                    noDIP = 2;
+                    short_temp = (short) input_sample();
+                    while (noEchFilt!=L_TAMPON){
+                        attendre(0.1);
+                    }
 
-                //Si on passe un seuil alors c'est une réussite, la voix enregistrée est la même que celle qui parle
-                if (x2[0].seuil <= 18*Sig_Ref.seuil) {
-                    DSK6713_LED_on(0);
-                    DSK6713_LED_on(1);
-                    DSK6713_LED_on(2);
-                    DSK6713_LED_on(3);
-                    attendre(2);
-                    DSK6713_LED_off(0);
-                    DSK6713_LED_off(1);
+                    attendre(0.2);
+                    CODEC_stop();
+
+                    interruption_full = 0;
                     DSK6713_LED_off(2);
-                    DSK6713_LED_off(3);
 
-                    MCBSP_ecrire(identite[user].id);
+                    analyse_son(x2);
+                    noEchFilt = 0;
+*/
+                    enregistrement(2);
+                    interruption_full = 0;
 
-                    printf("Reussite");
+                    incrementUser = 0;
+                    while(identite[incrementUser].score != 0){
+                        incrementUser++;
+                    }
+
+                    user = userID(incrementUser);
+                    //Si on passe un seuil alors c'est une réussite, la voix enregistrée est la même que celle qui parle
+                    if (x2[0].seuil <= 18*Sig_Ref.seuil) {
+
+
+                        SPI_Write((unsigned int) identite[incrementUser].id);
+
+                        printf("Reussite");
+                    }
+                    //Si on ne passe pas un seuil alors c'est un échec, la voix enregistrée n'est pas la même que celle qui parle
+                    else {
+
+                        printf("Echec ");
+
+                        SPI_Write((unsigned int) 'f');
+                    }
+                    break;
+
                 }
-                //Si on ne passe pas un seuil alors c'est un échec, la voix enregistrée n'est pas la même que celle qui parle
-                else {
-                    DSK6713_LED_on(0);
-                    attendre(0.2);
-                    DSK6713_LED_on(1);
-                    attendre(0.2);
-                    DSK6713_LED_on(2);
-                    attendre(0.2);
-                    DSK6713_LED_on(3);
-                    attendre(2);
-                    DSK6713_LED_off(0);
-                    attendre(0.2);
-                    DSK6713_LED_off(1);
-                    attendre(0.2);
-                    DSK6713_LED_off(2);
-                    attendre(0.2);
-                    DSK6713_LED_off(3);
-                    printf("Echec ");
+        }
 
-                    MCBSP_ecrire('f');
-                }
-
-
-
-	        }
-
-
-/* Code version DIP
-	        if (DIP0 == 0) {
-	            DSK6713_LED_on(0);
-	            comm_intr();
-	            noDIP = 0;
-
-	            while (noEchFilt!=L_TAMPON){
-	                attendre(0.1);
-	            }
-	            attendre(0.2);
-	            noEchFilt = 0;
-
-	            CODEC_stop();
-	            interruption_full = 0;
-	            DSK6713_LED_off(0);
-
-	        }
-	        //Si on appuie sur DIP 1, enregistrement et pré-traitement de cet enregistrement
-	        if (DIP1 == 0) {
-	            DSK6713_LED_on(1);
-	            comm_intr();
-                noDIP = 1;
-                while (noEchFilt!=L_TAMPON){
-                    attendre(0.1);
-                }
-                attendre(0.3);
-                CODEC_stop();
-
-                DSK6713_LED_off(1);
-                interruption_full = 0;
-                pre_traitement(Ech);
-                noEchFilt = 0;
-	        }
-	        //Si on appuie sur DIP 2, enregistrement et analyse de cet enregistrement
-	        if  (DIP2 == 0) {
-	            DSK6713_LED_on(2);
-	            comm_intr();
-	            noDIP = 2;
-	            short_temp = (short) input_sample();
-                while (noEchFilt!=L_TAMPON){
-                    attendre(0.1);
-                }
-
-                attendre(0.2);
-                CODEC_stop();
-
-                interruption_full = 0;
-                DSK6713_LED_off(2);
-
-                analyse_son(x2);
-                noEchFilt = 0;
-
-                //Si on passe un seuil alors c'est une réussite, la voix enregistrée est la même que celle qui parle
-                if (x2[0].seuil <= 18*Sig_Ref.seuil) {
-                    DSK6713_LED_on(0);
-                    DSK6713_LED_on(1);
-                    DSK6713_LED_on(2);
-                    DSK6713_LED_on(3);
-                    attendre(2);
-                    DSK6713_LED_off(0);
-                    DSK6713_LED_off(1);
-                    DSK6713_LED_off(2);
-                    DSK6713_LED_off(3);
-
-                    printf("Reussite");
-                }
-                //Si on ne passe pas un seuil alors c'est un échec, la voix enregistrée n'est pas la même que celle qui parle
-                else {
-                    DSK6713_LED_on(0);
-                    attendre(0.2);
-                    DSK6713_LED_on(1);
-                    attendre(0.2);
-                    DSK6713_LED_on(2);
-                    attendre(0.2);
-                    DSK6713_LED_on(3);
-                    attendre(2);
-                    DSK6713_LED_off(0);
-                    attendre(0.2);
-                    DSK6713_LED_off(1);
-                    attendre(0.2);
-                    DSK6713_LED_off(2);
-                    attendre(0.2);
-                    DSK6713_LED_off(3);
-                    printf("Echec ");
-                }
-
-	        }
-	        */
 	        //Mode permettant de tester l'enregistrement
 	        if (debug == 1) {
-	            comm_intr();
-	            debug = 0;
+	            //comm_intr();
+	            //debug = 0;
+	            SPI_Write((unsigned int) 'L');
+
+                if (reception_SPI) // On a reçu du data par SPI
+                    {
+                        char dataw;
+                       // short data = 0;
+                        dataw = (char) SPI_Read();
+
+                        reception_SPI = 0;
+                    }
+	            //SPI_run();
 	        }
 
 
@@ -306,68 +242,80 @@ void attendre(float seconds)
 	while (cnt++<fin) {}
 }
 
+
+interrupt void c_int04(void)
+{
+    reception_SPI = 1;
+}
+
 interrupt void c_int11() 
 {
 	short echLineIn;	 // Amplitude de l'échantillon provenant de l'entrée LINE IN
 	short echLineInFilt;
+	if (debug == 0 && rec == 1){
+        // Capture de l'échantillon provenant de l'entrée "IN"
+        echLineIn = (short) input_sample();
 
-	// Capture de l'échantillon provenant de l'entrée "IN"
-	echLineIn = (short) input_sample();
+        pTampon = FIR_ASM(pTampon, echLineIn, coefPBd, &echLineInFilt);
 
-	pTampon = FIR_ASM(pTampon, echLineIn, coefPBd, &echLineInFilt);
+        if (noEchFilt < L_TAMPON && noDIP == 0  && interruption_full % 2 == 0) {
+    //	    tableau_in_temporaire[noEchFilt++] = echLineIn;
+            Ech[0].signal_in[noEchFilt++] = echLineInFilt; //noEchFilt;
+        }
+        if (noEchFilt < L_TAMPON && noDIP == 1 && interruption_full % 2 == 0) {
+    //	    tableau_in_temporaire[noEchFilt++] = echLineIn;
+            Ech[1].signal_in[noEchFilt++] = echLineInFilt; //noEchFilt; //echLineIn;
+        }
+        if (noEchFilt < L_TAMPON && noDIP == 2 && interruption_full % 2 == 0) {
+    //	    tableau_in_temporaire[noEchFilt++] = echLineIn;
+            x2[0].signal_ref[noEchFilt++] = echLineInFilt;
+        }
 
-	if (noEchFilt < L_TAMPON && noDIP == 0  && interruption_full % 2 == 0) {
-//	    tableau_in_temporaire[noEchFilt++] = echLineIn;
-	    Ech[0].signal_in[noEchFilt++] = echLineInFilt; //noEchFilt;
-    }
-	if (noEchFilt < L_TAMPON && noDIP == 1 && interruption_full % 2 == 0) {
-//	    tableau_in_temporaire[noEchFilt++] = echLineIn;
-        Ech[1].signal_in[noEchFilt++] = echLineInFilt; //noEchFilt; //echLineIn;
-    }
-	if (noEchFilt < L_TAMPON && noDIP == 2 && interruption_full % 2 == 0) {
-//	    tableau_in_temporaire[noEchFilt++] = echLineIn;
-        x2[0].signal_ref[noEchFilt++] = echLineInFilt;
-    }
+        AIC23_data.channel[GAUCHE] = echLineIn;
+        AIC23_data.channel[DROIT] = echLineInFilt;
+    //  // Sortir les deux signaux sur "HP/OUT"
+        output_sample(AIC23_data.uint);
+    //    output_sample(temp_in);
 
-	AIC23_data.channel[GAUCHE] = echLineIn;
-    AIC23_data.channel[DROIT] = echLineInFilt;
-//  // Sortir les deux signaux sur "HP/OUT"
-    output_sample(AIC23_data.uint);
-//    output_sample(temp_in);
-
-    interruption_full  = interruption_full + 1;
-
+        interruption_full  = interruption_full + 1;
+	}
 	return;
 }
 
-void initUSER(){
-    for(incrementUser = 0; incrementUser < 10; incrementUser++){
-        identite[incrementUser].score = 0;
-    }
-}
 
 void initDSK()
 {
-
+    DSK6713_DIP_init(); // Initialisation de la communication du DSP avec les 4 DIP swichs
+    DSK6713_LED_init(); // Initialisation des 4 LEDS (éteindre)
 	// INITIALISATION DU HARDWARE
-	DSK6713_DIP_init();	// Initialisation de la communication du DSP avec les 4 DIP swichs 
-	DSK6713_LED_init();	// Initialisation des 4 LEDS (éteindre)
+    comm_intr(DSK6713_AIC23_FREQ_44KHZ,DSK6713_AIC23_INPUT_MIC);
+    //attendre(0.2);
+    //CODEC_stop();
+
+
+	SPI_init();
+	init_ext_intr();
 
 	return;			
 }
 
-void enregistrement(int LED){
-    DSK6713_LED_on(LED);
-                   comm_intr();
-                   noDIP = LED;
-                   while (noEchFilt!=L_TAMPON){
-                       attendre(0.1);
-                   }
-                   attendre(0.3);
-                   CODEC_stop();
+void init_ext_intr()
+{
+    /* Initialisation de la pin 4*/
+    lehandle = GPIO_open(GPIO_DEV0, GPIO_OPEN_RESET);
+    GPIO_pinEnable(lehandle, GPIO_PIN4);
+    GPIO_pinDirection(lehandle, GPIO_PIN4, GPIO_INPUT);
+    GPIO_intPolarity(lehandle, GPIO_GPINT4, GPIO_FALLING);
 
-                   DSK6713_LED_off(LED);
+    /* Initialisation de l'IRQ*/
+    IRQ_setVecs(vectors);
+    IRQ_globalEnable();
+    IRQ_nmiEnable();
+    IRQ_map(IRQ_EVT_EXTINT4,4);
+    IRQ_reset(IRQ_EVT_EXTINT4);
+    IRQ_enable(IRQ_EVT_EXTINT4);
 }
+
 
 int userID(int nbUser){
     incrementUser = 0;
@@ -380,4 +328,22 @@ int userID(int nbUser){
             }
     }
     return user;
+}
+
+void enregistrement(int LED){
+    rec = 1;
+    noDIP = LED;
+    while (noEchFilt!=L_TAMPON){
+       attendre(0.1);
+    }
+    attendre(0.3);
+
+    rec = 0;
+    DSK6713_LED_off(LED);
+}
+
+void initUSER(){
+    for(incrementUser = 0; incrementUser < 10; incrementUser++){
+        identite[incrementUser].score = 0;
+    }
 }
