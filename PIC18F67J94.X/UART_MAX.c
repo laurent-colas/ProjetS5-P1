@@ -28,11 +28,13 @@ void SetupClock(){
 }
 
 void init_UART() {
-    SetupClock(); 
-    
-    SPBRGH = 0x0C; //12; // Baude rate value p.411 BR=9600baud/s
+//    SetupClock(); 
     OSCCON2bits.IOLOCK = 0; //Register values can only be changed if IOLOCK = 0
 
+//    TRISDbits.TRISD6 = 0;
+//    TRISDbits.TRISD7 = 0;
+    SPBRG1bits.SPBRG1 = 51; //51; //0x0C; //12; // Baude rate value p.411 BR=9600baud/s
+    
     //RX pin set as input
     RPINR0_1bits.U1RXR = 0x6; //RP27 RD7
     //TX pin set as output
@@ -50,41 +52,55 @@ void init_UART() {
      * 1 = Idle state for transmit (TXx) is a low level
      * 0 = Idle state for transmit (TXx) is a high leve
      */
-    BAUDCONbits.TXCKP = 1;
-    BAUDCONbits.RXDTP = 1;
+    
+    
+    
     
     
 //    p.415
     
     // TXSTAx: EUSARTx TRANSMIT STATUS AND CONTROL REGISTER
-    TXSTAbits.TX9 = 0; //9-Bit Transmit Enable bit 
-    TXSTAbits.TXEN = 1; //Transmit Enable bit
-    TXSTAbits.SYNC = 0; //EUSARTx Mode Select bit
-    TXSTAbits.SENDB = 0; //Send Break Character bit
-    TXSTAbits.BRGH = 1; //High Baud Rate Select bit 
-    TXSTAbits.TX9D = 0; //9th bit of Transmit Data
+    TXSTA1bits.TX9 = 0; //9-Bit Transmit Enable bit 
+    TXSTA1bits.BRGH = 1; //High Baud Rate Select bit 
+    BAUDCON1bits.BRG16 = 0;
+    TXSTA1bits.SYNC = 0; //EUSARTx Mode Select bit
+    TXSTA1bits.SENDB = 0; //Send Break Character bit
     
-    RCSTAbits.SPEN = 1; //Serial Port Enable bit
-    RCSTAbits.RX9 = 0; //9-Bit Receive Enable bit
-    RCSTAbits.CREN = 1; //Continuous Receive Enable bit 
+    
+    TXSTA1bits.TXEN = 1; //Transmit Enable bit
+    
+    TX1IE = 0;
+    RCSTA1bits.SPEN = 1; //Serial Port Enable bit
+    RCSTA1bits.RX9 = 0; //9-Bit Receive Enable bit
+    
 //    RCSTAbits.ADDEN = 0; //Address Detect Enable bit
 //    RCSTAbits.RX9D = 0;
 //    RCSTA = 0x90;
     // p 170
+    
+    
     RCONbits.IPEN = 1; //Interrupt Priority Enable Register bit
     IPR1bits.RC1IP = 1; //Receive en High Priority
-
+    
+    BAUDCON1bits.TXCKP = 1;
+    
+    BAUDCON1bits.RXDTP = 0;
+    PIE1bits.RC1IE = 1; //EUSART1 Receive Interrupt Enable bit
+    RCSTA1bits.CREN = 1; //Continuous Receive Enable bit 
     
     INTCONbits.GIE = 1; //Global Interrupt Enable bit
     INTCONbits.PEIE = 1; //Peripheral Interrupt Enable bit
-    PIE1bits.RC1IE = 1; //EUSART1 Receive Interrupt Enable bit
-    PIE1bits.TXIE = 0; //EUSART1 Transmit Interrupt Enable bit 
     
+//    PIE1bits.TXIE = 0; //EUSART1 Transmit Interrupt Enable bit 
+    
+    OSCCON2bits.IOLOCK = 1; //Register values can only be changed if IOLOCK = 0
 }
 
 void send_data(char input) {
 //    p.415
-    while(TXSTA1bits.TRMT == 0);
+    
+    while(TX1IF == 0);
+//    TXSTA1bits.TRMT
 //    while(TXIF==0);
     TXREG1 = input; //out;
 }

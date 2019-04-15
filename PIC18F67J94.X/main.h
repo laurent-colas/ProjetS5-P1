@@ -12,11 +12,8 @@
 extern "C" {
 #endif
     
-
-    
-    
 #define SeuilEau        5
-#define SeuilTempEau    60
+#define SeuilTempEau    30
 #define ATTENTE         1   
 #define ACCEUIL         2
 #define IDENTIFICATION  3
@@ -24,7 +21,7 @@ extern "C" {
 #define PREP_CAFE       5    
     
 #define MAX_USERS       10
-#define TIMEOUT         3
+#define TIMEOUT         1000
     
 #include "LCD_SPI.h"
 #include "HC-SR04.h"
@@ -35,12 +32,13 @@ extern "C" {
 #include "message.h"
 #include "fonction_periph.h"
 
-char CHAR_ATTENTE = 'A';
+//char CHAR_ATTENTE = 'A';
 char CHAR_IDENTI = 'I';
 char CHAR_CONFIG = 'C';
 char CHAR_CONFIR1_CONFIG = 'G';
-char CHAR_ACCEUIL = 'E';
+char CHAR_ACCEUIL = 'A';
 
+char ID_USERS[10] = {'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'};
 
 int ETAT = 1;
 int TempEau, TempLait;
@@ -58,10 +56,13 @@ void __interrupt(low_priority) Temp_interrupt(void);
 void create_new_user(void);
 void read_validate_pad(char choices[], int length);
 
+void acceuil_usager(void);
+
 void identify_user(void);
 int verify_id(char id);
 void make_coffee(void);
-int digit_to_int(char d);
+void show_portions(int step);
+
 
 //void init_interruption_temp(void);
 char check(char input);
@@ -72,6 +73,7 @@ struct Utilisateur {
     int qqt_lait;
     int qqt_sucre;
 };
+
 #ifdef	__cplusplus
 }
 #endif

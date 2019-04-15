@@ -13,9 +13,9 @@
 
 
 void send_water(int cup_size) {
-    Relai_eau = 1;
-    my_delay(2000*cup_size);
     Relai_eau = 0;
+    my_delay(2000*cup_size);
+    Relai_eau = 1;
 }
 
 void send_milk(int num_cup) {
@@ -43,7 +43,7 @@ void init_periph(void) {
     TRISAbits.TRISA1 = 0;
     TRISFbits.TRISF6 = 0;
     
-    Relai_eau = 0;
+    Relai_eau = 1;
     DEL_SD = 0;
     DEL_LD = 0;
     DEL_ED = 0;
@@ -64,3 +64,60 @@ void my_delay(int number_of_seconds)
         __delay_ms(1);
     }
 } 
+
+int digit_to_int(char d) {
+    int entier;
+
+    switch(d){
+        case '0':
+            entier = 0;
+            break;
+        case '1':
+            entier = 1;
+            break;
+        case '2':
+            entier = 2;
+            break;
+        case '3':
+            entier = 3;
+            break;
+        case '4':
+            entier = 4;
+            break;
+        case '5':
+            entier = 5;
+            break;
+        case '6':
+            entier = 6;
+            break;
+        case '7':
+            entier = 7;
+            break;
+        case '8':
+            entier = 8;
+            break;
+        case '9':
+            entier = 9;
+            break;
+        case 'A':
+            entier = 10;
+            break;
+        case 'B':
+            entier = 11;
+            break;
+        case 'C':
+            entier = 12;
+            break;
+        case 'D':
+            entier = 13;
+            break;
+        case 'E':
+            entier = 14;
+            break;
+        case 'F':
+            entier = 15;
+            break;
+    }
+            
+    return entier;
+}

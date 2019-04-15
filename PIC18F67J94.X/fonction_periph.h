@@ -29,6 +29,7 @@ void send_milk(int num_cup);
 void send_sugar(int num_cup);
 void init_periph(void);
 void my_delay(int number_of_seconds); 
+int digit_to_int(char d);
 
 #ifdef	__cplusplus
 }

@@ -11,13 +11,16 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+#include "main.h"
     
 #define RT0 10000   // ?
 #define B 3977      // K
-#define VCC 5    //Supply voltage
+#define VCC 3.3    //Supply voltage
 #define R 10000  //R=10K?
     
-#define SeuilTempEau    60
+
+    
+#define Relai_chauffe LATDbits.LATD5
     
 void init_ADC(void);
 int get_temp(int channel);

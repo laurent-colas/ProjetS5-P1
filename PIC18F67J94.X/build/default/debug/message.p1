@@ -1,0 +1,2801 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"44 ./LCD_SPI.h
+[; ;./LCD_SPI.h: 44: void clearDisplay(void);
+[v _clearDisplay `(v ~T0 @X0 0 ef ]
+"48
+[; ;./LCD_SPI.h: 48: void moveCursor(int row, int col);
+[v _moveCursor `(v ~T0 @X0 0 ef2`i`i ]
+"42
+[; ;./LCD_SPI.h: 42: void putStringLCD(const unsigned char*);
+[v _putStringLCD `(v ~T0 @X0 0 ef1`*Cuc ]
+"51
+[; ;./LCD_SPI.h: 51: void clearRow(int row);
+[v _clearRow `(v ~T0 @X0 0 ef1`i ]
+"18 ./message.h
+[; ;./message.h: 18: const unsigned char etat_attente[] = "Machine Prete";
+[v _etat_attente `Cuc ~T0 @X0 -> 14 `i e ]
+[i _etat_attente
+:U ..
+-> 77 `c
+-> 97 `c
+-> 99 `c
+-> 104 `c
+-> 105 `c
+-> 110 `c
+-> 101 `c
+-> 32 `c
+-> 80 `c
+-> 114 `c
+-> 101 `c
+-> 116 `c
+-> 101 `c
+-> 0 `c
+..
+]
+"19
+[; ;./message.h: 19: const unsigned char etat_attente1[] = "Attente utilisateur";
+[v _etat_attente1 `Cuc ~T0 @X0 -> 20 `i e ]
+[i _etat_attente1
+:U ..
+-> 65 `c
+-> 116 `c
+-> 116 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 101 `c
+-> 32 `c
+-> 117 `c
+-> 116 `c
+-> 105 `c
+-> 108 `c
+-> 105 `c
+-> 115 `c
+-> 97 `c
+-> 116 `c
+-> 101 `c
+-> 117 `c
+-> 114 `c
+-> 0 `c
+..
+]
+"20
+[; ;./message.h: 20: const unsigned char etat_acceuil1[] = "1- Nouvelle utilisateur";
+[v _etat_acceuil1 `Cuc ~T0 @X0 -> 24 `i e ]
+[i _etat_acceuil1
+:U ..
+-> 49 `c
+-> 45 `c
+-> 32 `c
+-> 78 `c
+-> 111 `c
+-> 117 `c
+-> 118 `c
+-> 101 `c
+-> 108 `c
+-> 108 `c
+-> 101 `c
+-> 32 `c
+-> 117 `c
+-> 116 `c
+-> 105 `c
+-> 108 `c
+-> 105 `c
+-> 115 `c
+-> 97 `c
+-> 116 `c
+-> 101 `c
+-> 117 `c
+-> 114 `c
+-> 0 `c
+..
+]
+"21
+[; ;./message.h: 21: const unsigned char etat_acceuil2[] = "2- Utilisateur existant";
+[v _etat_acceuil2 `Cuc ~T0 @X0 -> 24 `i e ]
+[i _etat_acceuil2
+:U ..
+-> 50 `c
+-> 45 `c
+-> 32 `c
+-> 85 `c
+-> 116 `c
+-> 105 `c
+-> 108 `c
+-> 105 `c
+-> 115 `c
+-> 97 `c
+-> 116 `c
+-> 101 `c
+-> 117 `c
+-> 114 `c
+-> 32 `c
+-> 101 `c
+-> 120 `c
+-> 105 `c
+-> 115 `c
+-> 116 `c
+-> 97 `c
+-> 110 `c
+-> 116 `c
+-> 0 `c
+..
+]
+"22
+[; ;./message.h: 22: const unsigned char etat_identification[] = "1 -> identifier vous";
+[v _etat_identification `Cuc ~T0 @X0 -> 21 `i e ]
+[i _etat_identification
+:U ..
+-> 49 `c
+-> 32 `c
+-> 45 `c
+-> 62 `c
+-> 32 `c
+-> 105 `c
+-> 100 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 105 `c
+-> 102 `c
+-> 105 `c
+-> 101 `c
+-> 114 `c
+-> 32 `c
+-> 118 `c
+-> 111 `c
+-> 117 `c
+-> 115 `c
+-> 0 `c
+..
+]
+"23
+[; ;./message.h: 23: const unsigned char etat_identification2[] = "0 -> usager defaut";
+[v _etat_identification2 `Cuc ~T0 @X0 -> 19 `i e ]
+[i _etat_identification2
+:U ..
+-> 48 `c
+-> 32 `c
+-> 45 `c
+-> 62 `c
+-> 32 `c
+-> 117 `c
+-> 115 `c
+-> 97 `c
+-> 103 `c
+-> 101 `c
+-> 114 `c
+-> 32 `c
+-> 100 `c
+-> 101 `c
+-> 102 `c
+-> 97 `c
+-> 117 `c
+-> 116 `c
+-> 0 `c
+..
+]
+"24
+[; ;./message.h: 24: const unsigned char etat_configuration[] = "Configuration";
+[v _etat_configuration `Cuc ~T0 @X0 -> 14 `i e ]
+[i _etat_configuration
+:U ..
+-> 67 `c
+-> 111 `c
+-> 110 `c
+-> 102 `c
+-> 105 `c
+-> 103 `c
+-> 117 `c
+-> 114 `c
+-> 97 `c
+-> 116 `c
+-> 105 `c
+-> 111 `c
+-> 110 `c
+-> 0 `c
+..
+]
+"26
+[; ;./message.h: 26: const unsigned char q_eau[] = "Grosseur de tasse ?";
+[v _q_eau `Cuc ~T0 @X0 -> 20 `i e ]
+[i _q_eau
+:U ..
+-> 71 `c
+-> 114 `c
+-> 111 `c
+-> 115 `c
+-> 115 `c
+-> 101 `c
+-> 117 `c
+-> 114 `c
+-> 32 `c
+-> 100 `c
+-> 101 `c
+-> 32 `c
+-> 116 `c
+-> 97 `c
+-> 115 `c
+-> 115 `c
+-> 101 `c
+-> 32 `c
+-> 63 `c
+-> 0 `c
+..
+]
+"27
+[; ;./message.h: 27: const unsigned char q_eau_choix[] = "S = 1, M = 2, L = 3";
+[v _q_eau_choix `Cuc ~T0 @X0 -> 20 `i e ]
+[i _q_eau_choix
+:U ..
+-> 83 `c
+-> 32 `c
+-> 61 `c
+-> 32 `c
+-> 49 `c
+-> 44 `c
+-> 32 `c
+-> 77 `c
+-> 32 `c
+-> 61 `c
+-> 32 `c
+-> 50 `c
+-> 44 `c
+-> 32 `c
+-> 76 `c
+-> 32 `c
+-> 61 `c
+-> 32 `c
+-> 51 `c
+-> 0 `c
+..
+]
+"28
+[; ;./message.h: 28: const unsigned char q_lait[] = "Qqt pot de lait?";
+[v _q_lait `Cuc ~T0 @X0 -> 17 `i e ]
+[i _q_lait
+:U ..
+-> 81 `c
+-> 113 `c
+-> 116 `c
+-> 32 `c
+-> 112 `c
+-> 111 `c
+-> 116 `c
+-> 32 `c
+-> 100 `c
+-> 101 `c
+-> 32 `c
+-> 108 `c
+-> 97 `c
+-> 105 `c
+-> 116 `c
+-> 63 `c
+-> 0 `c
+..
+]
+"29
+[; ;./message.h: 29: const unsigned char q_lait_choix[] = "0 a 9 pot";
+[v _q_lait_choix `Cuc ~T0 @X0 -> 10 `i e ]
+[i _q_lait_choix
+:U ..
+-> 48 `c
+-> 32 `c
+-> 97 `c
+-> 32 `c
+-> 57 `c
+-> 32 `c
+-> 112 `c
+-> 111 `c
+-> 116 `c
+-> 0 `c
+..
+]
+"30
+[; ;./message.h: 30: const unsigned char q_sucre[] = "Qtt sachet de sucre?";
+[v _q_sucre `Cuc ~T0 @X0 -> 21 `i e ]
+[i _q_sucre
+:U ..
+-> 81 `c
+-> 116 `c
+-> 116 `c
+-> 32 `c
+-> 115 `c
+-> 97 `c
+-> 99 `c
+-> 104 `c
+-> 101 `c
+-> 116 `c
+-> 32 `c
+-> 100 `c
+-> 101 `c
+-> 32 `c
+-> 115 `c
+-> 117 `c
+-> 99 `c
+-> 114 `c
+-> 101 `c
+-> 63 `c
+-> 0 `c
+..
+]
+"31
+[; ;./message.h: 31: const unsigned char q_sucre_choix[] = "0 a 9 sac";
+[v _q_sucre_choix `Cuc ~T0 @X0 -> 10 `i e ]
+[i _q_sucre_choix
+:U ..
+-> 48 `c
+-> 32 `c
+-> 97 `c
+-> 32 `c
+-> 57 `c
+-> 32 `c
+-> 115 `c
+-> 97 `c
+-> 99 `c
+-> 0 `c
+..
+]
+"34
+[; ;./message.h: 34: const unsigned char avert1[] = "Manque eau";
+[v _avert1 `Cuc ~T0 @X0 -> 11 `i e ]
+[i _avert1
+:U ..
+-> 77 `c
+-> 97 `c
+-> 110 `c
+-> 113 `c
+-> 117 `c
+-> 101 `c
+-> 32 `c
+-> 101 `c
+-> 97 `c
+-> 117 `c
+-> 0 `c
+..
+]
+"35
+[; ;./message.h: 35: const unsigned char avert2[] = "Prep temp eau";
+[v _avert2 `Cuc ~T0 @X0 -> 14 `i e ]
+[i _avert2
+:U ..
+-> 80 `c
+-> 114 `c
+-> 101 `c
+-> 112 `c
+-> 32 `c
+-> 116 `c
+-> 101 `c
+-> 109 `c
+-> 112 `c
+-> 32 `c
+-> 101 `c
+-> 97 `c
+-> 117 `c
+-> 0 `c
+..
+]
+"36
+[; ;./message.h: 36: const unsigned char avert3[] = "Touche non valide";
+[v _avert3 `Cuc ~T0 @X0 -> 18 `i e ]
+[i _avert3
+:U ..
+-> 84 `c
+-> 111 `c
+-> 117 `c
+-> 99 `c
+-> 104 `c
+-> 101 `c
+-> 32 `c
+-> 110 `c
+-> 111 `c
+-> 110 `c
+-> 32 `c
+-> 118 `c
+-> 97 `c
+-> 108 `c
+-> 105 `c
+-> 100 `c
+-> 101 `c
+-> 0 `c
+..
+]
+"37
+[; ;./message.h: 37: const unsigned char avert4[] = "Traitement de la voix";
+[v _avert4 `Cuc ~T0 @X0 -> 22 `i e ]
+[i _avert4
+:U ..
+-> 84 `c
+-> 114 `c
+-> 97 `c
+-> 105 `c
+-> 116 `c
+-> 101 `c
+-> 109 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 32 `c
+-> 100 `c
+-> 101 `c
+-> 32 `c
+-> 108 `c
+-> 97 `c
+-> 32 `c
+-> 118 `c
+-> 111 `c
+-> 105 `c
+-> 120 `c
+-> 0 `c
+..
+]
+"38
+[; ;./message.h: 38: const unsigned char avert5[] = "Voix non identifier";
+[v _avert5 `Cuc ~T0 @X0 -> 20 `i e ]
+[i _avert5
+:U ..
+-> 86 `c
+-> 111 `c
+-> 105 `c
+-> 120 `c
+-> 32 `c
+-> 110 `c
+-> 111 `c
+-> 110 `c
+-> 32 `c
+-> 105 `c
+-> 100 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 105 `c
+-> 102 `c
+-> 105 `c
+-> 101 `c
+-> 114 `c
+-> 0 `c
+..
+]
+"39
+[; ;./message.h: 39: const unsigned char avert6[] = "Versement eau";
+[v _avert6 `Cuc ~T0 @X0 -> 14 `i e ]
+[i _avert6
+:U ..
+-> 86 `c
+-> 101 `c
+-> 114 `c
+-> 115 `c
+-> 101 `c
+-> 109 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 32 `c
+-> 101 `c
+-> 97 `c
+-> 117 `c
+-> 0 `c
+..
+]
+"40
+[; ;./message.h: 40: const unsigned char avert7[] = "Versement lait";
+[v _avert7 `Cuc ~T0 @X0 -> 15 `i e ]
+[i _avert7
+:U ..
+-> 86 `c
+-> 101 `c
+-> 114 `c
+-> 115 `c
+-> 101 `c
+-> 109 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 32 `c
+-> 108 `c
+-> 97 `c
+-> 105 `c
+-> 116 `c
+-> 0 `c
+..
+]
+"41
+[; ;./message.h: 41: const unsigned char avert8[] = "Versement sucre";
+[v _avert8 `Cuc ~T0 @X0 -> 16 `i e ]
+[i _avert8
+:U ..
+-> 86 `c
+-> 101 `c
+-> 114 `c
+-> 115 `c
+-> 101 `c
+-> 109 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 32 `c
+-> 115 `c
+-> 117 `c
+-> 99 `c
+-> 114 `c
+-> 101 `c
+-> 0 `c
+..
+]
+"42
+[; ;./message.h: 42: const unsigned char avert9[] = "Enregistrement cmplt";
+[v _avert9 `Cuc ~T0 @X0 -> 21 `i e ]
+[i _avert9
+:U ..
+-> 69 `c
+-> 110 `c
+-> 114 `c
+-> 101 `c
+-> 103 `c
+-> 105 `c
+-> 115 `c
+-> 116 `c
+-> 114 `c
+-> 101 `c
+-> 109 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 32 `c
+-> 99 `c
+-> 109 `c
+-> 112 `c
+-> 108 `c
+-> 116 `c
+-> 0 `c
+..
+]
+"43
+[; ;./message.h: 43: const unsigned char avert10[] = "Parler dans micro";
+[v _avert10 `Cuc ~T0 @X0 -> 18 `i e ]
+[i _avert10
+:U ..
+-> 80 `c
+-> 97 `c
+-> 114 `c
+-> 108 `c
+-> 101 `c
+-> 114 `c
+-> 32 `c
+-> 100 `c
+-> 97 `c
+-> 110 `c
+-> 115 `c
+-> 32 `c
+-> 109 `c
+-> 105 `c
+-> 99 `c
+-> 114 `c
+-> 111 `c
+-> 0 `c
+..
+]
+"44
+[; ;./message.h: 44: const unsigned char avert11[] = "Enregistrement";
+[v _avert11 `Cuc ~T0 @X0 -> 15 `i e ]
+[i _avert11
+:U ..
+-> 69 `c
+-> 110 `c
+-> 114 `c
+-> 101 `c
+-> 103 `c
+-> 105 `c
+-> 115 `c
+-> 116 `c
+-> 114 `c
+-> 101 `c
+-> 109 `c
+-> 101 `c
+-> 110 `c
+-> 116 `c
+-> 0 `c
+..
+]
+"46
+[; ;./message.h: 46: const unsigned char portion_eau[] = "Tasse ";
+[v _portion_eau `Cuc ~T0 @X0 -> 7 `i e ]
+[i _portion_eau
+:U ..
+-> 84 `c
+-> 97 `c
+-> 115 `c
+-> 115 `c
+-> 101 `c
+-> 32 `c
+-> 0 `c
+..
+]
+"47
+[; ;./message.h: 47: const unsigned char portion_eau_S[] = "S";
+[v _portion_eau_S `Cuc ~T0 @X0 -> 2 `i e ]
+[i _portion_eau_S
+:U ..
+-> 83 `c
+-> 0 `c
+..
+]
+"48
+[; ;./message.h: 48: const unsigned char portion_eau_M[] = "M";
+[v _portion_eau_M `Cuc ~T0 @X0 -> 2 `i e ]
+[i _portion_eau_M
+:U ..
+-> 77 `c
+-> 0 `c
+..
+]
+"49
+[; ;./message.h: 49: const unsigned char portion_eau_L[] = "L";
+[v _portion_eau_L `Cuc ~T0 @X0 -> 2 `i e ]
+[i _portion_eau_L
+:U ..
+-> 76 `c
+-> 0 `c
+..
+]
+"51
+[; ;./message.h: 51: const unsigned char portion_sucre[] = " Sachet de sucre";
+[v _portion_sucre `Cuc ~T0 @X0 -> 17 `i e ]
+[i _portion_sucre
+:U ..
+-> 32 `c
+-> 83 `c
+-> 97 `c
+-> 99 `c
+-> 104 `c
+-> 101 `c
+-> 116 `c
+-> 32 `c
+-> 100 `c
+-> 101 `c
+-> 32 `c
+-> 115 `c
+-> 117 `c
+-> 99 `c
+-> 114 `c
+-> 101 `c
+-> 0 `c
+..
+]
+"52
+[; ;./message.h: 52: const unsigned char portion_lait[] = " Goblet lait";
+[v _portion_lait `Cuc ~T0 @X0 -> 13 `i e ]
+[i _portion_lait
+:U ..
+-> 32 `c
+-> 71 `c
+-> 111 `c
+-> 98 `c
+-> 108 `c
+-> 101 `c
+-> 116 `c
+-> 32 `c
+-> 108 `c
+-> 97 `c
+-> 105 `c
+-> 116 `c
+-> 0 `c
+..
+]
+"54 ./pic18f67j94.h
+[; ;./pic18f67j94.h: 54: __asm("UEP0 equ 0DFFh");
+[; <" UEP0 equ 0DFFh ;# ">
+"162
+[; ;./pic18f67j94.h: 162: __asm("UEP1 equ 0E00h");
+[; <" UEP1 equ 0E00h ;# ">
+"270
+[; ;./pic18f67j94.h: 270: __asm("UEP2 equ 0E01h");
+[; <" UEP2 equ 0E01h ;# ">
+"378
+[; ;./pic18f67j94.h: 378: __asm("UEP3 equ 0E02h");
+[; <" UEP3 equ 0E02h ;# ">
+"486
+[; ;./pic18f67j94.h: 486: __asm("UEP4 equ 0E03h");
+[; <" UEP4 equ 0E03h ;# ">
+"594
+[; ;./pic18f67j94.h: 594: __asm("UEP5 equ 0E04h");
+[; <" UEP5 equ 0E04h ;# ">
+"702
+[; ;./pic18f67j94.h: 702: __asm("UEP6 equ 0E05h");
+[; <" UEP6 equ 0E05h ;# ">
+"810
+[; ;./pic18f67j94.h: 810: __asm("UEP7 equ 0E06h");
+[; <" UEP7 equ 0E06h ;# ">
+"918
+[; ;./pic18f67j94.h: 918: __asm("UEP8 equ 0E07h");
+[; <" UEP8 equ 0E07h ;# ">
+"994
+[; ;./pic18f67j94.h: 994: __asm("UEP9 equ 0E08h");
+[; <" UEP9 equ 0E08h ;# ">
+"1070
+[; ;./pic18f67j94.h: 1070: __asm("UEP10 equ 0E09h");
+[; <" UEP10 equ 0E09h ;# ">
+"1146
+[; ;./pic18f67j94.h: 1146: __asm("UEP11 equ 0E0Ah");
+[; <" UEP11 equ 0E0Ah ;# ">
+"1222
+[; ;./pic18f67j94.h: 1222: __asm("UEP12 equ 0E0Bh");
+[; <" UEP12 equ 0E0Bh ;# ">
+"1298
+[; ;./pic18f67j94.h: 1298: __asm("UEP13 equ 0E0Ch");
+[; <" UEP13 equ 0E0Ch ;# ">
+"1374
+[; ;./pic18f67j94.h: 1374: __asm("UEP14 equ 0E0Dh");
+[; <" UEP14 equ 0E0Dh ;# ">
+"1450
+[; ;./pic18f67j94.h: 1450: __asm("UEP15 equ 0E0Eh");
+[; <" UEP15 equ 0E0Eh ;# ">
+"1526
+[; ;./pic18f67j94.h: 1526: __asm("UEIE equ 0E0Fh");
+[; <" UEIE equ 0E0Fh ;# ">
+"1577
+[; ;./pic18f67j94.h: 1577: __asm("UIE equ 0E10h");
+[; <" UIE equ 0E10h ;# ">
+"1633
+[; ;./pic18f67j94.h: 1633: __asm("UCFG equ 0E11h");
+[; <" UCFG equ 0E11h ;# ">
+"1704
+[; ;./pic18f67j94.h: 1704: __asm("RPOR0_1 equ 0E12h");
+[; <" RPOR0_1 equ 0E12h ;# ">
+"1780
+[; ;./pic18f67j94.h: 1780: __asm("RPOR2_3 equ 0E13h");
+[; <" RPOR2_3 equ 0E13h ;# ">
+"1856
+[; ;./pic18f67j94.h: 1856: __asm("RPOR4_5 equ 0E14h");
+[; <" RPOR4_5 equ 0E14h ;# ">
+"1932
+[; ;./pic18f67j94.h: 1932: __asm("RPOR6_7 equ 0E15h");
+[; <" RPOR6_7 equ 0E15h ;# ">
+"2008
+[; ;./pic18f67j94.h: 2008: __asm("RPOR8_9 equ 0E16h");
+[; <" RPOR8_9 equ 0E16h ;# ">
+"2084
+[; ;./pic18f67j94.h: 2084: __asm("RPOR10_11 equ 0E17h");
+[; <" RPOR10_11 equ 0E17h ;# ">
+"2160
+[; ;./pic18f67j94.h: 2160: __asm("RPOR12_13 equ 0E18h");
+[; <" RPOR12_13 equ 0E18h ;# ">
+"2236
+[; ;./pic18f67j94.h: 2236: __asm("RPOR14_15 equ 0E19h");
+[; <" RPOR14_15 equ 0E19h ;# ">
+"2312
+[; ;./pic18f67j94.h: 2312: __asm("RPOR16_17 equ 0E1Ah");
+[; <" RPOR16_17 equ 0E1Ah ;# ">
+"2388
+[; ;./pic18f67j94.h: 2388: __asm("RPOR18_19 equ 0E1Bh");
+[; <" RPOR18_19 equ 0E1Bh ;# ">
+"2464
+[; ;./pic18f67j94.h: 2464: __asm("RPOR20_21 equ 0E1Ch");
+[; <" RPOR20_21 equ 0E1Ch ;# ">
+"2540
+[; ;./pic18f67j94.h: 2540: __asm("RPOR22_23 equ 0E1Dh");
+[; <" RPOR22_23 equ 0E1Dh ;# ">
+"2616
+[; ;./pic18f67j94.h: 2616: __asm("RPOR24_25 equ 0E1Eh");
+[; <" RPOR24_25 equ 0E1Eh ;# ">
+"2692
+[; ;./pic18f67j94.h: 2692: __asm("RPOR26_27 equ 0E1Fh");
+[; <" RPOR26_27 equ 0E1Fh ;# ">
+"2768
+[; ;./pic18f67j94.h: 2768: __asm("RPOR28_29 equ 0E20h");
+[; <" RPOR28_29 equ 0E20h ;# ">
+"2844
+[; ;./pic18f67j94.h: 2844: __asm("RPOR30_31 equ 0E21h");
+[; <" RPOR30_31 equ 0E21h ;# ">
+"2920
+[; ;./pic18f67j94.h: 2920: __asm("RPOR32_33 equ 0E22h");
+[; <" RPOR32_33 equ 0E22h ;# ">
+"2996
+[; ;./pic18f67j94.h: 2996: __asm("RPOR34_35 equ 0E23h");
+[; <" RPOR34_35 equ 0E23h ;# ">
+"3072
+[; ;./pic18f67j94.h: 3072: __asm("RPOR36_37 equ 0E24h");
+[; <" RPOR36_37 equ 0E24h ;# ">
+"3148
+[; ;./pic18f67j94.h: 3148: __asm("RPOR38_39 equ 0E25h");
+[; <" RPOR38_39 equ 0E25h ;# ">
+"3224
+[; ;./pic18f67j94.h: 3224: __asm("RPOR40_41 equ 0E26h");
+[; <" RPOR40_41 equ 0E26h ;# ">
+"3300
+[; ;./pic18f67j94.h: 3300: __asm("RPOR42_43 equ 0E27h");
+[; <" RPOR42_43 equ 0E27h ;# ">
+"3376
+[; ;./pic18f67j94.h: 3376: __asm("RPOR44_45 equ 0E28h");
+[; <" RPOR44_45 equ 0E28h ;# ">
+"3452
+[; ;./pic18f67j94.h: 3452: __asm("RPOR46 equ 0E29h");
+[; <" RPOR46 equ 0E29h ;# ">
+"3498
+[; ;./pic18f67j94.h: 3498: __asm("RPINR0_1 equ 0E2Ah");
+[; <" RPINR0_1 equ 0E2Ah ;# ">
+"3574
+[; ;./pic18f67j94.h: 3574: __asm("RPINR2_3 equ 0E2Bh");
+[; <" RPINR2_3 equ 0E2Bh ;# ">
+"3650
+[; ;./pic18f67j94.h: 3650: __asm("RPINR4_5 equ 0E2Ch");
+[; <" RPINR4_5 equ 0E2Ch ;# ">
+"3726
+[; ;./pic18f67j94.h: 3726: __asm("RPINR6_7 equ 0E2Dh");
+[; <" RPINR6_7 equ 0E2Dh ;# ">
+"3802
+[; ;./pic18f67j94.h: 3802: __asm("RPINR8_9 equ 0E2Eh");
+[; <" RPINR8_9 equ 0E2Eh ;# ">
+"3878
+[; ;./pic18f67j94.h: 3878: __asm("RPINR10_11 equ 0E2Fh");
+[; <" RPINR10_11 equ 0E2Fh ;# ">
+"3954
+[; ;./pic18f67j94.h: 3954: __asm("RPINR12_13 equ 0E30h");
+[; <" RPINR12_13 equ 0E30h ;# ">
+"4030
+[; ;./pic18f67j94.h: 4030: __asm("RPINR14_15 equ 0E31h");
+[; <" RPINR14_15 equ 0E31h ;# ">
+"4106
+[; ;./pic18f67j94.h: 4106: __asm("RPINR16_17 equ 0E32h");
+[; <" RPINR16_17 equ 0E32h ;# ">
+"4182
+[; ;./pic18f67j94.h: 4182: __asm("RPINR18_19 equ 0E33h");
+[; <" RPINR18_19 equ 0E33h ;# ">
+"4258
+[; ;./pic18f67j94.h: 4258: __asm("RPINR20_21 equ 0E34h");
+[; <" RPINR20_21 equ 0E34h ;# ">
+"4334
+[; ;./pic18f67j94.h: 4334: __asm("RPINR22_23 equ 0E35h");
+[; <" RPINR22_23 equ 0E35h ;# ">
+"4410
+[; ;./pic18f67j94.h: 4410: __asm("RPINR24_25 equ 0E36h");
+[; <" RPINR24_25 equ 0E36h ;# ">
+"4486
+[; ;./pic18f67j94.h: 4486: __asm("RPINR26_27 equ 0E37h");
+[; <" RPINR26_27 equ 0E37h ;# ">
+"4562
+[; ;./pic18f67j94.h: 4562: __asm("RPINR28_29 equ 0E38h");
+[; <" RPINR28_29 equ 0E38h ;# ">
+"4638
+[; ;./pic18f67j94.h: 4638: __asm("RPINR30_31 equ 0E39h");
+[; <" RPINR30_31 equ 0E39h ;# ">
+"4714
+[; ;./pic18f67j94.h: 4714: __asm("RPINR32_33 equ 0E3Ah");
+[; <" RPINR32_33 equ 0E3Ah ;# ">
+"4790
+[; ;./pic18f67j94.h: 4790: __asm("RPINR34_35 equ 0E3Bh");
+[; <" RPINR34_35 equ 0E3Bh ;# ">
+"4866
+[; ;./pic18f67j94.h: 4866: __asm("RPINR36_37 equ 0E3Ch");
+[; <" RPINR36_37 equ 0E3Ch ;# ">
+"4942
+[; ;./pic18f67j94.h: 4942: __asm("RPINR38_39 equ 0E3Dh");
+[; <" RPINR38_39 equ 0E3Dh ;# ">
+"5018
+[; ;./pic18f67j94.h: 5018: __asm("RPINR40_41 equ 0E3Eh");
+[; <" RPINR40_41 equ 0E3Eh ;# ">
+"5094
+[; ;./pic18f67j94.h: 5094: __asm("RPINR42_43 equ 0E3Fh");
+[; <" RPINR42_43 equ 0E3Fh ;# ">
+"5170
+[; ;./pic18f67j94.h: 5170: __asm("RPINR44_45 equ 0E40h");
+[; <" RPINR44_45 equ 0E40h ;# ">
+"5246
+[; ;./pic18f67j94.h: 5246: __asm("RPINR46_47 equ 0E41h");
+[; <" RPINR46_47 equ 0E41h ;# ">
+"5322
+[; ;./pic18f67j94.h: 5322: __asm("RPINR48_49 equ 0E42h");
+[; <" RPINR48_49 equ 0E42h ;# ">
+"5398
+[; ;./pic18f67j94.h: 5398: __asm("RPINR50_51 equ 0E43h");
+[; <" RPINR50_51 equ 0E43h ;# ">
+"5474
+[; ;./pic18f67j94.h: 5474: __asm("RPINR52_53 equ 0E44h");
+[; <" RPINR52_53 equ 0E44h ;# ">
+"5550
+[; ;./pic18f67j94.h: 5550: __asm("ANCON3 equ 0E45h");
+[; <" ANCON3 equ 0E45h ;# ">
+"5612
+[; ;./pic18f67j94.h: 5612: __asm("ANCON2 equ 0E46h");
+[; <" ANCON2 equ 0E46h ;# ">
+"5724
+[; ;./pic18f67j94.h: 5724: __asm("ANCON1 equ 0E47h");
+[; <" ANCON1 equ 0E47h ;# ">
+"5836
+[; ;./pic18f67j94.h: 5836: __asm("ADCBUF1 equ 0E48h");
+[; <" ADCBUF1 equ 0E48h ;# ">
+"5843
+[; ;./pic18f67j94.h: 5843: __asm("ADCBUF1L equ 0E48h");
+[; <" ADCBUF1L equ 0E48h ;# ">
+"5863
+[; ;./pic18f67j94.h: 5863: __asm("ADCBUF1H equ 0E49h");
+[; <" ADCBUF1H equ 0E49h ;# ">
+"5883
+[; ;./pic18f67j94.h: 5883: __asm("ADCBUF2 equ 0E4Ah");
+[; <" ADCBUF2 equ 0E4Ah ;# ">
+"5890
+[; ;./pic18f67j94.h: 5890: __asm("ADCBUF2L equ 0E4Ah");
+[; <" ADCBUF2L equ 0E4Ah ;# ">
+"5910
+[; ;./pic18f67j94.h: 5910: __asm("ADCBUF2H equ 0E4Bh");
+[; <" ADCBUF2H equ 0E4Bh ;# ">
+"5930
+[; ;./pic18f67j94.h: 5930: __asm("ADCBUF3 equ 0E4Ch");
+[; <" ADCBUF3 equ 0E4Ch ;# ">
+"5937
+[; ;./pic18f67j94.h: 5937: __asm("ADCBUF3L equ 0E4Ch");
+[; <" ADCBUF3L equ 0E4Ch ;# ">
+"5957
+[; ;./pic18f67j94.h: 5957: __asm("ADCBUF3H equ 0E4Dh");
+[; <" ADCBUF3H equ 0E4Dh ;# ">
+"5977
+[; ;./pic18f67j94.h: 5977: __asm("ADCBUF4 equ 0E4Eh");
+[; <" ADCBUF4 equ 0E4Eh ;# ">
+"5984
+[; ;./pic18f67j94.h: 5984: __asm("ADCBUF4L equ 0E4Eh");
+[; <" ADCBUF4L equ 0E4Eh ;# ">
+"6004
+[; ;./pic18f67j94.h: 6004: __asm("ADCBUF4H equ 0E4Fh");
+[; <" ADCBUF4H equ 0E4Fh ;# ">
+"6024
+[; ;./pic18f67j94.h: 6024: __asm("ADCBUF5 equ 0E50h");
+[; <" ADCBUF5 equ 0E50h ;# ">
+"6031
+[; ;./pic18f67j94.h: 6031: __asm("ADCBUF5L equ 0E50h");
+[; <" ADCBUF5L equ 0E50h ;# ">
+"6051
+[; ;./pic18f67j94.h: 6051: __asm("ADCBUF5H equ 0E51h");
+[; <" ADCBUF5H equ 0E51h ;# ">
+"6071
+[; ;./pic18f67j94.h: 6071: __asm("ADCBUF6 equ 0E52h");
+[; <" ADCBUF6 equ 0E52h ;# ">
+"6078
+[; ;./pic18f67j94.h: 6078: __asm("ADCBUF6L equ 0E52h");
+[; <" ADCBUF6L equ 0E52h ;# ">
+"6098
+[; ;./pic18f67j94.h: 6098: __asm("ADCBUF6H equ 0E53h");
+[; <" ADCBUF6H equ 0E53h ;# ">
+"6118
+[; ;./pic18f67j94.h: 6118: __asm("ADCBUF7 equ 0E54h");
+[; <" ADCBUF7 equ 0E54h ;# ">
+"6125
+[; ;./pic18f67j94.h: 6125: __asm("ADCBUF7L equ 0E54h");
+[; <" ADCBUF7L equ 0E54h ;# ">
+"6145
+[; ;./pic18f67j94.h: 6145: __asm("ADCBUF7H equ 0E55h");
+[; <" ADCBUF7H equ 0E55h ;# ">
+"6165
+[; ;./pic18f67j94.h: 6165: __asm("ADCBUF8 equ 0E56h");
+[; <" ADCBUF8 equ 0E56h ;# ">
+"6172
+[; ;./pic18f67j94.h: 6172: __asm("ADCBUF8L equ 0E56h");
+[; <" ADCBUF8L equ 0E56h ;# ">
+"6192
+[; ;./pic18f67j94.h: 6192: __asm("ADCBUF8H equ 0E57h");
+[; <" ADCBUF8H equ 0E57h ;# ">
+"6212
+[; ;./pic18f67j94.h: 6212: __asm("ADCBUF9 equ 0E58h");
+[; <" ADCBUF9 equ 0E58h ;# ">
+"6219
+[; ;./pic18f67j94.h: 6219: __asm("ADCBUF9L equ 0E58h");
+[; <" ADCBUF9L equ 0E58h ;# ">
+"6239
+[; ;./pic18f67j94.h: 6239: __asm("ADCBUF9H equ 0E59h");
+[; <" ADCBUF9H equ 0E59h ;# ">
+"6259
+[; ;./pic18f67j94.h: 6259: __asm("ADCBUF10 equ 0E5Ah");
+[; <" ADCBUF10 equ 0E5Ah ;# ">
+"6266
+[; ;./pic18f67j94.h: 6266: __asm("ADCBUF10L equ 0E5Ah");
+[; <" ADCBUF10L equ 0E5Ah ;# ">
+"6286
+[; ;./pic18f67j94.h: 6286: __asm("ADCBUF10H equ 0E5Bh");
+[; <" ADCBUF10H equ 0E5Bh ;# ">
+"6306
+[; ;./pic18f67j94.h: 6306: __asm("ADCBUF11 equ 0E5Ch");
+[; <" ADCBUF11 equ 0E5Ch ;# ">
+"6313
+[; ;./pic18f67j94.h: 6313: __asm("ADCBUF11L equ 0E5Ch");
+[; <" ADCBUF11L equ 0E5Ch ;# ">
+"6333
+[; ;./pic18f67j94.h: 6333: __asm("ADCBUF11H equ 0E5Dh");
+[; <" ADCBUF11H equ 0E5Dh ;# ">
+"6353
+[; ;./pic18f67j94.h: 6353: __asm("ADCBUF12 equ 0E5Eh");
+[; <" ADCBUF12 equ 0E5Eh ;# ">
+"6360
+[; ;./pic18f67j94.h: 6360: __asm("ADCBUF12L equ 0E5Eh");
+[; <" ADCBUF12L equ 0E5Eh ;# ">
+"6380
+[; ;./pic18f67j94.h: 6380: __asm("ADCBUF12H equ 0E5Fh");
+[; <" ADCBUF12H equ 0E5Fh ;# ">
+"6400
+[; ;./pic18f67j94.h: 6400: __asm("ADCBUF13 equ 0E60h");
+[; <" ADCBUF13 equ 0E60h ;# ">
+"6407
+[; ;./pic18f67j94.h: 6407: __asm("ADCBUF13L equ 0E60h");
+[; <" ADCBUF13L equ 0E60h ;# ">
+"6427
+[; ;./pic18f67j94.h: 6427: __asm("ADCBUF13H equ 0E61h");
+[; <" ADCBUF13H equ 0E61h ;# ">
+"6447
+[; ;./pic18f67j94.h: 6447: __asm("ADCBUF14 equ 0E62h");
+[; <" ADCBUF14 equ 0E62h ;# ">
+"6454
+[; ;./pic18f67j94.h: 6454: __asm("ADCBUF14L equ 0E62h");
+[; <" ADCBUF14L equ 0E62h ;# ">
+"6474
+[; ;./pic18f67j94.h: 6474: __asm("ADCBUF14H equ 0E63h");
+[; <" ADCBUF14H equ 0E63h ;# ">
+"6494
+[; ;./pic18f67j94.h: 6494: __asm("ADCBUF15 equ 0E64h");
+[; <" ADCBUF15 equ 0E64h ;# ">
+"6501
+[; ;./pic18f67j94.h: 6501: __asm("ADCBUF15L equ 0E64h");
+[; <" ADCBUF15L equ 0E64h ;# ">
+"6521
+[; ;./pic18f67j94.h: 6521: __asm("ADCBUF15H equ 0E65h");
+[; <" ADCBUF15H equ 0E65h ;# ">
+"6541
+[; ;./pic18f67j94.h: 6541: __asm("ADCBUF16 equ 0E66h");
+[; <" ADCBUF16 equ 0E66h ;# ">
+"6548
+[; ;./pic18f67j94.h: 6548: __asm("ADCBUF16L equ 0E66h");
+[; <" ADCBUF16L equ 0E66h ;# ">
+"6568
+[; ;./pic18f67j94.h: 6568: __asm("ADCBUF16H equ 0E67h");
+[; <" ADCBUF16H equ 0E67h ;# ">
+"6588
+[; ;./pic18f67j94.h: 6588: __asm("ADCBUF17 equ 0E68h");
+[; <" ADCBUF17 equ 0E68h ;# ">
+"6595
+[; ;./pic18f67j94.h: 6595: __asm("ADCBUF17L equ 0E68h");
+[; <" ADCBUF17L equ 0E68h ;# ">
+"6615
+[; ;./pic18f67j94.h: 6615: __asm("ADCBUF17H equ 0E69h");
+[; <" ADCBUF17H equ 0E69h ;# ">
+"6635
+[; ;./pic18f67j94.h: 6635: __asm("ADCBUF18 equ 0E6Ah");
+[; <" ADCBUF18 equ 0E6Ah ;# ">
+"6642
+[; ;./pic18f67j94.h: 6642: __asm("ADCBUF18L equ 0E6Ah");
+[; <" ADCBUF18L equ 0E6Ah ;# ">
+"6662
+[; ;./pic18f67j94.h: 6662: __asm("ADCBUF18H equ 0E6Bh");
+[; <" ADCBUF18H equ 0E6Bh ;# ">
+"6682
+[; ;./pic18f67j94.h: 6682: __asm("ADCBUF19 equ 0E6Ch");
+[; <" ADCBUF19 equ 0E6Ch ;# ">
+"6689
+[; ;./pic18f67j94.h: 6689: __asm("ADCBUF19L equ 0E6Ch");
+[; <" ADCBUF19L equ 0E6Ch ;# ">
+"6709
+[; ;./pic18f67j94.h: 6709: __asm("ADCBUF19H equ 0E6Dh");
+[; <" ADCBUF19H equ 0E6Dh ;# ">
+"6729
+[; ;./pic18f67j94.h: 6729: __asm("ADCBUF20 equ 0E6Eh");
+[; <" ADCBUF20 equ 0E6Eh ;# ">
+"6736
+[; ;./pic18f67j94.h: 6736: __asm("ADCBUF20L equ 0E6Eh");
+[; <" ADCBUF20L equ 0E6Eh ;# ">
+"6756
+[; ;./pic18f67j94.h: 6756: __asm("ADCBUF20H equ 0E6Fh");
+[; <" ADCBUF20H equ 0E6Fh ;# ">
+"6776
+[; ;./pic18f67j94.h: 6776: __asm("ADCBUF21 equ 0E70h");
+[; <" ADCBUF21 equ 0E70h ;# ">
+"6783
+[; ;./pic18f67j94.h: 6783: __asm("ADCBUF21L equ 0E70h");
+[; <" ADCBUF21L equ 0E70h ;# ">
+"6803
+[; ;./pic18f67j94.h: 6803: __asm("ADCBUF21H equ 0E71h");
+[; <" ADCBUF21H equ 0E71h ;# ">
+"6823
+[; ;./pic18f67j94.h: 6823: __asm("ADCBUF22 equ 0E72h");
+[; <" ADCBUF22 equ 0E72h ;# ">
+"6830
+[; ;./pic18f67j94.h: 6830: __asm("ADCBUF22L equ 0E72h");
+[; <" ADCBUF22L equ 0E72h ;# ">
+"6850
+[; ;./pic18f67j94.h: 6850: __asm("ADCBUF22H equ 0E73h");
+[; <" ADCBUF22H equ 0E73h ;# ">
+"6870
+[; ;./pic18f67j94.h: 6870: __asm("ADCBUF23 equ 0E74h");
+[; <" ADCBUF23 equ 0E74h ;# ">
+"6877
+[; ;./pic18f67j94.h: 6877: __asm("ADCBUF23L equ 0E74h");
+[; <" ADCBUF23L equ 0E74h ;# ">
+"6897
+[; ;./pic18f67j94.h: 6897: __asm("ADCBUF23H equ 0E75h");
+[; <" ADCBUF23H equ 0E75h ;# ">
+"6917
+[; ;./pic18f67j94.h: 6917: __asm("ADCBUF24 equ 0E76h");
+[; <" ADCBUF24 equ 0E76h ;# ">
+"6924
+[; ;./pic18f67j94.h: 6924: __asm("ADCBUF24L equ 0E76h");
+[; <" ADCBUF24L equ 0E76h ;# ">
+"6944
+[; ;./pic18f67j94.h: 6944: __asm("ADCBUF24H equ 0E77h");
+[; <" ADCBUF24H equ 0E77h ;# ">
+"6964
+[; ;./pic18f67j94.h: 6964: __asm("ADCBUF25 equ 0E78h");
+[; <" ADCBUF25 equ 0E78h ;# ">
+"6971
+[; ;./pic18f67j94.h: 6971: __asm("ADCBUF25L equ 0E78h");
+[; <" ADCBUF25L equ 0E78h ;# ">
+"6991
+[; ;./pic18f67j94.h: 6991: __asm("ADCBUF25H equ 0E79h");
+[; <" ADCBUF25H equ 0E79h ;# ">
+"7011
+[; ;./pic18f67j94.h: 7011: __asm("ADCTMUEN0L equ 0E7Ah");
+[; <" ADCTMUEN0L equ 0E7Ah ;# ">
+"7081
+[; ;./pic18f67j94.h: 7081: __asm("ADCTMUEN0H equ 0E7Bh");
+[; <" ADCTMUEN0H equ 0E7Bh ;# ">
+"7151
+[; ;./pic18f67j94.h: 7151: __asm("ADCTMUEN1L equ 0E7Ch");
+[; <" ADCTMUEN1L equ 0E7Ch ;# ">
+"7221
+[; ;./pic18f67j94.h: 7221: __asm("ADCTMUEN1H equ 0E7Dh");
+[; <" ADCTMUEN1H equ 0E7Dh ;# ">
+"7285
+[; ;./pic18f67j94.h: 7285: __asm("ADCHIT0L equ 0E7Eh");
+[; <" ADCHIT0L equ 0E7Eh ;# ">
+"7355
+[; ;./pic18f67j94.h: 7355: __asm("ADCHIT0H equ 0E7Fh");
+[; <" ADCHIT0H equ 0E7Fh ;# ">
+"7425
+[; ;./pic18f67j94.h: 7425: __asm("ADCHIT1L equ 0E80h");
+[; <" ADCHIT1L equ 0E80h ;# ">
+"7495
+[; ;./pic18f67j94.h: 7495: __asm("ADCHIT1H equ 0E81h");
+[; <" ADCHIT1H equ 0E81h ;# ">
+"7559
+[; ;./pic18f67j94.h: 7559: __asm("ADCSS0L equ 0E82h");
+[; <" ADCSS0L equ 0E82h ;# ">
+"7629
+[; ;./pic18f67j94.h: 7629: __asm("ADCSS0H equ 0E83h");
+[; <" ADCSS0H equ 0E83h ;# ">
+"7699
+[; ;./pic18f67j94.h: 7699: __asm("ADCSS1L equ 0E84h");
+[; <" ADCSS1L equ 0E84h ;# ">
+"7769
+[; ;./pic18f67j94.h: 7769: __asm("ADCSS1H equ 0E85h");
+[; <" ADCSS1H equ 0E85h ;# ">
+"7833
+[; ;./pic18f67j94.h: 7833: __asm("ADCHS0L equ 0E86h");
+[; <" ADCHS0L equ 0E86h ;# ">
+"7909
+[; ;./pic18f67j94.h: 7909: __asm("ADCHS0H equ 0E87h");
+[; <" ADCHS0H equ 0E87h ;# ">
+"7985
+[; ;./pic18f67j94.h: 7985: __asm("ADCON5L equ 0E88h");
+[; <" ADCON5L equ 0E88h ;# ">
+"8037
+[; ;./pic18f67j94.h: 8037: __asm("ADCON5H equ 0E89h");
+[; <" ADCON5H equ 0E89h ;# ">
+"8090
+[; ;./pic18f67j94.h: 8090: __asm("ADCON3L equ 0E8Ah");
+[; <" ADCON3L equ 0E8Ah ;# ">
+"8160
+[; ;./pic18f67j94.h: 8160: __asm("ADCON3H equ 0E8Bh");
+[; <" ADCON3H equ 0E8Bh ;# ">
+"8230
+[; ;./pic18f67j94.h: 8230: __asm("ADCON2L equ 0E8Ch");
+[; <" ADCON2L equ 0E8Ch ;# ">
+"8301
+[; ;./pic18f67j94.h: 8301: __asm("ADCON2H equ 0E8Dh");
+[; <" ADCON2H equ 0E8Dh ;# ">
+"8361
+[; ;./pic18f67j94.h: 8361: __asm("LCDDATA0 equ 0E8Eh");
+[; <" LCDDATA0 equ 0E8Eh ;# ">
+"8423
+[; ;./pic18f67j94.h: 8423: __asm("LCDDATA1 equ 0E8Fh");
+[; <" LCDDATA1 equ 0E8Fh ;# ">
+"8485
+[; ;./pic18f67j94.h: 8485: __asm("LCDDATA2 equ 0E90h");
+[; <" LCDDATA2 equ 0E90h ;# ">
+"8547
+[; ;./pic18f67j94.h: 8547: __asm("LCDDATA3 equ 0E91h");
+[; <" LCDDATA3 equ 0E91h ;# ">
+"8609
+[; ;./pic18f67j94.h: 8609: __asm("LCDDATA4 equ 0E92h");
+[; <" LCDDATA4 equ 0E92h ;# ">
+"8671
+[; ;./pic18f67j94.h: 8671: __asm("LCDDATA5 equ 0E93h");
+[; <" LCDDATA5 equ 0E93h ;# ">
+"8741
+[; ;./pic18f67j94.h: 8741: __asm("LCDDATA6 equ 0E94h");
+[; <" LCDDATA6 equ 0E94h ;# ">
+"8803
+[; ;./pic18f67j94.h: 8803: __asm("LCDDATA7 equ 0E95h");
+[; <" LCDDATA7 equ 0E95h ;# ">
+"8865
+[; ;./pic18f67j94.h: 8865: __asm("LCDDATA8 equ 0E96h");
+[; <" LCDDATA8 equ 0E96h ;# ">
+"8927
+[; ;./pic18f67j94.h: 8927: __asm("LCDDATA9 equ 0E97h");
+[; <" LCDDATA9 equ 0E97h ;# ">
+"8989
+[; ;./pic18f67j94.h: 8989: __asm("LCDDATA10 equ 0E98h");
+[; <" LCDDATA10 equ 0E98h ;# ">
+"9051
+[; ;./pic18f67j94.h: 9051: __asm("LCDDATA11 equ 0E99h");
+[; <" LCDDATA11 equ 0E99h ;# ">
+"9146
+[; ;./pic18f67j94.h: 9146: __asm("LCDDATA12 equ 0E9Ah");
+[; <" LCDDATA12 equ 0E9Ah ;# ">
+"9234
+[; ;./pic18f67j94.h: 9234: __asm("LCDDATA13 equ 0E9Bh");
+[; <" LCDDATA13 equ 0E9Bh ;# ">
+"9296
+[; ;./pic18f67j94.h: 9296: __asm("LCDDATA14 equ 0E9Ch");
+[; <" LCDDATA14 equ 0E9Ch ;# ">
+"9408
+[; ;./pic18f67j94.h: 9408: __asm("LCDDATA15 equ 0E9Dh");
+[; <" LCDDATA15 equ 0E9Dh ;# ">
+"9470
+[; ;./pic18f67j94.h: 9470: __asm("LCDDATA16 equ 0E9Eh");
+[; <" LCDDATA16 equ 0E9Eh ;# ">
+"9571
+[; ;./pic18f67j94.h: 9571: __asm("LCDDATA17 equ 0E9Fh");
+[; <" LCDDATA17 equ 0E9Fh ;# ">
+"9633
+[; ;./pic18f67j94.h: 9633: __asm("LCDDATA18 equ 0EA0h");
+[; <" LCDDATA18 equ 0EA0h ;# ">
+"9695
+[; ;./pic18f67j94.h: 9695: __asm("LCDDATA19 equ 0EA1h");
+[; <" LCDDATA19 equ 0EA1h ;# ">
+"9784
+[; ;./pic18f67j94.h: 9784: __asm("LCDDATA20 equ 0EA2h");
+[; <" LCDDATA20 equ 0EA2h ;# ">
+"9846
+[; ;./pic18f67j94.h: 9846: __asm("LCDDATA21 equ 0EA3h");
+[; <" LCDDATA21 equ 0EA3h ;# ">
+"9908
+[; ;./pic18f67j94.h: 9908: __asm("LCDDATA22 equ 0EA4h");
+[; <" LCDDATA22 equ 0EA4h ;# ">
+"9970
+[; ;./pic18f67j94.h: 9970: __asm("LCDDATA23 equ 0EA5h");
+[; <" LCDDATA23 equ 0EA5h ;# ">
+"10032
+[; ;./pic18f67j94.h: 10032: __asm("LCDDATA24 equ 0EA6h");
+[; <" LCDDATA24 equ 0EA6h ;# ">
+"10094
+[; ;./pic18f67j94.h: 10094: __asm("LCDDATA25 equ 0EA7h");
+[; <" LCDDATA25 equ 0EA7h ;# ">
+"10156
+[; ;./pic18f67j94.h: 10156: __asm("LCDDATA26 equ 0EA8h");
+[; <" LCDDATA26 equ 0EA8h ;# ">
+"10218
+[; ;./pic18f67j94.h: 10218: __asm("LCDDATA27 equ 0EA9h");
+[; <" LCDDATA27 equ 0EA9h ;# ">
+"10280
+[; ;./pic18f67j94.h: 10280: __asm("LCDDATA28 equ 0EAAh");
+[; <" LCDDATA28 equ 0EAAh ;# ">
+"10342
+[; ;./pic18f67j94.h: 10342: __asm("LCDDATA29 equ 0EABh");
+[; <" LCDDATA29 equ 0EABh ;# ">
+"10404
+[; ;./pic18f67j94.h: 10404: __asm("LCDDATA30 equ 0EACh");
+[; <" LCDDATA30 equ 0EACh ;# ">
+"10466
+[; ;./pic18f67j94.h: 10466: __asm("LCDDATA31 equ 0EADh");
+[; <" LCDDATA31 equ 0EADh ;# ">
+"10528
+[; ;./pic18f67j94.h: 10528: __asm("LCDDATA32 equ 0EAEh");
+[; <" LCDDATA32 equ 0EAEh ;# ">
+"10590
+[; ;./pic18f67j94.h: 10590: __asm("LCDDATA33 equ 0EAFh");
+[; <" LCDDATA33 equ 0EAFh ;# ">
+"10652
+[; ;./pic18f67j94.h: 10652: __asm("LCDDATA34 equ 0EB0h");
+[; <" LCDDATA34 equ 0EB0h ;# ">
+"10714
+[; ;./pic18f67j94.h: 10714: __asm("LCDDATA35 equ 0EB1h");
+[; <" LCDDATA35 equ 0EB1h ;# ">
+"10776
+[; ;./pic18f67j94.h: 10776: __asm("LCDDATA36 equ 0EB2h");
+[; <" LCDDATA36 equ 0EB2h ;# ">
+"10838
+[; ;./pic18f67j94.h: 10838: __asm("LCDDATA37 equ 0EB3h");
+[; <" LCDDATA37 equ 0EB3h ;# ">
+"10900
+[; ;./pic18f67j94.h: 10900: __asm("LCDDATA38 equ 0EB4h");
+[; <" LCDDATA38 equ 0EB4h ;# ">
+"10962
+[; ;./pic18f67j94.h: 10962: __asm("LCDDATA39 equ 0EB5h");
+[; <" LCDDATA39 equ 0EB5h ;# ">
+"11024
+[; ;./pic18f67j94.h: 11024: __asm("LCDDATA40 equ 0EB6h");
+[; <" LCDDATA40 equ 0EB6h ;# ">
+"11086
+[; ;./pic18f67j94.h: 11086: __asm("LCDDATA41 equ 0EB7h");
+[; <" LCDDATA41 equ 0EB7h ;# ">
+"11148
+[; ;./pic18f67j94.h: 11148: __asm("LCDDATA42 equ 0EB8h");
+[; <" LCDDATA42 equ 0EB8h ;# ">
+"11210
+[; ;./pic18f67j94.h: 11210: __asm("LCDDATA43 equ 0EB9h");
+[; <" LCDDATA43 equ 0EB9h ;# ">
+"11272
+[; ;./pic18f67j94.h: 11272: __asm("LCDDATA44 equ 0EBAh");
+[; <" LCDDATA44 equ 0EBAh ;# ">
+"11334
+[; ;./pic18f67j94.h: 11334: __asm("LCDDATA45 equ 0EBBh");
+[; <" LCDDATA45 equ 0EBBh ;# ">
+"11396
+[; ;./pic18f67j94.h: 11396: __asm("LCDDATA46 equ 0EBCh");
+[; <" LCDDATA46 equ 0EBCh ;# ">
+"11458
+[; ;./pic18f67j94.h: 11458: __asm("LCDDATA47 equ 0EBDh");
+[; <" LCDDATA47 equ 0EBDh ;# ">
+"11520
+[; ;./pic18f67j94.h: 11520: __asm("LCDDATA48 equ 0EBEh");
+[; <" LCDDATA48 equ 0EBEh ;# ">
+"11582
+[; ;./pic18f67j94.h: 11582: __asm("LCDDATA49 equ 0EBFh");
+[; <" LCDDATA49 equ 0EBFh ;# ">
+"11644
+[; ;./pic18f67j94.h: 11644: __asm("LCDDATA50 equ 0EC0h");
+[; <" LCDDATA50 equ 0EC0h ;# ">
+"11706
+[; ;./pic18f67j94.h: 11706: __asm("LCDDATA51 equ 0EC1h");
+[; <" LCDDATA51 equ 0EC1h ;# ">
+"11768
+[; ;./pic18f67j94.h: 11768: __asm("LCDDATA52 equ 0EC2h");
+[; <" LCDDATA52 equ 0EC2h ;# ">
+"11830
+[; ;./pic18f67j94.h: 11830: __asm("LCDDATA53 equ 0EC3h");
+[; <" LCDDATA53 equ 0EC3h ;# ">
+"11892
+[; ;./pic18f67j94.h: 11892: __asm("LCDDATA54 equ 0EC4h");
+[; <" LCDDATA54 equ 0EC4h ;# ">
+"11954
+[; ;./pic18f67j94.h: 11954: __asm("LCDDATA55 equ 0EC5h");
+[; <" LCDDATA55 equ 0EC5h ;# ">
+"12016
+[; ;./pic18f67j94.h: 12016: __asm("LCDDATA56 equ 0EC6h");
+[; <" LCDDATA56 equ 0EC6h ;# ">
+"12078
+[; ;./pic18f67j94.h: 12078: __asm("LCDDATA57 equ 0EC7h");
+[; <" LCDDATA57 equ 0EC7h ;# ">
+"12140
+[; ;./pic18f67j94.h: 12140: __asm("LCDDATA58 equ 0EC8h");
+[; <" LCDDATA58 equ 0EC8h ;# ">
+"12202
+[; ;./pic18f67j94.h: 12202: __asm("LCDDATA59 equ 0EC9h");
+[; <" LCDDATA59 equ 0EC9h ;# ">
+"12264
+[; ;./pic18f67j94.h: 12264: __asm("LCDDATA60 equ 0ECAh");
+[; <" LCDDATA60 equ 0ECAh ;# ">
+"12326
+[; ;./pic18f67j94.h: 12326: __asm("LCDDATA61 equ 0ECBh");
+[; <" LCDDATA61 equ 0ECBh ;# ">
+"12388
+[; ;./pic18f67j94.h: 12388: __asm("LCDDATA62 equ 0ECCh");
+[; <" LCDDATA62 equ 0ECCh ;# ">
+"12450
+[; ;./pic18f67j94.h: 12450: __asm("LCDDATA63 equ 0ECDh");
+[; <" LCDDATA63 equ 0ECDh ;# ">
+"12512
+[; ;./pic18f67j94.h: 12512: __asm("LCDSE0 equ 0ECEh");
+[; <" LCDSE0 equ 0ECEh ;# ">
+"12574
+[; ;./pic18f67j94.h: 12574: __asm("LCDSE1 equ 0ECFh");
+[; <" LCDSE1 equ 0ECFh ;# ">
+"12636
+[; ;./pic18f67j94.h: 12636: __asm("LCDSE2 equ 0ED0h");
+[; <" LCDSE2 equ 0ED0h ;# ">
+"12698
+[; ;./pic18f67j94.h: 12698: __asm("LCDSE3 equ 0ED1h");
+[; <" LCDSE3 equ 0ED1h ;# ">
+"12760
+[; ;./pic18f67j94.h: 12760: __asm("LCDSE4 equ 0ED2h");
+[; <" LCDSE4 equ 0ED2h ;# ">
+"12822
+[; ;./pic18f67j94.h: 12822: __asm("LCDSE5 equ 0ED3h");
+[; <" LCDSE5 equ 0ED3h ;# ">
+"12884
+[; ;./pic18f67j94.h: 12884: __asm("LCDSE6 equ 0ED4h");
+[; <" LCDSE6 equ 0ED4h ;# ">
+"12946
+[; ;./pic18f67j94.h: 12946: __asm("LCDSE7 equ 0ED5h");
+[; <" LCDSE7 equ 0ED5h ;# ">
+"13008
+[; ;./pic18f67j94.h: 13008: __asm("LCDRL equ 0ED6h");
+[; <" LCDRL equ 0ED6h ;# ">
+"13086
+[; ;./pic18f67j94.h: 13086: __asm("LCDREF equ 0ED7h");
+[; <" LCDREF equ 0ED7h ;# ">
+"13152
+[; ;./pic18f67j94.h: 13152: __asm("LCDREG equ 0ED8h");
+[; <" LCDREG equ 0ED8h ;# ">
+"13224
+[; ;./pic18f67j94.h: 13224: __asm("LCDCON equ 0ED9h");
+[; <" LCDCON equ 0ED9h ;# ">
+"13300
+[; ;./pic18f67j94.h: 13300: __asm("LCDPS equ 0EDAh");
+[; <" LCDPS equ 0EDAh ;# ">
+"13370
+[; ;./pic18f67j94.h: 13370: __asm("REFO2CON3 equ 0EDBh");
+[; <" REFO2CON3 equ 0EDBh ;# ">
+"13434
+[; ;./pic18f67j94.h: 13434: __asm("REFO2CON2 equ 0EDCh");
+[; <" REFO2CON2 equ 0EDCh ;# ">
+"13504
+[; ;./pic18f67j94.h: 13504: __asm("REFO2CON1 equ 0EDDh");
+[; <" REFO2CON1 equ 0EDDh ;# ">
+"13550
+[; ;./pic18f67j94.h: 13550: __asm("REFO2CON equ 0EDEh");
+[; <" REFO2CON equ 0EDEh ;# ">
+"13602
+[; ;./pic18f67j94.h: 13602: __asm("REFO1CON3 equ 0EDFh");
+[; <" REFO1CON3 equ 0EDFh ;# ">
+"13666
+[; ;./pic18f67j94.h: 13666: __asm("REFO1CON2 equ 0EE0h");
+[; <" REFO1CON2 equ 0EE0h ;# ">
+"13736
+[; ;./pic18f67j94.h: 13736: __asm("REFO1CON1 equ 0EE1h");
+[; <" REFO1CON1 equ 0EE1h ;# ">
+"13782
+[; ;./pic18f67j94.h: 13782: __asm("REFO1CON equ 0EE2h");
+[; <" REFO1CON equ 0EE2h ;# ">
+"13834
+[; ;./pic18f67j94.h: 13834: __asm("ODCON2 equ 0EEAh");
+[; <" ODCON2 equ 0EEAh ;# ">
+"13896
+[; ;./pic18f67j94.h: 13896: __asm("ODCON1 equ 0EEBh");
+[; <" ODCON1 equ 0EEBh ;# ">
+"13958
+[; ;./pic18f67j94.h: 13958: __asm("MDCARL equ 0EECh");
+[; <" MDCARL equ 0EECh ;# ">
+"14023
+[; ;./pic18f67j94.h: 14023: __asm("MDCARH equ 0EEDh");
+[; <" MDCARH equ 0EEDh ;# ">
+"14088
+[; ;./pic18f67j94.h: 14088: __asm("MDSRC equ 0EEEh");
+[; <" MDSRC equ 0EEEh ;# ">
+"14141
+[; ;./pic18f67j94.h: 14141: __asm("MDCON equ 0EEFh");
+[; <" MDCON equ 0EEFh ;# ">
+"14192
+[; ;./pic18f67j94.h: 14192: __asm("PMD4 equ 0EF0h");
+[; <" PMD4 equ 0EF0h ;# ">
+"14249
+[; ;./pic18f67j94.h: 14249: __asm("PMD3 equ 0EF1h");
+[; <" PMD3 equ 0EF1h ;# ">
+"14320
+[; ;./pic18f67j94.h: 14320: __asm("PMD2 equ 0EF2h");
+[; <" PMD2 equ 0EF2h ;# ">
+"14382
+[; ;./pic18f67j94.h: 14382: __asm("PMD1 equ 0EF3h");
+[; <" PMD1 equ 0EF3h ;# ">
+"14452
+[; ;./pic18f67j94.h: 14452: __asm("PMD0 equ 0EF4h");
+[; <" PMD0 equ 0EF4h ;# ">
+"14529
+[; ;./pic18f67j94.h: 14529: __asm("CTMUCON4 equ 0EF5h");
+[; <" CTMUCON4 equ 0EF5h ;# ">
+"14600
+[; ;./pic18f67j94.h: 14600: __asm("CTMUCON3 equ 0EF6h");
+[; <" CTMUCON3 equ 0EF6h ;# ">
+"14660
+[; ;./pic18f67j94.h: 14660: __asm("CTMUCON2 equ 0EF7h");
+[; <" CTMUCON2 equ 0EF7h ;# ">
+"14736
+[; ;./pic18f67j94.h: 14736: __asm("CTMUCON1 equ 0EF8h");
+[; <" CTMUCON1 equ 0EF8h ;# ">
+"14793
+[; ;./pic18f67j94.h: 14793: __asm("TXREG4 equ 0EF9h");
+[; <" TXREG4 equ 0EF9h ;# ">
+"14813
+[; ;./pic18f67j94.h: 14813: __asm("RCREG4 equ 0EFAh");
+[; <" RCREG4 equ 0EFAh ;# ">
+"14833
+[; ;./pic18f67j94.h: 14833: __asm("SPBRG4 equ 0EFBh");
+[; <" SPBRG4 equ 0EFBh ;# ">
+"14903
+[; ;./pic18f67j94.h: 14903: __asm("SPBRGH4 equ 0EFCh");
+[; <" SPBRGH4 equ 0EFCh ;# ">
+"14973
+[; ;./pic18f67j94.h: 14973: __asm("BAUDCON4 equ 0EFDh");
+[; <" BAUDCON4 equ 0EFDh ;# ">
+"15101
+[; ;./pic18f67j94.h: 15101: __asm("TXSTA4 equ 0EFEh");
+[; <" TXSTA4 equ 0EFEh ;# ">
+"15178
+[; ;./pic18f67j94.h: 15178: __asm("RCSTA4 equ 0EFFh");
+[; <" RCSTA4 equ 0EFFh ;# ">
+"15264
+[; ;./pic18f67j94.h: 15264: __asm("DMACON2 equ 0F00h");
+[; <" DMACON2 equ 0F00h ;# ">
+"15340
+[; ;./pic18f67j94.h: 15340: __asm("ANCFG equ 0F01h");
+[; <" ANCFG equ 0F01h ;# ">
+"15372
+[; ;./pic18f67j94.h: 15372: __asm("SSP2ADD equ 0F02h");
+[; <" SSP2ADD equ 0F02h ;# ">
+"15492
+[; ;./pic18f67j94.h: 15492: __asm("SSP2BUF equ 0F03h");
+[; <" SSP2BUF equ 0F03h ;# ">
+"15512
+[; ;./pic18f67j94.h: 15512: __asm("T4CON equ 0F04h");
+[; <" T4CON equ 0F04h ;# ">
+"15583
+[; ;./pic18f67j94.h: 15583: __asm("PR4 equ 0F05h");
+[; <" PR4 equ 0F05h ;# ">
+"15603
+[; ;./pic18f67j94.h: 15603: __asm("TMR4 equ 0F06h");
+[; <" TMR4 equ 0F06h ;# ">
+"15623
+[; ;./pic18f67j94.h: 15623: __asm("CCP7CON equ 0F07h");
+[; <" CCP7CON equ 0F07h ;# ">
+"15702
+[; ;./pic18f67j94.h: 15702: __asm("CCPR7 equ 0F08h");
+[; <" CCPR7 equ 0F08h ;# ">
+"15709
+[; ;./pic18f67j94.h: 15709: __asm("CCPR7L equ 0F08h");
+[; <" CCPR7L equ 0F08h ;# ">
+"15729
+[; ;./pic18f67j94.h: 15729: __asm("CCPR7H equ 0F09h");
+[; <" CCPR7H equ 0F09h ;# ">
+"15749
+[; ;./pic18f67j94.h: 15749: __asm("CCP6CON equ 0F0Ah");
+[; <" CCP6CON equ 0F0Ah ;# ">
+"15828
+[; ;./pic18f67j94.h: 15828: __asm("CCPR6 equ 0F0Bh");
+[; <" CCPR6 equ 0F0Bh ;# ">
+"15835
+[; ;./pic18f67j94.h: 15835: __asm("CCPR6L equ 0F0Bh");
+[; <" CCPR6L equ 0F0Bh ;# ">
+"15855
+[; ;./pic18f67j94.h: 15855: __asm("CCPR6H equ 0F0Ch");
+[; <" CCPR6H equ 0F0Ch ;# ">
+"15875
+[; ;./pic18f67j94.h: 15875: __asm("CCP5CON equ 0F0Dh");
+[; <" CCP5CON equ 0F0Dh ;# ">
+"15954
+[; ;./pic18f67j94.h: 15954: __asm("CCPR5 equ 0F0Eh");
+[; <" CCPR5 equ 0F0Eh ;# ">
+"15961
+[; ;./pic18f67j94.h: 15961: __asm("CCPR5L equ 0F0Eh");
+[; <" CCPR5L equ 0F0Eh ;# ">
+"15981
+[; ;./pic18f67j94.h: 15981: __asm("CCPR5H equ 0F0Fh");
+[; <" CCPR5H equ 0F0Fh ;# ">
+"16001
+[; ;./pic18f67j94.h: 16001: __asm("CCP4CON equ 0F10h");
+[; <" CCP4CON equ 0F10h ;# ">
+"16080
+[; ;./pic18f67j94.h: 16080: __asm("CCPR4 equ 0F11h");
+[; <" CCPR4 equ 0F11h ;# ">
+"16087
+[; ;./pic18f67j94.h: 16087: __asm("CCPR4L equ 0F11h");
+[; <" CCPR4L equ 0F11h ;# ">
+"16107
+[; ;./pic18f67j94.h: 16107: __asm("CCPR4H equ 0F12h");
+[; <" CCPR4H equ 0F12h ;# ">
+"16127
+[; ;./pic18f67j94.h: 16127: __asm("T5GCON equ 0F13h");
+[; <" T5GCON equ 0F13h ;# ">
+"16231
+[; ;./pic18f67j94.h: 16231: __asm("T5CON equ 0F14h");
+[; <" T5CON equ 0F14h ;# ">
+"16349
+[; ;./pic18f67j94.h: 16349: __asm("TMR5 equ 0F15h");
+[; <" TMR5 equ 0F15h ;# ">
+"16356
+[; ;./pic18f67j94.h: 16356: __asm("TMR5L equ 0F15h");
+[; <" TMR5L equ 0F15h ;# ">
+"16376
+[; ;./pic18f67j94.h: 16376: __asm("TMR5H equ 0F16h");
+[; <" TMR5H equ 0F16h ;# ">
+"16396
+[; ;./pic18f67j94.h: 16396: __asm("SSP2MSK equ 0F17h");
+[; <" SSP2MSK equ 0F17h ;# ">
+"16466
+[; ;./pic18f67j94.h: 16466: __asm("SSP2CON2 equ 0F18h");
+[; <" SSP2CON2 equ 0F18h ;# ">
+"16653
+[; ;./pic18f67j94.h: 16653: __asm("SSP2CON1 equ 0F19h");
+[; <" SSP2CON1 equ 0F19h ;# ">
+"16773
+[; ;./pic18f67j94.h: 16773: __asm("SSP2STAT equ 0F1Ah");
+[; <" SSP2STAT equ 0F1Ah ;# ">
+"17227
+[; ;./pic18f67j94.h: 17227: __asm("PSTR3CON equ 0F1Bh");
+[; <" PSTR3CON equ 0F1Bh ;# ">
+"17416
+[; ;./pic18f67j94.h: 17416: __asm("PSTR2CON equ 0F1Ch");
+[; <" PSTR2CON equ 0F1Ch ;# ">
+"17605
+[; ;./pic18f67j94.h: 17605: __asm("TXREG2 equ 0F1Dh");
+[; <" TXREG2 equ 0F1Dh ;# ">
+"17625
+[; ;./pic18f67j94.h: 17625: __asm("RCREG2 equ 0F1Eh");
+[; <" RCREG2 equ 0F1Eh ;# ">
+"17645
+[; ;./pic18f67j94.h: 17645: __asm("SPBRG2 equ 0F1Fh");
+[; <" SPBRG2 equ 0F1Fh ;# ">
+"17715
+[; ;./pic18f67j94.h: 17715: __asm("SPBRGH2 equ 0F20h");
+[; <" SPBRGH2 equ 0F20h ;# ">
+"17785
+[; ;./pic18f67j94.h: 17785: __asm("DSGPR3 equ 0F21h");
+[; <" DSGPR3 equ 0F21h ;# ">
+"17805
+[; ;./pic18f67j94.h: 17805: __asm("DSGPR2 equ 0F22h");
+[; <" DSGPR2 equ 0F22h ;# ">
+"17825
+[; ;./pic18f67j94.h: 17825: __asm("DSGPR1 equ 0F23h");
+[; <" DSGPR1 equ 0F23h ;# ">
+"17845
+[; ;./pic18f67j94.h: 17845: __asm("DSGPR0 equ 0F24h");
+[; <" DSGPR0 equ 0F24h ;# ">
+"17865
+[; ;./pic18f67j94.h: 17865: __asm("DSWAKEH equ 0F25h");
+[; <" DSWAKEH equ 0F25h ;# ">
+"17885
+[; ;./pic18f67j94.h: 17885: __asm("DSWAKEL equ 0F26h");
+[; <" DSWAKEL equ 0F26h ;# ">
+"17947
+[; ;./pic18f67j94.h: 17947: __asm("DSCONH equ 0F27h");
+[; <" DSCONH equ 0F27h ;# ">
+"17974
+[; ;./pic18f67j94.h: 17974: __asm("DSCONL equ 0F28h");
+[; <" DSCONL equ 0F28h ;# ">
+"18006
+[; ;./pic18f67j94.h: 18006: __asm("TXREG3 equ 0F29h");
+[; <" TXREG3 equ 0F29h ;# ">
+"18026
+[; ;./pic18f67j94.h: 18026: __asm("RCREG3 equ 0F2Ah");
+[; <" RCREG3 equ 0F2Ah ;# ">
+"18046
+[; ;./pic18f67j94.h: 18046: __asm("SPBRG3 equ 0F2Bh");
+[; <" SPBRG3 equ 0F2Bh ;# ">
+"18116
+[; ;./pic18f67j94.h: 18116: __asm("SPBRGH3 equ 0F2Ch");
+[; <" SPBRGH3 equ 0F2Ch ;# ">
+"18186
+[; ;./pic18f67j94.h: 18186: __asm("BAUDCON3 equ 0F2Dh");
+[; <" BAUDCON3 equ 0F2Dh ;# ">
+"18314
+[; ;./pic18f67j94.h: 18314: __asm("TXSTA3 equ 0F2Eh");
+[; <" TXSTA3 equ 0F2Eh ;# ">
+"18391
+[; ;./pic18f67j94.h: 18391: __asm("RCSTA3 equ 0F2Fh");
+[; <" RCSTA3 equ 0F2Fh ;# ">
+"18477
+[; ;./pic18f67j94.h: 18477: __asm("SPBRGH1 equ 0F30h");
+[; <" SPBRGH1 equ 0F30h ;# ">
+"18482
+[; ;./pic18f67j94.h: 18482: __asm("SPBRGH equ 0F30h");
+[; <" SPBRGH equ 0F30h ;# ">
+"18615
+[; ;./pic18f67j94.h: 18615: __asm("BAUDCON2 equ 0F31h");
+[; <" BAUDCON2 equ 0F31h ;# ">
+"18743
+[; ;./pic18f67j94.h: 18743: __asm("TXSTA2 equ 0F32h");
+[; <" TXSTA2 equ 0F32h ;# ">
+"18820
+[; ;./pic18f67j94.h: 18820: __asm("RCSTA2 equ 0F33h");
+[; <" RCSTA2 equ 0F33h ;# ">
+"18906
+[; ;./pic18f67j94.h: 18906: __asm("CCPTMRS2 equ 0F34h");
+[; <" CCPTMRS2 equ 0F34h ;# ">
+"18966
+[; ;./pic18f67j94.h: 18966: __asm("CCPTMRS1 equ 0F35h");
+[; <" CCPTMRS1 equ 0F35h ;# ">
+"19046
+[; ;./pic18f67j94.h: 19046: __asm("CCPTMRS0 equ 0F36h");
+[; <" CCPTMRS0 equ 0F36h ;# ">
+"19128
+[; ;./pic18f67j94.h: 19128: __asm("CM3CON equ 0F37h");
+[; <" CM3CON equ 0F37h ;# ">
+"19255
+[; ;./pic18f67j94.h: 19255: __asm("CM2CON equ 0F38h");
+[; <" CM2CON equ 0F38h ;# ">
+"19382
+[; ;./pic18f67j94.h: 19382: __asm("SSP2CON3 equ 0F39h");
+[; <" SSP2CON3 equ 0F39h ;# ">
+"19444
+[; ;./pic18f67j94.h: 19444: __asm("T8CON equ 0F3Ah");
+[; <" T8CON equ 0F3Ah ;# ">
+"19515
+[; ;./pic18f67j94.h: 19515: __asm("PR8 equ 0F3Bh");
+[; <" PR8 equ 0F3Bh ;# ">
+"19535
+[; ;./pic18f67j94.h: 19535: __asm("TMR8 equ 0F3Ch");
+[; <" TMR8 equ 0F3Ch ;# ">
+"19555
+[; ;./pic18f67j94.h: 19555: __asm("T6CON equ 0F3Dh");
+[; <" T6CON equ 0F3Dh ;# ">
+"19626
+[; ;./pic18f67j94.h: 19626: __asm("PR6 equ 0F3Eh");
+[; <" PR6 equ 0F3Eh ;# ">
+"19646
+[; ;./pic18f67j94.h: 19646: __asm("TMR6 equ 0F3Fh");
+[; <" TMR6 equ 0F3Fh ;# ">
+"19666
+[; ;./pic18f67j94.h: 19666: __asm("CCP10CON equ 0F40h");
+[; <" CCP10CON equ 0F40h ;# ">
+"19745
+[; ;./pic18f67j94.h: 19745: __asm("CCPR10 equ 0F41h");
+[; <" CCPR10 equ 0F41h ;# ">
+"19752
+[; ;./pic18f67j94.h: 19752: __asm("CCPR10L equ 0F41h");
+[; <" CCPR10L equ 0F41h ;# ">
+"19772
+[; ;./pic18f67j94.h: 19772: __asm("CCPR10H equ 0F42h");
+[; <" CCPR10H equ 0F42h ;# ">
+"19792
+[; ;./pic18f67j94.h: 19792: __asm("CCP9CON equ 0F43h");
+[; <" CCP9CON equ 0F43h ;# ">
+"19871
+[; ;./pic18f67j94.h: 19871: __asm("CCPR9 equ 0F44h");
+[; <" CCPR9 equ 0F44h ;# ">
+"19878
+[; ;./pic18f67j94.h: 19878: __asm("CCPR9L equ 0F44h");
+[; <" CCPR9L equ 0F44h ;# ">
+"19898
+[; ;./pic18f67j94.h: 19898: __asm("CCPR9H equ 0F45h");
+[; <" CCPR9H equ 0F45h ;# ">
+"19918
+[; ;./pic18f67j94.h: 19918: __asm("CCP8CON equ 0F46h");
+[; <" CCP8CON equ 0F46h ;# ">
+"19997
+[; ;./pic18f67j94.h: 19997: __asm("CCPR8 equ 0F47h");
+[; <" CCPR8 equ 0F47h ;# ">
+"20004
+[; ;./pic18f67j94.h: 20004: __asm("CCPR8L equ 0F47h");
+[; <" CCPR8L equ 0F47h ;# ">
+"20024
+[; ;./pic18f67j94.h: 20024: __asm("CCPR8H equ 0F48h");
+[; <" CCPR8H equ 0F48h ;# ">
+"20044
+[; ;./pic18f67j94.h: 20044: __asm("CCP3CON equ 0F49h");
+[; <" CCP3CON equ 0F49h ;# ">
+"20141
+[; ;./pic18f67j94.h: 20141: __asm("CCPR3 equ 0F4Ah");
+[; <" CCPR3 equ 0F4Ah ;# ">
+"20148
+[; ;./pic18f67j94.h: 20148: __asm("CCPR3L equ 0F4Ah");
+[; <" CCPR3L equ 0F4Ah ;# ">
+"20168
+[; ;./pic18f67j94.h: 20168: __asm("CCPR3H equ 0F4Bh");
+[; <" CCPR3H equ 0F4Bh ;# ">
+"20188
+[; ;./pic18f67j94.h: 20188: __asm("ECCP3DEL equ 0F4Ch");
+[; <" ECCP3DEL equ 0F4Ch ;# ">
+"20258
+[; ;./pic18f67j94.h: 20258: __asm("ECCP3AS equ 0F4Dh");
+[; <" ECCP3AS equ 0F4Dh ;# ">
+"20340
+[; ;./pic18f67j94.h: 20340: __asm("CCP2CON equ 0F4Eh");
+[; <" CCP2CON equ 0F4Eh ;# ">
+"20437
+[; ;./pic18f67j94.h: 20437: __asm("CCPR2 equ 0F4Fh");
+[; <" CCPR2 equ 0F4Fh ;# ">
+"20444
+[; ;./pic18f67j94.h: 20444: __asm("CCPR2L equ 0F4Fh");
+[; <" CCPR2L equ 0F4Fh ;# ">
+"20464
+[; ;./pic18f67j94.h: 20464: __asm("CCPR2H equ 0F50h");
+[; <" CCPR2H equ 0F50h ;# ">
+"20484
+[; ;./pic18f67j94.h: 20484: __asm("ECCP2DEL equ 0F51h");
+[; <" ECCP2DEL equ 0F51h ;# ">
+"20554
+[; ;./pic18f67j94.h: 20554: __asm("ECCP2AS equ 0F52h");
+[; <" ECCP2AS equ 0F52h ;# ">
+"20636
+[; ;./pic18f67j94.h: 20636: __asm("CM1CON equ 0F53h");
+[; <" CM1CON equ 0F53h ;# ">
+"20777
+[; ;./pic18f67j94.h: 20777: __asm("PADCFG1 equ 0F54h");
+[; <" PADCFG1 equ 0F54h ;# ">
+"20847
+[; ;./pic18f67j94.h: 20847: __asm("IOCN equ 0F55h");
+[; <" IOCN equ 0F55h ;# ">
+"20909
+[; ;./pic18f67j94.h: 20909: __asm("IOCP equ 0F56h");
+[; <" IOCP equ 0F56h ;# ">
+"20971
+[; ;./pic18f67j94.h: 20971: __asm("RTCCON2 equ 0F57h");
+[; <" RTCCON2 equ 0F57h ;# ">
+"21047
+[; ;./pic18f67j94.h: 21047: __asm("ALRMVALL equ 0F58h");
+[; <" ALRMVALL equ 0F58h ;# ">
+"21067
+[; ;./pic18f67j94.h: 21067: __asm("ALRMVALH equ 0F59h");
+[; <" ALRMVALH equ 0F59h ;# ">
+"21087
+[; ;./pic18f67j94.h: 21087: __asm("ALRMRPT equ 0F5Ah");
+[; <" ALRMRPT equ 0F5Ah ;# ">
+"21157
+[; ;./pic18f67j94.h: 21157: __asm("ALRMCFG equ 0F5Bh");
+[; <" ALRMCFG equ 0F5Bh ;# ">
+"21233
+[; ;./pic18f67j94.h: 21233: __asm("RTCVALL equ 0F5Ch");
+[; <" RTCVALL equ 0F5Ch ;# ">
+"21253
+[; ;./pic18f67j94.h: 21253: __asm("RTCVALH equ 0F5Dh");
+[; <" RTCVALH equ 0F5Dh ;# ">
+"21323
+[; ;./pic18f67j94.h: 21323: __asm("RTCCAL equ 0F5Eh");
+[; <" RTCCAL equ 0F5Eh ;# ">
+"21393
+[; ;./pic18f67j94.h: 21393: __asm("RTCCON1 equ 0F5Fh");
+[; <" RTCCON1 equ 0F5Fh ;# ">
+"21458
+[; ;./pic18f67j94.h: 21458: __asm("DMACON1 equ 0F60h");
+[; <" DMACON1 equ 0F60h ;# ">
+"21536
+[; ;./pic18f67j94.h: 21536: __asm("PIE6 equ 0F61h");
+[; <" PIE6 equ 0F61h ;# ">
+"21593
+[; ;./pic18f67j94.h: 21593: __asm("WPUB equ 0F62h");
+[; <" WPUB equ 0F62h ;# ">
+"21655
+[; ;./pic18f67j94.h: 21655: __asm("ACTCON equ 0F63h");
+[; <" ACTCON equ 0F63h ;# ">
+"21712
+[; ;./pic18f67j94.h: 21712: __asm("OSCCON4 equ 0F64h");
+[; <" OSCCON4 equ 0F64h ;# ">
+"21754
+[; ;./pic18f67j94.h: 21754: __asm("OSCCON3 equ 0F65h");
+[; <" OSCCON3 equ 0F65h ;# ">
+"21794
+[; ;./pic18f67j94.h: 21794: __asm("OSCCON2 equ 0F66h");
+[; <" OSCCON2 equ 0F66h ;# ">
+"21846
+[; ;./pic18f67j94.h: 21846: __asm("BAUDCON1 equ 0F67h");
+[; <" BAUDCON1 equ 0F67h ;# ">
+"21851
+[; ;./pic18f67j94.h: 21851: __asm("BAUDCON equ 0F67h");
+[; <" BAUDCON equ 0F67h ;# ">
+"22180
+[; ;./pic18f67j94.h: 22180: __asm("SSP1MSK equ 0F68h");
+[; <" SSP1MSK equ 0F68h ;# ">
+"22250
+[; ;./pic18f67j94.h: 22250: __asm("SSP1CON3 equ 0F69h");
+[; <" SSP1CON3 equ 0F69h ;# ">
+"22312
+[; ;./pic18f67j94.h: 22312: __asm("TXBUF equ 0F6Ah");
+[; <" TXBUF equ 0F6Ah ;# ">
+"22382
+[; ;./pic18f67j94.h: 22382: __asm("DMABCH equ 0F6Bh");
+[; <" DMABCH equ 0F6Bh ;# ">
+"22416
+[; ;./pic18f67j94.h: 22416: __asm("DMABCL equ 0F6Ch");
+[; <" DMABCL equ 0F6Ch ;# ">
+"22486
+[; ;./pic18f67j94.h: 22486: __asm("RXADDRH equ 0F6Dh");
+[; <" RXADDRH equ 0F6Dh ;# ">
+"22532
+[; ;./pic18f67j94.h: 22532: __asm("RXADDRL equ 0F6Eh");
+[; <" RXADDRL equ 0F6Eh ;# ">
+"22602
+[; ;./pic18f67j94.h: 22602: __asm("TXADDRH equ 0F6Fh");
+[; <" TXADDRH equ 0F6Fh ;# ">
+"22648
+[; ;./pic18f67j94.h: 22648: __asm("TXADDRL equ 0F70h");
+[; <" TXADDRL equ 0F70h ;# ">
+"22718
+[; ;./pic18f67j94.h: 22718: __asm("PORTVP equ 0F71h");
+[; <" PORTVP equ 0F71h ;# ">
+"22780
+[; ;./pic18f67j94.h: 22780: __asm("LATVP equ 0F72h");
+[; <" LATVP equ 0F72h ;# ">
+"22842
+[; ;./pic18f67j94.h: 22842: __asm("TRISVP equ 0F73h");
+[; <" TRISVP equ 0F73h ;# ">
+"22904
+[; ;./pic18f67j94.h: 22904: __asm("UADDR equ 0F74h");
+[; <" UADDR equ 0F74h ;# ">
+"22968
+[; ;./pic18f67j94.h: 22968: __asm("UCON equ 0F75h");
+[; <" UCON equ 0F75h ;# ">
+"23019
+[; ;./pic18f67j94.h: 23019: __asm("USTAT equ 0F76h");
+[; <" USTAT equ 0F76h ;# ">
+"23079
+[; ;./pic18f67j94.h: 23079: __asm("UEIR equ 0F77h");
+[; <" UEIR equ 0F77h ;# ">
+"23130
+[; ;./pic18f67j94.h: 23130: __asm("UIR equ 0F78h");
+[; <" UIR equ 0F78h ;# ">
+"23186
+[; ;./pic18f67j94.h: 23186: __asm("UFRM equ 0F79h");
+[; <" UFRM equ 0F79h ;# ">
+"23193
+[; ;./pic18f67j94.h: 23193: __asm("UFRMH equ 0F79h");
+[; <" UFRMH equ 0F79h ;# ">
+"23233
+[; ;./pic18f67j94.h: 23233: __asm("UFRML equ 0F7Ah");
+[; <" UFRML equ 0F7Ah ;# ">
+"23311
+[; ;./pic18f67j94.h: 23311: __asm("RCON4 equ 0F7Bh");
+[; <" RCON4 equ 0F7Bh ;# ">
+"23345
+[; ;./pic18f67j94.h: 23345: __asm("RCON3 equ 0F7Ch");
+[; <" RCON3 equ 0F7Ch ;# ">
+"23390
+[; ;./pic18f67j94.h: 23390: __asm("RCON2 equ 0F7Dh");
+[; <" RCON2 equ 0F7Dh ;# ">
+"23418
+[; ;./pic18f67j94.h: 23418: __asm("EECON2 equ 0F7Eh");
+[; <" EECON2 equ 0F7Eh ;# ">
+"23438
+[; ;./pic18f67j94.h: 23438: __asm("EECON1 equ 0F7Fh");
+[; <" EECON1 equ 0F7Fh ;# ">
+"23483
+[; ;./pic18f67j94.h: 23483: __asm("PORTA equ 0F80h");
+[; <" PORTA equ 0F80h ;# ">
+"23567
+[; ;./pic18f67j94.h: 23567: __asm("PORTB equ 0F81h");
+[; <" PORTB equ 0F81h ;# ">
+"23638
+[; ;./pic18f67j94.h: 23638: __asm("PORTC equ 0F82h");
+[; <" PORTC equ 0F82h ;# ">
+"23724
+[; ;./pic18f67j94.h: 23724: __asm("PORTD equ 0F83h");
+[; <" PORTD equ 0F83h ;# ">
+"23795
+[; ;./pic18f67j94.h: 23795: __asm("PORTE equ 0F84h");
+[; <" PORTE equ 0F84h ;# ">
+"23966
+[; ;./pic18f67j94.h: 23966: __asm("PORTF equ 0F85h");
+[; <" PORTF equ 0F85h ;# ">
+"24026
+[; ;./pic18f67j94.h: 24026: __asm("PORTG equ 0F86h");
+[; <" PORTG equ 0F86h ;# ">
+"24079
+[; ;./pic18f67j94.h: 24079: __asm("LATA equ 0F89h");
+[; <" LATA equ 0F89h ;# ">
+"24191
+[; ;./pic18f67j94.h: 24191: __asm("LATB equ 0F8Ah");
+[; <" LATB equ 0F8Ah ;# ">
+"24303
+[; ;./pic18f67j94.h: 24303: __asm("LATC equ 0F8Bh");
+[; <" LATC equ 0F8Bh ;# ">
+"24415
+[; ;./pic18f67j94.h: 24415: __asm("LATD equ 0F8Ch");
+[; <" LATD equ 0F8Ch ;# ">
+"24527
+[; ;./pic18f67j94.h: 24527: __asm("LATE equ 0F8Dh");
+[; <" LATE equ 0F8Dh ;# ">
+"24639
+[; ;./pic18f67j94.h: 24639: __asm("LATF equ 0F8Eh");
+[; <" LATF equ 0F8Eh ;# ">
+"24729
+[; ;./pic18f67j94.h: 24729: __asm("LATG equ 0F8Fh");
+[; <" LATG equ 0F8Fh ;# ">
+"24805
+[; ;./pic18f67j94.h: 24805: __asm("TRISA equ 0F92h");
+[; <" TRISA equ 0F92h ;# ">
+"24867
+[; ;./pic18f67j94.h: 24867: __asm("TRISB equ 0F93h");
+[; <" TRISB equ 0F93h ;# ">
+"24929
+[; ;./pic18f67j94.h: 24929: __asm("TRISC equ 0F94h");
+[; <" TRISC equ 0F94h ;# ">
+"24991
+[; ;./pic18f67j94.h: 24991: __asm("TRISD equ 0F95h");
+[; <" TRISD equ 0F95h ;# ">
+"25053
+[; ;./pic18f67j94.h: 25053: __asm("TRISE equ 0F96h");
+[; <" TRISE equ 0F96h ;# ">
+"25115
+[; ;./pic18f67j94.h: 25115: __asm("TRISF equ 0F97h");
+[; <" TRISF equ 0F97h ;# ">
+"25166
+[; ;./pic18f67j94.h: 25166: __asm("TRISG equ 0F98h");
+[; <" TRISG equ 0F98h ;# ">
+"25210
+[; ;./pic18f67j94.h: 25210: __asm("OSCTUNE equ 0F9Bh");
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"25268
+[; ;./pic18f67j94.h: 25268: __asm("PSTR1CON equ 0F9Ch");
+[; <" PSTR1CON equ 0F9Ch ;# ">
+"25457
+[; ;./pic18f67j94.h: 25457: __asm("PIE1 equ 0F9Dh");
+[; <" PIE1 equ 0F9Dh ;# ">
+"25528
+[; ;./pic18f67j94.h: 25528: __asm("PIR1 equ 0F9Eh");
+[; <" PIR1 equ 0F9Eh ;# ">
+"25599
+[; ;./pic18f67j94.h: 25599: __asm("IPR1 equ 0F9Fh");
+[; <" IPR1 equ 0F9Fh ;# ">
+"25661
+[; ;./pic18f67j94.h: 25661: __asm("PIE2 equ 0FA0h");
+[; <" PIE2 equ 0FA0h ;# ">
+"25732
+[; ;./pic18f67j94.h: 25732: __asm("PIR2 equ 0FA1h");
+[; <" PIR2 equ 0FA1h ;# ">
+"25812
+[; ;./pic18f67j94.h: 25812: __asm("IPR2 equ 0FA2h");
+[; <" IPR2 equ 0FA2h ;# ">
+"25883
+[; ;./pic18f67j94.h: 25883: __asm("PIE3 equ 0FA3h");
+[; <" PIE3 equ 0FA3h ;# ">
+"25993
+[; ;./pic18f67j94.h: 25993: __asm("PIR3 equ 0FA4h");
+[; <" PIR3 equ 0FA4h ;# ">
+"26071
+[; ;./pic18f67j94.h: 26071: __asm("IPR3 equ 0FA5h");
+[; <" IPR3 equ 0FA5h ;# ">
+"26149
+[; ;./pic18f67j94.h: 26149: __asm("PIR6 equ 0FA6h");
+[; <" PIR6 equ 0FA6h ;# ">
+"26206
+[; ;./pic18f67j94.h: 26206: __asm("PSPCON equ 0FA7h");
+[; <" PSPCON equ 0FA7h ;# ">
+"26245
+[; ;./pic18f67j94.h: 26245: __asm("HLVDCON equ 0FA8h");
+[; <" HLVDCON equ 0FA8h ;# ">
+"26315
+[; ;./pic18f67j94.h: 26315: __asm("IPR6 equ 0FA9h");
+[; <" IPR6 equ 0FA9h ;# ">
+"26372
+[; ;./pic18f67j94.h: 26372: __asm("T1GCON equ 0FAAh");
+[; <" T1GCON equ 0FAAh ;# ">
+"26476
+[; ;./pic18f67j94.h: 26476: __asm("RCSTA1 equ 0FABh");
+[; <" RCSTA1 equ 0FABh ;# ">
+"26481
+[; ;./pic18f67j94.h: 26481: __asm("RCSTA equ 0FABh");
+[; <" RCSTA equ 0FABh ;# ">
+"26682
+[; ;./pic18f67j94.h: 26682: __asm("TXSTA1 equ 0FACh");
+[; <" TXSTA1 equ 0FACh ;# ">
+"26687
+[; ;./pic18f67j94.h: 26687: __asm("TXSTA equ 0FACh");
+[; <" TXSTA equ 0FACh ;# ">
+"26976
+[; ;./pic18f67j94.h: 26976: __asm("TXREG1 equ 0FADh");
+[; <" TXREG1 equ 0FADh ;# ">
+"26981
+[; ;./pic18f67j94.h: 26981: __asm("TXREG equ 0FADh");
+[; <" TXREG equ 0FADh ;# ">
+"27014
+[; ;./pic18f67j94.h: 27014: __asm("RCREG1 equ 0FAEh");
+[; <" RCREG1 equ 0FAEh ;# ">
+"27019
+[; ;./pic18f67j94.h: 27019: __asm("RCREG equ 0FAEh");
+[; <" RCREG equ 0FAEh ;# ">
+"27052
+[; ;./pic18f67j94.h: 27052: __asm("SPBRG1 equ 0FAFh");
+[; <" SPBRG1 equ 0FAFh ;# ">
+"27057
+[; ;./pic18f67j94.h: 27057: __asm("SPBRG equ 0FAFh");
+[; <" SPBRG equ 0FAFh ;# ">
+"27190
+[; ;./pic18f67j94.h: 27190: __asm("T3GCON equ 0FB0h");
+[; <" T3GCON equ 0FB0h ;# ">
+"27294
+[; ;./pic18f67j94.h: 27294: __asm("T3CON equ 0FB1h");
+[; <" T3CON equ 0FB1h ;# ">
+"27412
+[; ;./pic18f67j94.h: 27412: __asm("TMR3 equ 0FB2h");
+[; <" TMR3 equ 0FB2h ;# ">
+"27419
+[; ;./pic18f67j94.h: 27419: __asm("TMR3L equ 0FB2h");
+[; <" TMR3L equ 0FB2h ;# ">
+"27439
+[; ;./pic18f67j94.h: 27439: __asm("TMR3H equ 0FB3h");
+[; <" TMR3H equ 0FB3h ;# ">
+"27459
+[; ;./pic18f67j94.h: 27459: __asm("PIE4 equ 0FB4h");
+[; <" PIE4 equ 0FB4h ;# ">
+"27521
+[; ;./pic18f67j94.h: 27521: __asm("PIR4 equ 0FB5h");
+[; <" PIR4 equ 0FB5h ;# ">
+"27583
+[; ;./pic18f67j94.h: 27583: __asm("IPR4 equ 0FB6h");
+[; <" IPR4 equ 0FB6h ;# ">
+"27653
+[; ;./pic18f67j94.h: 27653: __asm("PIE5 equ 0FB7h");
+[; <" PIE5 equ 0FB7h ;# ">
+"27704
+[; ;./pic18f67j94.h: 27704: __asm("PIR5 equ 0FB8h");
+[; <" PIR5 equ 0FB8h ;# ">
+"27755
+[; ;./pic18f67j94.h: 27755: __asm("CCP1CON equ 0FB9h");
+[; <" CCP1CON equ 0FB9h ;# ">
+"27852
+[; ;./pic18f67j94.h: 27852: __asm("CCPR1 equ 0FBAh");
+[; <" CCPR1 equ 0FBAh ;# ">
+"27859
+[; ;./pic18f67j94.h: 27859: __asm("CCPR1L equ 0FBAh");
+[; <" CCPR1L equ 0FBAh ;# ">
+"27879
+[; ;./pic18f67j94.h: 27879: __asm("CCPR1H equ 0FBBh");
+[; <" CCPR1H equ 0FBBh ;# ">
+"27899
+[; ;./pic18f67j94.h: 27899: __asm("ECCP1DEL equ 0FBCh");
+[; <" ECCP1DEL equ 0FBCh ;# ">
+"27969
+[; ;./pic18f67j94.h: 27969: __asm("ECCP1AS equ 0FBDh");
+[; <" ECCP1AS equ 0FBDh ;# ">
+"28051
+[; ;./pic18f67j94.h: 28051: __asm("CVRCONL equ 0FBEh");
+[; <" CVRCONL equ 0FBEh ;# ">
+"28105
+[; ;./pic18f67j94.h: 28105: __asm("CVRCONH equ 0FBFh");
+[; <" CVRCONH equ 0FBFh ;# ">
+"28157
+[; ;./pic18f67j94.h: 28157: __asm("ADCON1L equ 0FC0h");
+[; <" ADCON1L equ 0FC0h ;# ">
+"28223
+[; ;./pic18f67j94.h: 28223: __asm("ADCON1H equ 0FC1h");
+[; <" ADCON1H equ 0FC1h ;# ">
+"28270
+[; ;./pic18f67j94.h: 28270: __asm("ADCBUF0 equ 0FC2h");
+[; <" ADCBUF0 equ 0FC2h ;# ">
+"28277
+[; ;./pic18f67j94.h: 28277: __asm("ADCBUF0L equ 0FC2h");
+[; <" ADCBUF0L equ 0FC2h ;# ">
+"28297
+[; ;./pic18f67j94.h: 28297: __asm("ADCBUF0H equ 0FC3h");
+[; <" ADCBUF0H equ 0FC3h ;# ">
+"28317
+[; ;./pic18f67j94.h: 28317: __asm("CMSTAT equ 0FC4h");
+[; <" CMSTAT equ 0FC4h ;# ">
+"28349
+[; ;./pic18f67j94.h: 28349: __asm("SSP1CON2 equ 0FC5h");
+[; <" SSP1CON2 equ 0FC5h ;# ">
+"28536
+[; ;./pic18f67j94.h: 28536: __asm("SSP1CON1 equ 0FC6h");
+[; <" SSP1CON1 equ 0FC6h ;# ">
+"28656
+[; ;./pic18f67j94.h: 28656: __asm("SSP1STAT equ 0FC7h");
+[; <" SSP1STAT equ 0FC7h ;# ">
+"29110
+[; ;./pic18f67j94.h: 29110: __asm("SSP1ADD equ 0FC8h");
+[; <" SSP1ADD equ 0FC8h ;# ">
+"29230
+[; ;./pic18f67j94.h: 29230: __asm("SSP1BUF equ 0FC9h");
+[; <" SSP1BUF equ 0FC9h ;# ">
+"29250
+[; ;./pic18f67j94.h: 29250: __asm("T2CON equ 0FCAh");
+[; <" T2CON equ 0FCAh ;# ">
+"29321
+[; ;./pic18f67j94.h: 29321: __asm("PR2 equ 0FCBh");
+[; <" PR2 equ 0FCBh ;# ">
+"29326
+[; ;./pic18f67j94.h: 29326: __asm("MEMCON equ 0FCBh");
+[; <" MEMCON equ 0FCBh ;# ">
+"29447
+[; ;./pic18f67j94.h: 29447: __asm("TMR2 equ 0FCCh");
+[; <" TMR2 equ 0FCCh ;# ">
+"29467
+[; ;./pic18f67j94.h: 29467: __asm("T1CON equ 0FCDh");
+[; <" T1CON equ 0FCDh ;# ">
+"29585
+[; ;./pic18f67j94.h: 29585: __asm("TMR1 equ 0FCEh");
+[; <" TMR1 equ 0FCEh ;# ">
+"29592
+[; ;./pic18f67j94.h: 29592: __asm("TMR1L equ 0FCEh");
+[; <" TMR1L equ 0FCEh ;# ">
+"29612
+[; ;./pic18f67j94.h: 29612: __asm("TMR1H equ 0FCFh");
+[; <" TMR1H equ 0FCFh ;# ">
+"29632
+[; ;./pic18f67j94.h: 29632: __asm("RCON equ 0FD0h");
+[; <" RCON equ 0FD0h ;# ">
+"29780
+[; ;./pic18f67j94.h: 29780: __asm("IOCF equ 0FD1h");
+[; <" IOCF equ 0FD1h ;# ">
+"29842
+[; ;./pic18f67j94.h: 29842: __asm("IPR5 equ 0FD2h");
+[; <" IPR5 equ 0FD2h ;# ">
+"29914
+[; ;./pic18f67j94.h: 29914: __asm("OSCCON equ 0FD3h");
+[; <" OSCCON equ 0FD3h ;# ">
+"29994
+[; ;./pic18f67j94.h: 29994: __asm("T0CON equ 0FD5h");
+[; <" T0CON equ 0FD5h ;# ">
+"30071
+[; ;./pic18f67j94.h: 30071: __asm("TMR0 equ 0FD6h");
+[; <" TMR0 equ 0FD6h ;# ">
+"30078
+[; ;./pic18f67j94.h: 30078: __asm("TMR0L equ 0FD6h");
+[; <" TMR0L equ 0FD6h ;# ">
+"30098
+[; ;./pic18f67j94.h: 30098: __asm("TMR0H equ 0FD7h");
+[; <" TMR0H equ 0FD7h ;# ">
+"30118
+[; ;./pic18f67j94.h: 30118: __asm("STATUS equ 0FD8h");
+[; <" STATUS equ 0FD8h ;# ">
+"30189
+[; ;./pic18f67j94.h: 30189: __asm("FSR2 equ 0FD9h");
+[; <" FSR2 equ 0FD9h ;# ">
+"30196
+[; ;./pic18f67j94.h: 30196: __asm("FSR2L equ 0FD9h");
+[; <" FSR2L equ 0FD9h ;# ">
+"30216
+[; ;./pic18f67j94.h: 30216: __asm("FSR2H equ 0FDAh");
+[; <" FSR2H equ 0FDAh ;# ">
+"30223
+[; ;./pic18f67j94.h: 30223: __asm("PLUSW2 equ 0FDBh");
+[; <" PLUSW2 equ 0FDBh ;# ">
+"30243
+[; ;./pic18f67j94.h: 30243: __asm("PREINC2 equ 0FDCh");
+[; <" PREINC2 equ 0FDCh ;# ">
+"30263
+[; ;./pic18f67j94.h: 30263: __asm("POSTDEC2 equ 0FDDh");
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"30283
+[; ;./pic18f67j94.h: 30283: __asm("POSTINC2 equ 0FDEh");
+[; <" POSTINC2 equ 0FDEh ;# ">
+"30303
+[; ;./pic18f67j94.h: 30303: __asm("INDF2 equ 0FDFh");
+[; <" INDF2 equ 0FDFh ;# ">
+"30323
+[; ;./pic18f67j94.h: 30323: __asm("BSR equ 0FE0h");
+[; <" BSR equ 0FE0h ;# ">
+"30330
+[; ;./pic18f67j94.h: 30330: __asm("FSR1 equ 0FE1h");
+[; <" FSR1 equ 0FE1h ;# ">
+"30337
+[; ;./pic18f67j94.h: 30337: __asm("FSR1L equ 0FE1h");
+[; <" FSR1L equ 0FE1h ;# ">
+"30357
+[; ;./pic18f67j94.h: 30357: __asm("FSR1H equ 0FE2h");
+[; <" FSR1H equ 0FE2h ;# ">
+"30364
+[; ;./pic18f67j94.h: 30364: __asm("PLUSW1 equ 0FE3h");
+[; <" PLUSW1 equ 0FE3h ;# ">
+"30384
+[; ;./pic18f67j94.h: 30384: __asm("PREINC1 equ 0FE4h");
+[; <" PREINC1 equ 0FE4h ;# ">
+"30404
+[; ;./pic18f67j94.h: 30404: __asm("POSTDEC1 equ 0FE5h");
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"30424
+[; ;./pic18f67j94.h: 30424: __asm("POSTINC1 equ 0FE6h");
+[; <" POSTINC1 equ 0FE6h ;# ">
+"30444
+[; ;./pic18f67j94.h: 30444: __asm("INDF1 equ 0FE7h");
+[; <" INDF1 equ 0FE7h ;# ">
+"30464
+[; ;./pic18f67j94.h: 30464: __asm("WREG equ 0FE8h");
+[; <" WREG equ 0FE8h ;# ">
+"30484
+[; ;./pic18f67j94.h: 30484: __asm("FSR0 equ 0FE9h");
+[; <" FSR0 equ 0FE9h ;# ">
+"30491
+[; ;./pic18f67j94.h: 30491: __asm("FSR0L equ 0FE9h");
+[; <" FSR0L equ 0FE9h ;# ">
+"30511
+[; ;./pic18f67j94.h: 30511: __asm("FSR0H equ 0FEAh");
+[; <" FSR0H equ 0FEAh ;# ">
+"30518
+[; ;./pic18f67j94.h: 30518: __asm("PLUSW0 equ 0FEBh");
+[; <" PLUSW0 equ 0FEBh ;# ">
+"30538
+[; ;./pic18f67j94.h: 30538: __asm("PREINC0 equ 0FECh");
+[; <" PREINC0 equ 0FECh ;# ">
+"30558
+[; ;./pic18f67j94.h: 30558: __asm("POSTDEC0 equ 0FEDh");
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"30578
+[; ;./pic18f67j94.h: 30578: __asm("POSTINC0 equ 0FEEh");
+[; <" POSTINC0 equ 0FEEh ;# ">
+"30598
+[; ;./pic18f67j94.h: 30598: __asm("INDF0 equ 0FEFh");
+[; <" INDF0 equ 0FEFh ;# ">
+"30618
+[; ;./pic18f67j94.h: 30618: __asm("INTCON3 equ 0FF0h");
+[; <" INTCON3 equ 0FF0h ;# ">
+"30730
+[; ;./pic18f67j94.h: 30730: __asm("INTCON2 equ 0FF1h");
+[; <" INTCON2 equ 0FF1h ;# ">
+"30823
+[; ;./pic18f67j94.h: 30823: __asm("INTCON equ 0FF2h");
+[; <" INTCON equ 0FF2h ;# ">
+"30940
+[; ;./pic18f67j94.h: 30940: __asm("PROD equ 0FF3h");
+[; <" PROD equ 0FF3h ;# ">
+"30947
+[; ;./pic18f67j94.h: 30947: __asm("PRODL equ 0FF3h");
+[; <" PRODL equ 0FF3h ;# ">
+"30967
+[; ;./pic18f67j94.h: 30967: __asm("PRODH equ 0FF4h");
+[; <" PRODH equ 0FF4h ;# ">
+"30987
+[; ;./pic18f67j94.h: 30987: __asm("TABLAT equ 0FF5h");
+[; <" TABLAT equ 0FF5h ;# ">
+"31009
+[; ;./pic18f67j94.h: 31009: __asm("TBLPTR equ 0FF6h");
+[; <" TBLPTR equ 0FF6h ;# ">
+"31016
+[; ;./pic18f67j94.h: 31016: __asm("TBLPTRL equ 0FF6h");
+[; <" TBLPTRL equ 0FF6h ;# ">
+"31036
+[; ;./pic18f67j94.h: 31036: __asm("TBLPTRH equ 0FF7h");
+[; <" TBLPTRH equ 0FF7h ;# ">
+"31056
+[; ;./pic18f67j94.h: 31056: __asm("TBLPTRU equ 0FF8h");
+[; <" TBLPTRU equ 0FF8h ;# ">
+"31065
+[; ;./pic18f67j94.h: 31065: __asm("PCLAT equ 0FF9h");
+[; <" PCLAT equ 0FF9h ;# ">
+"31072
+[; ;./pic18f67j94.h: 31072: __asm("PC equ 0FF9h");
+[; <" PC equ 0FF9h ;# ">
+"31079
+[; ;./pic18f67j94.h: 31079: __asm("PCL equ 0FF9h");
+[; <" PCL equ 0FF9h ;# ">
+"31099
+[; ;./pic18f67j94.h: 31099: __asm("PCLATH equ 0FFAh");
+[; <" PCLATH equ 0FFAh ;# ">
+"31119
+[; ;./pic18f67j94.h: 31119: __asm("PCLATU equ 0FFBh");
+[; <" PCLATU equ 0FFBh ;# ">
+"31126
+[; ;./pic18f67j94.h: 31126: __asm("STKPTR equ 0FFCh");
+[; <" STKPTR equ 0FFCh ;# ">
+"31200
+[; ;./pic18f67j94.h: 31200: __asm("TOS equ 0FFDh");
+[; <" TOS equ 0FFDh ;# ">
+"31207
+[; ;./pic18f67j94.h: 31207: __asm("TOSL equ 0FFDh");
+[; <" TOSL equ 0FFDh ;# ">
+"31227
+[; ;./pic18f67j94.h: 31227: __asm("TOSH equ 0FFEh");
+[; <" TOSH equ 0FFEh ;# ">
+"31247
+[; ;./pic18f67j94.h: 31247: __asm("TOSU equ 0FFFh");
+[; <" TOSU equ 0FFFh ;# ">
+"22 ./HC-SR04.h
+[; ;./HC-SR04.h: 22: float Distance;
+[v _Distance `f ~T0 @X0 1 e ]
+"23
+[; ;./HC-SR04.h: 23: int Distance_mm_int;
+[v _Distance_mm_int `i ~T0 @X0 1 e ]
+"24
+[; ;./HC-SR04.h: 24: int Time;
+[v _Time `i ~T0 @X0 1 e ]
+"25
+[; ;./HC-SR04.h: 25: float Total_distance[10];
+[v _Total_distance `f ~T0 @X0 -> 10 `i e ]
+"36 ./main.h
+[; ;./main.h: 36: char CHAR_IDENTI = 'I';
+[v _CHAR_IDENTI `uc ~T0 @X0 1 e ]
+[i _CHAR_IDENTI
+-> -> 73 `ui `uc
+]
+"37
+[; ;./main.h: 37: char CHAR_CONFIG = 'C';
+[v _CHAR_CONFIG `uc ~T0 @X0 1 e ]
+[i _CHAR_CONFIG
+-> -> 67 `ui `uc
+]
+"38
+[; ;./main.h: 38: char CHAR_CONFIR1_CONFIG = 'G';
+[v _CHAR_CONFIR1_CONFIG `uc ~T0 @X0 1 e ]
+[i _CHAR_CONFIR1_CONFIG
+-> -> 71 `ui `uc
+]
+"39
+[; ;./main.h: 39: char CHAR_ACCEUIL = 'A';
+[v _CHAR_ACCEUIL `uc ~T0 @X0 1 e ]
+[i _CHAR_ACCEUIL
+-> -> 65 `ui `uc
+]
+"41
+[; ;./main.h: 41: char ID_USERS[10] = {'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'};
+[v _ID_USERS `uc ~T0 @X0 -> 10 `i e ]
+[i _ID_USERS
+:U ..
+-> -> 107 `ui `uc
+-> -> 108 `ui `uc
+-> -> 109 `ui `uc
+-> -> 110 `ui `uc
+-> -> 111 `ui `uc
+-> -> 112 `ui `uc
+-> -> 113 `ui `uc
+-> -> 114 `ui `uc
+-> -> 115 `ui `uc
+-> -> 116 `ui `uc
+..
+]
+"43
+[; ;./main.h: 43: int ETAT = 1;
+[v _ETAT `i ~T0 @X0 1 e ]
+[i _ETAT
+-> 1 `i
+]
+"44
+[; ;./main.h: 44: int TempEau, TempLait;
+[v _TempEau `i ~T0 @X0 1 e ]
+[v _TempLait `i ~T0 @X0 1 e ]
+"45
+[; ;./main.h: 45: int DistanceEau, DistanceLait;
+[v _DistanceEau `i ~T0 @X0 1 e ]
+[v _DistanceLait `i ~T0 @X0 1 e ]
+"12 message.c
+[; ;message.c: 12: void avertissement(int NumAvertissement) {
+[v _avertissement `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _avertissement ]
+[v _NumAvertissement `i ~T0 @X0 1 r1 ]
+[f ]
+"13
+[; ;message.c: 13:     switch(NumAvertissement) {
+[e $U 1429  ]
+{
+"14
+[; ;message.c: 14:         case 0:
+[e :U 1430 ]
+"15
+[; ;message.c: 15:             clearDisplay();
+[e ( _clearDisplay ..  ]
+"16
+[; ;message.c: 16:             moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"17
+[; ;message.c: 17:             putStringLCD(etat_attente);
+[e ( _putStringLCD (1 &U _etat_attente ]
+"18
+[; ;message.c: 18:             break;
+[e $U 1428  ]
+"19
+[; ;message.c: 19:         case 1:
+[e :U 1431 ]
+"20
+[; ;message.c: 20:             clearDisplay();
+[e ( _clearDisplay ..  ]
+"21
+[; ;message.c: 21:             moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"22
+[; ;message.c: 22:             putStringLCD(avert1);
+[e ( _putStringLCD (1 &U _avert1 ]
+"23
+[; ;message.c: 23:             break;
+[e $U 1428  ]
+"24
+[; ;message.c: 24:         case 2:
+[e :U 1432 ]
+"25
+[; ;message.c: 25:             clearDisplay();
+[e ( _clearDisplay ..  ]
+"26
+[; ;message.c: 26:             moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"27
+[; ;message.c: 27:             putStringLCD(avert2);
+[e ( _putStringLCD (1 &U _avert2 ]
+"28
+[; ;message.c: 28:             break;
+[e $U 1428  ]
+"29
+[; ;message.c: 29:         case 3:
+[e :U 1433 ]
+"30
+[; ;message.c: 30:             moveCursor(2,0);
+[e ( _moveCursor (2 , -> 2 `i -> 0 `i ]
+"31
+[; ;message.c: 31:             putStringLCD(avert3);
+[e ( _putStringLCD (1 &U _avert3 ]
+"32
+[; ;message.c: 32:             break;
+[e $U 1428  ]
+"33
+[; ;message.c: 33:         case 4:
+[e :U 1434 ]
+"34
+[; ;message.c: 34:             clearDisplay();
+[e ( _clearDisplay ..  ]
+"35
+[; ;message.c: 35:             moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"36
+[; ;message.c: 36:             putStringLCD(avert4);
+[e ( _putStringLCD (1 &U _avert4 ]
+"37
+[; ;message.c: 37:             break;
+[e $U 1428  ]
+"38
+[; ;message.c: 38:         case 5:
+[e :U 1435 ]
+"39
+[; ;message.c: 39:             clearRow(1);
+[e ( _clearRow (1 -> 1 `i ]
+"40
+[; ;message.c: 40:             moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"41
+[; ;message.c: 41:             putStringLCD(avert5);
+[e ( _putStringLCD (1 &U _avert5 ]
+"42
+[; ;message.c: 42:             break;
+[e $U 1428  ]
+"43
+[; ;message.c: 43:         case 6:
+[e :U 1436 ]
+"44
+[; ;message.c: 44:             clearDisplay();
+[e ( _clearDisplay ..  ]
+"45
+[; ;message.c: 45:             moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"46
+[; ;message.c: 46:             putStringLCD(avert6);
+[e ( _putStringLCD (1 &U _avert6 ]
+"47
+[; ;message.c: 47:             break;
+[e $U 1428  ]
+"48
+[; ;message.c: 48:         case 7:
+[e :U 1437 ]
+"49
+[; ;message.c: 49:             clearRow(0);
+[e ( _clearRow (1 -> 0 `i ]
+"50
+[; ;message.c: 50:             moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"51
+[; ;message.c: 51:             putStringLCD(avert7);
+[e ( _putStringLCD (1 &U _avert7 ]
+"52
+[; ;message.c: 52:             break;
+[e $U 1428  ]
+"53
+[; ;message.c: 53:         case 8:
+[e :U 1438 ]
+"54
+[; ;message.c: 54:             clearRow(0);
+[e ( _clearRow (1 -> 0 `i ]
+"55
+[; ;message.c: 55:             moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"56
+[; ;message.c: 56:             putStringLCD(avert8);
+[e ( _putStringLCD (1 &U _avert8 ]
+"57
+[; ;message.c: 57:             break;
+[e $U 1428  ]
+"58
+[; ;message.c: 58:         case 9:
+[e :U 1439 ]
+"59
+[; ;message.c: 59:             moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"60
+[; ;message.c: 60:             putStringLCD(avert9);
+[e ( _putStringLCD (1 &U _avert9 ]
+"61
+[; ;message.c: 61:             break;
+[e $U 1428  ]
+"62
+[; ;message.c: 62:         case 10:
+[e :U 1440 ]
+"63
+[; ;message.c: 63:             clearDisplay();
+[e ( _clearDisplay ..  ]
+"64
+[; ;message.c: 64:             moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"65
+[; ;message.c: 65:             putStringLCD(avert10);
+[e ( _putStringLCD (1 &U _avert10 ]
+"66
+[; ;message.c: 66:             break;
+[e $U 1428  ]
+"67
+[; ;message.c: 67:         case 11:
+[e :U 1441 ]
+"68
+[; ;message.c: 68:             moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"69
+[; ;message.c: 69:             putStringLCD(avert11);
+[e ( _putStringLCD (1 &U _avert11 ]
+"70
+[; ;message.c: 70:             break;
+[e $U 1428  ]
+"71
+[; ;message.c: 71:     }
+}
+[e $U 1428  ]
+[e :U 1429 ]
+[e [\ _NumAvertissement , $ -> 0 `i 1430
+ , $ -> 1 `i 1431
+ , $ -> 2 `i 1432
+ , $ -> 3 `i 1433
+ , $ -> 4 `i 1434
+ , $ -> 5 `i 1435
+ , $ -> 6 `i 1436
+ , $ -> 7 `i 1437
+ , $ -> 8 `i 1438
+ , $ -> 9 `i 1439
+ , $ -> 10 `i 1440
+ , $ -> 11 `i 1441
+ 1428 ]
+[e :U 1428 ]
+"72
+[; ;message.c: 72: }
+[e :UE 1427 ]
+}
+"75
+[; ;message.c: 75: void message_etat(int etat) {
+[v _message_etat `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _message_etat ]
+[v _etat `i ~T0 @X0 1 r1 ]
+[f ]
+"76
+[; ;message.c: 76:     if (etat == 1) {
+[e $ ! == _etat -> 1 `i 1443  ]
+{
+"78
+[; ;message.c: 78:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"79
+[; ;message.c: 79:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"80
+[; ;message.c: 80:         putStringLCD(etat_attente);
+[e ( _putStringLCD (1 &U _etat_attente ]
+"81
+[; ;message.c: 81:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"82
+[; ;message.c: 82:         putStringLCD(etat_attente1);
+[e ( _putStringLCD (1 &U _etat_attente1 ]
+"83
+[; ;message.c: 83:     }
+}
+[e :U 1443 ]
+"84
+[; ;message.c: 84:     if (etat == 2) {
+[e $ ! == _etat -> 2 `i 1444  ]
+{
+"86
+[; ;message.c: 86:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"87
+[; ;message.c: 87:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"88
+[; ;message.c: 88:         putStringLCD(etat_acceuil1);
+[e ( _putStringLCD (1 &U _etat_acceuil1 ]
+"89
+[; ;message.c: 89:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"90
+[; ;message.c: 90:         putStringLCD(etat_acceuil2);
+[e ( _putStringLCD (1 &U _etat_acceuil2 ]
+"91
+[; ;message.c: 91:     }
+}
+[e :U 1444 ]
+"92
+[; ;message.c: 92:     if (etat == 3) {
+[e $ ! == _etat -> 3 `i 1445  ]
+{
+"93
+[; ;message.c: 93:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"94
+[; ;message.c: 94:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"95
+[; ;message.c: 95:         putStringLCD(etat_identification);
+[e ( _putStringLCD (1 &U _etat_identification ]
+"96
+[; ;message.c: 96:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"97
+[; ;message.c: 97:         putStringLCD(etat_identification2);
+[e ( _putStringLCD (1 &U _etat_identification2 ]
+"98
+[; ;message.c: 98:     }
+}
+[e :U 1445 ]
+"99
+[; ;message.c: 99:     if (etat == 4) {
+[e $ ! == _etat -> 4 `i 1446  ]
+{
+"100
+[; ;message.c: 100:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"101
+[; ;message.c: 101:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"102
+[; ;message.c: 102:         putStringLCD(etat_configuration);
+[e ( _putStringLCD (1 &U _etat_configuration ]
+"103
+[; ;message.c: 103:     }
+}
+[e :U 1446 ]
+"104
+[; ;message.c: 104: }
+[e :UE 1442 ]
+}
+"106
+[; ;message.c: 106: void question_configuration(int etape) {
+[v _question_configuration `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _question_configuration ]
+[v _etape `i ~T0 @X0 1 r1 ]
+[f ]
+"107
+[; ;message.c: 107:     if (etape == 1) {
+[e $ ! == _etape -> 1 `i 1448  ]
+{
+"108
+[; ;message.c: 108:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"109
+[; ;message.c: 109:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"110
+[; ;message.c: 110:         putStringLCD(q_eau);
+[e ( _putStringLCD (1 &U _q_eau ]
+"111
+[; ;message.c: 111:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"112
+[; ;message.c: 112:         putStringLCD(q_eau_choix);
+[e ( _putStringLCD (1 &U _q_eau_choix ]
+"113
+[; ;message.c: 113:     }
+}
+[e :U 1448 ]
+"114
+[; ;message.c: 114:     if (etape == 2) {
+[e $ ! == _etape -> 2 `i 1449  ]
+{
+"115
+[; ;message.c: 115:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"116
+[; ;message.c: 116:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"117
+[; ;message.c: 117:         putStringLCD(q_lait);
+[e ( _putStringLCD (1 &U _q_lait ]
+"118
+[; ;message.c: 118:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"119
+[; ;message.c: 119:         putStringLCD(q_lait_choix);
+[e ( _putStringLCD (1 &U _q_lait_choix ]
+"120
+[; ;message.c: 120:     }
+}
+[e :U 1449 ]
+"121
+[; ;message.c: 121:     if (etape == 3) {
+[e $ ! == _etape -> 3 `i 1450  ]
+{
+"122
+[; ;message.c: 122:         clearDisplay();
+[e ( _clearDisplay ..  ]
+"123
+[; ;message.c: 123:         moveCursor(0,0);
+[e ( _moveCursor (2 , -> 0 `i -> 0 `i ]
+"124
+[; ;message.c: 124:         putStringLCD(q_sucre);
+[e ( _putStringLCD (1 &U _q_sucre ]
+"125
+[; ;message.c: 125:         moveCursor(1,0);
+[e ( _moveCursor (2 , -> 1 `i -> 0 `i ]
+"126
+[; ;message.c: 126:         putStringLCD(q_sucre_choix);
+[e ( _putStringLCD (1 &U _q_sucre_choix ]
+"127
+[; ;message.c: 127:     }
+}
+[e :U 1450 ]
+"128
+[; ;message.c: 128: }
+[e :UE 1447 ]
+}

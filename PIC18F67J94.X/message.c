@@ -36,6 +36,7 @@ void avertissement(int NumAvertissement) {
             putStringLCD(avert4);
             break;
         case 5:
+            clearRow(1);
             moveCursor(1,0);
             putStringLCD(avert5);
             break;
@@ -45,50 +46,29 @@ void avertissement(int NumAvertissement) {
             putStringLCD(avert6);
             break;
         case 7:
-            moveCursor(1,0);
+            clearRow(0);
+            moveCursor(0,0);
             putStringLCD(avert7);
             break;
         case 8:
-            moveCursor(2,0);
+            clearRow(0);
+            moveCursor(0,0);
             putStringLCD(avert8);   
             break;
-                          
+        case 9:
+            moveCursor(1,0);
+            putStringLCD(avert9);   
+            break;
+        case 10:
+            clearDisplay();
+            moveCursor(0,0);
+            putStringLCD(avert10);   
+            break;
+        case 11:
+            moveCursor(1,0);
+            putStringLCD(avert11);   
+            break;                
     }
-//    if (NumAvertissement == 0) {
-//    }
-//    else if (NumAvertissement == 1) {
-//    }
-//    else if (NumAvertissement == 2) {   
-//    }
-//    else if (NumAvertissement == 3) {  
-//        //clearDisplay();  
-//    }
-//    else if (NumAvertissement == 4) {
-//        
-//        
-//    }
-//    else if (NumAvertissement == 5) {
-//        
-////        clearDisplay();
-//        
-//    }
-//    else if (NumAvertissement == 6) {
-//        
-//        
-//    }
-//    else if (NumAvertissement == 7) {
-//        
-////        clearDisplay();
-//        
-//    }
-//    else if (NumAvertissement == 8) {
-//        
-////        clearDisplay();
-//        
-//    }
-//    else {
-//        clearDisplay();
-//    }
 }
 
 
@@ -110,7 +90,6 @@ void message_etat(int etat) {
         putStringLCD(etat_acceuil2);
     }
     if (etat == IDENTIFICATION) {
-        
         clearDisplay();
         moveCursor(0,0);
         putStringLCD(etat_identification);
@@ -118,7 +97,6 @@ void message_etat(int etat) {
         putStringLCD(etat_identification2);
     }
     if (etat == CONFIGURATION) {
-        
         clearDisplay();
         moveCursor(0,0);
         putStringLCD(etat_configuration);
@@ -127,7 +105,6 @@ void message_etat(int etat) {
 
 void question_configuration(int etape) {
     if (etape == 1) {
-        
         clearDisplay();
         moveCursor(0,0);
         putStringLCD(q_eau);
@@ -135,7 +112,6 @@ void question_configuration(int etape) {
         putStringLCD(q_eau_choix);
     }
     if (etape == 2) {
-        
         clearDisplay();
         moveCursor(0,0);
         putStringLCD(q_lait);
@@ -143,7 +119,6 @@ void question_configuration(int etape) {
         putStringLCD(q_lait_choix);
     }
     if (etape == 3) {
-        
         clearDisplay();
         moveCursor(0,0);
         putStringLCD(q_sucre);

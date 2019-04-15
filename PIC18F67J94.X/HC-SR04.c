@@ -57,9 +57,9 @@ void Trigger_Pulse_10us(int channel){
 int calc_distance_mm(int channel) {
     int a;
     int retour;
-    const unsigned char dist[11] = "Distance = ";
-    const unsigned char cm[3] = " cm";
-    const unsigned char OoR[12] ="Out of Range";
+//    const unsigned char dist[] = "Distance = ";
+//    const unsigned char cm[] = " cm";
+//    const unsigned char OoR[] ="Out of Range";
     
     TMR1L = 0;
     TMR1H = 0;
