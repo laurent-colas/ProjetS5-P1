@@ -80,12 +80,21 @@ void SPI_Write(unsigned int data)
 {
     while(!MCBSP_xrdy(DSK6713_AIC23_CONTROLHANDLE));
     MCBSP_write(DSK6713_AIC23_CONTROLHANDLE, data | SPI_WRITE_DATA);
+    DSK6713_waitusec(1000);
+    while(!MCBSP_rrdy(DSK6713_AIC23_CONTROLHANDLE));
+    DSK6713_waitusec(1000);
+    MCBSP_read(DSK6713_AIC23_CONTROLHANDLE);
 }
 
 unsigned int SPI_Read(void)
 {
+    unsigned int temp;
+    while(!MCBSP_xrdy(DSK6713_AIC23_CONTROLHANDLE));
+    MCBSP_write(DSK6713_AIC23_CONTROLHANDLE, 0x00);
     while(!MCBSP_rrdy(DSK6713_AIC23_CONTROLHANDLE));
-    return MCBSP_read(DSK6713_AIC23_CONTROLHANDLE) & SPI_READ_DATA;
+    DSK6713_waitusec(1000);
+    temp = 0xFF & MCBSP_read(DSK6713_AIC23_CONTROLHANDLE);
+    return temp;
 }
 
 void SPI_init(void)

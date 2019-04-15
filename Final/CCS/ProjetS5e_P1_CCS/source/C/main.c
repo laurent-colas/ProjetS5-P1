@@ -51,6 +51,7 @@ extern far void vectors();   // Vecteurs d'interruption
 
 int noEchFilt=0;						// Numéro de l'échantillon courant
 int reception_SPI = 0;
+char RS232_data_in;
 int rec = 0;
 
 // Variable globale pour la génération de signal
@@ -216,13 +217,19 @@ void main()
 	        if (debug == 1) {
 	            //comm_intr();
 	            //debug = 0;
-	            SPI_Write((unsigned int) 'L');
+
+//	                SPI_Write((unsigned int)0x004C);
+
+//	            }
+
 
                 if (reception_SPI) // On a reçu du data par SPI
                     {
                         char dataw;
                        // short data = 0;
-                        dataw = (char) SPI_Read();
+                        unsigned int temep;
+                        temep = SPI_Read();
+                        dataw = 0xFF & (char) temep;
 
                         reception_SPI = 0;
                     }
