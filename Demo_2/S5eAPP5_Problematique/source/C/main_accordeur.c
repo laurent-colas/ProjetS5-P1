@@ -39,7 +39,23 @@
 #include "C6713Helper_UdeS.h"
 #include "functionHelperProjetS5.h"
 
+float tab_zero1_x[(3 * N/2) - 2] = {0};
+float tab_zero2_x[(3 * N/2) - 2] = {0};
+float tab_zero3_x[(3 * N/2) - 2] = {0};
+float tab_zero4_x[(3 * N/2) - 2] = {0};
+#pragma DATA_SECTION(tab_zero1_x, ".EXT_RAM")
+#pragma DATA_SECTION(tab_zero2_x, ".EXT_RAM")
+#pragma DATA_SECTION(tab_zero3_x, ".EXT_RAM")
+#pragma DATA_SECTION(tab_zero4_x, ".EXT_RAM")
 
+float tab_zero1_y[(3 * N/2) - 2] = {0};
+float tab_zero2_y[(3 * N/2) - 2] = {0};
+float tab_zero3_y[(3 * N/2) - 2] = {0};
+float tab_zero4_y[(3 * N/2) - 2] = {0};
+#pragma DATA_SECTION(tab_zero1_y, ".EXT_RAM")
+#pragma DATA_SECTION(tab_zero2_y, ".EXT_RAM")
+#pragma DATA_SECTION(tab_zero3_y, ".EXT_RAM")
+#pragma DATA_SECTION(tab_zero4_y, ".EXT_RAM")
 
 // VARIABLES GLOBALES
 //USELECTIONS Commandes;				// Commandes de l'utilisateur (voir main_accordeur.h)
@@ -72,6 +88,7 @@ Uint16 inputsource=DSK6713_AIC23_INPUT_MIC; // Selection de l'entrée LINE IN
 union {Uint32 uint; short channel[2];} AIC23_data; // Pour contenir les deux signaux
 
 
+
 struct TABLEAU_INIT Ech[2];
 struct TABLEAU_IDENT x2[1];
 
@@ -89,21 +106,10 @@ struct TABLEAU_REF  Sig_Ref;
 
 void main()
 {
-//	initGenM2();
-//	afficherMenu();		// Affichage du menu principal à l'écran
-	initAccordeur();	// Initialisations des variables et du hardware
-//	int j;
+
 	int debug = 0;
 	short short_temp;
-//	int i = 0;
-//
-//	for (i = 0; i<N; i++) {
-//	    Ech[0].signal_in[i] = i;
-//	    Ech[1].signal_in[i] = i+i;
-////	    Ech[2].signal_in[i] = i;
-//	}
-//	pre_traitement(Ech);
-//	analyse_son(x2);
+
 
 	while(1) {
 

@@ -69,7 +69,7 @@ float val_absolut(float val);
 float maxi_abs(float tab[],int l);
 short maxi_abs_short(short tab[],int l);
 short mean_short(short tab[], int l);
-void correlation(float x[], float y[],int l,float out[]);
+void correlation(float x[], float y[],float zeros_x[],float zeros_y[],int l,float out[]);
 void correlationLouis(float signal1[], float signal2[],int l,float out[]);
 
 
